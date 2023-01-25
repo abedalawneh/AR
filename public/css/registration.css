@@ -1,0 +1,173 @@
+body{
+    background-image: url("../images/signupbg.svg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    font-family: 'Poppins';
+    line-height: 150%;
+    letter-spacing: -0.022em;
+    font-weight: 400;
+}
+.backgroundregister{
+    background-image: linear-gradient(115.94deg, rgba(219, 0, 255, 0.2) -8.4%, rgba(0, 240, 255, 0.2) 109.09%) !important;
+    background-size:cover;
+    height: 100vh;
+    
+}
+.logoform{
+    width: 60px;
+    height: 60px;
+}
+.signup-form{
+    padding-top: 4%;
+    padding-bottom: 3%;
+}
+.card{
+    border-radius: 8px;
+}
+
+.creattext{
+    font-weight: 600;
+    font-size: 32px;
+    color: #0B062D;
+}
+.alreadytext{
+    color:#31314E;
+}
+.alreadytext a{
+    color:linear-gradient(115.94deg, #DB00FF -8.4%, #00F0FF 109.09%);
+    text-decoration: none;
+    background:linear-gradient(115.94deg, #DB00FF -8.4%, #00F0FF 109.09%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.labelcolor{
+    font-weight: 500;
+    color: #0B062D;
+}
+
+.imagename::placeholder,.imagemail::placeholder,.imagpass::placeholder{
+    color: #A19EAE;
+}
+
+.signbutton{
+    font-weight: 500;
+    font-size: 18px;
+    color: #FFFFFF;
+    height: 44px; 
+    background: linear-gradient(115.94deg, #DB00FF -8.4%, #00F0FF 109.09%);
+    margin-top: 5%;
+}
+.signbutton:hover{
+    color: #FFFFFF;
+}
+.imagename{
+    background: url(../images/inputname.svg) no-repeat scroll 7px 7px;
+    padding-left:40px;
+}
+.imagemail{
+    background: url(../images/imagemail.svg) no-repeat scroll 7px 7px;
+    padding-left:40px;
+}
+.imagpass{
+background: url(../images/imagepass.svg) no-repeat scroll  7px 7px ;
+padding-left:40px;
+}
+.show-passwordlogin{
+    position: absolute;
+    right: 9%;
+    top: 68%;
+    transform: translateY(-50%);   
+}
+.show-password{
+        position: absolute;
+        right: 11%;
+        top: 76%;
+        transform: translateY(-50%);   
+}
+
+.Forgotpassword{
+    text-decoration: none;
+    background:linear-gradient(115.94deg, #DB00FF -8.4%, #00F0FF 109.09%);
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+
+}
+
+
+/* Circle checkbox styles */
+.mycheck {
+    width: 15px;
+    height: 15px;
+    -webkit-appearance: none;
+    background-color: #fafafa;
+    border: 2px solid #cacece;
+    /* border: 2px solid linear-gradient(115.94deg, #DB00FF -8.4%, #00F0FF 109.09%); */
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+    padding: 9px;
+    margin-right: 9px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    top: 5px;
+  }
+  .mycheck:checked::before {
+    content: '\2714';
+    font-size: 20px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: #09ad7e;
+  }
+  
+  
+  
+
+@media screen and (min-width: 320px)and (max-width: 750px){
+    .backgroundregister{
+        justify-content: center;
+    }
+    .show-password{
+        right: 10%;
+        top: 80%;
+    }
+    .show-passwordlogin{
+        right: 10%;
+        top: 71%;
+    }
+    
+}
+
+@media (min-width: 768px)and (max-width: 1100px){
+.card {
+    padding: 1rem!important;
+}
+.backgroundregister{
+    justify-content: center;
+}
+.show-password{
+    right: 11%;
+    top: 78%;
+}
+
+.show-passwordlogin{
+    right: 11%;
+    top: 69%;
+}
+}
+
+@media  (min-width: 2000px){
+    .show-password{
+        right: 7%;
+        top: 73%;
+    }
+    .show-passwordlogin{
+        right: 8%;
+        top: 65%;
+    }
+    }

@@ -1,0 +1,325 @@
+body{
+    font-family: 'Poppins';
+}
+.creatbutton:hover {
+    color:none !important;
+    background-color: none;
+    border-color: none;
+}
+.divnav{
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.66);
+}
+.dreame{
+    background-image: url("../images/Herosectiaon.png");
+        background-repeat: no-repeat;
+        background-position: right top; 
+        height: 849.56px;   
+}
+.dreamtitle{
+    font-weight: 700;
+    font-size: 48px;
+    color: #0B062D;
+    line-height: 140%;
+}
+.dream{
+    color:linear-gradient(115.94deg, #DB00FF -8.4%, #00F0FF 109.09%);
+    text-decoration: none;
+    background:linear-gradient(115.94deg, #DB00FF -8.4%, #00F0FF 109.09%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+.navtext{
+    margin-left: 8%;
+    
+}
+/* .navtext li{
+
+    background-color: rgba(255, 255, 255, 0.66); 
+} */
+.navtext li a{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #31314E;
+   
+}
+.navtext li a:active{
+    color:linear-gradient(115.94deg, #DB00FF -8.4%, #00F0FF 109.09%);
+    text-decoration: none;
+    background:linear-gradient(115.94deg, #DB00FF -8.4%, #00F0FF 109.09%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-weight: 700;
+    font-size: 16px;
+}
+.buttonnav{
+    margin-right: 6%;
+
+}
+.navebutton{
+    width: 181px;
+    background: linear-gradient(115.94deg, #DB00FF -8.4%, #00F0FF 109.09%);
+    color: white;
+}
+.textdream{
+    margin-top: 16%;
+    margin-left: 8%;
+}
+.dreameparagraph{
+    font-weight: 400;
+font-size: 18px;
+line-height: 28px;
+color: #31314E;
+}
+.backvedio{
+        background-image: url("../images/vedioback.gif");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center; 
+        /* width: 493px; */
+        height: 465px;
+    }
+    .cardclass{
+        border-radius: 0%;
+        border: none;
+        box-shadow: 0px 6px 21px rgba(187, 187, 187, 0.23);
+    }
+.worktitle{
+        font-weight: 600;
+        font-size: 32px;
+        color: #0B062D;
+    }
+.workparagraph,.card-text{
+        font-weight: 400;
+        font-size: 16px;
+        color: #31314E;
+    }   
+.card-title{
+        font-weight: 600;
+        font-size: 24px;
+        color: #0B062D;   
+    }
+    .creatbutton{
+        width: 288px !important;
+        font-weight: 500;
+        font-size: 18px;
+        color: #FFFFFF;
+        background: linear-gradient(115.94deg, #DB00FF -8.4%, #00F0FF 109.09%);
+        margin-top: 5%;
+}
+.list{
+    padding-left: 4%;
+    list-style-type:circle;
+    color: linear-gradient(115.94deg, #DB00FF -8.4%, #00F0FF 109.09%);
+}
+.aboutus{
+margin-top: 3%;
+}
+.faq{
+    font-weight: 700;
+    font-size: 32px;
+    color: #101828;
+    padding-bottom: 3%;
+}
+
+.textfaq h1{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    color: #0B062D;
+}
+#myText1{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #54506E;
+}
+.gaqdiv{
+    border-bottom: 1px solid #E2E1EA;
+    padding-bottom: 2%;
+    margin-bottom: 2%;
+}
+.contavtus{
+    background: linear-gradient(115.94deg, rgba(219, 0, 255, 0.1) -8.4%, rgba(0, 240, 255, 0.1) 109.09%);
+    border-radius: 16px;
+    height: 344px;
+}
+.contacth1{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 150%;
+    color: #0B062D;
+}
+.contactp{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #31314E;
+    text-align: center;
+}
+.formbutton{
+    width: 182px;
+    background: linear-gradient(115.94deg, #DB00FF -8.4%, #00F0FF 109.09%);
+    height: 44px;
+    margin-left: 3%;
+}
+.forminput{
+    border: 1px solid #CECCD8;
+    border-radius:  4px;
+    width: 395px;
+    height: 44px;
+}
+.navbuttontext {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #0B062D;
+    
+}
+.divbuttontext{
+align-items: center;
+}
+.buttonstyle{
+    width: 182px;
+height: 44px;
+}
+.inputstyle{
+    width: 395px;
+height: 44px;
+}
+.closeimage{
+    border: none;
+    background-color: white;
+    
+}
+.formlabel {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: #0B062D;
+    padding-left: 1%;
+}
+.inputtext{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #A19EAE;
+    padding: 9px 19px;
+    width: 395px;
+    height: 44px;
+    border: 1px solid #CECCD8;
+    border-radius: 4px;
+}
+.bgroundmodal{
+        background-image: url("../images/ball.png");
+        background-repeat: no-repeat;
+        background-position: left top;
+        
+}
+@media screen and (min-width: 320px)and (max-width: 700px){
+.textdream{
+    margin-left: 2%;
+    margin-top: 40%;
+}
+.buttonstyle{
+    width: 250px !important;
+}
+.inputstyle{
+    width: 250px !important;
+}
+.navtext {
+    margin-right: 5%;
+}
+.dreamtitle{
+    text-align: center;
+    font-size: 41px;
+}
+.dreameparagraph{
+ color: 0B062D;   
+}
+.reversecolum{
+    flex-direction: column-reverse;
+}
+.workpart{
+    margin: 0 !important;
+}
+.aboutus1{
+    width: 300px !important;
+    margin-left: 15px !important;
+}
+.fagimage{
+    width: 300px !important;
+    margin-left: 10px !important;
+}
+.creatbutton{
+    width: 260px !important;
+}
+.aboutus2{
+justify-content: start !important;
+}
+.buttonsection1{
+    justify-content: center;
+}
+.divfagimage{
+    justify-content: center !important;
+}
+.divform{
+    flex-direction: column;
+    justify-content: center;
+}
+}
+
+@media screen and (min-width: 800px)and (max-width: 1050px){
+    .dreame{
+        background-size: 78% !important;
+        height: auto !important;
+
+    }
+
+    .textdream{
+        margin-top: 0;
+        margin-left: 3%;
+    }
+    .aboutus1{
+        width: 320px;
+    }
+    
+}
+@media screen and (min-width:800px){
+    .divnav{
+        background-color:  rgba(255, 255, 255, 0.026) !important;
+    }
+
+}
+@media screen and (min-width:700px)and (max-width: 800px){
+    .divaboutus1{
+        display: flex;
+        justify-content: center;
+    }
+    .dreame{
+        background-size: 75% !important;
+        height: auto !important;
+
+    }
+    .textdream{
+        margin-top: 0;
+        margin-left: 3%;
+    }
+    .reversecolum{
+        flex-direction: column-reverse;
+    }
+    .dreamtitle{
+        font-size: 33px !important;
+    }
+    .dreameparagraph{
+        font-size: 18px !important;
+        }
+        .divfagimage{
+            justify-content: center !important;
+        }
+}

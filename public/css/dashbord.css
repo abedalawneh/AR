@@ -1,0 +1,191 @@
+body{
+    font-family: 'Poppins';
+    font-style: normal;
+}
+.sidebardiv,.sidebardiv1{
+    background-color: #e2e1ea;
+    
+    font-weight: 400;
+    font-size: 16px;
+    color: #31314E;
+}
+.sidebardiv1{
+    width: 10%;
+}
+/* .barheight{
+    height: 100vh;
+} */
+.listheight{
+    margin-top:70%;
+    border-color:none ;
+}
+.sidebardiv:hover{
+    background-color:#e2e1ea ;
+}
+.creatbutton{
+    width: 249px;
+    height: 44px;
+    background: linear-gradient(115.94deg, #DB00FF -8.4%, #00F0FF 109.09%);
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+font-size: 18px;
+}
+.imagefluid{
+    width: 285px;
+height: 221.67px;
+}
+.textfluid{
+    font-weight: 600;
+font-size: 20px;
+}
+.barwidth{
+    width: 100%;
+}
+.imagebar{
+    margin-right: 10%;
+}
+.navtext{
+    font-weight: 600;
+font-size: 24px;
+margin-right: 20%;
+margin-left: 10%;
+}
+.navbar-nav{
+    margin-right: 3%;
+}
+.texttext{
+    
+font-weight: 400;
+font-size: 16px;
+color: #54506E;
+}
+.divnofile{
+    margin-top: 10%;
+}
+.dropdowninner{
+    margin-right: 3%;
+}
+.paragraphfluid , .paragraphfluid  a{
+    font-weight: 400;
+    font-size: 16px;
+    color: #0B062D;
+    text-decoration: none;
+}
+.divfluidborder{
+    border-bottom: 1px solid #E2E1EA;
+}
+.imageradio{
+    margin-right: 2%;
+    margin-left: 2%;
+}
+.radiodiv{
+    width: 60%;
+    border: 1px solid #E2E1EA;
+    border-radius: 4px;
+    margin: 1%;
+    padding: 1%;
+}
+.radiotitle{
+    font-weight: 600;
+    font-size: 16px;
+    color: #0B062D;
+    margin-bottom: 0;
+}
+.radiotext{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #54506E;
+}
+.formdiv{
+    width: 60%;
+}
+.imageproject{
+    
+        background: url(../images/project.png) no-repeat scroll 7px 7px;
+        padding-left:40px;
+}
+.imagelocation{
+    background: url(../images/locationimage.png) no-repeat scroll 7px 7px;
+        padding-left:40px;
+}
+#Projectname::placeholder{
+    font-weight: 400;
+    font-size: 16px;
+    color: #A19EAE;
+}
+.projectbutton{
+    width: 268px;
+    height: 44px;
+    background: linear-gradient(115.94deg, #DB00FF -8.4%, #00F0FF 109.09%);
+    border-radius: 8px;
+    border: none;
+    color: white;
+    
+}
+.spantitle {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(115.94deg, rgba(219, 0, 255, 0.2) -8.4%, rgba(0, 240, 255, 0.2) 109.09%);
+    border-radius: 80px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1%;
+    
+}
+.diveuplodefile{
+    width: 80%;
+    background: linear-gradient(115.94deg, rgba(219, 0, 255, 0.03) -8.4%, rgba(0, 240, 255, 0.03) 109.09%);
+    border-radius: 4px;
+    border:2px dashed #54506E;
+    text-align:center;
+}
+    .Browse{
+        color: #00F0FF;
+    }
+    .selectFile{
+        /* visibility: hidden; */
+    }
+.Latitude{
+    width: 93%;
+}
+#file-input{
+    width: 20px;
+}
+#formdiv1,#formdiv2{
+    display: none;
+}
+@media screen and (max-width: 700px){
+
+    .barwidth{
+        width: 75%;
+    }
+    .sidebardiv1{
+        width: 26%;
+    }
+    .creatbutton{
+        width: 180px;
+    }
+    .navtext{
+        margin-right: 0;
+    }
+    .divfluid{
+        padding: 0;
+    }
+    .radiodiv{
+        flex-direction: column;
+        width: 100%;
+        padding: 10%;        
+    }
+    .formdiv{
+        width: 100%;
+    }
+    .projectbutton{
+        width: 170px;
+    }
+    .Latitude{
+        flex-direction: column;
+    }
+}
