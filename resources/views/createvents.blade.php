@@ -316,8 +316,10 @@
 
                               <div class="rangedivrange d-flex  align-items-center">
                             <div class="mainn">
-                            <input  type="range" min="1" max="500" value="250" step=''  id="slider"
-                            oninput="showVal(this.value)"onchange="showVal(this.value)" >
+                            <input  type="range" min="1" max="500" value="250"
+                            oninput="showVal(this.value)"onchange="showVal(this.value)"
+                             step='10'  id="slider">
+
                             <div id="selector">
                                 <div class="selectBtn"></div>
                                 <div id="selectValue"></div>
@@ -334,7 +336,6 @@
                         <div class="d-grid justify-content-center mx-auto">
                    
                                 <button type="submit" class="projectbutton ">
-                                    <!-- <img src="../images/saveimagebutton.png" alt="" width="24" height="24"> -->
                                     {{ __('Generate') }}
                                 </button>
                      
@@ -364,12 +365,12 @@ let progressBar = document.getElementById('progressBar')
 selectValue.innerHTML = slider.value
 
 slider.oninput = function() {
-    $ss=this.value /5;
-    console.log($ss);
+    $value=this.value /5;
+    // console.log($value);
   selectValue.innerHTML = this.value
-//   progressBar.style.max-width = this.value 
-selector.style.left = $ss+ '%' 
-progressBar.style.width = $ss + '%'
+selector.style.left = $value+ '%' 
+progressBar.style.width = $value + '%'
+
 }
 
     const newobjectt = document.getElementById("newobject");

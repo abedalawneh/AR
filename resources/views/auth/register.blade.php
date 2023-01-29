@@ -42,7 +42,7 @@
                             <!-- </div> -->
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="form-group mb-3">
                             <label for="email" class="labelcolor p-2  ">{{ __('E-mail') }}</label>
 
                             <!-- <div class="col-md-6"> -->

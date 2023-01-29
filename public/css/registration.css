@@ -77,7 +77,13 @@ padding-left:40px;
 }
 .show-passwordlogin{
     position: absolute;
-    right: 9%;
+    right: 10%;
+    top: 76%;
+    transform: translateY(-50%);   
+}
+.show-passwordlogin1{
+    position: absolute;
+    right: 12%;
     top: 68%;
     transform: translateY(-50%);   
 }
@@ -138,9 +144,12 @@ padding-left:40px;
     }
     .show-passwordlogin{
         right: 10%;
-        top: 71%;
+    top: 80%;
     }
-    
+    .show-passwordlogin1{
+        right: 10%;
+    top: 71%;
+    }
 }
 
 @media (min-width: 768px)and (max-width: 1100px){
@@ -156,8 +165,12 @@ padding-left:40px;
 }
 
 .show-passwordlogin{
-    right: 11%;
-    top: 69%;
+    right: 12%;
+    top: 78%;
+}
+.show-passwordlogin1{
+    right: 10%;
+top: 69%;
 }
 }
 
@@ -168,6 +181,10 @@ padding-left:40px;
     }
     .show-passwordlogin{
         right: 8%;
-        top: 65%;
+        top: 74%;
+    }
+    .show-passwordlogin1{
+        right: 8%;
+    top: 65%;
     }
     }

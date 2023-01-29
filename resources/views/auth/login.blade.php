@@ -46,8 +46,8 @@
 
                             <!-- <div class="col-md-6"> -->
                                 <input id="password" type="password"placeholder="At least 8 characters" class="form-control imagpass @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                                <span class="show-passwordlogin" id="showPasswordIcon">
-                                    <img src="../images/eyeclose.svg" class="show-passwordlogin" id="showPasswordIcon">
+                                <span class="show-passwordlogin1" id="showPasswordIcon">
+                                    <img src="../images/eyeclose.svg" class="show-passwordlogin1" id="showPasswordIcon">
                                     </span> 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -96,10 +96,10 @@
     var passwordField = document.getElementById("password");
     if (passwordField.type === "password") {
         passwordField.type = "text";
-        this.innerHTML = '<img src="../images/eyealt.svg" class="show-passwordlogin">';
+        this.innerHTML = '<img src="../images/eyealt.svg" class="show-passwordlogin1">';
     } else {
         passwordField.type = "password";
-        this.innerHTML = '<img src="../images/eyeclose.svg" class="show-passwordlogin">';
+        this.innerHTML = '<img src="../images/eyeclose.svg" class="show-passwordlogin1">';
     }
 });
 
