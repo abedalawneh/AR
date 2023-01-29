@@ -312,14 +312,11 @@
                     </div>
                             </div>
                             <p class="radiotitle"><span class="spantitle"> 4 </span> Event radius</p>
-                            <!-- <div class='range'> -->
-                            <!-- <input name="range" type="range" min="0" max="500" step="10" oninput="showVal(this.value)"onchange="showVal(this.value)" value="50"
-                              class="slider m-2" id="myRange"><input type="text"  id="valBox" class="inputrange m-2" value="50">M -->
-                                
+                           
 
                               <div class="rangedivrange d-flex  align-items-center">
                             <div class="mainn">
-                            <input  type="range" min="1" max="100" value="50" step=''  id="slider"
+                            <input  type="range" min="1" max="500" value="250" step=''  id="slider"
                             oninput="showVal(this.value)"onchange="showVal(this.value)" >
                             <div id="selector">
                                 <div class="selectBtn"></div>
@@ -327,7 +324,7 @@
                                 </div>
                                 <div id="progressBar"></div>
                             </div>         
-                            <input type="text"  id="valBox" class="inputrange m-2" value="50">
+                            <input type="text"  id="valBox" class="inputrange m-2" value="250">
                             M                                                                 
                             </div>
                                 <!-- </div> -->
@@ -344,19 +341,7 @@
                         </div>
                 </form>
         </div>
-        <!-- <div class="d-flex">
-                            <div class="mainn">
-                            <input  type="range" min="0" max="100" value="50" step='10'  id="slider"
-                            oninput="showVal(this.value)"onchange="showVal(this.value)" >
-                            <div id="selector">
-                                <div class="selectBtn"></div>
-                                <div id="selectValue"></div>
-                                </div>
-                                <div id="progressBar"></div>
-                            </div>         
-                            <input type="number"  id="valBox" class="inputrange m-2" value="50">
-                            M                                                                 
-                            </div> -->
+        
                         
     </div>
   </div>
@@ -379,10 +364,12 @@ let progressBar = document.getElementById('progressBar')
 selectValue.innerHTML = slider.value
 
 slider.oninput = function() {
+    $ss=this.value /5;
+    console.log($ss);
   selectValue.innerHTML = this.value
 //   progressBar.style.max-width = this.value 
-selector.style.left = this.value + '%' 
-progressBar.style.width = this.value + '%'
+selector.style.left = $ss+ '%' 
+progressBar.style.width = $ss + '%'
 }
 
     const newobjectt = document.getElementById("newobject");
