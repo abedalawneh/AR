@@ -25,7 +25,7 @@ Route::post('createvents', [AuthController::class, 'createvents'])->name('create
 // Route::get('dashbord', [AuthController::class, 'dashbord'])->name('dashbordd');
 Route::post('project', [AuthController::class, 'project'])->name('project');
 Route::post('events', [AuthController::class, 'events'])->name('events');
-Route::post('landingpage', [AuthController::class, 'landingpage'])->name('landingpage');
+Route::get('landingpage', [AuthController::class, 'landingpage'])->name('landingpage');
 Route::get('resetemail', [AuthController::class, 'resetemail'])->name('resetemail');
 Route::get('resetpassword', [AuthController::class, 'resetpassword'])->name('resetpass');
 Route::post('stor', [projectcontroller::class, 'store'])->name('stor');
