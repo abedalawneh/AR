@@ -2,25 +2,30 @@ body{
     font-family: 'Poppins';
     font-style: normal;
 }
-.sidebardiv,.sidebardiv1{
-    background-color: #e2e1ea;
-    
+.sidebardiv1{
+    background-color: #e2e1ea8f;
     font-weight: 400;
     font-size: 16px;
     color: #31314E;
 }
-.sidebardiv1{
-    width: 10%;
+.sidebardiv{
+    background-color: #e2e1ea26;
+    border-bottom:none ;
+
 }
-/* .barheight{
+.sidebardiv1{
+    width: 12%;
+}
+.barheight{
     height: 100vh;
-} */
+}
 .listheight{
     margin-top:70%;
     border-color:none ;
 }
 .sidebardiv:hover{
-    background-color:#e2e1ea ;
+    background-color: #e2e1ea26;
+
 }
 .creatbutton{
     width: 249px;
@@ -106,6 +111,11 @@ color: #54506E;
         background: url(../images/project.png) no-repeat scroll 7px 7px;
         padding-left:40px;
 }
+.imagevent{
+    
+    background: url(../images/calendar.png) no-repeat scroll 7px 7px;
+    padding-left:40px;
+}
 .imagelocation{
     background: url(../images/locationimage.png) no-repeat scroll 7px 7px;
         padding-left:40px;
@@ -146,7 +156,8 @@ color: #54506E;
         color: #00F0FF;
     }
     .selectFile{
-        /* visibility: hidden; */
+        visibility: hidden;
+        width: 20px;
     }
 .Latitude{
     width: 93%;
@@ -157,13 +168,221 @@ color: #54506E;
 #formdiv1,#formdiv2{
     display: none;
 }
-@media screen and (max-width: 700px){
+.addnewspan{
+    font-weight: 500;
+    font-size: 16px;
+    background: linear-gradient(115.94deg, #DB00FF -8.4%, #00F0FF 109.09%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    /* text-fill-color: transparent; */
+    margin-left: 2%;
+}
+#addobject,#addlocation{
+    display: none;
+}
 
-    .barwidth{
-        width: 75%;
+
+.slider {
+    -webkit-appearance: none;
+    width: 592px;
+    height: 25px;
+    background-color:  #EBEBEC;
+    outline: none;
+    height: 16px;
+    left: calc(50% - 592px/2 - 130px);
+    top: calc(50% - 16px/2 + 334px);
+    border-radius: 4px;
+    margin-left:5% !important;
+    margin-top:5% !important;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    left: 80.5px;
+    top: 20px;
+    background: linear-gradient(0deg, #FFFFFF, #FFFFFF), #F5E9BD;
+    box-shadow: 3px 0px 4.5px rgba(0, 0, 0, 0.06), -3px 0px 4.5px rgba(35, 69, 190, 0.12);
+    border-radius: 4px; 
+ }
+
+ .saved{
+    background: #F3F6F9;
+border-radius: 4px;
+ }
+.imgmenu{
+    background: white;
+border-radius: 2px;
+}
+.totlesaved{
+    font-weight: 500;
+    font-size: 16px;
+    color: #0B062D;
+}
+.textsaved{
+    background: linear-gradient(115.94deg, rgba(219, 0, 255, 0.2) -8.4%, rgba(0, 240, 255, 0.2) 109.09%);
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #54506E;
+}
+.redtext{
+    color: #CF1B1B;
+}
+.bgroundmodal{
+    background-image: url("../images/ball.png");
+    background-repeat: no-repeat;
+    background-position: left top;
+    
+}
+.closeimage{
+    border: none;
+    background-color: white;
+    
+}
+.inputrange{
+    width: 81px;
+    height: 44px;
+    border: 1px solid #CECCD8;
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #0B062D;
+    text-align: center;
+}
+.mainn {
+    width: 100%;
+    margin: 4% ;
+    position: relative;
+  }
+  
+  #slider {
+    -webkit-appearance: none; 
+    width: 100%;
+    height: 16px;
+    border-radius: 3px;
+    background: #EBEBEC;
+  }
+  
+  /* Design slider button */
+  #slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    position: relative;
+    z-index: 3;
+  }
+  
+  #selector {
+    height: 104px;
+    width: 48px;
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+  .selectBtn {
+    height: 35px;
+    width: 30px;
+    /* background-image: url(https://fadzrinmadu.github.io/hosted-assets/range-slider-using-html-and-css/icon.png);
+    background-size: cover;
+    background-position: center; */
+    background: linear-gradient(0deg, #FFFFFF, #FFFFFF), #F5E9BD;
+    box-shadow: 3px 0px 4.5px rgba(0, 0, 0, 0.06), -3px 0px 4.5px rgba(35, 69, 190, 0.12);
+    border-radius: 4px;
+    position: absolute;
+    bottom: 15px;
+    /* top: 10px; */
+  }
+  #selectValue {
+    width: 48px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    background: #D9D9D9;
+    border: 1px solid #A19EAE;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 45px;
+    font-size: 20px;
+    font-weight: bold;
+    right: 20%;
+  }
+  #selectValue::after {
+    content: '';
+    border-top: 17px solid #a19eae7f;
+    border-left: 8px solid rgb(255, 255, 255);
+    border-right: 10px solid rgb(255, 255, 255);
+    position: absolute;
+    bottom: -18px;
+    left: 15px;
+  }
+  #progressBar {
+    width: 50%;
+    height: 16px;
+    background: linear-gradient(115.94deg, rgba(219, 0, 255, 0.5) -8.4%, rgba(0, 240, 255, 0.5) 109.09%);
+    border-radius: 3px;
+    position: absolute;
+    bottom:7px;
+    left: 0;
+  }
+  #map {
+    height: 350px;
+    margin-bottom: 5%;
+  }
+  .imagename{
+    background: url(../images/inputname.svg) no-repeat scroll 7px 7px;
+    padding-left:40px;
+}
+.imagemail{
+    background: url(../images/imagemail.svg) no-repeat scroll 7px 7px;
+    padding-left:40px;
+}
+.profileimagediv{
+    margin-left: 5%;
+}
+.profiletext{
+    font-weight: 600;
+    font-size: 24px;
+    
+}
+.Forgotpassword{
+    text-decoration: none;
+    background:linear-gradient(115.94deg, #DB00FF -8.4%, #00F0FF 109.09%);
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    margin-bottom: 10%;
+}
+#backprofile ,#passwordd{
+    display: none ;
+}
+.imagpass{
+    background: url(../images/imagepass.svg) no-repeat scroll  7px 7px ;
+    padding-left:40px;
     }
+@media screen and (max-width: 700px){
+    .saveddiv{
+      flex-direction: column !important;  
+    }
+    .innermenu
+    {
+    position: absolute !important;
+    }
+
+    /* .barwidth{
+        width: 75%;
+    } */
     .sidebardiv1{
-        width: 26%;
+        width: 10%;
     }
     .creatbutton{
         width: 180px;
@@ -173,6 +392,7 @@ color: #54506E;
     }
     .divfluid{
         padding: 0;
+        flex-direction: row-reverse;
     }
     .radiodiv{
         flex-direction: column;
@@ -188,4 +408,42 @@ color: #54506E;
     .Latitude{
         flex-direction: column;
     }
+    .listheight {
+        margin-top: 100%;
+        margin-right: 50% !important;
+        display: flex;
+        align-items: center;
+    }
+    .hiddentext{
+       
+        display: none;
+    }
+    .containerfluid,.divfluidborder{
+        justify-content: center !important;
+        flex-direction: column;
+    }
+    .dropdowninner {
+        margin-left: 4%;
+    }
+    .mainn{
+        width: 80%;
+    }
+    .rangedivrange{
+        flex-direction: column;
+    }
 }
+@media screen and (min-width: 600px)and (max-width:800px){
+    .innermenu
+    {
+    position: absolute !important;
+    }
+    .dropdowninner{
+        margin-right: 10%;
+    }
+    .rangedivrange{
+        flex-direction: column;
+    }
+}
+
+
+  

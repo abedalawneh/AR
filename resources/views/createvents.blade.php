@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-<html lang="en">
+<!-- <html lang="en"> -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +14,7 @@
 <body>
 <!-- $user = User::findOrFail(Auth::user()->id); -->
 
-<div class="barheight d-flex" id="wrapper">
+<div class="barheight1 d-flex" id="wrapper">
   <div class="sidebardiv1  border-right" id="sidebar-wrapper">
     <div class="sidebar-heading"> </div>
     <div class="listheight list-group list-group-flush ">
@@ -180,53 +179,29 @@
     <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light ">
         <div class="divfluidborder container-fluid m-1">
-        <p class="textfluid">Create Project</p>
-        <p class="paragraphfluid"><a href="{{ route('project') }}"onclick="event.preventDefault(); document.getElementById('dashbord-form').submit();">
-        Projects</a> > Create project</p>   
-        <form id="dashbord-form" action="{{ route('project') }}" method="POST" class="d-none">
+        <p class="textfluid">Create events</p>
+        <p class="paragraphfluid"><a href="{{ route('events') }}"onclick="event.preventDefault(); document.getElementById('dashbord-form').submit();">
+        events</a> > Create event</p>   
+        <form id="dashbord-form" action="{{ route('events') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
         </div>
         
     </nav>
-        <div class="divnofile d-flex row justify-content-center align-items-center m-3">
-            <div class="form-check d-flex align-items-center">
-                <input class="form-check-input" type="radio" name="based" id="Markerbased1" >
-                <div class="radiodiv d-flex align-items-center form-check-label" id="Markerbased" for="Markerbased1" >
-                    <img src="../images/imageradio.png" alt="" width="40" height="40" class="imageradio">
-                    <div >
-                    <p class="radiotitle">Marker based</p>
-                    <p class="radiotext">Connect your creation to a visual marker, which can be moved to any location.</p>
-                    </div>
-                </div>
-            </div>
-            <div class=" form-check d-flex align-items-center">
-                <input class="form-check-input" type="radio" name="based" id="Locationbased1">
-                <div class="radiodiv d-flex align-items-center form-check-label" id="Locationbased" for="Locationbased1">
-                    <img src="../images/mapradio.png" alt="" width="40" height="40" class="imageradio">
-                    <div >
-                    <p class="radiotitle">Location based</p>
-                    <p class="radiotext">Place your creation on a map, so it remains tied to a physical location.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- marker based -->
-        <div class="formdiv m-4 " id="formdiv1">
-            <p class="textfluid">Marker based</p>
-
-                
-                <form action="{{ route('project') }}" method="POST" enctype="multipart/form-data">
+        
+       
+        <div class="formdiv m-4 " >
+   
+                <form action="{{ route('events') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                         
-                            <input id="typebased" type="hidden"   name="typebased" value="Marker based" >
                             <input id="userid" type="hidden"  name="userid" value="{{ Auth::user()->id }}" >
-                            <p class="radiotitle "><span class="spantitle">1</span> Your Project name</p>
+                            <p class="radiotitle "><span class="spantitle">1</span> Your event name</p>
                             <div class=" form-group mb-3 m-3">
-                            <label for="Projectname" class="radiotitle p-2">{{ __('Project') }}</label>
+                            <label for="Projectname" class="radiotitle p-2">{{ __('Event') }}</label>
 
                            
-                                <input id="Projectname" type="text"placeholder="Project name"  class="imageproject form-control @error('email') is-invalid @enderror" name="Projectname" value="{{ old('Projectname') }}"  autocomplete="email" >
+                                <input id="Projectname" type="text"placeholder="Event name"  class="imagevent form-control @error('email') is-invalid @enderror" name="Projectname" value="{{ old('Projectname') }}"  autocomplete="email" >
                                 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -236,171 +211,241 @@
                  
                             </div>
                             
-                            <p class="radiotitle"><span class="spantitle"> 2 </span> Your marker (Optional) </p>
-                            <div class="diveuplodefile m-4" >
-                            <label for="file-input1">
-                                    <img class=" m-3" src="../images/uploadfile.png" alt="" width="44" height="40">
-                                    <p class="radiotitle">Drag & drop files or <span class="Browse">Browse</span>  </p>                    
+                            <p class="radiotitle"><span class="spantitle"> 2 </span> Select object </p>
+                            <div class=" form-group mb-3 m-3" id="hiddobject">
+                            <label for="Projectname" class="radiotitle p-2">{{ __('Object') }}</label>
 
-                            </label>
-                                    <div class="selectFile">       
-                                    <input type="file" name="file1"  id="file-input1">
-                                    </div>
-                                    <p class="radiotext">upload your marker (black and white). It will be like a QR code. </p>
+                           
+                                <input id="Projectname" type="text"placeholder="Select one of the saved objects"  class="imageproject form-control @error('email') is-invalid @enderror" name="Projectname" value="{{ old('Projectname') }}"  autocomplete="email" >
+                                <div class="mt-3" id="newobject">
+                                <img src="../images/plus.png" alt=""  ><span class="addnewspan">Add new object</span>
+                                </div>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                
+                            </div>
+                            <div id="addobject">
+                            <div class="mt-3"  id="backobject">
+                            <img src="../images/arrowright.png" alt=""><span class="radiotitle p-2">Add object</span>
+                            </div>
+                            <div class="diveuplodefile m-3" >
+                                <label for="file-input1">
+                                        <img class=" m-3" src="../images/uploadfile.png" alt="" width="44" height="40">
+                                        <p class="radiotitle">Drag & drop files or <span class="Browse">Browse</span>  </p>                    
+
+                                </label>
+                                        <div class="selectFile">       
+                                        <input type="file" name="file1"  id="file-input1">
+                                        </div>
+                                        <p class="radiotext">upload your marker (black and white). It will be like a QR code. </p>
+                                </div>
                             </div>
 
-                            <p class="radiotitle"><span class="spantitle"> 3 </span> Your object </p>
+                            <p class="radiotitle"><span class="spantitle"> 3 </span> Select Location</p>
 
-                            <div class="diveuplodefile m-4">
-                            <label for="file-input2">
-                                    <img class=" m-3" src="../images/uploadfile.png" alt="" width="44" height="40">
-                                    <p class="radiotitle">Drag & drop files or <span class="Browse">Browse</span>  </p>                    
+                            <div class=" form-group mb-3 m-3" id="hiddlocation">
+                            <label for="Projectname" class="radiotitle p-2">{{ __('Location') }}</label>
 
-                            </label>
-                                    <div class="selectFile">       
-                                    <input type="file" name="file2" id="file-input2">
-                                    </div>
-                                    <p class="radiotext">3D, Image, Video. It will link to your marker or our QR code. Max size is 50 MB </p>
+                           
+                                <input id="Projectname" type="text"placeholder="Select one of the saved locations"  class="imagelocation form-control @error('email') is-invalid @enderror" name="Projectname" value="{{ old('Projectname') }}"  autocomplete="email" >
+                                <div class="mt-3" id="newlocation">
+                                <img src="../images/plus.png" alt=""><span class="addnewspan">Add new location</span>
+                                </div>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                 
                             </div>
+                            <div  id="addlocation">
+                                <div class="mt-3"  id="backlocation">
+                                <img src="../images/arrowright.png" alt=""><span class="radiotitle p-2">Add location</span>
+                                </div>
+                                <p class="radiotext m-3">Drop a pin on the map. You can retrieve latitude and longitude from an address</p>
 
-                        
+                                <div class=" form-group mb-3 m-3 ">
+                                <label for="Projectname" class="radiotitle p-2">{{ __('Select location') }}</label>
+
+                                    <input id="Projectname" type="text"placeholder="Choose your place or use the map pin "  class="imagelocation form-control @error('email') is-invalid @enderror" name="Projectname" value="{{ old('Projectname') }}" required autocomplete="email" >
+                                    
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="Latitude d-flex ">
+                                <div class=" form-group  m-3 col-lg-6 sm-col">
+                                <label for="Projectname" class="radiotitle p-2">{{ __('Latitude') }}</label>
+
+                                    <input id="Projectname" type="text"placeholder="0.00"  class=" form-control @error('email') is-invalid @enderror" name="Latitude" value="{{ old('Latitude') }}" required autocomplete="email" >
+                                    
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                
+                                </div>
+
+                                <div class=" form-group  col-lg-6 sm-col  m-3">
+
+                                <label for="Projectname" class="radiotitle p-2">{{ __('Longitude') }}</label>
+
+                                    <input id="Projectname" type="text"placeholder="0.00"  class=" form-control @error('email') is-invalid @enderror" name="Longitude" value="{{ old('Longitude') }}" required autocomplete="email" >
+                                    
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                
+                                </div>
+                            </div>
+                            <div class="container mt-5">
+                        <div id="map"></div>
+                    </div>
+                            </div>
+                            <p class="radiotitle"><span class="spantitle"> 4 </span> Event radius</p>
+                            <!-- <div class='range'> -->
+                            <!-- <input name="range" type="range" min="0" max="500" step="10" oninput="showVal(this.value)"onchange="showVal(this.value)" value="50"
+                              class="slider m-2" id="myRange"><input type="text"  id="valBox" class="inputrange m-2" value="50">M -->
+                                
+
+                              <div class="rangedivrange d-flex  align-items-center">
+                            <div class="mainn">
+                            <input  type="range" min="1" max="100" value="50" step=''  id="slider"
+                            oninput="showVal(this.value)"onchange="showVal(this.value)" >
+                            <div id="selector">
+                                <div class="selectBtn"></div>
+                                <div id="selectValue"></div>
+                                </div>
+                                <div id="progressBar"></div>
+                            </div>         
+                            <input type="text"  id="valBox" class="inputrange m-2" value="50">
+                            M                                                                 
+                            </div>
+                                <!-- </div> -->
             
                         
                         {{ csrf_field() }}
                         <div class="d-grid justify-content-center mx-auto">
                    
                                 <button type="submit" class="projectbutton ">
-                                    <img src="../images/saveimagebutton.png" alt="" width="24" height="24">
-                                    {{ __('Save') }}
+                                    <!-- <img src="../images/saveimagebutton.png" alt="" width="24" height="24"> -->
+                                    {{ __('Generate') }}
                                 </button>
                      
                         </div>
                 </form>
         </div>
-
-        <!--lacation based-->
-        <div class="formdiv m-4 " id="formdiv2">
-            <p class="textfluid">Location based</p>
-
-                <form method="POST" action="{{ route('login.custom') }}">
-                            @csrf
-
-                            <p class="radiotitle "><span class="spantitle">1</span> Your Project name</p>
-                            <div class=" form-group mb-3 m-3">
-                            <label for="Projectname" class="radiotitle p-2">{{ __('Project') }}</label>
-
-                                <input id="Projectname" type="text"placeholder="Project name"  class="imageproject form-control @error('email') is-invalid @enderror" name="Projectname" value="{{ old('Projectname') }}" required autocomplete="email" >
-                                
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <p class="radiotitle"><span class="spantitle"> 2 </span> Your location </p>
-                            <p class="radiotext m-3">Drop a pin on the map. You can retrieve latitude and longitude from an address</p>
-
-                            <div class=" form-group mb-3 m-3 ">
-                            <label for="Projectname" class="radiotitle p-2">{{ __('Select location') }}</label>
-
-                                <input id="Projectname" type="text"placeholder="Choose your place or use the map pin "  class="imagelocation form-control @error('email') is-invalid @enderror" name="Projectname" value="{{ old('Projectname') }}" required autocomplete="email" >
-                                
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="Latitude d-flex ">
-                            <div class=" form-group  m-3 col-lg-6 sm-col">
-                            <label for="Projectname" class="radiotitle p-2">{{ __('Latitude') }}</label>
-
-                                <input id="Projectname" type="text"placeholder="0.00"  class=" form-control @error('email') is-invalid @enderror" name="Latitude" value="{{ old('Latitude') }}" required autocomplete="email" >
-                                
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            
-                            </div>
-
-                            <div class=" form-group  col-lg-6 sm-col  m-3">
-
-                             <label for="Projectname" class="radiotitle p-2">{{ __('Longitude') }}</label>
-
-                                <input id="Projectname" type="text"placeholder="0.00"  class=" form-control @error('email') is-invalid @enderror" name="Longitude" value="{{ old('Longitude') }}" required autocomplete="email" >
-                                
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            
-                            </div>
-                            </div>
-                            <div class="container mt-5">
-                        <div id="map"></div>
-                    </div>
-                            <p class="radiotitle"><span class="spantitle"> 3 </span> Your object </p>
-
-                            <div class="diveuplodefile m-4">
-                            <label for="file-input">
-                                    <img class=" m-3" src="../images/uploadfile.png" alt="" width="44" height="40">
-                                    <p class="radiotitle">Drag & drop files or <span class="Browse">Browse</span>  </p>                    
-
-                            </label>
-                                    <div class="selectFile">       
-                                    <input type="file" name="file3"  id="file-input">
-                                    </div>
-                                    <p class="radiotext">3D, Image, Video. It will link to your marker or our QR code. Max size is 50 MB </p>
-                            </div>
-
+        <!-- <div class="d-flex">
+                            <div class="mainn">
+                            <input  type="range" min="0" max="100" value="50" step='10'  id="slider"
+                            oninput="showVal(this.value)"onchange="showVal(this.value)" >
+                            <div id="selector">
+                                <div class="selectBtn"></div>
+                                <div id="selectValue"></div>
+                                </div>
+                                <div id="progressBar"></div>
+                            </div>         
+                            <input type="number"  id="valBox" class="inputrange m-2" value="50">
+                            M                                                                 
+                            </div> -->
                         
-                        
-
-                        <div class="d-grid justify-content-center mx-auto">
-                                <button type="submit" class="projectbutton ">
-                                    <img src="../images/saveimagebutton.png" alt="" width="24" height="24">
-                                    {{ __('Save') }}
-                                </button>
-
-                        </div>
-                </form>
-        </div>
     </div>
   </div>
 </div>
-
-
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+  crossorigin="anonymous"></script>
 <script>
-    const Locationbased1 = document.getElementById("Locationbased1");
-    const Markerbased1 = document.getElementById("Markerbased1");
-    const formdiv2 = document.getElementById("formdiv2");
-    const formdiv1 = document.getElementById("formdiv1");
-    const Locationbased = document.getElementById("Locationbased");
-    const Markerbased = document.getElementById("Markerbased");
-    const barheight = document.getElementById("wrapper");
+    function showVal(newVal){
+    document.getElementById("valBox").value=newVal;
+}
+
+
+let slider = document.getElementById('slider')
+let selector = document.getElementById('selector')
+let selectValue = document.getElementById('selectValue')
+let progressBar = document.getElementById('progressBar')
+
+selectValue.innerHTML = slider.value
+
+slider.oninput = function() {
+  selectValue.innerHTML = this.value
+//   progressBar.style.max-width = this.value 
+selector.style.left = this.value + '%' 
+progressBar.style.width = this.value + '%'
+}
+
+    const newobjectt = document.getElementById("newobject");
+    const newlocationn = document.getElementById("newlocation");
+    const addobjectt = document.getElementById("addobject");
+    const addlocationn = document.getElementById("addlocation");
+    const backobjectt = document.getElementById("backobject");
+    const backlocationn = document.getElementById("backlocation");
+    const hiddobjectt = document.getElementById("hiddobject");
+    const hiddlocationn = document.getElementById("hiddlocation");
     
-    Locationbased1.addEventListener("change", function() {
-        formdiv2.style.display = "block";
-        Locationbased.style.background="linear-gradient(115.94deg, rgba(219, 0, 255, 0.1) -8.4%, rgba(0, 240, 255, 0.1) 109.09%)";
-        formdiv1.style.display = "none";
-        Markerbased.style.background="none";
-        barheight.style.height="auto";
+    
+    newobjectt.addEventListener("click", function() {
+        addobjectt.style.display = "block";
+        hiddobjectt.style.display = "none";
+        console.log("ddd");
+        
 
     });
-    Markerbased1.addEventListener("change", function() {
-        formdiv1.style.display = "block";
-        Markerbased.style.background="linear-gradient(115.94deg, rgba(219, 0, 255, 0.1) -8.4%, rgba(0, 240, 255, 0.1) 109.09%)";
-        formdiv2.style.display = "none";
-        Locationbased.style.background="none";
-        barheight.style.height = "auto";
-    });
+    backobjectt.addEventListener("click", function() {
+        hiddobjectt.style.display = "block";
+        addobjectt.style.display = "none";
+        console.log("ddd");
 
+    });
+    newlocationn.addEventListener("click", function() {
+        addlocationn.style.display = "block";
+        hiddlocationn.style.display = "none";
+        console.log("ddd");
+        
+
+    });
+    backlocationn.addEventListener("click", function() {
+        hiddlocationn.style.display = "block";
+        addlocationn.style.display = "none";
+        console.log("ddd");
+
+    });
 </script>
-<script>
+
+
+<script type="text/javascript">
+        function initMap() {
+          const myLatLng = { lat: 31.95806, lng: 35.93528 };
+          const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 5,
+            center: myLatLng,
+          });
+  
+          new google.maps.Marker({
+            position: myLatLng,
+            map,
+            title: "Hello Rajkot!",
+          });
+        }
+  
+        window.initMap = initMap;
+    </script>
+  
+    <script type="text/javascript"
+        src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap" >
+    </script>
+  <script>
         const Changepasswordd = document.getElementById("Changepassword");
         const password = document.getElementById("passwordd");
         const formprofille = document.getElementById("formprofile");
@@ -424,98 +469,12 @@
     });
   </script>
 
-
-<script type="text/javascript">
-        function initMap() {
-          const myLatLng = { lat: 31.95806, lng: 35.93528  };
-          const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 5,
-            center: myLatLng,
-          });
-  
-          new google.maps.Marker({
-            position: myLatLng,
-            map,
-            title: "Hello Rajkot!",
-          });
-        }
-  
-        window.initMap = initMap;
-    </script>
-  
-    <script type="text/javascript"
-        src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap" ></script>
-  
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
-
-
-<!-- <form  onsubmit="test()">
-    @csrf
-    <input type="file" name="file" id="file-input">
-    <input type="submit" value="Upload" id="submit" >
-</form> -->
-
-<!-- <script>
-function test() {
-    event.preventDefault();
-    var fileInput = document.getElementById('file-input').files[0];
-    var formData = new FormData();
-    formData.append('file', fileInput);
-    // formData.append('_token', $('input[name=_token]').val());
-    formData.append('file',fileInput.files[0]);
-    $.ajax({
-            url:"{{ route('stor')}}",
-            type: 'POST',
-            data: formData,
-            contentType: false,
-            processData: false,
-            headers: {
-            'X-CSRF-TOKEN': "{{ csrf_token() }}"
-            },
-            success: function(data) {
-            //     this.reset();
-            // alert('File has been uploaded successfully');
-            console.log(data);
-            },
-            error: function(data){
-            console.log(data);
-            }
-        });
-    console.log(fileInput);
-    console.log(formData);
-    // $(document).ready(function() {  
-    //     $('#submit').on('submit',function(event) {
-    //         event.preventDefault();
-    //         var fileInput = document.getElementById('file-input').files[0];
-    //         var formData = new FormData();
-    //         formData.append('file', fileInput.files[0]);
-    //         formData.append('_token', $('input[name=_token]').val());
-    //         $.ajax({
-    //             type: 'POST',
-    //             url:"",
-    //             data: formData,
-    //             contentType: false,
-    //             processData: false,
-    //             success: function(data) {
-    //                 this.reset();
-    //             alert('File has been uploaded successfully');
-    //             console.log(data);
-    //             },
-    //             error: function(data){
-    //             console.log(data);
-    //             }
-    //         });
-    //         console.log(fileInput);
-    //     });
-    // });
-} -->
-<!-- </script> -->
-
 
 </body>
 </html>

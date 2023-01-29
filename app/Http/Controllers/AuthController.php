@@ -25,7 +25,7 @@ class AuthController extends Controller
    
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashbord')
+            return redirect()->intended('project')
                         ->withSuccess('Signed in');
         }
   
@@ -36,13 +36,29 @@ class AuthController extends Controller
     {
         return view('Auth.register');
     }
-    public function dashbord()
+    // public function dashbord()
+    // {
+    //     return view('dashbord');
+    // }
+    public function landingpage()
     {
-        return view('dashbord');
+        return view('landingpage');
+    }
+    public function project()
+    {
+        return view('project');
+    }
+    public function events()
+    {
+        return view('events');
     }
     public function createproject()
     {
         return view('createproject');
+    }
+    public function createvents()
+    {
+        return view('createvents');
     }
     public function resetemail()
     {
@@ -172,6 +188,12 @@ class AuthController extends Controller
 
             
         }
+
+
+//         public function indexx()
+// {
+//     return view('googleAutocomplete');
+// }
 }
 
 

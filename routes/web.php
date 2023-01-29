@@ -21,11 +21,14 @@ Route::get('registration', [AuthController::class, 'registration'])->name('regis
 Route::post('custom-registration', [AuthController::class, 'customRegistration'])->name('register.custom'); 
 Route::get('signout', [AuthController::class, 'signOut'])->name('signout');
 Route::post('createproject', [AuthController::class, 'createproject'])->name('createprojectt');
-Route::get('dashbord', [AuthController::class, 'dashbord'])->name('dashbordd');
+Route::post('createvents', [AuthController::class, 'createvents'])->name('createvents');
+// Route::get('dashbord', [AuthController::class, 'dashbord'])->name('dashbordd');
+Route::post('project', [AuthController::class, 'project'])->name('project');
+Route::post('events', [AuthController::class, 'events'])->name('events');
 Route::post('landingpage', [AuthController::class, 'landingpage'])->name('landingpage');
 Route::get('resetemail', [AuthController::class, 'resetemail'])->name('resetemail');
 Route::get('resetpassword', [AuthController::class, 'resetpassword'])->name('resetpass');
-Route::post('project', [projectcontroller::class, 'project'])->name('project');
+Route::post('stor', [projectcontroller::class, 'store'])->name('stor');
 Route::post('submiemailtForm', [AuthController::class, 'submiemailtForm'])->name('submiemailtForm');
 // Route::get('resetpassword/{E-mail}', function ($email) {
 //     return view('resetpassword', ['email' => $email]);
@@ -35,10 +38,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::controller(projectcontroller::class)->group(function () {
-//     Route::get('/project', 'project');
-// });
 
-
+// Route::get('google-autocomplete', [AuthController::class, 'indexx']);
 Auth::routes();
 

@@ -21,15 +21,23 @@ use App\Models\project;
     <div class="sidebar-heading"> </div>
     <div class="listheight list-group list-group-flush ">
       <a href="#" class="list-group-item list-group-item-action sidebardiv ">
-      <img src="../images/homesimpledoor.png" alt="" width="18" height="18" class="imagebar d-inline-block align-text-top">Home</a>
-      <a href="#" class="list-group-item list-group-item-action sidebardiv">
-        <img src="../images/project.png" alt="" width="18" height="18" class="imagebar d-inline-block align-text-top">Projects</a>
-      <a href="#" class="list-group-item list-group-item-action sidebardiv">
-        <img src="../images/calendar.png" alt="" width="18" height="18" class="imagebar d-inline-block align-text-top">Events</a>
+      <img src="../images/homesimpledoor.png" alt="" width="18" height="18" class="imagebar d-inline-block align-text-top"><span class="hiddentext">Home</span></a>
+      <a  href="{{ route('project') }}"onclick="event.preventDefault(); document.getElementById('project-form').submit();"
+       class="list-group-item list-group-item-action sidebardiv">
+        <img src="../images/project.png" alt="" width="18" height="18" class="imagebar d-inline-block align-text-top"><span class="hiddentext">Projects</span> </a>
+      <a href="{{ route('events') }}"onclick="event.preventDefault(); document.getElementById('events-form').submit();"
+       class="list-group-item list-group-item-action sidebardiv">
+        <img src="../images/calendar.png" alt="" width="18" height="18" class="imagebar d-inline-block align-text-top"><span class="hiddentext">Events</span></a>
       <a href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
       class="list-group-item list-group-item-action sidebardiv ">
-      <img src="../images/logout.png" alt="" width="18" height="18" class="imagebar d-inline-block align-text-top ">{{ __('Logout') }}
+      <img src="../images/logout.png" alt="" width="18" height="18" class="imagebar d-inline-block align-text-top "><span class="hiddentext">{{ __('Logout') }}</span>
       </a>
+      <form id="project-form" action="{{ route('project') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+      <form id="events-form" action="{{ route('events') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
       <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
@@ -48,7 +56,7 @@ use App\Models\project;
                 <a class="nav-link dropdown-toggle  " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 User Name
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
                     <li><a class="dropdown-item" href="#">Action</a></li>
                     <li><a class="dropdown-item" href="#">Another action</a></li>
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -60,7 +68,7 @@ use App\Models\project;
         </nav>
     <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light ">
-        <div class=" container-fluid m-1">
+        <div class="containerfluid container-fluid m-1">
         <p class="textfluid">Saved projects</p>
             <div class="collapse  d-flex  justify-content-end" id="navbarNavDropdown">
             <a href="{{ route('createprojectt') }}"onclick="event.preventDefault(); document.getElementById('createproject-form').submit();">
@@ -68,15 +76,15 @@ use App\Models\project;
             <img src="../images/pageedit.png" alt="" width="24" height="24" class="imagebar d-inline-block align-text-center ">Create project</button></a>
             <form id="createproject-form" action="{{ route('createprojectt') }}" method="POST" class="d-none">
                                         @csrf
-                                    </form></div>
+                                    </form>
+                                  </div>
         </div>
         
     </nav>
     <?php
      
     $userFront1 = project::where('user_id', Auth::user()->id)->get();
-    $file = File::find($id);
-    $path = Storage::url($file->path);
+    
     if(count($userFront1)==0){
     ?>
     
@@ -92,9 +100,10 @@ use App\Models\project;
       
       foreach ($userFront1 as $frontuserFor) {
     ?>
-    <!-- <p>{{$userFront1}}</p> -->
+    
     <div>
-      <img src="{{$frontuserFor->your_marker}}" alt="not found">
+      <img src="{{ Storage::url($frontuserFor->path) }}" alt="not found">
+      <p>{{$frontuserFor->your_marker}}</p>
       <h3>{{$frontuserFor->project_name}}</h3>
       <p>{{$frontuserFor->based_tybe}}</p>
 
