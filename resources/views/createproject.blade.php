@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-<html lang="en">
+<!-- <html lang="en"> -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,8 @@
    <!-- bootstrap link-->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="../css/dashbord.css" rel="stylesheet">
-    
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
     <title>create project</title>
 </head>
 <body>
@@ -183,7 +184,7 @@
         <p class="textfluid">Create Project</p>
         <p class="paragraphfluid"><a href="{{ route('project') }}"onclick="event.preventDefault(); document.getElementById('dashbord-form').submit();">
         Projects</a> > Create project</p>   
-        <form id="dashbord-form" action="{{ route('project') }}" method="POST" class="d-none">
+        <form id="dashbord-form"  action="{{ route('project') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
         </div>
@@ -216,9 +217,9 @@
             <p class="textfluid">Marker based</p>
 
                 
-                <form action="{{ route('project') }}" method="POST" enctype="multipart/form-data">
+                <form id="markerform"  method="post" enctype="multipart/form-data" >
                             @csrf
-                        
+                            <!-- {{ csrf_field() }} -->
                             <input id="typebased" type="hidden"   name="typebased" value="Marker based" >
                             <input id="userid" type="hidden"  name="userid" value="{{ Auth::user()->id }}" >
                             <p class="radiotitle "><span class="spantitle">1</span> Your Project name</p>
@@ -244,7 +245,7 @@
 
                             </label>
                                     <div class="selectFile">       
-                                    <input type="file" name="file1"  id="file-input1">
+                                    <input type="file" name="file1[]"  id="file-input1" multiple>
                                     </div>
                                     <p class="radiotext">upload your marker (black and white). It will be like a QR code. </p>
                             </div>
@@ -282,9 +283,10 @@
         <div class="formdiv m-4 " id="formdiv2">
             <p class="textfluid">Location based</p>
 
-                <form method="POST" action="{{ route('login.custom') }}">
+                <form method="POST" action="{{ route('projectinsertt') }}" enctype="multipart/form-data">
                             @csrf
-
+                            <input id="typebased" type="hidden"   name="typebased" value="Location based" >
+                            <input id="userid" type="hidden"  name="userid" value="{{ Auth::user()->id }}" >
                             <p class="radiotitle "><span class="spantitle">1</span> Your Project name</p>
                             <div class=" form-group mb-3 m-3">
                             <label for="Projectname" class="radiotitle p-2">{{ __('Project') }}</label>
@@ -399,8 +401,7 @@
         barheight.style.height = "auto";
     });
 
-</script>
-<script>
+
         const Changepasswordd = document.getElementById("Changepassword");
         const password = document.getElementById("passwordd");
         const formprofille = document.getElementById("formprofile");
@@ -422,10 +423,7 @@
         console.log("ddd");
 
     });
-  </script>
 
-
-<script type="text/javascript">
         function initMap() {
           const myLatLng = { lat: 31.95806, lng: 35.93528  };
           const map = new google.maps.Map(document.getElementById("map"), {
@@ -441,80 +439,61 @@
         }
   
         window.initMap = initMap;
-    </script>
-  
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript"
         src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap" ></script>
   
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- <form  onsubmit="test()">
-    @csrf
-    <input type="file" name="file" id="file-input">
-    <input type="submit" value="Upload" id="submit" >
-</form> -->
+<script >
+    $(document).ready(function() {  
+        $('#markerform').on('submit', function(event) {
+            event.preventDefault();
+            var fileInput1 = document.getElementById('file-input1').files[0];
+            var fileInput2 = document.getElementById('file-input2').files[0];
+            var formData = new FormData($("#markerform")[0]);
+            // formData.append('file1', $("#file-input1").files[0]);
+            
+            console.log(fileInput1);
 
-<!-- <script>
-function test() {
-    event.preventDefault();
-    var fileInput = document.getElementById('file-input').files[0];
-    var formData = new FormData();
-    formData.append('file', fileInput);
-    // formData.append('_token', $('input[name=_token]').val());
-    formData.append('file',fileInput.files[0]);
-    $.ajax({
-            url:"{{ route('stor')}}",
-            type: 'POST',
-            data: formData,
-            contentType: false,
-            processData: false,
-            headers: {
-            'X-CSRF-TOKEN': "{{ csrf_token() }}"
-            },
-            success: function(data) {
-            //     this.reset();
-            // alert('File has been uploaded successfully');
-            console.log(data);
-            },
-            error: function(data){
-            console.log(data);
-            }
+            formData.append('file1name', fileInput1.name);
+            formData.append('fle2name', fileInput2.name);
+            $.ajax({
+      
+                url:"{{ route('projectinsertt') }}",
+                data: formData,
+                type: 'POST',
+                dataType:'JSON',
+                contentType: false,
+                cache: false,
+                processData: false,
+                async: false,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(data) {
+                console.log(data);
+                },
+                error: function(data){
+                console.log(data);
+                }
+            });
+            
         });
-    console.log(fileInput);
-    console.log(formData);
-    // $(document).ready(function() {  
-    //     $('#submit').on('submit',function(event) {
-    //         event.preventDefault();
-    //         var fileInput = document.getElementById('file-input').files[0];
-    //         var formData = new FormData();
-    //         formData.append('file', fileInput.files[0]);
-    //         formData.append('_token', $('input[name=_token]').val());
-    //         $.ajax({
-    //             type: 'POST',
-    //             url:"",
-    //             data: formData,
-    //             contentType: false,
-    //             processData: false,
-    //             success: function(data) {
-    //                 this.reset();
-    //             alert('File has been uploaded successfully');
-    //             console.log(data);
-    //             },
-    //             error: function(data){
-    //             console.log(data);
-    //             }
-    //         });
-    //         console.log(fileInput);
-    //     });
-    // });
-} -->
-<!-- </script> -->
+    });
+
+</script>
 
 
 </body>

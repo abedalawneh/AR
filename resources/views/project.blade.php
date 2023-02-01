@@ -12,7 +12,8 @@ use App\Models\project;
    <!-- bootstrap link-->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="../css/dashbord.css" rel="stylesheet">
-    
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
     <title>project</title>
 </head>
 <body>
@@ -265,14 +266,15 @@ use App\Models\project;
     <?php
     }
     else{
-      
+      ?>
+   <div class="saveddiv d-flex">
+      <?php
       foreach ($userFront1 as $frontuserFor) {
     ?>
     <!-- create div saved events -->
-   <div class="saveddiv d-flex">
     <div class="saved m-3 col-lg-2">
       <div class="imgmenu m-2 d-flex justify-content-center">
-      <img src="../images/FileNotFound.png" alt="not found" class="m-3"width="150px" height="150px">
+      <img src="{{$frontuserFor->your_marker}}" alt="not found" class="m-3"width="150px" height="150px">
       <div class="dropdowninner " id="navbarNavDropdown">
             <ul class="navbar-nav ">
                
@@ -291,17 +293,18 @@ use App\Models\project;
             </div>
           
       </div>
-      <p class="totlesaved m-2">ff</p>
+      <p class="totlesaved m-2">{{$frontuserFor->project_name}}</p>
       <div class="d-flex ">
       <p class="textsaved m-2 p-2">fffffff</p>
       <p class="textsaved m-2 p-2">ff</p>
       </div>
     </div>
-    </div>
     <?php
     } }
   
     ?>
+    </div>
+
 </div>
   </div>
 </div>

@@ -30,6 +30,7 @@ Route::get('resetemail', [AuthController::class, 'resetemail'])->name('resetemai
 Route::get('resetpassword', [AuthController::class, 'resetpassword'])->name('resetpass');
 Route::post('stor', [projectcontroller::class, 'store'])->name('stor');
 Route::post('submiemailtForm', [AuthController::class, 'submiemailtForm'])->name('submiemailtForm');
+Route::post('projectinsert', [projectcontroller::class, 'projectinsert'])->name('projectinsertt');
 // Route::get('resetpassword/{E-mail}', function ($email) {
 //     return view('resetpassword', ['email' => $email]);
 // })->name('resetpassword');

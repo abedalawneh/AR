@@ -340,13 +340,19 @@ border-radius: 2px;
 #backprofile ,#passwordd{
     display: none ;
 }
+
 .imagpass{
     background: url(../images/imagepass.svg) no-repeat scroll  7px 7px ;
     padding-left:40px;
     }
+    .saveddiv{
+        flex-wrap: wrap !important; 
+        
+      }
 @media screen and (max-width: 700px){
     .saveddiv{
       flex-direction: column !important;  
+
     }
     .innermenu
     {
