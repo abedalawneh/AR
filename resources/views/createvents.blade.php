@@ -10,7 +10,7 @@
     <link href="../css/dashbord.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
-    <title>create project</title>
+    <title>create event</title>
 </head>
 <body>
 <!-- $user = User::findOrFail(Auth::user()->id); -->
@@ -46,7 +46,7 @@
         <nav class="navbar navbar-expand-lg navbar-light sidebardiv ">
         <div class="divfluid container-fluid m-1 ">
         <a class="navbar-brand " href="#">
-        <img src="../images/project.png" alt="" width="18" height="18" class="navtext d-inline-block align-text-center ">Projects
+        <img src="../images/calendar.png" alt="" width="18" height="18" class="navtext d-inline-block align-text-center ">Events
     </a>
     <div class="dropdowninner d-flex justify-content-end col-md-6" id="navbarNavDropdown">
             <ul class="navbar-nav ">
