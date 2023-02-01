@@ -21,7 +21,8 @@ use App\Models\project;
   <div class="sidebardiv1  border-right" id="sidebar-wrapper">
     <div class="sidebar-heading"> </div>
     <div class="listheight list-group list-group-flush ">
-      <a href="#" class="list-group-item list-group-item-action sidebardiv ">
+      <a href="{{ route('homeall') }}"onclick="event.preventDefault(); document.getElementById('homeall-form').submit();"
+       class="list-group-item list-group-item-action sidebardiv ">
       <img src="../images/homesimpledoor.png" alt="" width="18" height="18" class="imagebar d-inline-block align-text-top"><span class="hiddentext">Home</span></a>
       <a  href="{{ route('project') }}"onclick="event.preventDefault(); document.getElementById('project-form').submit();"
        class="list-group-item list-group-item-action sidebardiv">
@@ -40,6 +41,9 @@ use App\Models\project;
                                         @csrf
                                     </form>
       <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+    <form id="homeall-form" action="{{ route('homeall') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
     </div>

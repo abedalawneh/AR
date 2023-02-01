@@ -47,8 +47,11 @@
                     </ul>
                 
                 <div class="buttonnav d-flex justify-content-center p-3 ">
+                @if (Auth::check())
+                <a href="{{ route('project') }}" class="navebutton btn  btn-block">Projects</a>
+                @else
                 <a href="{{ route('login') }}" class="navebutton btn  btn-block">Sign in</a>
-                
+                @endif
                 </div> 
                 
             </div>

@@ -10,7 +10,7 @@
 </head>
 <body>
     <!-- password reset form -->
-<form action="{{ route('reset') }}" method="get">
+<form action="{{ route('reset') }}" method="post">
     
     <label for="email">Email</label>
     <input type="email" name="email" id="email">

@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\projectcontroller;
 use App\Models\project;
+// use App\Models\event;
 
 ?>
 <!DOCTYPE html>
@@ -14,7 +15,7 @@ use App\Models\project;
     <link href="../css/dashbord.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
-    <title>project</title>
+    <title>Home</title>
 </head>
 <body>
 <div class="barheight d-flex" id="wrapper">
@@ -22,7 +23,7 @@ use App\Models\project;
     <div class="sidebar-heading"> </div>
     <div class="listheight list-group list-group-flush ">
       <a href="{{ route('homeall') }}"onclick="event.preventDefault(); document.getElementById('homeall-form').submit();"
-       class="list-group-item list-group-item-action sidebardiv ">
+      class="list-group-item list-group-item-action sidebardiv ">
       <img src="../images/homesimpledoor.png" alt="" width="18" height="18" class="imagebar d-inline-block align-text-top"><span class="hiddentext">Home</span></a>
       <a  href="{{ route('project') }}"onclick="event.preventDefault(); document.getElementById('project-form').submit();"
        class="list-group-item list-group-item-action sidebardiv">
@@ -45,16 +46,16 @@ use App\Models\project;
                                     </form>
      <form id="homeall-form" action="{{ route('homeall') }}" method="POST" class="d-none">
                                         @csrf
-                                    </form>                                
+                                    </form>
     </div>
   </div>
   <div class="barwidth" id="page-content-wrapper">
         <nav class="navbar navbar-expand-lg navbar-light sidebardiv ">
         <div class="divfluid container-fluid m-1 ">
         <a class="navbar-brand " href="#">
-        <img src="../images/project.png" alt="" width="18" height="18" class="navtext d-inline-block align-text-center ">Projects
+        <img src="../images/calendar.png" alt="" width="18" height="18" class="navtext d-inline-block align-text-center ">Events
     </a>
-    <div class="dropdowninner d-flex justify-content-end col-md-6" id="navbarNavDropdown">
+            <div class="dropdowninner d-flex justify-content-end col-md-6" id="navbarNavDropdown">
             <ul class="navbar-nav ">
                
                 <li class="nav-item dropdown">
@@ -184,25 +185,27 @@ use App\Models\project;
         </div>
         </nav>
     <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light ">
+    <!-- <nav class="navbar navbar-expand-lg navbar-light ">
         <div class="containerfluid container-fluid m-1">
-        <p class="textfluid">Saved projects</p>
+        <p class="textfluid">Saved events</p>
             <div class="collapse  d-flex  justify-content-end" id="navbarNavDropdown">
-            <a href="{{ route('createprojectt') }}"onclick="event.preventDefault(); document.getElementById('createproject-form').submit();">
+            <a href="{{ route('createvents') }}"onclick="event.preventDefault(); document.getElementById('createproject-form').submit();">
             <button type="submit" class="creatbutton btn  btn-block m-0  ">  
-            <img src="../images/pageedit.png" alt="" width="24" height="24" class="imagebar d-inline-block align-text-center ">Create project</button></a>
-            <form id="createproject-form" action="{{ route('createprojectt') }}" method="POST" class="d-none">
+            <img src="../images/pageedit.png" alt="" width="24" height="24" class="imagebar d-inline-block align-text-center ">Create event</button></a>
+            <form id="createproject-form" action="{{ route('createvents') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                   </div>
         </div>
         
-    </nav>
+    </nav> -->
     <?php
      
     $userFront1 = project::where('user_id', Auth::user()->id)->get();
+    // $userFront2 = event::where('user_id', Auth::user()->id)->get();
     
-    if(count($userFront1)==0){
+    // if(count($userFront1)==0 && count($userFront2)==0 ){
+        if(count($userFront1)==0  ){
     ?>
     
       <!-- <p>{{$userFront1}}</p> -->
@@ -308,7 +311,6 @@ use App\Models\project;
   
     ?>
     </div>
-
 </div>
   </div>
 </div>
@@ -334,7 +336,6 @@ use App\Models\project;
       </div>
     </div>
   </div>
-
 
   <script>
         const Changepasswordd = document.getElementById("Changepassword");

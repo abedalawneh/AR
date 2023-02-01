@@ -11,6 +11,7 @@
     <link href="../css/dashbord.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
+
     <title>create project</title>
 </head>
 <body>
@@ -20,7 +21,8 @@
   <div class="sidebardiv1  border-right" id="sidebar-wrapper">
     <div class="sidebar-heading"> </div>
     <div class="listheight list-group list-group-flush ">
-      <a href="#" class="list-group-item list-group-item-action sidebardiv ">
+      <a href="{{ route('homeall') }}"onclick="event.preventDefault(); document.getElementById('homeall-form').submit();"
+       class="list-group-item list-group-item-action sidebardiv ">
       <img src="../images/homesimpledoor.png" alt="" width="18" height="18" class="imagebar d-inline-block align-text-top"><span class="hiddentext">Home</span></a>
       <a  href="{{ route('project') }}"onclick="event.preventDefault(); document.getElementById('project-form').submit();"
        class="list-group-item list-group-item-action sidebardiv">
@@ -39,6 +41,9 @@
                                         @csrf
                                     </form>
       <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+      <form id="homeall-form" action="{{ route('homeall') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
     </div>
@@ -304,8 +309,10 @@
 
                             <div class=" form-group mb-3 m-3 ">
                             <label for="Projectname" class="radiotitle p-2">{{ __('Select location') }}</label>
-
-                                <input id="Projectname" type="text"placeholder="Choose your place or use the map pin "  class="imagelocation form-control @error('email') is-invalid @enderror" name="Projectname" value="{{ old('Projectname') }}" required autocomplete="email" >
+                            <select id="places" class="imagelocation form-control" required>
+                            <option value="" disabled selected>Choose your place or use the map pin</option>
+                            </select>
+                                <!-- <input id="Projectname" type="text"placeholder="Choose your place or use the map pin "  class="imagelocation form-control @error('email') is-invalid @enderror" name="Projectname" value="" required autocomplete="email" > -->
                                 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -374,7 +381,19 @@
     </div>
   </div>
 </div>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
 
+<script>
+    var input = document.getElementById('places');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.addListener('place_changed', function() {
+        var place = autocomplete.getPlace();
+        var lat = place.geometry.location.lat();
+        var lng = place.geometry.location.lng();
+
+        // Store the latitude and longitude in variables or send them to your server
+    });
+</script>
 
 <script>
     const Locationbased1 = document.getElementById("Locationbased1");

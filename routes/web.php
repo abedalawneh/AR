@@ -14,7 +14,7 @@ use App\Http\Controllers\projectcontroller;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('login', [AuthController::class, 'index'])->name('login');
+Route::post('login', [AuthController::class, 'index'])->name('login');
 
 Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom'); 
 Route::get('registration', [AuthController::class, 'registration'])->name('register-user');
@@ -23,8 +23,10 @@ Route::get('signout', [AuthController::class, 'signOut'])->name('signout');
 Route::post('createproject', [AuthController::class, 'createproject'])->name('createprojectt');
 Route::post('createvents', [AuthController::class, 'createvents'])->name('createvents');
 // Route::get('dashbord', [AuthController::class, 'dashbord'])->name('dashbordd');
+Route::get('project', [AuthController::class, 'project'])->name('project');
 Route::post('project', [AuthController::class, 'project'])->name('project');
 Route::post('events', [AuthController::class, 'events'])->name('events');
+Route::post('homeall', [AuthController::class, 'homeall'])->name('homeall');
 // Route::get('landingpage', [AuthController::class, 'landingpage'])->name('landingpage');
 Route::get('resetemail', [AuthController::class, 'resetemail'])->name('resetemail');
 Route::get('resetpassword', [AuthController::class, 'resetpassword'])->name('resetpass');
@@ -40,6 +42,5 @@ Route::get('/', function () {
 });
 
 
-// Route::get('google-autocomplete', [AuthController::class, 'indexx']);
 Auth::routes();
 

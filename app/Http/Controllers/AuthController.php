@@ -32,6 +32,7 @@ class AuthController extends Controller
         return redirect("login")->withSuccess('Login details are not valid');
     }
 
+    
     public function registration()
     {
         return view('Auth.register');
@@ -47,6 +48,10 @@ class AuthController extends Controller
     public function project()
     {
         return view('project');
+    }
+    public function homeall()
+    {
+        return view('homeall');
     }
     public function events()
     {
