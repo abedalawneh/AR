@@ -47,8 +47,10 @@
                     </ul>
                 
                 <div class="buttonnav d-flex justify-content-center p-3 ">
-                    <button type="submit" class="navebutton btn  btn-block">Sign in</button>
+                <a href="{{ route('login') }}" class="navebutton btn  btn-block">Sign in</a>
+                
                 </div> 
+                
             </div>
                    
                         </nav>

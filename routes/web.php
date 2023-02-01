@@ -23,9 +23,9 @@ Route::get('signout', [AuthController::class, 'signOut'])->name('signout');
 Route::post('createproject', [AuthController::class, 'createproject'])->name('createprojectt');
 Route::post('createvents', [AuthController::class, 'createvents'])->name('createvents');
 // Route::get('dashbord', [AuthController::class, 'dashbord'])->name('dashbordd');
-Route::post('project', [AuthController::class, 'project'])->name('project');
+Route::get('project', [AuthController::class, 'project'])->name('project');
 Route::post('events', [AuthController::class, 'events'])->name('events');
-Route::get('landingpage', [AuthController::class, 'landingpage'])->name('landingpage');
+// Route::get('landingpage', [AuthController::class, 'landingpage'])->name('landingpage');
 Route::get('resetemail', [AuthController::class, 'resetemail'])->name('resetemail');
 Route::get('resetpassword', [AuthController::class, 'resetpassword'])->name('resetpass');
 Route::post('stor', [projectcontroller::class, 'store'])->name('stor');
@@ -36,7 +36,7 @@ Route::post('projectinsert', [projectcontroller::class, 'projectinsert'])->name(
 // })->name('resetpassword');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landingpage');
 });
 
 
