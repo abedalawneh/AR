@@ -62,8 +62,17 @@
                     <p class="dreameparagraph">Interact with the world by combining the real world with your 
                         chosen objects. You can create your event just select the location and attach your object.</p>
                         <div class="buttonsection1 d-grid mx-auto  ">
-                                    <button type="submit" class="creatbutton btn  btn-block">Create my event</button>
+                        @if (Auth::check())
+                                <a href="{{ route('createvents') }}"onclick="event.preventDefault(); document.getElementById('createvent-form').submit();">
+                                    <button type="submit" class="creatbutton btn  btn-block">Create my event</button></a>
+                                    @else
+                                    <a href="{{ route('login') }}">
+                                    <button type="submit" class="creatbutton btn  btn-block">Create my event</button></a>
+                                @endif
                                 </div>
+                                <form id="createvent-form" action="{{ route('createvents') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
             </div>
             
         </div>
@@ -137,8 +146,21 @@
                                     <li class="">Marketing </li>
                                 </ul>
                                 <div class="d-grid mx-auto ">
-                                    <button type="submit" class="creatbutton btn  btn-block">Create my event</button>
+                                @if (Auth::check())
+                                <a href="{{ route('createvents') }}"onclick="event.preventDefault(); document.getElementById('createvent-form').submit();">
+                                    <button type="submit" class="creatbutton btn  btn-block">Create my event</button></a>
+                                    @else
+                                    <a href="{{ route('login') }}">
+                                    <button type="submit" class="creatbutton btn  btn-block">Create my event</button></a>
+                                @endif
                                 </div>
+                                <form id="createvent-form" action="{{ route('createvents') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                    <!-- <form id="login-form" action="{{route('login')}}" method="POST" class="d-none">
+                                        @csrf
+                                    </form> -->
+
                         </div>
                         <div class="aboutus2 sm-col col-md-6  p-0 d-flex justify-content-end">
                         <img class=" m-2"src="../images/aboutus1image.svg" alt="not found">
