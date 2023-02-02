@@ -91,6 +91,11 @@ color: #54506E;
     margin: 1%;
     padding: 1%;
 }
+.selecte{
+    font-weight: 400;
+    font-size: 16px;
+    color: #A19EAE;
+}
 .radiotitle{
     font-weight: 600;
     font-size: 16px;
@@ -120,7 +125,7 @@ color: #54506E;
     background: url(../images/locationimage.png) no-repeat scroll 7px 7px;
         padding-left:40px;
 }
-#Projectname::placeholder{
+#Projectname::placeholder,#autocomplete::placeholder,#Latitude::placeholder,#Longitude::placeholder{
     font-weight: 400;
     font-size: 16px;
     color: #A19EAE;

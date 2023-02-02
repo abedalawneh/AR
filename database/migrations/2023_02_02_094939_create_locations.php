@@ -18,10 +18,8 @@ return new class extends Migration
             $table->string('location');
             $table->string('latitude');
             $table->string('longitude');
-            $table->unsignedBigInteger('project_id')->nullable();
-            $table->foreign('project_id')->references('id')->on('projects');
-            $table->unsignedBigInteger('event_id')->nullable();
-            $table->foreign('event_id')->references('id')->on('events');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

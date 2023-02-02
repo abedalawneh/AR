@@ -17,8 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('based_tybe');
             $table->string('project_name');
-            $table->string('your_marker');
-            $table->string('your_object');
+            $table->string('your_marker')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

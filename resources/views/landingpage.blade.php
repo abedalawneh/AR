@@ -31,17 +31,17 @@
                         <a class=" nav-link" id="myText" href="#">Home</a>
                     </li>
                     <li class="nav-item p-3 d-flex justify-content-center ">
-                        <a class="nav-link" id="myText" href="#">About</a>
+                        <a class="nav-link" id="myText" href="#aboutus">About</a>
                     </li>
                     
                     <li class="nav-item p-3 d-flex justify-content-center ">
-                        <a class="nav-link "id="myText" href="#">FAQ</a>
+                        <a class="nav-link "id="myText" href="#FAQ">FAQ</a>
                     </li>
                     <li class="nav-item p-3 d-flex justify-content-center ">
-                        <a class="nav-link "id="myText" href="#">Create </a>
+                        <a class="nav-link "id="myText" href="#Create">Create </a>
                     </li>
                     <li class="nav-item p-3 d-flex justify-content-center ">
-                        <a class="nav-link " id="myText"href="#">Contact us</a>
+                        <a class="nav-link " id="myText"href="#Contact">Contact us</a>
                     </li>
                     
                     </ul>
@@ -83,7 +83,7 @@
 
      </section>
      
-    <section class="aboutus">
+    <section class="aboutus" id="Create">
     <div class="container ">
         <div class="reversecolum row d-flex justify-content-center ">
             <div class="backvedio sm-col col-lg-4  ">
@@ -130,7 +130,7 @@
   </div>
     </section>
 
-    <section class="aboutus" >
+    <section class="aboutus" id="aboutus">
     <div class="container">
         <div class=" row d-flex align-items-end">
             
@@ -181,7 +181,7 @@
   </div>
     </section>
 
-    <section class="aboutus">
+    <section class="aboutus" id="FAQ">
     <div class="container">
         <div class=" row ">
             <div class="divfagimage col d-flex ">
@@ -252,7 +252,7 @@
     </div>
     </section>
 
-    <section class="aboutus">
+    <section class="aboutus" id="Contact">
         <div class="container contavtus d-flex align-items-center sm-12">
         <div class="col  row  justify-content-center">
             <h1 class="contacth1 d-flex  justify-content-center">Still have questions?</h1>

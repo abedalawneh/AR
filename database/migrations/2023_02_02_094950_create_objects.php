@@ -16,12 +16,8 @@ return new class extends Migration
         Schema::create('objects', function (Blueprint $table) {
             $table->id();
             $table->string('object');
-            $table->unsignedBigInteger('project_id')->nullable();
-            $table->foreign('project_id')->references('id')->on('projects');
-            $table->unsignedBigInteger('event_id')->nullable();
-            $table->foreign('event_id')->references('id')->on('events');
-            $table->unsignedBigInteger('location_id')->nullable();
-            $table->foreign('location_id')->references('id')->on('locations');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

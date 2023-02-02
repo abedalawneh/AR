@@ -3,6 +3,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\projectcontroller;
+use App\Http\Controllers\locationcontroller;
+use App\Http\Controllers\eventcontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +35,8 @@ Route::get('resetpassword', [AuthController::class, 'resetpassword'])->name('res
 Route::post('stor', [projectcontroller::class, 'store'])->name('stor');
 Route::post('submiemailtForm', [AuthController::class, 'submiemailtForm'])->name('submiemailtForm');
 Route::post('projectinsert', [projectcontroller::class, 'projectinsert'])->name('projectinsertt');
+Route::post('locationinsert', [locationcontroller::class, 'locationinsert'])->name('locationinsertt');
+Route::post('eventinsert', [eventcontroller::class, 'eventinsert'])->name('eventinsertt');
 // Route::get('resetpassword/{E-mail}', function ($email) {
 //     return view('resetpassword', ['email' => $email]);
 // })->name('resetpassword');

@@ -1,3 +1,10 @@
+<?php
+
+use App\Models\objectt;
+use App\Models\location;
+
+?>
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <!-- <html lang="en"> -->
@@ -197,7 +204,7 @@
        
         <div class="formdiv m-4 " >
    
-                <form action="{{ route('events') }}" method="POST" enctype="multipart/form-data">
+                <form  id="eventform"  method="post" enctype="multipart/form-data">
                             @csrf
                         
                             <input id="userid" type="hidden"  name="userid" value="{{ Auth::user()->id }}" >
@@ -206,7 +213,7 @@
                             <label for="Projectname" class="radiotitle p-2">{{ __('Event') }}</label>
 
                            
-                                <input id="Projectname" type="text"placeholder="Event name"  class="imagevent form-control @error('email') is-invalid @enderror" name="Projectname" value="{{ old('Projectname') }}"  autocomplete="email" >
+                                <input id="Projectname" type="text"placeholder="Event name"  class="imagevent form-control " name="eventname" value="{{ old('eventname') }}"   >
                                 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -218,10 +225,21 @@
                             
                             <p class="radiotitle"><span class="spantitle"> 2 </span> Select object </p>
                             <div class=" form-group mb-3 m-3" id="hiddobject">
-                            <label for="Projectname" class="radiotitle p-2">{{ __('Object') }}</label>
-
-                           
-                                <input id="Projectname" type="text"placeholder="Select one of the saved objects"  class="imageproject form-control @error('email') is-invalid @enderror" name="Projectname" value="{{ old('Projectname') }}"  autocomplete="email" >
+                            <label for="Projectname" class="radiotitle p-2">{{ __('Object') }}</label><br>
+                            <select name="optionobject" class="imageproject form-control">
+                                <option  disabled selected >Select one of the saved objects</option>
+                            <?php
+     
+                            $userFront1 =objectt::where('user_id', Auth::user()->id)->get();
+                            
+                            ?>
+                            @foreach ($userFront1 as $item)
+                                <option  value="{{ $item->id }}" >{{ $item->object }}</option>
+                            @endforeach
+                            
+                            
+                                </select>
+                                <!-- <input id="Projectname" type="text"placeholder="Select one of the saved objects"  class="imageproject form-control" name="objectname" value="{{ old('objectname') }}"> -->
                                 <div class="mt-3" id="newobject">
                                 <img src="../images/plus.png" alt=""  ><span class="addnewspan">Add new object</span>
                                 </div>
@@ -254,8 +272,21 @@
                             <div class=" form-group mb-3 m-3" id="hiddlocation">
                             <label for="Projectname" class="radiotitle p-2">{{ __('Location') }}</label>
 
+                            <select name="optionlocation" class="imagelocation form-control">
+                                <option  disabled selected >Select one of the saved location</option>
+                            <?php
+     
+                            $userFront1 =location::where('user_id', Auth::user()->id)->get();
+                            
+                            ?>
+                            @foreach ($userFront1 as $item)
+                                <option  value="{{ $item->id }}" >{{ $item->location }}</option>
+                            @endforeach
+                            
+                            
+                                </select>
                            
-                                <input id="Projectname" type="text"placeholder="Select one of the saved locations"  class="imagelocation form-control @error('email') is-invalid @enderror" name="Projectname" value="{{ old('Projectname') }}"  autocomplete="email" >
+                                <!-- <input id="Projectname" type="text"placeholder="Select one of the saved locations"  class="imagelocation form-control" name="locationname" value="{{ old('locationname') }}"  > -->
                                 <div class="mt-3" id="newlocation">
                                 <img src="../images/plus.png" alt=""><span class="addnewspan">Add new location</span>
                                 </div>
@@ -273,44 +304,46 @@
                                 <p class="radiotext m-3">Drop a pin on the map. You can retrieve latitude and longitude from an address</p>
 
                                 <div class=" form-group mb-3 m-3 ">
-                                <label for="Projectname" class="radiotitle p-2">{{ __('Select location') }}</label>
-
-                                    <input id="Projectname" type="text"placeholder="Choose your place or use the map pin "  class="imagelocation form-control @error('email') is-invalid @enderror" name="Projectname" value="{{ old('Projectname') }}" required autocomplete="email" >
-                                    
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-
-                                <div class="Latitude d-flex ">
-                                <div class=" form-group  m-3 col-lg-6 sm-col">
-                                <label for="Projectname" class="radiotitle p-2">{{ __('Latitude') }}</label>
-
-                                    <input id="Projectname" type="text"placeholder="0.00"  class=" form-control @error('email') is-invalid @enderror" name="Latitude" value="{{ old('Latitude') }}" required autocomplete="email" >
-                                    
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                <label for="autocomplete" class="radiotitle p-2">{{ __('Select location') }}</label>
+                            <!-- <select id="places" class="imagelocation form-control" required>
+                            <option value="" disabled selected>Choose your place or use the map pin</option>
+                            </select> -->
+                            <input type="text" name="autocomplete" id="autocomplete" placeholder="Choose your place or use the map pin "  class="imagelocation form-control "    >
                                 
-                                </div>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                                <div class=" form-group  col-lg-6 sm-col  m-3">
+                            <div class="Latitude d-flex ">
+                            <div class=" form-group  m-3 col-lg-6 sm-col">
+                            <label for="Latitude" class="radiotitle p-2">{{ __('Latitude') }}</label>
 
-                                <label for="Projectname" class="radiotitle p-2">{{ __('Longitude') }}</label>
-
-                                    <input id="Projectname" type="text"placeholder="0.00"  class=" form-control @error('email') is-invalid @enderror" name="Longitude" value="{{ old('Longitude') }}" required autocomplete="email" >
-                                    
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                <input id="Latitude" type="text"placeholder="0.00"  class=" form-control " name="Latitude" value="{{ old('Latitude') }}" >
                                 
-                                </div>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            
+                            </div>
+
+                            <div class=" form-group  col-lg-6 sm-col  m-3">
+
+                             <label for="Longitude" class="radiotitle p-2">{{ __('Longitude') }}</label>
+
+                                <input id="Longitude" type="text"placeholder="0.00"  class=" form-control" name="Longitude" value="{{ old('Longitude') }}"  >
+                                
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            
+                            </div>
                             </div>
                             <div class="container mt-5">
                         <div id="map"></div>
@@ -321,7 +354,7 @@
 
                               <div class="rangedivrange d-flex  align-items-center">
                             <div class="mainn">
-                            <input  type="range" min="1" max="500" value="250"
+                            <input  type="range" min="0" max="500" value="250"
                             oninput="showVal(this.value)"onchange="showVal(this.value)"
                              step='10'  id="slider">
 
@@ -331,7 +364,7 @@
                                 </div>
                                 <div id="progressBar"></div>
                             </div>         
-                            <input type="text"  id="valBox" class="inputrange m-2" value="250">
+                            <input type="text"  id="valBox" class="inputrange m-2" value="250" name="radiusevent" >
                             M                                                                 
                             </div>
                                 <!-- </div> -->
@@ -352,6 +385,10 @@
     </div>
   </div>
 </div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+
+
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
   integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
@@ -418,26 +455,159 @@ progressBar.style.width = $value + '%'
 
 
 <script type="text/javascript">
-        function initMap() {
-          const myLatLng = { lat: 31.95806, lng: 35.93528 };
-          const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 5,
-            center: myLatLng,
-          });
-  
-          new google.maps.Marker({
-            position: myLatLng,
-            map,
-            title: "Hello Rajkot!",
-          });
+        let map;
+                google.maps.event.addDomListener(window, 'load', initMap);
+
+                    function initMap() {
+                        var input = document.getElementById('autocomplete');
+                        var autocomplete = new google.maps.places.Autocomplete(input);
+                        map = new google.maps.Map(document.getElementById("map"), {
+                            center: {  lat: 31.95806, lng: 35.93528 },
+                            zoom: 8,
+                            scrollwheel: true,
+                        });
+                        // const uluru = { lat: -34.397, lng: 150.644 };
+                        // let marker = new google.maps.Marker({
+                        //     position: uluru,
+                        //     map: map,
+                        //     draggable: true
+                        // });
+                        var marker = new google.maps.Marker({
+                        position: { lat: 31.95806, lng: 35.93528},
+                        map: map,
+                        draggable: true
+                        });
+                        google.maps.event.addListener(marker,'position_changed',
+                            function (){
+                                let lat = marker.position.lat()
+                                let lng = marker.position.lng()
+                                $('#Latitude').val(lat)
+                                $('#Longitude').val(lng)
+                            })
+                        google.maps.event.addListener(map,'click',
+                        function (event){
+                            pos = event.latLng
+                            marker.setPosition(pos)
+                        })
+                        autocomplete.addListener('place_changed', function () {
+                            var place = autocomplete.getPlace();
+                            $('#Latitude').val(place.geometry['location'].lat());
+                            $('#Longitude').val(place.geometry['location'].lng());
+                            if (!place.geometry) {
+                            window.alert("Autocomplete's returned place contains no geometry");
+                            return;
+                            }
+                            if (place.geometry.viewport) {
+                                map.fitBounds(place.geometry.viewport);
+                            } else {
+                                map.setCenter(place.geometry.location);
+                                map.setZoom(17);  // Why 17? Because it looks good.
+                            }
+                            marker.setPosition(place.geometry.location);
+                            marker.setVisible(true);
+                                                                        
+                                                
+                            var address = '';
+                            if (place.address_components) {
+                                address = [
+                                (place.address_components[0] && place.address_components[0].short_name || ''),
+                                (place.address_components[1] && place.address_components[1].short_name || ''),
+                                (place.address_components[2] && place.address_components[2].short_name || '')
+                                ].join(' ');
+                            }
+                            infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+                            infowindow.open(map, marker);
+                        
+                        });
+
+                        var geocoder = new google.maps.Geocoder;
+                        var infowindow = new google.maps.InfoWindow;
+                        var cityInput = document.getElementById('autocomplete');
+
+                        google.maps.event.addListener(marker, 'dragend', function(event) {
+                        geocoder.geocode({'location': event.latLng}, function(results, status) {
+                            if (status === 'OK') {
+                            if (results[0]) {
+                                var city;
+                                results[0].address_components.forEach(function(component) {
+                                if (component.types.includes('locality')) {
+                                    city = component.long_name;
+                                }
+                                });
+                                cityInput.value = city;
+                                infowindow.setContent(city);
+                                infowindow.open(map, marker);
+                            } else {
+                                window.alert('No results found');
+                            }
+                            } else {
+                            window.alert('Geocoder failed due to: ' + status);
+                            }
+                        });
+                        });
+                            
+            window.initMap = initMap;
         }
   
         window.initMap = initMap;
     </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script >
+    $(document).ready(function() {  
+        $('#eventform').on('submit', function(event) {
+            event.preventDefault();
+            var fileInput1 = document.getElementById('file-input1').files[0];
+            // var newobject = document.getElementById('newobject');
+            var formData = new FormData($("#eventform")[0]);
+            
+            console.log(fileInput1);
+            if (fileInput1) {
+                formData.append('file1name', fileInput1.name);
+            }
+                // formData.append('file1name', fileInput1.name);
+            $.ajax({
+      
+                url:"{{ route('eventinsertt') }}",
+                data: formData,
+                type: 'POST',
+                dataType:'JSON',
+                contentType: false,
+                cache: false,
+                processData: false,
+                async: false,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(data) {
+                console.log(data);
+                },
+                error: function(data){
+                console.log(data);
+                }
+            });
+            
+    });
+    });
+
+
+</script>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript"
-        src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap" >
-    </script>
+        src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap" ></script>
+        <script type="text/javascript"
+        src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&libraries=places" ></script>
+
+
   <script>
         const Changepasswordd = document.getElementById("Changepassword");
         const password = document.getElementById("passwordd");
@@ -462,12 +632,8 @@ progressBar.style.width = $value + '%'
     });
   </script>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+
 
 </body>
 </html>

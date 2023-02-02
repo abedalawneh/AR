@@ -250,7 +250,7 @@
 
                             </label>
                                     <div class="selectFile">       
-                                    <input type="file" name="file1[]"  id="file-input1" multiple>
+                                    <input type="file" name="file1"  id="file-input1" multiple>
                                     </div>
                                     <p class="radiotext">upload your marker (black and white). It will be like a QR code. </p>
                             </div>
@@ -288,7 +288,7 @@
         <div class="formdiv m-4 " id="formdiv2">
             <p class="textfluid">Location based</p>
 
-                <form method="POST" action="{{ route('projectinsertt') }}" enctype="multipart/form-data">
+                <form id="locationform"  method="post" enctype="multipart/form-data">
                             @csrf
                             <input id="typebased" type="hidden"   name="typebased" value="Location based" >
                             <input id="userid" type="hidden"  name="userid" value="{{ Auth::user()->id }}" >
@@ -308,11 +308,11 @@
                             <p class="radiotext m-3">Drop a pin on the map. You can retrieve latitude and longitude from an address</p>
 
                             <div class=" form-group mb-3 m-3 ">
-                            <label for="Projectname" class="radiotitle p-2">{{ __('Select location') }}</label>
-                            <select id="places" class="imagelocation form-control" required>
+                            <label for="autocomplete" class="radiotitle p-2">{{ __('Select location') }}</label>
+                            <!-- <select id="places" class="imagelocation form-control" required>
                             <option value="" disabled selected>Choose your place or use the map pin</option>
-                            </select>
-                                <!-- <input id="Projectname" type="text"placeholder="Choose your place or use the map pin "  class="imagelocation form-control @error('email') is-invalid @enderror" name="Projectname" value="" required autocomplete="email" > -->
+                            </select> -->
+                            <input type="text" name="autocomplete" id="autocomplete" placeholder="Choose your place or use the map pin "  class="imagelocation form-control "  required  >
                                 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -323,9 +323,9 @@
 
                             <div class="Latitude d-flex ">
                             <div class=" form-group  m-3 col-lg-6 sm-col">
-                            <label for="Projectname" class="radiotitle p-2">{{ __('Latitude') }}</label>
+                            <label for="Latitude" class="radiotitle p-2">{{ __('Latitude') }}</label>
 
-                                <input id="Projectname" type="text"placeholder="0.00"  class=" form-control @error('email') is-invalid @enderror" name="Latitude" value="{{ old('Latitude') }}" required autocomplete="email" >
+                                <input id="Latitude" type="text"placeholder="0.00"  class=" form-control @error('email') is-invalid @enderror" name="Latitude" value="{{ old('Latitude') }}" required autocomplete="email" >
                                 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -337,9 +337,9 @@
 
                             <div class=" form-group  col-lg-6 sm-col  m-3">
 
-                             <label for="Projectname" class="radiotitle p-2">{{ __('Longitude') }}</label>
+                             <label for="Longitude" class="radiotitle p-2">{{ __('Longitude') }}</label>
 
-                                <input id="Projectname" type="text"placeholder="0.00"  class=" form-control @error('email') is-invalid @enderror" name="Longitude" value="{{ old('Longitude') }}" required autocomplete="email" >
+                                <input id="Longitude" type="text"placeholder="0.00"  class=" form-control @error('email') is-invalid @enderror" name="Longitude" value="{{ old('Longitude') }}" required autocomplete="email" >
                                 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -352,19 +352,19 @@
                             <div class="container mt-5">
                         <div id="map"></div>
                     </div>
-                            <p class="radiotitle"><span class="spantitle"> 3 </span> Your object </p>
+                    <p class="radiotitle"><span class="spantitle"> 3 </span> Your object </p>
 
-                            <div class="diveuplodefile m-4">
-                            <label for="file-input">
-                                    <img class=" m-3" src="../images/uploadfile.png" alt="" width="44" height="40">
-                                    <p class="radiotitle">Drag & drop files or <span class="Browse">Browse</span>  </p>                    
+                    <div class="diveuplodefile m-4">
+                    <label for="file-input3">
+                            <img class=" m-3" src="../images/uploadfile.png" alt="" width="44" height="40">
+                            <p class="radiotitle">Drag & drop files or <span class="Browse">Browse</span>  </p>                    
 
-                            </label>
-                                    <div class="selectFile">       
-                                    <input type="file" name="file3"  id="file-input">
-                                    </div>
-                                    <p class="radiotext">3D, Image, Video. It will link to your marker or our QR code. Max size is 50 MB </p>
+                    </label>
+                            <div class="selectFile">       
+                            <input type="file" name="file" id="file-input3">
                             </div>
+                            <p class="radiotext">3D, Image, Video. It will link to your marker or our QR code. Max size is 50 MB </p>
+                    </div>
 
                         
                         
@@ -381,19 +381,9 @@
     </div>
   </div>
 </div>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
 
-<script>
-    var input = document.getElementById('places');
-    var autocomplete = new google.maps.places.Autocomplete(input);
-    autocomplete.addListener('place_changed', function() {
-        var place = autocomplete.getPlace();
-        var lat = place.geometry.location.lat();
-        var lng = place.geometry.location.lng();
-
-        // Store the latitude and longitude in variables or send them to your server
-    });
-</script>
 
 <script>
     const Locationbased1 = document.getElementById("Locationbased1");
@@ -443,27 +433,109 @@
 
     });
 
-        function initMap() {
-          const myLatLng = { lat: 31.95806, lng: 35.93528  };
-          const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 5,
-            center: myLatLng,
-          });
-  
-          new google.maps.Marker({
-            position: myLatLng,
-            map,
-            title: "Hello Rajkot!",
-          });
+                let map;
+                google.maps.event.addDomListener(window, 'load', initMap);
+
+                    function initMap() {
+                        var input = document.getElementById('autocomplete');
+                        var autocomplete = new google.maps.places.Autocomplete(input);
+                        map = new google.maps.Map(document.getElementById("map"), {
+                            center: {  lat: 31.95806, lng: 35.93528 },
+                            zoom: 8,
+                            scrollwheel: true,
+                        });
+                        // const uluru = { lat: -34.397, lng: 150.644 };
+                        // let marker = new google.maps.Marker({
+                        //     position: uluru,
+                        //     map: map,
+                        //     draggable: true
+                        // });
+                        var marker = new google.maps.Marker({
+                        position: { lat: 31.95806, lng: 35.93528},
+                        map: map,
+                        draggable: true
+                        });
+                        google.maps.event.addListener(marker,'position_changed',
+                            function (){
+                                let lat = marker.position.lat()
+                                let lng = marker.position.lng()
+                                $('#Latitude').val(lat)
+                                $('#Longitude').val(lng)
+                            })
+                        google.maps.event.addListener(map,'click',
+                        function (event){
+                            pos = event.latLng
+                            marker.setPosition(pos)
+                        })
+                        autocomplete.addListener('place_changed', function () {
+                            var place = autocomplete.getPlace();
+                            $('#Latitude').val(place.geometry['location'].lat());
+                            $('#Longitude').val(place.geometry['location'].lng());
+                            if (!place.geometry) {
+                            window.alert("Autocomplete's returned place contains no geometry");
+                            return;
+                            }
+                            if (place.geometry.viewport) {
+                                map.fitBounds(place.geometry.viewport);
+                            } else {
+                                map.setCenter(place.geometry.location);
+                                map.setZoom(17);  // Why 17? Because it looks good.
+                            }
+                            marker.setPosition(place.geometry.location);
+                            marker.setVisible(true);
+                                                                        
+                                                
+                            var address = '';
+                            if (place.address_components) {
+                                address = [
+                                (place.address_components[0] && place.address_components[0].short_name || ''),
+                                (place.address_components[1] && place.address_components[1].short_name || ''),
+                                (place.address_components[2] && place.address_components[2].short_name || '')
+                                ].join(' ');
+                            }
+                            infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+                            infowindow.open(map, marker);
+                        
+                        });
+
+                        var geocoder = new google.maps.Geocoder;
+                        var infowindow = new google.maps.InfoWindow;
+                        var cityInput = document.getElementById('autocomplete');
+
+                        google.maps.event.addListener(marker, 'dragend', function(event) {
+                        geocoder.geocode({'location': event.latLng}, function(results, status) {
+                            if (status === 'OK') {
+                            if (results[0]) {
+                                var city;
+                                results[0].address_components.forEach(function(component) {
+                                if (component.types.includes('locality')) {
+                                    city = component.long_name;
+                                }
+                                });
+                                cityInput.value = city;
+                                infowindow.setContent(city);
+                                infowindow.open(map, marker);
+                            } else {
+                                window.alert('No results found');
+                            }
+                            } else {
+                            window.alert('Geocoder failed due to: ' + status);
+                            }
+                        });
+                        });
+                            
+            window.initMap = initMap;
         }
-  
-        window.initMap = initMap;
 </script>
+
+    
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript"
         src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap" ></script>
-  
+        <script type="text/javascript"
+        src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&libraries=places" ></script>
 
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -485,12 +557,46 @@
             // formData.append('file1', $("#file-input1").files[0]);
             
             console.log(fileInput1);
-
+            formData.append('file1', fileInput1);
             formData.append('file1name', fileInput1.name);
             formData.append('fle2name', fileInput2.name);
             $.ajax({
       
                 url:"{{ route('projectinsertt') }}",
+                data: formData,
+                type: 'POST',
+                dataType: 'json',
+                contentType: false,
+                cache: false,
+                processData: false,
+                async: false,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(data) {
+                console.log(data);
+                },
+                error: function(data){
+                console.log(data);
+                }
+            });
+            
+        });
+    });
+
+
+    $(document).ready(function() {  
+        $('#locationform').on('submit', function(event) {
+            event.preventDefault();
+            var fileInput1 = document.getElementById('file-input3').files[0];
+            var formData = new FormData($("#locationform")[0]);
+            
+            console.log(fileInput1);
+
+            formData.append('file1name', fileInput1.name);
+            $.ajax({
+      
+                url:"{{ route('locationinsertt') }}",
                 data: formData,
                 type: 'POST',
                 dataType:'JSON',
@@ -511,7 +617,6 @@
             
         });
     });
-
 </script>
 
 

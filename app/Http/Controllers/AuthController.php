@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Password;
 // use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class AuthController extends Controller
 {
@@ -53,6 +54,7 @@ class AuthController extends Controller
     {
         return view('homeall');
     }
+    
     public function events()
     {
         return view('events');

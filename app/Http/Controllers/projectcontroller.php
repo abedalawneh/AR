@@ -3,16 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\project;
-use App\Models\objectt;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
- 
+use Illuminate\Support\Facades\Input;
+use Illuminate\Http\UploadedFile;
+use App\Http\Requests\JsonRequest;
+use App\Models\project;
+use App\Models\objectt;
+
 class projectcontroller extends Controller
 {
   public function projectinsert(Request $request)
     {
-        // return $request;
+       
+        return $request;
         try {
             
             // $validator = Validator::make($request->all(), [
@@ -50,7 +54,7 @@ class projectcontroller extends Controller
                     // $path2 = $request->fle2name->store('public/object');
                     $object = new objectt;
                     $object->object = $request->fle2name;
-                    $object->project()->associate($project);
+                    $object->user_id =$request->userid;
                     $object->save();
                 // ]);
 

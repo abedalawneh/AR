@@ -16,11 +16,13 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('event_name');
+            $table->INTEGER('event_radius');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('location_id');
             $table->foreign('location_id')->references('id')->on('locations');
-            $table->unsignedBigInteger('objectid');
-            $table->foreign('objectid')->references('id')->on('objects');
-            $table->INTEGER('event_radius');
+            $table->unsignedBigInteger('object_id');
+            $table->foreign('object_id')->references('id')->on('objects');
             $table->timestamps();
         });
     }

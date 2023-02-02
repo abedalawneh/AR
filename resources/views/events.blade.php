@@ -1,6 +1,6 @@
 <?php
 use App\Http\Controllers\projectcontroller;
-use App\Models\project;
+use App\Models\event;
 
 ?>
 <!DOCTYPE html>
@@ -200,7 +200,7 @@ use App\Models\project;
     </nav>
     <?php
      
-    $userFront1 = project::where('user_id', Auth::user()->id)->get();
+    $userFront1 = event::where('user_id', Auth::user()->id)->get();
     
     if(count($userFront1)==0){
     ?>
