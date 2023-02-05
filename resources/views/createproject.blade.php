@@ -557,7 +557,7 @@
             // formData.append('file1', $("#file-input1").files[0]);
             
             console.log(fileInput1);
-            formData.append('file1', fileInput1);
+            // formData.append('file1', fileInput1);
             formData.append('file1name', fileInput1.name);
             formData.append('fle2name', fileInput2.name);
             $.ajax({

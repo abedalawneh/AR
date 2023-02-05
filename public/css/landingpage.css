@@ -224,8 +224,21 @@ height: 44px;
 @media screen and (min-width: 320px)and (max-width: 700px){
 .textdream{
     margin-left: 2%;
-    margin-top: 40%;
+    /* margin-top: 40%; */
 }
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2); /* set the overlay color and opacity */
+    height: 808.56px;
+  }
+  .dreameparagraph{
+    color: white;
+    text-align: center;
+  }
 .buttonstyle{
     width: 250px !important;
 }
@@ -239,6 +252,9 @@ height: 44px;
     text-align: center;
     font-size: 41px;
 }
+.textdream{
+    margin-top: 10% !important;
+}
 .dreameparagraph{
  color: 0B062D;   
 }
@@ -247,6 +263,10 @@ height: 44px;
 }
 .workpart{
     margin: 0 !important;
+}
+.worktitle,.workparagraph,.faq{
+    text-align: center;
+
 }
 .aboutus1{
     width: 300px !important;
@@ -260,7 +280,12 @@ height: 44px;
     width: 260px !important;
 }
 .aboutus2{
-justify-content: start !important;
+justify-content: center !important;
+}
+.divaboutus1{
+        display: flex;
+        justify-content: center;
+    
 }
 .buttonsection1{
     justify-content: center;
@@ -294,7 +319,7 @@ justify-content: start !important;
     .divnav{
         background-color:  rgba(255, 255, 255, 0.026) !important;
     }
-
+    
 }
 @media screen and (min-width:700px)and (max-width: 800px){
     .divaboutus1{
@@ -321,5 +346,8 @@ justify-content: start !important;
         }
         .divfagimage{
             justify-content: center !important;
+        }
+        .faq,.worktitle,.worktitle{
+            text-align: center !important;
         }
 }

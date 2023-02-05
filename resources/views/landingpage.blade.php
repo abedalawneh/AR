@@ -16,7 +16,7 @@
     
     <section>
     <div class="dreame ">
-        
+    <div class="overlay"></div>
             <!-- navbar -->
             <nav class="navtext navbar navbar-expand-lg navbar-light  ">
                 <a class="navbar-brand" href="#"><img src="../images/logoregister.svg" alt="not found"></a>
@@ -191,56 +191,56 @@
                 <h1 class="faq">Frequently asked questions</h1>
                 <div>
                 <div class="gaqdiv row">
-                    <div class="textfaq col-8">
+                    <div class="textfaq col-sm-10 col-8">
                         <h1>How can I create my own project?</h1>
                         <p id="myText1" style="display: none;">You can create your project in your account after registration.</p>
                     </div>
-                    <div class="col">
+                    <div class="col-sm-2 col">
                         <span class="show-text d-flex align-items-end justify-content-end" id="showtextIcon1">
                         <img src="../images/plusicon.svg" class="show-text" id="showtextIcon1">
                         </span>
                     </div>
                 </div>
                 <div class="gaqdiv row">
-                    <div class="textfaq col-8">
+                    <div class="textfaq col-sm-10 col-8">
                         <h1>Can I add 1 or more objects in one scene?</h1>
                         <p id="myText2" style="display: none;">Now you can add only one to your scene.</p>
                     </div>
-                    <div class="col">
+                    <div class="col-sm-2 col">
                         <span class="show-text d-flex align-items-end justify-content-end" id="showtextIcon2">
                         <img src="../images/plusicon.svg" class="show-text" id="showtextIcon2">
                         </span>
                     </div>
                 </div>
                 <div class="gaqdiv row">
-                    <div class="textfaq col-8">
+                    <div class="textfaq col-sm-10 col-8">
                         <h1>How many events can i create in my account?</h1>
                         <p id="myText3" style="display: none;">You can create as many events as you can.</p>
                     </div>
-                    <div class="col">
+                    <div class="col-sm-2 col">
                         <span class="show-text d-flex align-items-end justify-content-end" id="showtextIcon3">
                         <img src="../images/plusicon.svg" class="show-text" id="showtextIcon3">
                         </span>
                     </div>
                 </div>
                 <div class="gaqdiv row">
-                    <div class="textfaq col-8">
+                    <div class="textfaq col-sm-10 col-8">
                         <h1>For what distance does the object I upload will cover?</h1>
                         <p id="myText4" style="display: none;">You can specify it in the radius field as you like.</p>
                     </div>
-                    <div class="col">
+                    <div class="col-sm-2 col">
                         <span class="show-text d-flex align-items-end justify-content-end" id="showtextIcon4">
                         <img src="../images/plusicon.svg" class="show-text" id="showtextIcon4">
                         </span>
                     </div>
                 </div>
                 <div class="gaqdiv row">
-                    <div class="textfaq col-8">
+                    <div class="textfaq col-sm-10 col-8">
                         <h1> How can people access my events?</h1>
                         <p id="myText5" style="display: none;">You can share with them the event link or download 
                         your event file (Camera link and the marker image)</p>
                     </div>
-                    <div class="col">
+                    <div class="col-sm-2 col">
                         <span class="show-text d-flex align-items-end justify-content-end" id="showtextIcon5">
                         <img src="../images/plusicon.svg" class="show-text" id="showtextIcon5">
                         </span>
