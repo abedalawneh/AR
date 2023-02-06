@@ -230,18 +230,18 @@ use App\Models\objectt;
     <!-- create div saved events -->
     <div class="saved m-3 col-lg-2">
       <div class="imgmenu m-2 d-flex ">
-
-      <a-scene embedded arjs='sourceType: webcam;'>
-    <a-marker preset='hiro'>
-      <a-entity
-      gltf-model-next="src: url(object/{{$objectproject[0]->object}});"
-      >
-      </a-entity>
-    </a-marker>
-    <a-entity camera></a-entity>
-  </a-scene>
-  
-      <!-- <img src="object/{{$objectproject[0]->object}}" alt="not found" class="m-3"width="150px" height="150px"> -->
+            <div>
+          <!-- <a-scene embedded arjs='sourceType: webcam;'>
+        <a-marker preset='hiro'>
+          <a-entity
+          gltf-model-next="src: url(object/{{$objectproject[0]->object}});"
+          >
+          </a-entity>
+        </a-marker>
+        <a-entity camera></a-entity> 
+      </a-scene> -->
+    </div>
+    <img src="object/{{$objectproject[0]->object}}" alt="not found" class="m-3"width="150px" height="150px">
       <div class="dropdowninner " id="navbarNavDropdown">
             <ul class="navbar-nav ">
                
