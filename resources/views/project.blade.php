@@ -231,7 +231,7 @@ use App\Models\objectt;
     <div class="saved m-3 col-lg-2">
       <div class="imgmenu m-2 d-flex ">
             <div>
-          <!-- <a-scene embedded arjs='sourceType: webcam;'>
+          <a-scene embedded arjs='sourceType: webcam;'>
         <a-marker preset='hiro'>
           <a-entity
           gltf-model-next="src: url(object/{{$objectproject[0]->object}});"
@@ -239,9 +239,9 @@ use App\Models\objectt;
           </a-entity>
         </a-marker>
         <a-entity camera></a-entity> 
-      </a-scene> -->
+      </a-scene>
     </div>
-    <img src="object/{{$objectproject[0]->object}}" alt="not found" class="m-3"width="150px" height="150px">
+    <!-- <img src="object/{{$objectproject[0]->object}}" alt="not found" class="m-3"width="150px" height="150px"> -->
       <div class="dropdowninner " id="navbarNavDropdown">
             <ul class="navbar-nav ">
                
