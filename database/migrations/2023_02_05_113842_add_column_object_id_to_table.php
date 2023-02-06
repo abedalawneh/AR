@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('objects', function (Blueprint $table) {
-            $table->id();
-            $table->string('object');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->timestamps();
+        Schema::table('events', function (Blueprint $table) {
+            //
+            $table->dropForeign('events_object_id_foreign');
         });
     }
 
@@ -29,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('objects');
+        Schema::table('events', function (Blueprint $table) {
+            //
+        });
     }
 };

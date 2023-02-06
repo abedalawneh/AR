@@ -24,11 +24,13 @@ Route::post('custom-registration', [AuthController::class, 'customRegistration']
 Route::get('signout', [AuthController::class, 'signOut'])->name('signout');
 Route::post('createproject', [AuthController::class, 'createproject'])->name('createprojectt');
 Route::post('createvents', [AuthController::class, 'createvents'])->name('createvents');
+Route::get('createvents', [AuthController::class, 'createvents'])->name('createvents');
 // Route::get('dashbord', [AuthController::class, 'dashbord'])->name('dashbordd');
 Route::get('project', [AuthController::class, 'project'])->name('project');
 Route::post('project', [AuthController::class, 'project'])->name('project');
 Route::post('events', [AuthController::class, 'events'])->name('events');
 Route::post('homeall', [AuthController::class, 'homeall'])->name('homeall');
+Route::get('delete', [projectcontroller::class, 'delete'])->name('delete');
 // Route::get('landingpage', [AuthController::class, 'landingpage'])->name('landingpage');
 Route::get('resetemail', [AuthController::class, 'resetemail'])->name('resetemail');
 Route::get('resetpassword', [AuthController::class, 'resetpassword'])->name('resetpass');

@@ -618,7 +618,7 @@ progressBar.style.width = $value + '%'
           password.style.display = "block";
           backprofille.style.display = "flex";
           formprofille.style.display = "none";
-          console.log("ddd");
+        //   console.log("ddd");
         
 
     });
@@ -627,7 +627,7 @@ progressBar.style.width = $value + '%'
         password.style.display = "none";
         backprofille.style.display = "none";
 
-        console.log("ddd");
+        // console.log("ddd");
 
     });
   </script>

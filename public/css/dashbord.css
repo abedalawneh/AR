@@ -197,6 +197,7 @@ border-radius: 4px;
 .imgmenu{
     background: white;
 border-radius: 2px;
+justify-content: space-evenly;
 }
 .totlesaved{
     font-weight: 500;
@@ -359,6 +360,9 @@ border-radius: 2px;
       flex-direction: column !important;  
 
     }
+    .textbuttonspan{
+        font-size: 15px;
+    }
     .innermenu
     {
     position: absolute !important;
@@ -417,6 +421,9 @@ border-radius: 2px;
     .rangedivrange{
         flex-direction: column;
     }
+    .barheight{
+        height: 100% !important;
+    }
 }
 @media screen and (min-width: 600px)and (max-width:800px){
     .innermenu
@@ -429,6 +436,12 @@ border-radius: 2px;
     .rangedivrange{
         flex-direction: column;
     }
+    .barheight{
+        height: 100% !important;
+    }
+    /* .sidebardiv1{
+        height: 100% !important;
+    } */
 }
 
 

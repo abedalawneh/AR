@@ -361,7 +361,7 @@
 
                     </label>
                             <div class="selectFile">       
-                            <input type="file" name="file" id="file-input3">
+                            <input type="file" name="file3" id="file-input3">
                             </div>
                             <p class="radiotext">3D, Image, Video. It will link to your marker or our QR code. Max size is 50 MB </p>
                     </div>
@@ -420,7 +420,7 @@
           password.style.display = "block";
           backprofille.style.display = "flex";
           formprofille.style.display = "none";
-          console.log("ddd");
+        //   console.log("ddd");
         
 
     });
@@ -429,7 +429,7 @@
         password.style.display = "none";
         backprofille.style.display = "none";
 
-        console.log("ddd");
+        // console.log("ddd");
 
     });
 
@@ -546,6 +546,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
 <script >
     $(document).ready(function() {  

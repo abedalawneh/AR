@@ -347,7 +347,7 @@ use App\Models\project;
           password.style.display = "block";
           backprofille.style.display = "flex";
           formprofille.style.display = "none";
-          console.log("ddd");
+          // console.log("ddd");
         
 
     });
@@ -356,7 +356,7 @@ use App\Models\project;
         password.style.display = "none";
         backprofille.style.display = "none";
 
-        console.log("ddd");
+        // console.log("ddd");
 
     });
   </script>

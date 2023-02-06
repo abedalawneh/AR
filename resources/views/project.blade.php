@@ -1,6 +1,8 @@
 <?php
 use App\Http\Controllers\projectcontroller;
 use App\Models\project;
+use App\Models\location;
+use App\Models\objectt;
 
 ?>
 <!DOCTYPE html>
@@ -13,6 +15,8 @@ use App\Models\project;
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="../css/dashbord.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+<script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
 
     <title>project</title>
 </head>
@@ -190,7 +194,8 @@ use App\Models\project;
             <div class="collapse  d-flex  justify-content-end" id="navbarNavDropdown">
             <a href="{{ route('createprojectt') }}"onclick="event.preventDefault(); document.getElementById('createproject-form').submit();">
             <button type="submit" class="creatbutton btn  btn-block m-0  ">  
-            <img src="../images/pageedit.png" alt="" width="24" height="24" class="imagebar d-inline-block align-text-center ">Create project</button></a>
+            <img src="../images/pageedit.png" alt="" width="24" height="24" class="imagebar d-inline-block align-text-center ">
+            <span class="textbuttonspan">Create project</span> </button></a>
             <form id="createproject-form" action="{{ route('createprojectt') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
@@ -211,62 +216,7 @@ use App\Models\project;
     <img src="../images/FileNotFound.png" alt="" class="imagefluid" >
         <p class="texttext d-flex justify-content-center align-items-center">You have no events. Please create new one.  </p>
     </div>
-    <!-- <div class="saveddiv d-flex">
-    <div class="saved m-3 col-lg-2">
-      <div class="imgmenu m-2 d-flex justify-content-center">
-        
-      <img src="../images/FileNotFound.png" alt="not found" class="m-3"width="150px" height="150px">
-      <div class="dropdowninner " id="navbarNavDropdown">
-            <ul class="navbar-nav ">
-               
-                <li class="nav-item dropdown">
-                <a class="nav-link   " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                ...
-                </a>
-                <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="#"><img src="../images/editpencil.png" alt=""class="m-1"width="20px" height="20px">Edit</a></li>
-                    <li><a class="dropdown-item" href="#"><img src="../images/downloadrow.png" alt=""class="m-1"width="20px" height="20px">Download file</a></li>
-                    <li><a class="dropdown-item"  data-toggle="modal" href="#exampleModalCenter">
-                      <img src="../images/trash.png" alt=""class="m-1"width="20px" height="20px"><span class="redtext">Delete</span> </a></li>
-                </ul>
-                </li>
-            </ul>
-            </div>
-      </div>
-      <p class="totlesaved m-2">ff</p>
-      <div class="d-flex ">
-      <p class="textsaved m-2 p-2">fffffff</p>
-      <p class="textsaved m-2 p-2">ff</p>
-      </div>
-    </div>
-    <div class="saved m-3 col-lg-2">
-      <div class="imgmenu m-2 d-flex justify-content-center">
-      <img src="../images/FileNotFound.png" alt="not found" class="m-3"width="150px" height="150px">
-      <div class="dropdowninner " id="navbarNavDropdown">
-            <ul class="navbar-nav ">
-               
-                <li class="nav-item dropdown">
-                <a class="nav-link   " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                ...
-                </a>
-                <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="#"><img src="../images/editpencil.png" alt=""class="m-1"width="20px" height="20px">Edit</a></li>
-                    <li><a class="dropdown-item" href="#"><img src="../images/downloadrow.png" alt=""class="m-1"width="20px" height="20px">Download file</a></li>
-                    <li><a class="dropdown-item"  data-toggle="modal" href="#exampleModalCenter">
-                   <img src="../images/trash.png" alt=""class="m-1"width="20px" height="20px" ><span class="redtext">Delete</span> </a></li>
-                </ul>
-                </li>
-            </ul>
-            </div>
-          
-      </div>
-      <p class="totlesaved m-2">ff</p>
-      <div class="d-flex ">
-      <p class="textsaved m-2 p-2">fffffff</p>
-      <p class="textsaved m-2 p-2">ff</p>
-      </div>
-    </div>
-    </div> -->
+    
     <?php
     }
     else{
@@ -274,11 +224,24 @@ use App\Models\project;
    <div class="saveddiv d-flex">
       <?php
       foreach ($userFront1 as $frontuserFor) {
+        $objectproject = objectt::where('project_id', $frontuserFor->id)->get();
+        // echo $objectproject[0]->object;
     ?>
     <!-- create div saved events -->
     <div class="saved m-3 col-lg-2">
-      <div class="imgmenu m-2 d-flex justify-content-center">
-      <img src="{{$frontuserFor->your_marker}}" alt="not found" class="m-3"width="150px" height="150px">
+      <div class="imgmenu m-2 d-flex ">
+
+      <a-scene embedded arjs='sourceType: webcam;'>
+    <a-marker preset='hiro'>
+      <a-entity
+      gltf-model-next="src: url(object/{{$objectproject[0]->object}});"
+      >
+      </a-entity>
+    </a-marker>
+    <a-entity camera></a-entity>
+  </a-scene>
+  
+      <!-- <img src="object/{{$objectproject[0]->object}}" alt="not found" class="m-3"width="150px" height="150px"> -->
       <div class="dropdowninner " id="navbarNavDropdown">
             <ul class="navbar-nav ">
                
@@ -288,7 +251,7 @@ use App\Models\project;
                 </a>
                 <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
                     <li><a class="dropdown-item" href="#"><img src="../images/editpencil.png" alt=""class="m-1"width="20px" height="20px">Edit</a></li>
-                    <li><a class="dropdown-item" href="#"><img src="../images/downloadrow.png" alt=""class="m-1"width="20px" height="20px">Download file</a></li>
+                    <li><a class="dropdown-item" href="createvents"><img src="../images/calendar.png" alt=""class="m-1"width="20px" height="20px">Create event</a></li>
                     <li><a class="dropdown-item"  data-toggle="modal" href="#exampleModalCenter">
                    <img src="../images/trash.png" alt=""class="m-1"width="20px" height="20px" ><span class="redtext">Delete</span> </a></li>
                 </ul>
@@ -299,8 +262,15 @@ use App\Models\project;
       </div>
       <p class="totlesaved m-2">{{$frontuserFor->project_name}}</p>
       <div class="d-flex ">
-      <p class="textsaved m-2 p-2">fffffff</p>
-      <p class="textsaved m-2 p-2">ff</p>
+      <p class="textsaved m-2 p-2">{{$frontuserFor->based_tybe}}</p>
+      <?php
+      if ($frontuserFor->based_tybe=="Location based"){
+        $locationproject = location::where('project_id', $frontuserFor->id)->get();
+        ?>
+
+      <p class="textsaved m-2 p-2">{{$locationproject[0]->location}}</p>
+      
+      <?php }?>
       </div>
     </div>
     <?php
@@ -327,8 +297,19 @@ use App\Models\project;
                 <img src="../images/deletedimage.png" alt="not found" class="m-3"width="150px" height="150px"></div>
                 <h1 class="modal-title textfluid d-flex  justify-content-center" >Are you sure?</h1>
                 <p class="contactp d-flex  justify-content-center" >Do you really need to delete this item.</p>
-                <div class="   d-flex  justify-content-center m-2">
-                <button type="submit" class="creatbutton btn  ">Delete</button></div>
+                <div class="  d-flex  justify-content-center m-2">
+                <a href="{{ route('delete') }}">
+                <button type="submit" class="creatbutton btn  ">Delete</button>
+              </a>
+              </div>
+              
+              
+              <form id="delete-form" action="{{ route('delete')}}" method="POST" class="d-none">
+                                        @csrf
+                              <input type="hidden" name="id" value="">
+
+                                    </form>
+              </div>
       </div>
       
       </div>
@@ -346,7 +327,7 @@ use App\Models\project;
           password.style.display = "block";
           backprofille.style.display = "flex";
           formprofille.style.display = "none";
-          console.log("ddd");
+          // console.log("ddd");
         
 
     });
@@ -355,7 +336,7 @@ use App\Models\project;
         password.style.display = "none";
         backprofille.style.display = "none";
 
-        console.log("ddd");
+        // console.log("ddd");
 
     });
   </script>
@@ -366,6 +347,7 @@ use App\Models\project;
   
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+
 
 </body>
 </html>

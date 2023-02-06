@@ -76,7 +76,7 @@ class AuthController extends Controller
     {
         return view('Auth.passwords.resetpassword');
     }
-
+   
     public function customRegistration(Request $request)
     {  
         $request->validate([

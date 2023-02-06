@@ -15,8 +15,24 @@ class projectcontroller extends Controller
 {
   public function projectinsert(Request $request)
     {
-       
-        return $request;
+    //    $file = $request->file('file');
+    if ($request->hasFile('file1')) {
+        $file = $request->file('file1');
+        $destinationPath = public_path('marker');
+        $filename = $file->getClientOriginalName();
+        $file->move($destinationPath, $filename);
+        // return "File saved successfully at: $destinationPath/$filename";
+    }
+    if ($request->hasFile('file2')) {
+        $file = $request->file('file2');
+        $destinationPath = public_path('object');
+        $filename = $file->getClientOriginalName();
+        $file->move($destinationPath, $filename);
+        // return "File saved successfully at: $destinationPath/$filename";
+    }
+   
+        // return $file;
+        
         try {
             
             // $validator = Validator::make($request->all(), [
@@ -52,10 +68,15 @@ class projectcontroller extends Controller
                     $project->user_id =$request->userid;
                     $project->save();
                     // $path2 = $request->fle2name->store('public/object');
+                    // $projectid = project::find(1);
+                    // return $project->id;
+                    // return $request;
                     $object = new objectt;
                     $object->object = $request->fle2name;
                     $object->user_id =$request->userid;
+                    $object->project_id =$project->id;
                     $object->save();
+                    return $object;
                 // ]);
 
                 
@@ -82,5 +103,25 @@ class projectcontroller extends Controller
     }
   
         
-    
+    public function delete(Request $request)
+    {
+        $project = project::find($id);
+    // $user->delete();
+        return $project;
+        try {
+            $project = project::where('id', $request->id)->first();
+            if ($project != null) {
+                $project->delete();
+                return response()->json([
+                    'result' => true,
+                    'message' => 'Deleted Successfully'
+                ]);
+            } else
+                return response()->json([
+                    'result' => false
+                ]);
+        } catch (Exception $ex) {
+            return $ex->getMessage();
+        }
+    }
 }

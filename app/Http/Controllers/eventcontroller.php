@@ -16,6 +16,13 @@ class eventcontroller extends Controller
     public function eventinsert(Request $request)
     {
         // return $request;
+        if ($request->hasFile('file1')) {
+            $file = $request->file('file1');
+            $destinationPath = public_path('object');
+            $filename = $file->getClientOriginalName();
+            $file->move($destinationPath, $filename);
+            // return "File saved successfully at: $destinationPath/$filename";
+        }
         try {
             
             // $validator = Validator::make($request->all(), [
@@ -62,6 +69,7 @@ class eventcontroller extends Controller
                         $object->object = $request->file1name;
                         $object->user_id =$request->userid;
                         $object->save();
+                        
                         $location = new location;
                         $location->location=$request->autocomplete;
                         $location->latitude=$request->Latitude;
@@ -118,14 +126,14 @@ class eventcontroller extends Controller
                     
                     // ]);
 
-                
-                if ($objectt && $event) {
+                if ($objectt && $event && $location) {
                     return response()->json([
                         'result'=>true,
                         'message'=>'Added Successfully',
                         
                     ]);
-                  } else {
+                  } 
+                  else {
                     return response()->json([
                         'result'=>false,
                         'message'=>'Added faild',

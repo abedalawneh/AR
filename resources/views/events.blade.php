@@ -1,6 +1,9 @@
 <?php
 use App\Http\Controllers\projectcontroller;
 use App\Models\event;
+use App\Models\objectt;
+use App\Models\project;
+use App\Models\location;
 
 ?>
 <!DOCTYPE html>
@@ -190,7 +193,8 @@ use App\Models\event;
             <div class="collapse  d-flex  justify-content-end" id="navbarNavDropdown">
             <a href="{{ route('createvents') }}"onclick="event.preventDefault(); document.getElementById('createproject-form').submit();">
             <button type="submit" class="creatbutton btn  btn-block m-0  ">  
-            <img src="../images/pageedit.png" alt="" width="24" height="24" class="imagebar d-inline-block align-text-center ">Create event</button></a>
+            <img src="../images/pageedit.png" alt="" width="24" height="24" class="imagebar d-inline-block align-text-center ">
+            <span class="textbuttonspan">Create event</span> </button></a>
             <form id="createproject-form" action="{{ route('createvents') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
@@ -211,62 +215,7 @@ use App\Models\event;
     <img src="../images/FileNotFound.png" alt="" class="imagefluid" >
         <p class="texttext d-flex justify-content-center align-items-center">You have no events. Please create new one.  </p>
     </div>
-    <!-- <div class="saveddiv d-flex">
-    <div class="saved m-3 col-lg-2">
-      <div class="imgmenu m-2 d-flex justify-content-center">
-        
-      <img src="../images/FileNotFound.png" alt="not found" class="m-3"width="150px" height="150px">
-      <div class="dropdowninner " id="navbarNavDropdown">
-            <ul class="navbar-nav ">
-               
-                <li class="nav-item dropdown">
-                <a class="nav-link   " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                ...
-                </a>
-                <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="#"><img src="../images/editpencil.png" alt=""class="m-1"width="20px" height="20px">Edit</a></li>
-                    <li><a class="dropdown-item" href="#"><img src="../images/downloadrow.png" alt=""class="m-1"width="20px" height="20px">Download file</a></li>
-                    <li><a class="dropdown-item"  data-toggle="modal" href="#exampleModalCenter">
-                      <img src="../images/trash.png" alt=""class="m-1"width="20px" height="20px"><span class="redtext">Delete</span> </a></li>
-                </ul>
-                </li>
-            </ul>
-            </div>
-      </div>
-      <p class="totlesaved m-2">ff</p>
-      <div class="d-flex ">
-      <p class="textsaved m-2 p-2">fffffff</p>
-      <p class="textsaved m-2 p-2">ff</p>
-      </div>
-    </div>
-    <div class="saved m-3 col-lg-2">
-      <div class="imgmenu m-2 d-flex justify-content-center">
-      <img src="../images/FileNotFound.png" alt="not found" class="m-3"width="150px" height="150px">
-      <div class="dropdowninner " id="navbarNavDropdown">
-            <ul class="navbar-nav ">
-               
-                <li class="nav-item dropdown">
-                <a class="nav-link   " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                ...
-                </a>
-                <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="#"><img src="../images/editpencil.png" alt=""class="m-1"width="20px" height="20px">Edit</a></li>
-                    <li><a class="dropdown-item" href="#"><img src="../images/downloadrow.png" alt=""class="m-1"width="20px" height="20px">Download file</a></li>
-                    <li><a class="dropdown-item"  data-toggle="modal" href="#exampleModalCenter">
-                   <img src="../images/trash.png" alt=""class="m-1"width="20px" height="20px" ><span class="redtext">Delete</span> </a></li>
-                </ul>
-                </li>
-            </ul>
-            </div>
-          
-      </div>
-      <p class="totlesaved m-2">ff</p>
-      <div class="d-flex ">
-      <p class="textsaved m-2 p-2">fffffff</p>
-      <p class="textsaved m-2 p-2">ff</p>
-      </div>
-    </div>
-    </div> -->
+   
     <?php
     }
     else{
@@ -274,11 +223,19 @@ use App\Models\event;
    <div class="saveddiv d-flex">
       <?php
       foreach ($userFront1 as $frontuserFor) {
-    ?>
+        
+        ?>
     <!-- create div saved events -->
     <div class="saved m-3 col-lg-2">
       <div class="imgmenu m-2 d-flex justify-content-center">
-      <img src="{{$frontuserFor->your_marker}}" alt="not found" class="m-3"width="150px" height="150px">
+        <?php
+        $objectid=$frontuserFor->object_id;
+        $objectevent = objectt::where('id', $objectid)->get();
+            
+        ?>
+        
+        <img src="object/{{$objectevent[0]->object}}" alt="not found" class="m-3"width="150px" height="150px">
+        
       <div class="dropdowninner " id="navbarNavDropdown">
             <ul class="navbar-nav ">
                
@@ -297,15 +254,22 @@ use App\Models\event;
             </div>
           
       </div>
-      <p class="totlesaved m-2">{{$frontuserFor->project_name}}</p>
+      <p class="totlesaved m-2">{{$frontuserFor->event_name}}</p>
       <div class="d-flex ">
-      <p class="textsaved m-2 p-2">fffffff</p>
-      <p class="textsaved m-2 p-2">ff</p>
+      <?php
+      $locationid=$frontuserFor->location_id ;
+        $locationevent = location::where('id', $locationid)->get();
+        ?>
+
+      <p class="textsaved m-2 p-2">{{$locationevent[0]->location}}</p>
+      
+      <p class="textsaved m-2 p-2">{{$frontuserFor->event_radius}} M</p>
       </div>
     </div>
     <?php
-    } }
-  
+    } 
+  }
+
     ?>
     </div>
 </div>
@@ -327,7 +291,13 @@ use App\Models\event;
                 <h1 class="modal-title textfluid d-flex  justify-content-center" >Are you sure?</h1>
                 <p class="contactp d-flex  justify-content-center" >Do you really need to delete this item.</p>
                 <div class="   d-flex  justify-content-center m-2">
-                <button type="submit" class="creatbutton btn  ">Delete</button></div>
+                  <a href="{{ route('delete') }}"onclick="event.preventDefault(); document.getElementById('delete-form').submit();"
+                    class="creatbutton ">Delete</a>
+                <!-- <button type="submit" class="creatbutton btn  ">Delete</button> -->
+              </div>
+              <form id="delete-form" action="{{ route('delete') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
       </div>
       
       </div>
@@ -344,7 +314,7 @@ use App\Models\event;
           password.style.display = "block";
           backprofille.style.display = "flex";
           formprofille.style.display = "none";
-          console.log("ddd");
+          // console.log("ddd");
         
 
     });
@@ -353,7 +323,7 @@ use App\Models\event;
         password.style.display = "none";
         backprofille.style.display = "none";
 
-        console.log("ddd");
+        // console.log("ddd");
 
     });
   </script>

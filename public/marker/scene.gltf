@@ -1,0 +1,357 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        0.7351950407028198,
+        1.0986912250518799,
+        1.033038854598999
+      ],
+      "min": [
+        -0.7357474565505981,
+        0.0069131553173065186,
+        -1.224881887435913
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 786384,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        0.9999793171882629,
+        0.9999985694885254,
+        0.9999492764472961
+      ],
+      "min": [
+        -0.9999752640724182,
+        -1.0,
+        -0.999998927116394
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        0.9403871893882751,
+        0.9515244364738464
+      ],
+      "min": [
+        0.009053250774741173,
+        0.007285594940185547
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 202782,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 1572768,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        0.7351950407028198,
+        1.0986912250518799,
+        1.033038854598999
+      ],
+      "min": [
+        -0.7357474565505981,
+        0.0068483054637908936,
+        -1.2238171100616455
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 2359152,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        0.9999667406082153,
+        0.9999990463256836,
+        0.9998813271522522
+      ],
+      "min": [
+        -0.9999752640724182,
+        -1.0,
+        -0.9999434947967529
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 524256,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        0.9927142858505249,
+        0.9515244960784912
+      ],
+      "min": [
+        0.007283113431185484,
+        0.007283421233296394
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 811128,
+      "componentType": 5125,
+      "count": 193842,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 3145536,
+      "componentType": 5126,
+      "count": 2822,
+      "max": [
+        0.7346214056015015,
+        1.097590446472168,
+        0.9973375201225281
+      ],
+      "min": [
+        -0.7305585145950317,
+        0.0069474875926971436,
+        -1.2241342067718506
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 3179400,
+      "componentType": 5126,
+      "count": 2822,
+      "max": [
+        0.9999793171882629,
+        0.999944269657135,
+        0.9840908646583557
+      ],
+      "min": [
+        -0.9995328783988953,
+        -1.0,
+        -0.9997119903564453
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 1048512,
+      "componentType": 5126,
+      "count": 2822,
+      "max": [
+        0.9403870105743408,
+        0.9515244364738464
+      ],
+      "min": [
+        0.007283113431185484,
+        0.007285603322088718
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 1586496,
+      "componentType": 5125,
+      "count": 7800,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Unreal Designer (https://sketchfab.com/unrealdesigner.ig)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/bean-bag-base-mesh-1-f1c5778a1e8a4c74bbfbd8af5b8dfd49",
+      "title": "Bean Bag - Base Mesh 1"
+    },
+    "generator": "Sketchfab-14.81.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 1617696,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1071088,
+      "byteOffset": 1617696,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 3213264,
+      "byteOffset": 2688784,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 5902048,
+      "uri": "scene.bin"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Material.002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.827553,
+          0.407393,
+          0.052924,
+          1.0
+        ],
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.7299069863831965
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Object_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Object_1",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 5,
+            "POSITION": 4,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Object_2",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 9,
+            "POSITION": 8,
+            "TEXCOORD_0": 10
+          },
+          "indices": 11,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        0.8190885186195374,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.8187418651550432e-16,
+        -0.8190885186195374,
+        0.0,
+        0.0,
+        0.8190885186195374,
+        1.8187418651550432e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "root"
+    },
+    {
+      "children": [
+        3
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "GLTF_SceneRootNode"
+    },
+    {
+      "children": [
+        4,
+        5,
+        6
+      ],
+      "name": "BeanBag_0"
+    },
+    {
+      "mesh": 0,
+      "name": "Object_4"
+    },
+    {
+      "mesh": 1,
+      "name": "Object_5"
+    },
+    {
+      "mesh": 2,
+      "name": "Object_6"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}

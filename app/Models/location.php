@@ -10,5 +10,5 @@ class location extends Model
     
     use HasFactory;
     protected $table = 'locations';
-    protected $fillable = ["location","latitude","longitude","user_id","created_at","updated_at"];
+    protected $fillable = ["location","latitude","longitude","project_id","event_id","user_id","created_at","updated_at"];
 }

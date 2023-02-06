@@ -15,6 +15,13 @@ class locationcontroller extends Controller
   public function locationinsert(Request $request)
     {
         // return $request;
+        if ($request->hasFile('file3')) {
+            $file = $request->file('file3');
+            $destinationPath = public_path('object');
+            $filename = $file->getClientOriginalName();
+            $file->move($destinationPath, $filename);
+            // return "File saved successfully at: $destinationPath/$filename";
+        }
         try {
             
             // $validator = Validator::make($request->all(), [
@@ -54,12 +61,14 @@ class locationcontroller extends Controller
                     $location->location=$request->autocomplete;
                     $location->latitude=$request->Latitude;
                     $location->longitude=$request->Longitude;
+                    $location->project_id =$project->id;
                     $location->user_id =$request->userid;
                     $location->save();
 
                     $object = new objectt;
                     $object->object = $request->file1name;
                     $object->user_id =$request->userid;
+                    $object->project_id =$project->id;
                     $object->save();
                     // ]);
 
