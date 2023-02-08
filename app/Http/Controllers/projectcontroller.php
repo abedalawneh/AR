@@ -13,6 +13,13 @@ use App\Models\objectt;
 
 class projectcontroller extends Controller
 {
+    public function project()
+    {
+        $userFront1 = project::all();
+
+        return view('project', ['userFront1' =>$userFront1]);
+    }
+    
   public function projectinsert(Request $request)
     {
     //    $file = $request->file('file');
@@ -76,7 +83,7 @@ class projectcontroller extends Controller
                     $object->user_id =$request->userid;
                     $object->project_id =$project->id;
                     $object->save();
-                    return $object;
+                    
                 // ]);
 
                 
@@ -95,6 +102,8 @@ class projectcontroller extends Controller
                     ]);
                   }
                 
+                  return redirect()->route('project');
+
             }
         // } 
         catch (Exception $ex) {
@@ -105,23 +114,21 @@ class projectcontroller extends Controller
         
     public function delete(Request $request)
     {
-        $project = project::find($id);
-    // $user->delete();
-        return $project;
-        try {
-            $project = project::where('id', $request->id)->first();
-            if ($project != null) {
-                $project->delete();
-                return response()->json([
-                    'result' => true,
-                    'message' => 'Deleted Successfully'
-                ]);
-            } else
-                return response()->json([
-                    'result' => false
-                ]);
-        } catch (Exception $ex) {
-            return $ex->getMessage();
+return $request;
+        $objectproject = objectt::where('project_id', $request->id)->get();
+
+        foreach ($objectproject as $objectproject) {
+            $objectproject->project_id = null;
+            $objectproject->save();
         }
+
+    
+    $projectid = project::find($request->id);
+    $projectid->delete();
+    
+    
+    return redirect()->route('project');
+
+    
     }
 }

@@ -223,16 +223,60 @@ use App\Models\location;
    <div class="saveddiv d-flex">
       <?php
       foreach ($userFront1 as $frontuserFor) {
-        
+        $objectid=$frontuserFor->object_id;
+        $objectevent = objectt::where('id', $objectid)->get();
+        $file_name=$objectevent[0]->object;
         ?>
+<form id="download-form-{{$frontuserFor->id}}" action="{{route('download')}}" method="post" class="d-none">
+                                            @csrf
+         <input type="text" name="filename" value="{{$objectevent[0]->object}}">
+
+    </form>
+
+<form id="delete-form-{{$frontuserFor->id}}" action="{{route('deletevent')}}" method="post" class="d-none">
+                                            @csrf
+         <input type="text" name="id" value="{{$frontuserFor->id}}">
+
+    </form>
+                            
+    <div class=" modal fade" id="delete-popup-{{$frontuserFor->id}}" tabindex="-1" role="dialog"
+                                                aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="bgroundmodal modal-content">
+                                                        <!-- <div class="modal-header">
+                                                            </div> -->
+                                                        <button type="button" class="closeimage close m-3" data-dismiss="modal" aria-label="Close">
+                                                            <span class=" d-flex justify-content-end align-items-end" aria-hidden="true"><img
+                                                                    src="../images/closeimage.png" alt="notfound"></span>
+                                                        </button>
+                                                        <div class="modal-body">
+                                                            <div class="   d-flex  justify-content-center">
+                                                                <img src="../images/deletedimage.png" alt="not found" class="m-3" width="150px" height="150px">
+                                                            </div>
+                                                            
+                                                            <h1 class="modal-title textfluid d-flex  justify-content-center">Are you sure?</h1>
+                                                            <p class="contactp d-flex  justify-content-center">Do you really need to delete this item.</p>
+                                                            <div class="  d-flex  justify-content-center m-2">
+                                                               
+                                                                    <a href=""
+                                                                    onclick="event.preventDefault(); document.getElementById('delete-form-{{$frontuserFor->id}}').submit();" 
+                                                                    class="creatbutton btn">
+                                                                  
+                                                                        <span>{{ __('Delete') }}</span>
+                                                                </a>
+                                                                  
+                                                            </div>
+                                                    </div>
+                                                </div>
+            
+                                            </div>
+                                        </div> 
+
+
     <!-- create div saved events -->
     <div class="saved m-3 col-lg-2">
       <div class="imgmenu m-2 d-flex justify-content-center">
-        <?php
-        $objectid=$frontuserFor->object_id;
-        $objectevent = objectt::where('id', $objectid)->get();
-            
-        ?>
+        
         
         <img src="object/{{$objectevent[0]->object}}" alt="not found" class="m-3"width="150px" height="150px">
         
@@ -245,9 +289,16 @@ use App\Models\location;
                 </a>
                 <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
                     <li><a class="dropdown-item" href="#"><img src="../images/editpencil.png" alt=""class="m-1"width="20px" height="20px">Edit</a></li>
-                    <li><a class="dropdown-item" href="#"><img src="../images/downloadrow.png" alt=""class="m-1"width="20px" height="20px">Download file</a></li>
-                    <li><a class="dropdown-item"  data-toggle="modal" href="#exampleModalCenter">
-                   <img src="../images/trash.png" alt=""class="m-1"width="20px" height="20px" ><span class="redtext">Delete</span> </a></li>
+                    <li><a class="dropdown-item" href="{{ url('download/' . $file_name) }}"
+                    >
+                    <img src="../images/downloadrow.png" alt=""class="m-1"width="20px" height="20px">Download file</a></li>
+                    <li><a class="dropdown-item" data-toggle="modal" href="#delete-popup-{{$frontuserFor->id}}"
+                                            >
+                                                    <img src="../images/trash.png" alt="" class="m-1" width="20px"
+                                                        height="20px"><span class="redtext">
+                                                        {{$frontuserFor->id}}Delete</span>
+                                                        
+                                                     </a></li>
                 </ul>
                 </li>
             </ul>
@@ -277,32 +328,7 @@ use App\Models\location;
 </div>
 
 
-<div class=" modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="bgroundmodal modal-content">
-                <!-- <div class="modal-header">
-                    </div> -->
-                    <button type="button" class="closeimage close m-3" data-dismiss="modal" aria-label="Close">
-                    <span class=" d-flex justify-content-end align-items-end" aria-hidden="true"><img src="../images/closeimage.png" alt="notfound"></span>
-                    </button>
-                <div class="modal-body">
-                  <div class="   d-flex  justify-content-center">
-                <img src="../images/deletedimage.png" alt="not found" class="m-3"width="150px" height="150px"></div>
-                <h1 class="modal-title textfluid d-flex  justify-content-center" >Are you sure?</h1>
-                <p class="contactp d-flex  justify-content-center" >Do you really need to delete this item.</p>
-                <div class="   d-flex  justify-content-center m-2">
-                  <a href="{{ route('delete') }}"onclick="event.preventDefault(); document.getElementById('delete-form').submit();"
-                    class="creatbutton ">Delete</a>
-                <!-- <button type="submit" class="creatbutton btn  ">Delete</button> -->
-              </div>
-              <form id="delete-form" action="{{ route('delete') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-      </div>
-      
-      </div>
-    </div>
-  </div>
+
 
   <script>
         const Changepasswordd = document.getElementById("Changepassword");

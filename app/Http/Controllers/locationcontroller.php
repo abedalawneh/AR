@@ -74,7 +74,7 @@ class locationcontroller extends Controller
 
                 
                 
-                if ($object && $project) {
+                if ($object && $project &&$location) {
                     return response()->json([
                         'result'=>true,
                         'message'=>'Added Successfully',
@@ -87,12 +87,33 @@ class locationcontroller extends Controller
                         
                     ]);
                   }
+                  
+                  return redirect()->route('project');
                 
             }
         // } 
         catch (Exception $ex) {
            return $ex->getMessage();
         }
+    }
+    public function delete(Request $request)
+    {
+    $locationproject = location::where('project_id', $request->id)->get();
+
+    foreach ($locationproject as $locationproject) {
+        $locationproject->project_id = null;
+        $locationproject->save();
+    }
+    $objectproject = objectt::where('project_id', $request->id)->get();
+
+    foreach ($objectproject as $objectproject) {
+        $objectproject->project_id = null;
+        $objectproject->save();
+    }
+    $projectid = project::find($request->id);
+    $projectid->delete();
+    return redirect()->route('project');
+
     }
   
         

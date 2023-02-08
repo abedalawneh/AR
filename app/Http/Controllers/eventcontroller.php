@@ -126,13 +126,13 @@ class eventcontroller extends Controller
                     
                     // ]);
 
-                if ($objectt && $event && $location) {
-                    return response()->json([
-                        'result'=>true,
-                        'message'=>'Added Successfully',
-                        
-                    ]);
-                  } 
+                    if ($object && $event &&$location) {
+                        return response()->json([
+                            'result'=>true,
+                            'message'=>'Added Successfully',
+                            
+                        ]);
+                      }
                   else {
                     return response()->json([
                         'result'=>false,
@@ -147,6 +147,34 @@ class eventcontroller extends Controller
            return $ex->getMessage();
         }
     }
-  
+    public function deletevent(Request $request)
+    {
+    $locationproject = location::where('event_id', $request->id)->get();
+
+    foreach ($locationproject as $locationproject) {
+        $locationproject->project_id = null;
+        $locationproject->save();
+    }
+    $objectproject = objectt::where('event_id', $request->id)->get();
+
+    foreach ($objectproject as $objectproject) {
+        $objectproject->project_id = null;
+        $objectproject->save();
+    }
+    $projectid = event::find($request->id);
+    $projectid->delete();
+    return redirect()->route('events');
+
+    }
+    public function download($filename)
+    {
+        $file = Storage::disk('public')->get('object/$filename');
+
+                return response($file)
+            ->header('Content-Type', 'image/png')
+            ->header('Content-Disposition', 'attachment; filename="' . $filename . '"');
+            
+      
+    }
         
 }
