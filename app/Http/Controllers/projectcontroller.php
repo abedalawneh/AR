@@ -20,22 +20,28 @@ class projectcontroller extends Controller
         return view('project', ['userFront1' =>$userFront1]);
     }
     
+    public function editproject(Request $request)
+    {
+        $userFront1 = project::where('id', $request->id)->get();
+        return view('editproject', ['userFront1' =>$userFront1]);
+
+    }
+
   public function projectinsert(Request $request)
     {
-    //    $file = $request->file('file');
+       return $request;
+
     if ($request->hasFile('file1')) {
         $file = $request->file('file1');
         $destinationPath = public_path('marker');
         $filename = $file->getClientOriginalName();
         $file->move($destinationPath, $filename);
-        // return "File saved successfully at: $destinationPath/$filename";
     }
     if ($request->hasFile('file2')) {
         $file = $request->file('file2');
         $destinationPath = public_path('object');
         $filename = $file->getClientOriginalName();
         $file->move($destinationPath, $filename);
-        // return "File saved successfully at: $destinationPath/$filename";
     }
    
         // return $file;
@@ -111,10 +117,9 @@ class projectcontroller extends Controller
         }
     }
   
-        
     public function delete(Request $request)
     {
-return $request;
+// return $request;
         $objectproject = objectt::where('project_id', $request->id)->get();
 
         foreach ($objectproject as $objectproject) {
@@ -128,6 +133,37 @@ return $request;
     
     
     return redirect()->route('project');
+
+    
+    }
+
+    public function editmarkerproject(Request $request)
+    {
+    //    return $request;
+        if ($request->hasFile('file1')) {
+            $file = $request->file('file1');
+            $destinationPath = public_path('marker');
+            $filename = $file->getClientOriginalName();
+            $file->move($destinationPath, $filename);
+        }
+        if ($request->hasFile('file2')) {
+            $file = $request->file('file2');
+            $destinationPath = public_path('object');
+            $filename = $file->getClientOriginalName();
+            $file->move($destinationPath, $filename);
+        }
+        $objectproject = objectt::where('project_id', $request->id)->get();
+        foreach ($objectproject as $objectproject) {
+            $objectproject->object = $request->fle2name;
+            $objectproject->save();
+        }
+            $editproject = project::find($request->id);
+            $editproject->project_name = $request->Projectname;
+            $editproject->user_id = $request->userid;
+            $editproject->based_tybe = $request->typebased;
+            $editproject->your_marker = $request->file1name;
+            $editproject->save();
+        return redirect()->route('project');
 
     
     }

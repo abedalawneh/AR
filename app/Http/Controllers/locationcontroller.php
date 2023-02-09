@@ -116,6 +116,36 @@ class locationcontroller extends Controller
 
     }
   
+    public function locationedit(Request $request)
+    {
+    //    return $request;
         
+        if ($request->hasFile('file3')) {
+            $file = $request->file('file3');
+            $destinationPath = public_path('object');
+            $filename = $file->getClientOriginalName();
+            $file->move($destinationPath, $filename);
+        }
+        
+        $objectproject = objectt::where('project_id', $request->id)->get();
+        foreach ($objectproject as $objectproject) {
+            $objectproject->object = $request->file1name;
+            $objectproject->save();
+        }
+        $locationproject = location::where('project_id', $request->id)->get();
+        
+        foreach ($locationproject as $locationproject) {
+            $locationproject->location=$request->autocomplete;
+            $locationproject->latitude=$request->Latitude;
+            $locationproject->longitude=$request->Longitude;
+            $locationproject->save();
+        }
+        $editproject = project::find($request->id);
+            $editproject->project_name = $request->Projectname;
+            $editproject->save();
+        return redirect()->route('project');
+
+    
+    }
     
 }

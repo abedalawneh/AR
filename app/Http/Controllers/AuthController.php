@@ -51,6 +51,7 @@ class AuthController extends Controller
     {
         return view('homeall');
     }
+   
     
     public function events()
     {

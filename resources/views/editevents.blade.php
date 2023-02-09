@@ -1,13 +1,13 @@
 <?php
-use App\Http\Controllers\projectcontroller;
-use App\Models\event;
+
 use App\Models\objectt;
-use App\Models\project;
 use App\Models\location;
 
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!-- <html lang="en"> -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,10 +17,12 @@ use App\Models\location;
     <link href="../css/dashbord.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
-    <title>Events</title>
+    <title>create event</title>
 </head>
 <body>
-<div class="barheight d-flex" id="wrapper">
+<!-- $user = User::findOrFail(Auth::user()->id); -->
+
+<div class="barheight1 d-flex" id="wrapper">
   <div class="sidebardiv1  border-right" id="sidebar-wrapper">
     <div class="sidebar-heading"> </div>
     <div class="listheight list-group list-group-flush ">
@@ -57,7 +59,7 @@ use App\Models\location;
         <a class="navbar-brand " href="#">
         <img src="../images/calendar.png" alt="" width="18" height="18" class="navtext d-inline-block align-text-center ">Events
     </a>
-            <div class="dropdowninner d-flex justify-content-end col-md-6" id="navbarNavDropdown">
+    <div class="dropdowninner d-flex justify-content-end col-md-6" id="navbarNavDropdown">
             <ul class="navbar-nav ">
                
                 <li class="nav-item dropdown">
@@ -187,149 +189,210 @@ use App\Models\location;
         </div>
         </nav>
     <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light ">
-        <div class="containerfluid container-fluid m-1">
-        <p class="textfluid">Saved events</p>
-            <div class="collapse  d-flex  justify-content-end" id="navbarNavDropdown">
-            <a href="{{ route('createvents') }}"onclick="event.preventDefault(); document.getElementById('createproject-form').submit();">
-            <button type="submit" class="creatbutton btn  btn-block m-0  ">  
-            <img src="../images/pageedit.png" alt="" width="24" height="24" class="imagebar d-inline-block align-text-center ">
-            <span class="textbuttonspan">Create event</span> </button></a>
-            <form id="createproject-form" action="{{ route('createvents') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                  </div>
-        </div>
-        
-    </nav>
-    <?php
+                   <?php
      
-    $userFront1 = event::where('user_id', Auth::user()->id)->get();
-    
-    if(count($userFront1)==0){
-    ?>
-    
-      <!-- <p>{{$userFront1}}</p> -->
-    
-    <div class="divnofile d-flex row justify-content-center align-items-center">
-    <img src="../images/FileNotFound.png" alt="" class="imagefluid" >
-        <p class="texttext d-flex justify-content-center align-items-center">You have no events. Please create new one.  </p>
-    </div>
-   
-    <?php
-    }
-    else{
-      ?>
-   <div class="saveddiv d-flex">
-      <?php
-      foreach ($userFront1 as $frontuserFor) {
+     foreach ($userFront1 as $frontuserFor) {
         $objectid=$frontuserFor->object_id;
         $objectevent = objectt::where('id', $objectid)->get();
-        ?>
-
-    <form id="edit-form-{{$frontuserFor->id}}" action="{{route('editevents')}}" method="post" class="d-none">
-                                            @csrf
-         <input type="text" name="id" value="{{$frontuserFor->id}}">
-
-    </form> 
-<form id="delete-form-{{$frontuserFor->id}}" action="{{route('deletevent')}}" method="post" class="d-none">
-                                            @csrf
-         <input type="text" name="id" value="{{$frontuserFor->id}}">
-
-    </form>
-                            
-    <div class=" modal fade" id="delete-popup-{{$frontuserFor->id}}" tabindex="-1" role="dialog"
-                                                aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
-                                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                                    <div class="bgroundmodal modal-content">
-                                                        <!-- <div class="modal-header">
-                                                            </div> -->
-                                                        <button type="button" class="closeimage close m-3" data-dismiss="modal" aria-label="Close">
-                                                            <span class=" d-flex justify-content-end align-items-end" aria-hidden="true"><img
-                                                                    src="../images/closeimage.png" alt="notfound"></span>
-                                                        </button>
-                                                        <div class="modal-body">
-                                                            <div class="   d-flex  justify-content-center">
-                                                                <img src="../images/deletedimage.png" alt="not found" class="m-3" width="150px" height="150px">
-                                                            </div>
-                                                            
-                                                            <h1 class="modal-title textfluid d-flex  justify-content-center">Are you sure?</h1>
-                                                            <p class="contactp d-flex  justify-content-center">Do you really need to delete this item.</p>
-                                                            <div class="  d-flex  justify-content-center m-2">
-                                                               
-                                                                    <a href=""
-                                                                    onclick="event.preventDefault(); document.getElementById('delete-form-{{$frontuserFor->id}}').submit();" 
-                                                                    class="creatbutton btn">
-                                                                  
-                                                                        <span>{{ __('Delete') }}</span>
-                                                                </a>
-                                                                  
-                                                            </div>
-                                                    </div>
-                                                </div>
-            
-                                            </div>
-                                        </div> 
-
-
-    <!-- create div saved events -->
-    <div class="saved m-3 col-lg-2">
-      <div class="imgmenu m-2 d-flex justify-content-center">
-        
-        
-        <img src="object/{{$objectevent[0]->object}}" alt="not found" class="m-3"width="150px" height="150px">
-        
-      <div class="dropdowninner " id="navbarNavDropdown">
-            <ul class="navbar-nav ">
-               
-                <li class="nav-item dropdown">
-                <a class="nav-link   " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                ...
-                </a>
-                <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href=""onclick="event.preventDefault();
-                                             document.getElementById('edit-form-{{$frontuserFor->id}}').submit();"><img src="../images/editpencil.png"
-                                                        alt="" class="m-1" width="20px" height="20px">{{$frontuserFor->id}}Edit</a></li>
-                    <li><a class="dropdown-item" href="object/{{$objectevent[0]->object}}" download
-                    >
-                    <img src="../images/downloadrow.png" alt=""class="m-1"width="20px" height="20px">Download file  </a></li>
-
-                    <li><a class="dropdown-item" data-toggle="modal" href="#delete-popup-{{$frontuserFor->id}}"
-                                            >
-                                                    <img src="../images/trash.png" alt="" class="m-1" width="20px"
-                                                        height="20px"><span class="redtext">
-                                                        {{$frontuserFor->id}}Delete</span>
-                                                        
-                                                     </a></li>
-                </ul>
-                </li>
-            </ul>
-            </div>
-          
-      </div>
-      <p class="totlesaved m-2">{{$frontuserFor->event_name}}</p>
-      <div class="d-flex ">
-      <?php
-      $locationid=$frontuserFor->location_id ;
+        if (count($objectevent) > 0) 
+        $object = $objectevent[0];
+        $locationid=$frontuserFor->location_id ;
         $locationevent = location::where('id', $locationid)->get();
+        if (count($locationevent) > 0)
+        $location = $locationevent[0];
         ?>
-
-      <p class="textsaved m-2 p-2">{{$locationevent[0]->location}}</p>
-      
-      <p class="textsaved m-2 p-2">{{$frontuserFor->event_radius}} M</p>
-      </div>
-    </div>
-    <?php
-    } 
-  }
-
+        <!-- <h1>gggg</h1> -->
+        <?php
     ?>
+        <div class="formdiv m-4 " >
+   
+                <form  id="eventform"  method="post" enctype="multipart/form-data">
+                            @csrf
+
+                            <input type="hidden" name="id" value="{{$frontuserFor->id}}">
+                            <input id="userid" type="hidden"  name="userid" value="{{ Auth::user()->id }}" >
+                            <p class="radiotitle "><span class="spantitle">1</span> Your event name</p>
+                            <div class=" form-group mb-3 m-3">
+                            <label for="Projectname" class="radiotitle p-2">{{ __('Event') }}</label>
+
+                           
+                                <input id="Projectname" type="text"placeholder="Event name"  class="imagevent form-control " name="eventname" value="{{ old('eventname',$frontuserFor->event_name) }}"   >
+                                
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                 
+                            </div>
+                            
+                            <p class="radiotitle"><span class="spantitle"> 2 </span> Select object </p>
+                            <div class=" form-group mb-3 m-3" id="hiddobject">
+                                <p class="radiotitle m-2">{{ $object->object}}</p>
+                            <label for="Projectname" class="radiotitle p-2">{{ __('Object') }}</label><br>
+                            <select name="optionobject" class="imageproject form-control">
+                                <option  disabled selected >Select one of the saved objects</option>
+                            <?php
+     
+                            $userFront1 =objectt::where('user_id', Auth::user()->id)->get();
+                            
+                            ?>
+                            @foreach ($userFront1 as $item)
+                                <option  value="{{ $item->id }}" >{{ $item->object }}</option>
+                            @endforeach
+                            
+                            
+                                </select>
+                                
+                                </div>
+                            <p class="radiotitle"><span class="spantitle"> 3 </span> Select Location</p>
+                            
+                            <div class=" form-group mb-3 m-3" id="hiddlocation">
+                                <p class="radiotitle m-2">{{ $locationevent[0]->location }}</p>
+                            <label for="Projectname" class="radiotitle p-2">{{ __('Location') }}</label>
+
+                            <select name="optionlocation" class="imagelocation form-control">
+                                <option  disabled selected >Select one of the saved location</option>
+                            <?php
+     
+                            $userFront1 =location::where('user_id', Auth::user()->id)->get();
+                            
+                            ?>
+                            @foreach ($userFront1 as $item)
+                                <option  value="{{ $item->id }}" >{{ $item->location }}</option>
+                            @endforeach
+                            
+                            
+                                </select>
+                           
+                               
+                           
+                            </div>
+                            
+                            <p class="radiotitle"><span class="spantitle"> 4 </span> Event radius</p>
+                            
+                            
+                            <p class="radiotitle m-2">{{ $frontuserFor->event_radius }}</p>
+                            <div class="rangedivrange d-flex  align-items-center">
+                                <div class="mainn">
+                            <input  type="range" min="0" max="500" value="250"
+                            oninput="showVal(this.value)"onchange="showVal(this.value)"
+                             step='10'  id="slider">
+
+                            <div id="selector">
+                                <div class="selectBtn"></div>
+                                <div id="selectValue"></div>
+                                </div>
+                                <div id="progressBar"></div>
+                            </div>         
+                            <input type="text"  id="valBox" class="inputrange m-2" value="250" name="radiusevent" >
+                            M                                                                 
+                            </div>
+                                <!-- </div> -->
+            
+                        
+                        {{ csrf_field() }}
+                        <div class="d-grid justify-content-center mx-auto">
+                   
+                                <button type="submit" class="projectbutton ">
+                                    {{ __('Generate') }}
+                                </button>
+                     
+                        </div>
+                </form>
+        </div>
+        
+            <?php }?>            
     </div>
-</div>
   </div>
 </div>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
 
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+  crossorigin="anonymous"></script>
+<script>
+    function showVal(newVal){
+    document.getElementById("valBox").value=newVal;
+}
+
+
+let slider = document.getElementById('slider')
+let selector = document.getElementById('selector')
+let selectValue = document.getElementById('selectValue')
+let progressBar = document.getElementById('progressBar')
+
+selectValue.innerHTML = slider.value
+
+slider.oninput = function() {
+    $value=this.value /5;
+    // console.log($value);
+  selectValue.innerHTML = this.value
+selector.style.left = $value+ '%' 
+progressBar.style.width = $value + '%'
+
+}
+
+    
+    
+    
+  
+</script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script >
+    $(document).ready(function() {  
+        $('#eventform').on('submit', function(event) {
+            event.preventDefault();
+            var formData = new FormData($("#eventform")[0]);
+            
+            
+            $.ajax({
+      
+                url:"{{ route('eventedit') }}",
+                data: formData,
+                type: 'POST',
+                dataType:'JSON',
+                contentType: false,
+                cache: false,
+                processData: false,
+                async: false,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(data) {
+                console.log(data);
+                },
+                error: function(data){
+                console.log(data);
+                }
+            });
+            
+    });
+    });
+
+
+</script>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap" ></script>
+        <script type="text/javascript"
+        src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&libraries=places" ></script>
 
 
   <script>
@@ -342,7 +405,7 @@ use App\Models\location;
           password.style.display = "block";
           backprofille.style.display = "flex";
           formprofille.style.display = "none";
-          // console.log("ddd");
+        //   console.log("ddd");
         
 
     });
@@ -356,12 +419,8 @@ use App\Models\location;
     });
   </script>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+
 
 </body>
 </html>

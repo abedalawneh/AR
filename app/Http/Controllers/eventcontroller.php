@@ -12,9 +12,17 @@ use App\Models\location;
 
 class eventcontroller extends Controller
 {
+    public function editevents(Request $request)
+    {
+        $userFront1 = event::where('id', $request->id)->get();
+        return view('editevents', ['userFront1' =>$userFront1]);
+
+    }
     //
     public function eventinsert(Request $request)
     {
+
+        
         // return $request;
         if ($request->hasFile('file1')) {
             $file = $request->file('file1');
@@ -166,15 +174,27 @@ class eventcontroller extends Controller
     return redirect()->route('events');
 
     }
-    public function download($filename)
-    {
-        $file = Storage::disk('public')->get('object/$filename');
-
-                return response($file)
-            ->header('Content-Type', 'image/png')
-            ->header('Content-Disposition', 'attachment; filename="' . $filename . '"');
-            
-      
-    }
+   
         
+    public function eventedit   (Request $request)
+    {
+    //    return $request;
+    $objectproject = objectt::where('project_id', $request->id)->get();
+    $locationproject = location::where('project_id', $request->id)->get();
+    $editevent = event::find($request->id);
+    
+       
+       
+            $editevent->event_name =$request->eventname;
+            $editevent->event_radius =$request->radiusevent;
+            $editevent->object_id =$request->optionobject;
+            $editevent->location_id =$request->optionlocation;
+            $editevent->save();
+            return redirect()->route('events');
+
+    
+    }
+
+
+    
 }

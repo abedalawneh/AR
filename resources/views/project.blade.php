@@ -266,7 +266,11 @@ use App\Models\objectt;
          <input type="text" name="id" value="{{$frontuserFor->id}}">
 
     </form>
-                            
+    <form id="edit-form-{{$frontuserFor->id}}" action="{{route('editproject')}}" method="post" class="d-none">
+                                            @csrf
+         <input type="text" name="id" value="{{$frontuserFor->id}}">
+
+    </form>                  
     <div class=" modal fade" id="delete-popup-{{$frontuserFor->id}}" tabindex="-1" role="dialog"
                                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -317,8 +321,9 @@ use App\Models\objectt;
                                             ...
                                         </a>
                                         <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
-                                            <li><a class="dropdown-item" href="#"><img src="../images/editpencil.png"
-                                                        alt="" class="m-1" width="20px" height="20px">Edit</a></li>
+                                            <li><a class="dropdown-item" href=""onclick="event.preventDefault();
+                                             document.getElementById('edit-form-{{$frontuserFor->id}}').submit();"><img src="../images/editpencil.png"
+                                                        alt="" class="m-1" width="20px" height="20px">{{$frontuserFor->id}}Edit</a></li>
                                             <li><a class="dropdown-item" href="createvents"><img
                                                         src="../images/calendar.png" alt="" class="m-1" width="20px"
                                                         height="20px">Create event</a></li>

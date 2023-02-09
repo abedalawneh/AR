@@ -229,12 +229,18 @@ use App\Models\location;
         $objectevent = objectt::where('id', $objectid)->get();
         ?>
 
+
+    <form id="edit-{{$frontuserFor->id}}" action="{{route('editevents')}}" method="post" class="d-none">
+                                            @csrf
+         <input type="text" name="id" value="{{$frontuserFor->id}}">
+
+    </form> 
 <form id="delete-form-{{$frontuserFor->id}}" action="{{route('deletevent')}}" method="post" class="d-none">
                                             @csrf
          <input type="text" name="id" value="{{$frontuserFor->id}}">
 
     </form>
-                            
+                
     <div class=" modal fade" id="delete-popup-{{$frontuserFor->id}}" tabindex="-1" role="dialog"
                                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -284,8 +290,11 @@ use App\Models\location;
                 ...
                 </a>
                 <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="#"><img src="../images/editpencil.png" alt=""class="m-1"width="20px" height="20px">Edit</a></li>
-                    <li><a class="dropdown-item" href="#"><img src="../images/downloadrow.png" alt=""class="m-1"width="20px" height="20px">Download file</a></li>
+                <li><a class="dropdown-item" href=""onclick="event.preventDefault();
+                                             document.getElementById('edit-{{$frontuserFor->id}}').submit();"><img src="../images/editpencil.png"
+                                                        alt="" class="m-1" width="20px" height="20px">{{$frontuserFor->id}}Edit</a></li>
+                    <li><a class="dropdown-item" href="object/{{$objectevent[0]->object}}" download >
+                    <img src="../images/downloadrow.png" alt=""class="m-1"width="20px" height="20px">Download file</a></li>
                     <li><a class="dropdown-item" data-toggle="modal" href="#delete-popup-{{$frontuserFor->id}}"
                                             >
                                                     <img src="../images/trash.png" alt="" class="m-1" width="20px"
@@ -323,12 +332,16 @@ use App\Models\location;
         // return $$objectproject;
     ?>
 
-    <form id="delete-form-{{$userFrontproject->id}}" action="{{route('delete')}}" method="post" class="d-none">
+<form id="delete-form-{{$userFrontproject->id}}" action="{{route('delete')}}" method="post" class="d-none">
                                             @csrf
          <input type="text" name="id" value="{{$userFrontproject->id}}">
 
     </form>
-                            
+    <form id="editform-{{$userFrontproject->id}}" action="{{route('editproject')}}" method="post" class="d-none">
+                                            @csrf
+         <input type="text" name="id" value="{{$userFrontproject->id}}">
+
+    </form> 
     <div class=" modal fade" id="delete-popup-{{$userFrontproject->id}}" tabindex="-1" role="dialog"
                                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -379,8 +392,9 @@ use App\Models\location;
                                             ...
                                         </a>
                                         <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
-                                            <li><a class="dropdown-item" href="#"><img src="../images/editpencil.png"
-                                                        alt="" class="m-1" width="20px" height="20px">Edit</a></li>
+                                        <li><a class="dropdown-item" href=""onclick="event.preventDefault();
+                                             document.getElementById('editform-{{$userFrontproject->id}}').submit();"><img src="../images/editpencil.png"
+                                                        alt="" class="m-1" width="20px" height="20px">{{$frontuserFor->id}}Edit</a></li>
                                             <li><a class="dropdown-item" href="createvents"><img
                                                         src="../images/calendar.png" alt="" class="m-1" width="20px"
                                                         height="20px">Create event</a></li>

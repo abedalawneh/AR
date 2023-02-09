@@ -35,17 +35,20 @@ Route::post('homeall', [AuthController::class, 'homeall'])->name('homeall');
 Route::post('delete', [projectcontroller::class, 'delete'])->name('delete');
 Route::post('delete', [locationcontroller::class, 'delete'])->name('delete');
 Route::post('deletevent', [eventcontroller::class, 'deletevent'])->name('deletevent');
-Route::post('download', [eventcontroller::class, 'download'])->name('download');
-Route::get('download/{filename}', [EventController::class, 'download']);
 
 // Route::get('landingpage', [AuthController::class, 'landingpage'])->name('landingpage');
+Route::post('editproject', [projectcontroller::class, 'editproject'])->name('editproject');
+Route::post('editevents', [eventcontroller::class, 'editevents'])->name('editevents');
 Route::get('resetemail', [AuthController::class, 'resetemail'])->name('resetemail');
 Route::get('resetpassword', [AuthController::class, 'resetpassword'])->name('resetpass');
 Route::post('stor', [projectcontroller::class, 'store'])->name('stor');
 Route::post('submiemailtForm', [AuthController::class, 'submiemailtForm'])->name('submiemailtForm');
 Route::post('projectinsert', [projectcontroller::class, 'projectinsert'])->name('projectinsertt');
+Route::post('editmarkerproject', [projectcontroller::class, 'editmarkerproject'])->name('editmarkerproject');
 Route::post('locationinsert', [locationcontroller::class, 'locationinsert'])->name('locationinsertt');
+Route::post('locationedit', [locationcontroller::class, 'locationedit'])->name('locationedit');
 Route::post('eventinsert', [eventcontroller::class, 'eventinsert'])->name('eventinsertt');
+Route::post('eventedit', [eventcontroller::class, 'eventedit'])->name('eventedit');
 // Route::get('resetpassword/{E-mail}', function ($email) {
 //     return view('resetpassword', ['email' => $email]);
 // })->name('resetpassword');

@@ -65,15 +65,15 @@
                     <p class="dreameparagraph">Interact with the world by combining the real world with your 
                         chosen objects. You can create your event just select the location and attach your object.</p>
                         <div class="buttonsection1 d-grid mx-auto  ">
-                        @if (Auth::check())
-                                <a href="{{ route('createvents') }}"onclick="event.preventDefault(); document.getElementById('createvent-form').submit();">
+                                @if (Auth::check())
+                                <a href="" onclick="event.preventDefault(); document.getElementById('createventform').submit();">
                                     <button type="submit" class="creatbutton btn  btn-block">Create my event</button></a>
                                     @else
                                     <a href="{{ route('login') }}">
                                     <button type="submit" class="creatbutton btn  btn-block">Create my event</button></a>
                                 @endif
                                 </div>
-                                <form id="createvent-form" action="{{ route('createvents') }}" method="POST" class="d-none">
+                                <form id="createventform" action="{{ route('createvents') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
             </div>
@@ -150,14 +150,14 @@
                                 </ul>
                                 <div class="d-grid mx-auto ">
                                 @if (Auth::check())
-                                <a href="{{ route('createvents') }}"onclick="event.preventDefault(); document.getElementById('createvent-form').submit();">
+                                <a href=""onclick="event.preventDefault(); document.getElementById('createvent').submit();">
                                     <button type="submit" class="creatbutton btn  btn-block">Create my event</button></a>
                                     @else
                                     <a href="{{ route('login') }}">
                                     <button type="submit" class="creatbutton btn  btn-block">Create my event</button></a>
                                 @endif
                                 </div>
-                                <form id="createvent-form" action="{{ route('createvents') }}" method="POST" class="d-none">
+                                <form id="createvent" action="{{ route('createvents') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                     <!-- <form id="login-form" action="{{route('login')}}" method="POST" class="d-none">
