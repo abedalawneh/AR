@@ -355,6 +355,47 @@ justify-content: space-evenly;
         flex-wrap: wrap !important; 
         
       }
+
+      .qrtitle{
+        font-size: 24px;
+        font-weight: 600 !important;
+      }
+      /* .qrtext{
+        
+      } */
+      .creatbuttonqr{
+        width: 174px;
+        height: 44px;
+        background: linear-gradient(115.94deg, #DB00FF -8.4%, #00F0FF 109.09%);
+        border-radius: 8px;
+        color: white;
+        font-weight: 500;
+        font-size: 18px;
+      }
+      .textbuttonqr2{
+        background: linear-gradient(115.94deg, #DB00FF -8.4%, #00F0FF 109.09%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 500;
+        font-size: 18px;
+    }
+    .creatbuttonqr2{
+        width: 174px;
+        height: 44px;
+        border-image:linear-gradient(115.94deg, #DB00FF -8.4%, #00F0FF 109.09%) !important;
+        border-radius: 8px;
+
+            }
+            .textqr2{
+                background: linear-gradient(115.94deg, #DB00FF -8.4%, #00F0FF 109.09%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                font-weight: 400;
+                font-size: 16px;
+                margin-left: 15%;
+            }
 @media screen and (max-width: 700px){
     .saveddiv{
       flex-direction: column !important;  

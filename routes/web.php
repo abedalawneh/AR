@@ -1,10 +1,11 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\ForgotPassController;
 use App\Http\Controllers\projectcontroller;
 use App\Http\Controllers\locationcontroller;
 use App\Http\Controllers\eventcontroller;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,8 @@ Route::post('project', [projectcontroller::class, 'project'])->name('project');
 Route::post('events', [AuthController::class, 'events'])->name('events');
 Route::get('events', [AuthController::class, 'events'])->name('events');
 Route::post('homeall', [AuthController::class, 'homeall'])->name('homeall');
+Route::get('homeall', [AuthController::class, 'homeall'])->name('homeall');
+Route::post('arlocation', [projectcontroller::class, 'arlocation'])->name('arlocation');
 Route::post('delete', [projectcontroller::class, 'delete'])->name('delete');
 Route::post('delete', [locationcontroller::class, 'delete'])->name('delete');
 Route::post('deletevent', [eventcontroller::class, 'deletevent'])->name('deletevent');
@@ -39,19 +42,16 @@ Route::post('deletevent', [eventcontroller::class, 'deletevent'])->name('deletev
 // Route::get('landingpage', [AuthController::class, 'landingpage'])->name('landingpage');
 Route::post('editproject', [projectcontroller::class, 'editproject'])->name('editproject');
 Route::post('editevents', [eventcontroller::class, 'editevents'])->name('editevents');
-Route::get('resetemail', [AuthController::class, 'resetemail'])->name('resetemail');
-Route::get('resetpassword', [AuthController::class, 'resetpassword'])->name('resetpass');
-Route::post('stor', [projectcontroller::class, 'store'])->name('stor');
-Route::post('submiemailtForm', [AuthController::class, 'submiemailtForm'])->name('submiemailtForm');
+// Route::get('resetemail', [AuthController::class, 'resetemail'])->name('resetemail');
+// Route::get('resetpassword', [AuthController::class, 'resetpassword'])->name('resetpass');
+// Route::post('stor', [projectcontroller::class, 'store'])->name('stor');
+// Route::post('submiemailtForm', [AuthController::class, 'submiemailtForm'])->name('submiemailtForm');
 Route::post('projectinsert', [projectcontroller::class, 'projectinsert'])->name('projectinsertt');
 Route::post('editmarkerproject', [projectcontroller::class, 'editmarkerproject'])->name('editmarkerproject');
 Route::post('locationinsert', [locationcontroller::class, 'locationinsert'])->name('locationinsertt');
 Route::post('locationedit', [locationcontroller::class, 'locationedit'])->name('locationedit');
 Route::post('eventinsert', [eventcontroller::class, 'eventinsert'])->name('eventinsertt');
 Route::post('eventedit', [eventcontroller::class, 'eventedit'])->name('eventedit');
-// Route::get('resetpassword/{E-mail}', function ($email) {
-//     return view('resetpassword', ['email' => $email]);
-// })->name('resetpassword');
 
 Route::get('/', function () {
     return view('landingpage');
@@ -60,3 +60,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');

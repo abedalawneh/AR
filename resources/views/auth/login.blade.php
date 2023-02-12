@@ -68,7 +68,7 @@
                                     </label>
                                 </div>
                                 @if (Route::has('password.request'))
-                                    <a class="Forgotpassword" href="{{ route('resetemail') }}">
+                                    <a class="Forgotpassword" href="{{ route('forget.password.get') }}">
                                         {{ __('Forgot password?') }}
                                     </a>
                                 @endif

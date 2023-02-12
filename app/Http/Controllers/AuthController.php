@@ -26,7 +26,7 @@ class AuthController extends Controller
    
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('project')
+            return redirect()->route('homeall')
                         ->withSuccess('Signed in');
         }
   
@@ -51,7 +51,7 @@ class AuthController extends Controller
     {
         return view('homeall');
     }
-   
+    
     
     public function events()
     {
@@ -172,7 +172,7 @@ class AuthController extends Controller
             });
     
             if ($response === Password::PASSWORD_RESET) {
-                return redirect()->route('home')->with('status', trans($response));
+                return redirect()->route('homeall')->with('status', trans($response));
             }
     
             return back()->withErrors(

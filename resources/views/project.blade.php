@@ -255,10 +255,13 @@ use App\Models\objectt;
       ?>
                 <div class="saveddiv d-flex">
                     <?php
+          
       foreach ($userFront1 as $frontuserFor) {
-        $objectproject = objectt::where('project_id', $frontuserFor->id)->get();
-        // $iduser=$frontuserFor->id;
-        // return $$objectproject;
+          $objectproject = objectt::where('project_id', $frontuserFor->id)->get();
+          
+          // $iduser=$frontuserFor->id;
+          // return $$objectproject;
+           
     ?>
 
     <form id="delete-form-{{$frontuserFor->id}}" action="{{route('delete')}}" method="post" class="d-none">
@@ -271,6 +274,11 @@ use App\Models\objectt;
          <input type="text" name="id" value="{{$frontuserFor->id}}">
 
     </form>                  
+    <form id="ar-form-{{$frontuserFor->id}}" action="{{route('arlocation')}}" method="post" class="d-none">
+                                            @csrf
+         <input type="text" name="id" value="{{$frontuserFor->id}}">
+
+    </form> 
     <div class=" modal fade" id="delete-popup-{{$frontuserFor->id}}" tabindex="-1" role="dialog"
                                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -340,8 +348,52 @@ use App\Models\objectt;
                                            
                             </div>
                         </div>
+                        <div class="d-flex justify-content-between align-items-center ">
+                            <p class="totlesaved m-2">{{$frontuserFor->project_name}}</p>
+                            <?php
+                            if ($frontuserFor->based_tybe=="Location based"){
+                            ?>
+                            <a href="#qrcodepopup-{{$frontuserFor->id}}" data-toggle="modal"  class="totlesaved m-2 text-decoration-none">QR</a>
+                            <?php }?>
+                        </div>
+                         <!-- Modal -->
 
-                        <p class="totlesaved m-2">{{$frontuserFor->project_name}}</p>
+         <div class=" modal fade" id="qrcodepopup-{{$frontuserFor->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="bgroundmodal modal-content">
+                <!-- <div class="modal-header">
+                    </div> -->
+                    <button type="button" class="closeimage close m-3" data-dismiss="modal" aria-label="Close">
+                    <span class=" d-flex justify-content-end align-items-end" aria-hidden="true"><img src="../images/closeimage.png" alt="notfound"></span>
+                    </button>
+                    <div class="card-body d-flex justify-content-center">
+                    <!-- <a href=""onclick="event.preventDefault();
+                     document.getElementById('ar-form-{{$frontuserFor->id}}').submit();"> -->
+                    {!! QrCode::size(200)->generate(route('arlocation')) !!}
+                <!-- </a> -->
+                    </div>
+                <div class="modal-body m-3">
+                <h1 class="modal-title qrtitle d-flex  justify-content-center" id="exampleModalLongTitle">Success</h1>
+                <p class="qrtext d-flex  justify-content-center" >Here you are your link you can send or save it.</p>
+                <?php 
+                $randomString =Str::random() ;
+                $link = 'https://'.$randomString;
+                ?>
+                   <span class="textqr2"><a href=""onclick="event.preventDefault();
+                     document.getElementById('ar-form-{{$frontuserFor->id}}').submit();">{{$link}}</a></span>
+                     
+               </div>
+               <div class=" m-3 d-flex row justify-content-evenly align-items-center">
+                <button type="button" class="creatbuttonqr2 btn  btn-block m-0  " data-dismiss="modal" download><span  class="textbuttonqr2">Download</span> </button>
+               <button type="button" class="creatbuttonqr btn  btn-block m-0  " data-dismiss="modal">Send</button>
+               </div>
+                <!-- <div class="modal-footer">
+                </div> -->
+                </div>
+            </div>
+            </div>
+
+
                         <div class="d-flex ">
                             <p class="textsaved m-2 p-2">{{$frontuserFor->based_tybe}}</p>
                             <?php

@@ -19,7 +19,7 @@ use App\Models\objectt;
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
 
-    <title>create project</title>
+    <title>Edit project</title>
 </head>
 <body>
 <!-- $user = User::findOrFail(Auth::user()->id); -->

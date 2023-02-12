@@ -26,6 +26,13 @@ class projectcontroller extends Controller
         return view('editproject', ['userFront1' =>$userFront1]);
 
     }
+    public function arlocation(Request $request)
+    {
+        $userFront1 = project::where('id', $request->id)->get();
+        return view('arlocation', ['userFront1' =>$userFront1]);
+
+        // return view('arlocation');
+    }
 
   public function projectinsert(Request $request)
     {

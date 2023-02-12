@@ -187,21 +187,7 @@ use App\Models\location;
         </div>
         </nav>
     <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light ">
-        <div class="containerfluid container-fluid m-1">
-        <p class="textfluid">Saved events</p>
-            <div class="collapse  d-flex  justify-content-end" id="navbarNavDropdown">
-            <a href="{{ route('createvents') }}"onclick="event.preventDefault(); document.getElementById('createproject-form').submit();">
-            <button type="submit" class="creatbutton btn  btn-block m-0  ">  
-            <img src="../images/pageedit.png" alt="" width="24" height="24" class="imagebar d-inline-block align-text-center ">
-            <span class="textbuttonspan">Create event</span> </button></a>
-            <form id="createproject-form" action="{{ route('createvents') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                  </div>
-        </div>
-        
-    </nav>
+    
     <?php
      
     $userFront1 = event::where('user_id', Auth::user()->id)->get();

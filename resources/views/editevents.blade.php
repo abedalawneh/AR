@@ -17,7 +17,7 @@ use App\Models\location;
     <link href="../css/dashbord.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
-    <title>create event</title>
+    <title>Edit event</title>
 </head>
 <body>
 <!-- $user = User::findOrFail(Auth::user()->id); -->
