@@ -316,9 +316,10 @@ use App\Models\objectt;
                         <div class="imgmenu m-2 d-flex ">
                             <?php if (count($objectproject) > 0) {
                                 // Access the first element in the array
-                            $object = $objectproject[0];?>
-                            <img src="object/{{$object->object}}" alt="not found" class="m-3" width="150px"
-                                height="150px">
+                            $object = $objectproject[0];
+                            $gitf=$object->object;?>
+                            <!-- <a href="{{ asset('object/' . $gitf) }}">View glTF Model</a> -->
+                            <img src="object/{{$object->object}}" alt="not found" class="m-3" width="150px" height="150px">
                                 <?php }?>
                             <div class="dropdowninner " id="navbarNavDropdown">
                                 <ul class="navbar-nav ">

@@ -12,8 +12,10 @@ use App\Models\objectt;
 <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
-  <!-- we import arjs version without NFT but with marker + location based support -->
-  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+<!-- we import arjs version without NFT but with marker + location based support -->
+<script src="https://cdn.jsdelivr.net/npm/ar.js@3.0.0/aframe/build/aframe-ar.min.js"></script>
+
 </head>
 <body>
 <?php
@@ -31,23 +33,16 @@ use App\Models\objectt;
      
      <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
        <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
-       <a-assets><a-asset-item id="animated-asset" src="object/{{$object->object}}"></a-asset-item></a-assets>
-       <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 32.085787 ; longitude: 36.0933741" scale="10 10 10"></a-entity>
+       <a-asset-item id="model" src="object/{{$object->object}}"></a-asset-item>
+       <a-entity  gltf-model="#model" gps-new-entity-place="latitude: 32.085787 ; longitude: 36.0933741" scale="10 10 10"></a-entity>
       </a-scene>
+
+
       
       <?php }
       
       ?>
-<!-- <a-scene embedded arjs>
-      <a-marker preset="hiro"> -->
-        <!-- <a-entity
-          position="0 0 0"
-          scale="0.05 0.05 0.05"
-          gltf-model="object/{{$object->object}}"
-        ></a-entity>
-      </a-marker>
-      <a-entity camera></a-entity>
-    </a-scene> -->
+
 <?php } }?>
 
 </body>
