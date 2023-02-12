@@ -148,7 +148,7 @@
                                     <li class="">E-commerce</li>
                                     <li class="">Marketing </li>
                                 </ul>
-                                <div class="d-grid mx-auto ">
+                                <div class="d-grid  mx-auto ">
                                 @if (Auth::check())
                                 <a href=""onclick="event.preventDefault(); document.getElementById('createvent').submit();">
                                     <button type="submit" class="creatbutton btn  btn-block">Create my event</button></a>

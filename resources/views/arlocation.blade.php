@@ -12,7 +12,8 @@ use App\Models\objectt;
 <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
-<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <!-- we import arjs version without NFT but with marker + location based support -->
+  
 </head>
 <body>
 <?php
@@ -36,8 +37,8 @@ use App\Models\objectt;
       if (count($objectproject) > 0) {
       $object = $objectproject[0];
       ?>
-<!-- <a-scene embedded arjs>
-      <a-marker preset="hiro"> -->
+<a-scene embedded arjs>
+      <a-marker preset="hiro">
         <!-- we use cors proxy to avoid cross-origin problems -->
         <!--
           ⚠️⚠️⚠️
@@ -45,14 +46,14 @@ use App\Models\objectt;
           You need to host your own proxy and use it instead. The proxy is based on CORS Anywhere (see https://github.com/Rob--W/cors-anywhere).
           ⚠️⚠️⚠️
         -->
-        <!-- <a-entity
+        <a-entity
           position="0 0 0"
           scale="0.05 0.05 0.05"
-          gltf-model="{{ $object->object }}"
+          gltf-model="object/{{$object->object}}"
         ></a-entity>
       </a-marker>
       <a-entity camera></a-entity>
-    </a-scene> -->
+    </a-scene>
 <?php } }?>
 
 </body>
