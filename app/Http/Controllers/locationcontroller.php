@@ -18,6 +18,7 @@ class locationcontroller extends Controller
         if ($request->hasFile('file3')) {
             $file = $request->file('file3');
             $destinationPath = public_path('object');
+            // return $file;
             $filename = $file->getClientOriginalName();
             $file->move($destinationPath, $filename);
             // return "File saved successfully at: $destinationPath/$filename";
@@ -72,8 +73,10 @@ class locationcontroller extends Controller
                     $object->save();
                     // ]);
 
+
+                    
                 
-                
+
                 if ($object && $project &&$location) {
                     return response()->json([
                         'result'=>true,

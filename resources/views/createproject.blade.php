@@ -592,7 +592,7 @@
             var fileInput1 = document.getElementById('file-input3').files[0];
             var formData = new FormData($("#locationform")[0]);
             
-            console.log(fileInput1);
+            // console.log(fileInput1);
 
             formData.append('file1name', fileInput1.name);
             $.ajax({

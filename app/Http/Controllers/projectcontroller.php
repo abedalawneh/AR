@@ -10,6 +10,7 @@ use Illuminate\Http\UploadedFile;
 use App\Http\Requests\JsonRequest;
 use App\Models\project;
 use App\Models\objectt;
+use App\Models\giftfile;
 
 class projectcontroller extends Controller
 {
@@ -96,6 +97,13 @@ class projectcontroller extends Controller
                     $object->user_id =$request->userid;
                     $object->project_id =$project->id;
                     $object->save();
+
+                    $giftFile = new GiftFile();
+                    $giftFile->name = $request->fle2name;
+                    $giftFile->file_data = file_get_contents($request->file('gift_file')->path());;
+                    $giftFile->user_id =$request->userid;
+                    $giftFile->project_id =$project->id;
+                    $giftFile->save();
                     
                 // ]);
 

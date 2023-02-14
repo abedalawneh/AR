@@ -17,8 +17,9 @@ use App\Models\objectt;
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="../css/dashbord.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
-    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.119.1/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tweenjs/tween.js@17.0.0/dist/tween.esm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.119.1/examples/js/loaders/GLTFLoader.js"></script>
 
     <title>project</title>
 </head>
