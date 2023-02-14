@@ -3,86 +3,86 @@
     {
       "bufferView": 2,
       "componentType": 5126,
-      "count": 4928,
+      "count": 14544,
       "max": [
-        1.2184040546417236,
-        1.4946719408035278,
-        -3.345216989517212
+        1.2359799146652222,
+        0.8188275098800659,
+        1.1918694972991943
       ],
       "min": [
-        -0.6284329891204834,
-        -0.8364700078964233,
-        -5.355831146240234
+        -1.2391477823257446,
+        0.007129758596420288,
+        -1.2737997770309448
       ],
       "type": "VEC3"
     },
     {
       "bufferView": 2,
-      "byteOffset": 59136,
+      "byteOffset": 174528,
       "componentType": 5126,
-      "count": 4928,
+      "count": 14544,
       "max": [
-        0.9994149804115295,
-        0.9995511770248413,
-        0.9982882738113403
+        0.9996334910392761,
+        0.9999799132347107,
+        0.9999616146087646
       ],
       "min": [
-        -0.9998814463615417,
-        -0.9996941685676575,
-        -0.9997097849845886
+        -0.9993329644203186,
+        -1.0,
+        -0.9995566606521606
       ],
       "type": "VEC3"
     },
     {
       "bufferView": 1,
       "componentType": 5126,
-      "count": 4928,
+      "count": 14544,
       "max": [
-        0.999891996383667,
-        0.9087269902229309
+        0.9979950189590454,
+        0.5215363502502441
       ],
       "min": [
-        2.700000004551839e-05,
-        2.8014183044433594e-05
+        0.0020049833692610264,
+        0.0020049833692610264
       ],
       "type": "VEC2"
     },
     {
       "bufferView": 0,
       "componentType": 5125,
-      "count": 28218,
+      "count": 85662,
       "type": "SCALAR"
     }
   ],
   "asset": {
     "extras": {
-      "author": "ghosternight (https://sketchfab.com/ghosternight)",
+      "author": "Unreal Designer (https://sketchfab.com/unrealdesigner.ig)",
       "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
-      "source": "https://sketchfab.com/3d-models/photoscan-bag-fa0ede1f6c5646d9b05a74b9601a4fba",
-      "title": "photoscan bag"
+      "source": "https://sketchfab.com/3d-models/bean-bag-base-mesh-3-2ead0aad0ab841009f0dc46ed612cca9",
+      "title": "Bean Bag - Base Mesh 3"
     },
-    "generator": "Sketchfab-14.64.0",
+    "generator": "Sketchfab-14.81.0",
     "version": "2.0"
   },
   "bufferViews": [
     {
       "buffer": 0,
-      "byteLength": 112872,
+      "byteLength": 342648,
       "name": "floatBufferViews",
       "target": 34963
     },
     {
       "buffer": 0,
-      "byteLength": 39424,
-      "byteOffset": 112872,
+      "byteLength": 116352,
+      "byteOffset": 342648,
       "byteStride": 8,
       "name": "floatBufferViews",
       "target": 34962
     },
     {
       "buffer": 0,
-      "byteLength": 118272,
-      "byteOffset": 152296,
+      "byteLength": 349056,
+      "byteOffset": 459000,
       "byteStride": 12,
       "name": "floatBufferViews",
       "target": 34962
@@ -90,36 +90,29 @@
   ],
   "buffers": [
     {
-      "byteLength": 270568,
+      "byteLength": 808056,
       "uri": "scene.bin"
-    }
-  ],
-  "extensionsUsed": [
-    "KHR_materials_unlit"
-  ],
-  "images": [
-    {
-      "uri": "textures/material_baseColor.jpeg"
     }
   ],
   "materials": [
     {
       "doubleSided": true,
-      "extensions": {
-        "KHR_materials_unlit": {}
-      },
-      "name": "material",
+      "name": "Material.002",
       "pbrMetallicRoughness": {
-        "baseColorTexture": {
-          "index": 0
-        },
-        "metallicFactor": 0.0
+        "baseColorFactor": [
+          0.827553,
+          0.407393,
+          0.052924,
+          1.0
+        ],
+        "metallicFactor": 0.047238239202252806,
+        "roughnessFactor": 0.6140971096292864
       }
     }
   ],
   "meshes": [
     {
-      "name": "Default_PBR_0",
+      "name": "Object_0",
       "primitives": [
         {
           "attributes": {
@@ -140,17 +133,17 @@
         1
       ],
       "matrix": [
-        1.0,
+        0.6269069910049438,
         0.0,
         0.0,
         0.0,
         0.0,
-        2.220446049250313e-16,
-        -1.0,
+        1.3920131514243291e-16,
+        -0.6269069910049438,
         0.0,
         0.0,
-        1.0,
-        2.220446049250313e-16,
+        0.6269069910049438,
+        1.3920131514243291e-16,
         0.0,
         0.0,
         0.0,
@@ -163,49 +156,41 @@
       "children": [
         2
       ],
+      "name": "root"
+    },
+    {
+      "children": [
+        3
+      ],
       "matrix": [
-        0.009999999776482582,
+        1.0,
         0.0,
         0.0,
         0.0,
         0.0,
+        2.220446049250313e-16,
+        1.0,
         0.0,
-        0.009999999776482582,
         0.0,
-        0.0,
-        -0.009999999776482582,
-        0.0,
+        -1.0,
+        2.220446049250313e-16,
         0.0,
         0.0,
         0.0,
         0.0,
         1.0
       ],
-      "name": "f4b71b327c8f467ab549d8500b625e00.fbx"
-    },
-    {
-      "children": [
-        3
-      ],
-      "name": "RootNode"
+      "name": "GLTF_SceneRootNode"
     },
     {
       "children": [
         4
       ],
-      "name": "Default"
+      "name": "BeanBag3_0"
     },
     {
       "mesh": 0,
-      "name": "Default_PBR_0"
-    }
-  ],
-  "samplers": [
-    {
-      "magFilter": 9729,
-      "minFilter": 9987,
-      "wrapS": 10497,
-      "wrapT": 10497
+      "name": "Object_4"
     }
   ],
   "scene": 0,
@@ -215,12 +200,6 @@
       "nodes": [
         0
       ]
-    }
-  ],
-  "textures": [
-    {
-      "sampler": 0,
-      "source": 0
     }
   ]
 }

@@ -7,6 +7,7 @@ use App\Models\project;
 use App\Models\objectt;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 use App\Models\location;
 use App\Models\event;
 
@@ -15,43 +16,7 @@ class locationcontroller extends Controller
   public function locationinsert(Request $request)
     {
         // return $request;
-        if ($request->hasFile('file3')) {
-            $file = $request->file('file3');
-            $destinationPath = public_path('object');
-            // return $file;
-            $filename = $file->getClientOriginalName();
-            $file->move($destinationPath, $filename);
-            // return "File saved successfully at: $destinationPath/$filename";
-            // Get the uploaded file from the request
-        $file = $request->file('file3');
-
-        // Set the path for the new folder
-        $originalFileName = $file->getClientOriginalName();
-        $newFolderPath = 'public/gltf/'.$originalFileName;
-            return $newFolderPath;
-        // Create the new folder if it doesn't exist
-        if (!Storage::exists($newFolderPath)) {
-            Storage::makeDirectory($newFolderPath);
-        }
-
-        // Get the original file name
-        $originalFileName = $file->getClientOriginalName();
-
-        // Set the new file name with a timestamp prefix to avoid naming conflicts
-        $newFileName = time() . '_' . $originalFileName;
-
-        // Set the path for the new file
-        $newFilePath = $newFolderPath.'/'.$newFileName;
-
-        // Move the file to the new folder
-        Storage::putFileAs($newFolderPath, $file, $newFileName);
-
-            // $file = $request->file('file3');
-            // $destinationPath = public_path('gltf');
-            // $filename = $file->getClientOriginalName();
-            // $file->move($destinationPath, $filename);
-        }
-        return $request;
+        
         try {
             
             // $validator = Validator::make($request->all(), [
@@ -86,7 +51,8 @@ class locationcontroller extends Controller
                     $project->user_id =$request->userid;
                     $project->save();
                     // $path2 = $request->fle2name->store('public/object');
-                    
+                  
+
                     $location = new location;
                     $location->location=$request->autocomplete;
                     $location->latitude=$request->Latitude;
@@ -96,13 +62,22 @@ class locationcontroller extends Controller
                     $location->save();
 
                     $object = new objectt;
-                    $object->object = $request->file1name;
-                    $object->user_id =$request->userid;
+                    $object->object = 'scene.gltf';
+                     $object->user_id =$request->userid;
                     $object->project_id =$project->id;
                     $object->save();
                     // ]);
 
-
+                    if ($request->hasFile('file3')) {
+                        $files = $request->file('file3');   
+                                $name='scene.gltf'.$project->id;
+                                File::makeDirectory(public_path("{$name}"), 0755, true);                           
+                        foreach ($files as $file) {
+                            $destinationPath = public_path("{$name}");
+                            $filename = $file->getClientOriginalName();
+                            $file->move($destinationPath, $filename);
+                        }
+                    }
                     
                 
 
