@@ -19,6 +19,8 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 */
 Route::post('login', [AuthController::class, 'index'])->name('login');
 
+
+
 Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom'); 
 Route::get('registration', [AuthController::class, 'registration'])->name('register-user');
 Route::post('custom-registration', [AuthController::class, 'customRegistration'])->name('register.custom'); 

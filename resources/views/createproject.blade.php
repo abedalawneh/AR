@@ -264,7 +264,7 @@
 
                             </label>
                                     <div class="selectFile">       
-                                    <input type="file" name="file2" id="file-input2">
+                                    <input type="file" name="file2" id="file-input2" multiple>
                                     </div>
                                     <p class="radiotext">3D, Image, Video. It will link to your marker or our QR code. Max size is 50 MB </p>
                             </div>
@@ -361,7 +361,7 @@
 
                     </label>
                             <div class="selectFile">       
-                            <input type="file" name="file3" id="file-input3">
+                            <input type="file" name="file3" id="file-input3" multiple>
                             </div>
                             <p class="radiotext">3D, Image, Video. It will link to your marker or our QR code. Max size is 50 MB </p>
                     </div>

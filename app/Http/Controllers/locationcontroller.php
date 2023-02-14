@@ -22,7 +22,36 @@ class locationcontroller extends Controller
             $filename = $file->getClientOriginalName();
             $file->move($destinationPath, $filename);
             // return "File saved successfully at: $destinationPath/$filename";
+            // Get the uploaded file from the request
+        $file = $request->file('file3');
+
+        // Set the path for the new folder
+        $originalFileName = $file->getClientOriginalName();
+        $newFolderPath = 'public/gltf/'.$originalFileName;
+            return $newFolderPath;
+        // Create the new folder if it doesn't exist
+        if (!Storage::exists($newFolderPath)) {
+            Storage::makeDirectory($newFolderPath);
         }
+
+        // Get the original file name
+        $originalFileName = $file->getClientOriginalName();
+
+        // Set the new file name with a timestamp prefix to avoid naming conflicts
+        $newFileName = time() . '_' . $originalFileName;
+
+        // Set the path for the new file
+        $newFilePath = $newFolderPath.'/'.$newFileName;
+
+        // Move the file to the new folder
+        Storage::putFileAs($newFolderPath, $file, $newFileName);
+
+            // $file = $request->file('file3');
+            // $destinationPath = public_path('gltf');
+            // $filename = $file->getClientOriginalName();
+            // $file->move($destinationPath, $filename);
+        }
+        return $request;
         try {
             
             // $validator = Validator::make($request->all(), [
