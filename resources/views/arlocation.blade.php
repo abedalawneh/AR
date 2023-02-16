@@ -32,19 +32,33 @@ use App\Models\objectt;
 
      
 
-      <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
+      <!-- <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
         <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
-        <a-entity  position="1 1 1" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
+        <a-entity  position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
 
         gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"></a-entity>
-
-        <a-animation attribute="position" to="0 0 -1.5" dur="1000" easing="ease-in-out" begin="click"></a-animation>
-    <a-animation attribute="rotation" to="0 360 0" dur="2000" easing="linear" repeat="indefinite"></a-animation>
-    
     </a-scene>
-   
+    -->
     
-     
+    <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
+    <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+    <a-entity id="gltf-entity" position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}" gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"></a-entity>
+
+    <script>
+        AFRAME.registerComponent('gltf-mover', {
+            tick: function () {
+                // Get the camera's position
+                var cameraPos = this.el.sceneEl.camera.el.object3D.getWorldPosition();
+
+                // Update the position of the GLTF entity to be in front of the camera
+                this.el.object3D.position.set(cameraPos.x, cameraPos.y, cameraPos.z - 10);
+            }
+        });
+        // Add the gltf-mover script to the gltf-entity
+        document.querySelector('#gltf-entity').setAttribute('gltf-mover', '');
+    </script>
+</a-scene>
+
 
     <?php }
       
