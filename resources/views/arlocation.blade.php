@@ -33,25 +33,30 @@ use App\Models\objectt;
      
 
       <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
-        <a-camera gps-new-camera='gpsMinDistance: 5' cursor></a-camera>
+        <a-camera gps-new-camera='gpsMinDistance: 5' cursor look-controls
+          look-at="[gps-entity-place]"></a-camera>
         <a-entity  position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
         gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"
         animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000"
-          event-set__click="_event: click; _target: #model-info; visible: true" cursor-listener></a-entity>
+           model-controls></a-entity>
         
-          <script>AFRAME.registerComponent('cursor-listener', {
+          <script>
+      AFRAME.registerComponent('model-controls', {
   init: function () {
     var el = this.el;
-    el.addEventListener('click', function (evt) {
-      // update the position of the model entity
-      el.setAttribute('position', '0 1.6 -3');
-    });
-    el.addEventListener('touchstart', function (evt) {
-      // update the position of the model entity
-      el.setAttribute('position', '0 1.6 -3');
-    });
+    var model = el.getObject3D('mesh');
+    var modelScale = el.getAttribute('scale');
+    var boundingBox = new THREE.Box3().setFromObject(model);
+    var modelSize = boundingBox.getSize(new THREE.Vector3());
+    var maxModelSize = Math.max(modelSize.x, modelSize.y, modelSize.z);
+    var scaleFactor = 2.0 / maxModelSize;
+    el.setAttribute('scale', `${scaleFactor} ${scaleFactor} ${scaleFactor}`);
+    var newPosition = el.getComputedAttribute('position');
+    newPosition.y += modelSize.y / 2 * scaleFactor;
+    el.setAttribute('position', newPosition);
   }
 });
+
 </script>
         <!-- animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000" -->
     </a-scene>
