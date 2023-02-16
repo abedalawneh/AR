@@ -37,25 +37,26 @@ use App\Models\objectt;
           look-at="[gps-entity-place]"></a-camera>
         <a-entity  position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
         gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"
-        animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000"
-           model-controls></a-entity>
+        animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 1000"
+           model-controls
+           ></a-entity>
         
           <script>
-      AFRAME.registerComponent('model-controls', {
-  init: function () {
-    var el = this.el;
-    var model = el.getObject3D('mesh');
-    var modelScale = el.getAttribute('scale');
-    var boundingBox = new THREE.Box3().setFromObject(model);
-    var modelSize = boundingBox.getSize(new THREE.Vector3());
-    var maxModelSize = Math.max(modelSize.x, modelSize.y, modelSize.z);
-    var scaleFactor = 2.0 / maxModelSize;
-    el.setAttribute('scale', `${scaleFactor} ${scaleFactor} ${scaleFactor}`);
-    var newPosition = el.getComputedAttribute('position');
-    newPosition.y += modelSize.y / 2 * scaleFactor;
-    el.setAttribute('position', newPosition);
-  }
-});
+//       AFRAME.registerComponent('model-controls', {
+//   init: function () {
+//     var el = this.el;
+//     var model = el.getObject3D('mesh');
+//     var modelScale = el.getAttribute('scale');
+//     var boundingBox = new THREE.Box3().setFromObject(model);
+//     var modelSize = boundingBox.getSize(new THREE.Vector3());
+//     var maxModelSize = Math.max(modelSize.x, modelSize.y, modelSize.z);
+//     var scaleFactor = 2.0 / maxModelSize;
+//     el.setAttribute('scale', `${scaleFactor} ${scaleFactor} ${scaleFactor}`);
+//     var newPosition = el.getComputedAttribute('position');
+//     newPosition.y += modelSize.y / 2 * scaleFactor;
+//     el.setAttribute('position', newPosition);
+//   }
+// });
 
 </script>
         <!-- animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000" -->
