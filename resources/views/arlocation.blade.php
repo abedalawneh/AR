@@ -36,9 +36,24 @@ use App\Models\objectt;
         <a-camera gps-new-camera='gpsMinDistance: 5' cursor></a-camera>
         <a-entity  position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
         gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"
-        ></a-entity>
+        animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000"
+          event-set__click="_event: click; _target: #model-info; visible: true" cursor-listener></a-entity>
         
-
+          <script>AFRAME.registerComponent('cursor-listener', {
+  init: function () {
+    var el = this.el;
+    el.addEventListener('click', function (evt) {
+      // update the position of the model entity
+      el.setAttribute('position', '0 1.6 -3');
+    });
+    el.addEventListener('touchstart', function (evt) {
+      // update the position of the model entity
+      el.setAttribute('position', '0 1.6 -3');
+    });
+  }
+});
+</script>
+        <!-- animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000" -->
     </a-scene>
    
     
