@@ -17,9 +17,7 @@ use App\Models\objectt;
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="../css/dashbord.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.119.1/build/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tweenjs/tween.js@17.0.0/dist/tween.esm.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.119.1/examples/js/loaders/GLTFLoader.js"></script>
+    
 
     <title>project</title>
 </head>
@@ -318,10 +316,25 @@ use App\Models\objectt;
                             <?php if (count($objectproject) > 0) {
                                 // Access the first element in the array
                             $object = $objectproject[0];
-                            $gitf=$object->object;?>
-                            <!-- <a href="{{ asset('object/' . $gitf) }}">View glTF Model</a> -->
-                            <img src="object/{{$object->object}}" alt="not found" class="m-3" width="150px" height="150px">
-                                <?php }?>
+                            $gltf=$object->object;
+                            ?>
+                            <!-- <img src="/scene.gltf{{$frontuserFor->id}}/{{$object->object}}" alt="not found" class="m-3" width="150px" height="150px"> -->
+                                <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+                                <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+                                <!-- Use it like any other HTML element -->
+                                <model-viewer id="toggle-poster" src="scene.gltf{{$frontuserFor->id}}/scene.gltf" controls
+                                auto-rotate poster="assets/poster2.png"></model-viewer>
+                                <script>
+                                    const posters = ['poster.png', 'poster2.png'];
+                                    let i = 0;
+                                    setInterval(() =>
+                                        document.querySelector('#toggle-poster').setAttribute('poster',
+                                            `assets/${posters[i++ % 2]}`), 2000);
+                                </script>
+
+
+                                <?php }
+                                    ?>
                             <div class="dropdowninner " id="navbarNavDropdown">
                                 <ul class="navbar-nav ">
 

@@ -105,6 +105,11 @@ class locationcontroller extends Controller
     }
     public function delete(Request $request)
     {
+        $name='scene.gltf'.$request->id;
+        $path = public_path("{$name}");
+        if(File::exists($path)) {
+            File::deleteDirectory($path);
+        }
     $locationproject = location::where('project_id', $request->id)->get();
 
     foreach ($locationproject as $locationproject) {
@@ -125,14 +130,24 @@ class locationcontroller extends Controller
   
     public function locationedit(Request $request)
     {
+        $name='scene.gltf'.$request->id;
+        $path = public_path("{$name}");
+        if(File::exists($path)) {
+            File::deleteDirectory($path);
+        }
     //    return $request;
         
-        if ($request->hasFile('file3')) {
-            $file = $request->file('file3');
-            $destinationPath = public_path('object');
+    if ($request->hasFile('file3')) {
+        $files = $request->file('file3');   
+                $name='scene.gltf'.$project->id;
+                File::makeDirectory(public_path("{$name}"), 0755, true);                           
+        foreach ($files as $file) {
+            $destinationPath = public_path("{$name}");
             $filename = $file->getClientOriginalName();
             $file->move($destinationPath, $filename);
         }
+    }
+    
         
         $objectproject = objectt::where('project_id', $request->id)->get();
         foreach ($objectproject as $objectproject) {

@@ -8,6 +8,7 @@ use App\Models\objectt;
 use App\Models\project;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 use App\Models\location;
 
 class eventcontroller extends Controller
@@ -24,13 +25,13 @@ class eventcontroller extends Controller
 
         
         // return $request;
-        if ($request->hasFile('file1')) {
-            $file = $request->file('file1');
-            $destinationPath = public_path('object');
-            $filename = $file->getClientOriginalName();
-            $file->move($destinationPath, $filename);
-            // return "File saved successfully at: $destinationPath/$filename";
-        }
+        // if ($request->hasFile('file1')) {
+        //     $file = $request->file('file1');
+        //     $destinationPath = public_path('object');
+        //     $filename = $file->getClientOriginalName();
+        //     $file->move($destinationPath, $filename);
+        //     // return "File saved successfully at: $destinationPath/$filename";
+        // }
         try {
             
             // $validator = Validator::make($request->all(), [
@@ -74,10 +75,11 @@ class eventcontroller extends Controller
 
                         
                         $object = new objectt;
-                        $object->object = $request->file1name;
-                        $object->user_id =$request->userid;
-                        $object->save();
-                        
+                    $object->object = 'scene.gltf';
+                     $object->user_id =$request->userid;
+                    $object->save();
+                    
+                      
                         $location = new location;
                         $location->location=$request->autocomplete;
                         $location->latitude=$request->Latitude;
@@ -92,15 +94,27 @@ class eventcontroller extends Controller
                         $event->location_id =$location->id;
                         $event->user_id =$request->userid;
                         $event->save();
+
+                        if ($request->hasFile('file1')) {
+                            $files = $request->file('file1');   
+                                    $name='scene.gltf'.$event->id;
+                                    File::makeDirectory(public_path("{$name}"), 0755, true);                           
+                            foreach ($files as $file) {
+                                $destinationPath = public_path("{$name}");
+                                $filename = $file->getClientOriginalName();
+                                $file->move($destinationPath, $filename);
+                            }
+                        }
                     }
                     
                     else if ($request->optionobject ==null  ){
                     
 
-                    $object = new objectt;
-                    $object->object = $request->file1name;
-                    $object->user_id =$request->userid;
-                    $object->save();
+                        $object = new objectt;
+                        $object->object = 'scene.gltf';
+                         $object->user_id =$request->userid;
+                        $object->save();
+                        
 
                     $event = new event;
                     $event->event_name =$request->eventname;
@@ -109,6 +123,17 @@ class eventcontroller extends Controller
                     $event->location_id =$request->optionlocation;
                     $event->user_id =$request->userid;
                     $event->save();
+
+                    if ($request->hasFile('file1')) {
+                        $files = $request->file('file1');   
+                                $name='scene.gltf'.$event->id;
+                                File::makeDirectory(public_path("{$name}"), 0755, true);                           
+                        foreach ($files as $file) {
+                            $destinationPath = public_path("{$name}");
+                            $filename = $file->getClientOriginalName();
+                            $file->move($destinationPath, $filename);
+                        }
+                    }
 
                     }
                     else if ($request->optionlocation == null) {
@@ -155,8 +180,15 @@ class eventcontroller extends Controller
            return $ex->getMessage();
         }
     }
+
     public function deletevent(Request $request)
     {
+        $name='scene.gltf'.$request->id;
+        $path = public_path("{$name}");
+        if(File::exists($path)) {
+            File::deleteDirectory($path);
+        }
+        
     $locationproject = location::where('event_id', $request->id)->get();
 
     foreach ($locationproject as $locationproject) {
@@ -178,6 +210,21 @@ class eventcontroller extends Controller
         
     public function eventedit   (Request $request)
     {
+        $name='scene.gltf'.$request->id;
+        $path = public_path("{$name}");
+        if(File::exists($path)) {
+            File::deleteDirectory($path);
+        }
+        if ($request->hasFile('file1')) {
+            $files = $request->file('file1');   
+                    $name='scene.gltf'.$event->id;
+                    File::makeDirectory(public_path("{$name}"), 0755, true);                           
+            foreach ($files as $file) {
+                $destinationPath = public_path("{$name}");
+                $filename = $file->getClientOriginalName();
+                $file->move($destinationPath, $filename);
+            }
+        }
     //    return $request;
     $objectproject = objectt::where('project_id', $request->id)->get();
     $locationproject = location::where('project_id', $request->id)->get();

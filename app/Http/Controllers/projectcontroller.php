@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\UploadedFile;
 use App\Http\Requests\JsonRequest;
+use Illuminate\Support\Facades\File;
 use App\Models\project;
 use App\Models\objectt;
 use App\Models\giftfile;
@@ -37,7 +38,7 @@ class projectcontroller extends Controller
 
   public function projectinsert(Request $request)
     {
-       return $request;
+    //    return $request;
 
     if ($request->hasFile('file1')) {
         $file = $request->file('file1');
@@ -45,12 +46,12 @@ class projectcontroller extends Controller
         $filename = $file->getClientOriginalName();
         $file->move($destinationPath, $filename);
     }
-    if ($request->hasFile('file2')) {
-        $file = $request->file('file2');
-        $destinationPath = public_path('object');
-        $filename = $file->getClientOriginalName();
-        $file->move($destinationPath, $filename);
-    }
+    // if ($request->hasFile('file2')) {
+    //     $file = $request->file('file2');
+    //     $destinationPath = public_path('object');
+    //     $filename = $file->getClientOriginalName();
+    //     $file->move($destinationPath, $filename);
+    // }
    
         // return $file;
         
@@ -93,17 +94,23 @@ class projectcontroller extends Controller
                     // return $project->id;
                     // return $request;
                     $object = new objectt;
-                    $object->object = $request->fle2name;
-                    $object->user_id =$request->userid;
+                    $object->object = 'scene.gltf';
+                     $object->user_id =$request->userid;
                     $object->project_id =$project->id;
                     $object->save();
+                    // ]);
 
-                    $giftFile = new GiftFile();
-                    $giftFile->name = $request->fle2name;
-                    $giftFile->file_data = file_get_contents($request->file('gift_file')->path());;
-                    $giftFile->user_id =$request->userid;
-                    $giftFile->project_id =$project->id;
-                    $giftFile->save();
+                    if ($request->hasFile('file2')) {
+                        $files = $request->file('file2');   
+                                $name='scene.gltf'.$project->id;
+                                File::makeDirectory(public_path("{$name}"), 0755, true);                           
+                        foreach ($files as $file) {
+                            $destinationPath = public_path("{$name}");
+                            $filename = $file->getClientOriginalName();
+                            $file->move($destinationPath, $filename);
+                        }
+                    }
+
                     
                 // ]);
 
@@ -134,6 +141,11 @@ class projectcontroller extends Controller
   
     public function delete(Request $request)
     {
+        $name='scene.gltf'.$request->id;
+        $path = public_path("{$name}");
+        if(File::exists($path)) {
+            File::deleteDirectory($path);
+        }
 // return $request;
         $objectproject = objectt::where('project_id', $request->id)->get();
 
@@ -154,6 +166,14 @@ class projectcontroller extends Controller
 
     public function editmarkerproject(Request $request)
     {
+        $name='scene.gltf'.$request->id;
+        $path = public_path("{$name}");
+        if(File::exists($path)) {
+            File::deleteDirectory($path);
+        }
+    //    return $request;
+        
+   
     //    return $request;
         if ($request->hasFile('file1')) {
             $file = $request->file('file1');
@@ -162,10 +182,14 @@ class projectcontroller extends Controller
             $file->move($destinationPath, $filename);
         }
         if ($request->hasFile('file2')) {
-            $file = $request->file('file2');
-            $destinationPath = public_path('object');
-            $filename = $file->getClientOriginalName();
-            $file->move($destinationPath, $filename);
+            $files = $request->file('file2');   
+                    $name='scene.gltf'.$project->id;
+                    File::makeDirectory(public_path("{$name}"), 0755, true);                           
+            foreach ($files as $file) {
+                $destinationPath = public_path("{$name}");
+                $filename = $file->getClientOriginalName();
+                $file->move($destinationPath, $filename);
+            }
         }
         $objectproject = objectt::where('project_id', $request->id)->get();
         foreach ($objectproject as $objectproject) {

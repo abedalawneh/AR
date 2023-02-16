@@ -55,7 +55,7 @@ use App\Models\location;
         <nav class="navbar navbar-expand-lg navbar-light sidebardiv ">
         <div class="divfluid container-fluid m-1 ">
         <a class="navbar-brand " href="#">
-        <img src="../images/calendar.png" alt="" width="18" height="18" class="navtext d-inline-block align-text-center ">Events
+        <img src="../images/calendar.png" alt="" width="18" height="18" class="navtext d-inline-block align-text-center ">All
     </a>
             <div class="dropdowninner d-flex justify-content-end col-md-6" id="navbarNavDropdown">
             <ul class="navbar-nav ">
@@ -206,11 +206,17 @@ use App\Models\location;
    
     <?php
     }
-    else{
-      ?>
+    
+    elseif(count($userFront1)>0 || count($userproject)>0){
+
+        // echo $userproject;
+        // if(false){
+  foreach ($userFront1 as $frontuserFor) {
+    
+    ?>
    <div class="saveddiv d-flex">
-      <?php
-      foreach ($userFront1 as $frontuserFor) {
+       <?php
+    //   if(count($userFront1)>0){
         $objectid=$frontuserFor->object_id;
         $objectevent = objectt::where('id', $objectid)->get();
         ?>
@@ -266,8 +272,18 @@ use App\Models\location;
       <div class="imgmenu m-2 d-flex justify-content-center">
         
         
-        <img src="object/{{$objectevent[0]->object}}" alt="not found" class="m-3"width="150px" height="150px">
-        
+      <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+                                <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+                                <!-- Use it like any other HTML element -->
+                                <model-viewer id="toggle-poster" src="scene.gltf{{$frontuserFor->id}}/scene.gltf" controls
+                                auto-rotate poster="assets/poster2.png"></model-viewer>
+                                <script>
+                                    const posters = ['poster.png', 'poster2.png'];
+                                    let i = 0;
+                                    setInterval(() =>
+                                        document.querySelector('#toggle-poster').setAttribute('poster',
+                                            `assets/${posters[i++ % 2]}`), 2000);
+                                </script>        
       <div class="dropdowninner " id="navbarNavDropdown">
             <ul class="navbar-nav ">
                
@@ -308,11 +324,7 @@ use App\Models\location;
     </div>
     <?php
     } 
-  }
-
-    ?>
-                    <?php
-      foreach ($userproject as $userFrontproject) {
+     foreach ($userproject as $userFrontproject) {
         $objectproject = objectt::where('project_id', $userFrontproject->id)->get();
         // $iduser=$userFrontproject->id;
         // return $$objectproject;
@@ -366,8 +378,18 @@ use App\Models\location;
                             <?php if (count($objectproject) > 0) {
                                 // Access the first element in the array
                             $object = $objectproject[0];?>
-                            <img src="object/{{$object->object}}" alt="not found" class="m-3" width="150px"
-                                height="150px">
+                            <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+                                <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+                                <!-- Use it like any other HTML element -->
+                                <model-viewer id="toggle-poster" src="scene.gltf{{$userFrontproject->id}}/scene.gltf" controls
+                                auto-rotate poster="assets/poster2.png"></model-viewer>
+                                <script>
+                                    const posters = ['poster.png', 'poster2.png'];
+                                    let i = 0;
+                                    setInterval(() =>
+                                        document.querySelector('#toggle-poster').setAttribute('poster',
+                                            `assets/${posters[i++ % 2]}`), 2000);
+                                </script>
                                 <?php }?>
                             <div class="dropdowninner " id="navbarNavDropdown">
                                 <ul class="navbar-nav ">
@@ -380,7 +402,7 @@ use App\Models\location;
                                         <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
                                         <li><a class="dropdown-item" href=""onclick="event.preventDefault();
                                              document.getElementById('editform-{{$userFrontproject->id}}').submit();"><img src="../images/editpencil.png"
-                                                        alt="" class="m-1" width="20px" height="20px">{{$frontuserFor->id}}Edit</a></li>
+                                                        alt="" class="m-1" width="20px" height="20px">{{$userFrontproject->id}}Edit</a></li>
                                             <li><a class="dropdown-item" href="createvents"><img
                                                         src="../images/calendar.png" alt="" class="m-1" width="20px"
                                                         height="20px">Create event</a></li>
@@ -414,7 +436,9 @@ use App\Models\location;
                     </div>
                     <?php
     } 
-  
+}
+
+// }
     ?>
     </div>
 </div>

@@ -250,7 +250,7 @@
 
                             </label>
                                     <div class="selectFile">       
-                                    <input type="file" name="file1[]"  id="file-input1" multiple>
+                                    <input type="file" name="file1"  id="file-input1" multiple>
                                     </div>
                                     <p class="radiotext">upload your marker (black and white). It will be like a QR code. </p>
                             </div>

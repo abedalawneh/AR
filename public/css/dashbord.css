@@ -480,9 +480,17 @@ justify-content: space-evenly;
     .barheight{
         height: 100% !important;
     }
-    /* .sidebardiv1{
-        height: 100% !important;
-    } */
+    .saved{
+        width: 35.666667% !important;
+    }
+}
+
+@media screen and (min-width:800px){
+
+    .saved{
+        width: 23.666667% !important;
+    }
+
 }
 
 
