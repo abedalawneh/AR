@@ -247,7 +247,7 @@ use App\Models\objectt;
 
                             <div class="selectFile">
                             <!-- <input type="hidden" name="oldfile" value="{{ $frontuserFor->your_marker }}"> -->
-                                <input type="file" name="file1" id="file-input1" value="{{  $frontuserFor->your_marker}}" multiple>
+                                <input type="file" name="file1[]" id="file-input1" value="{{  $frontuserFor->your_marker}}" multiple>
                             </div>
                             <p class="radiotext">upload your marker (black and white). It will be like a QR code. </p>
                         </div>
@@ -263,7 +263,7 @@ use App\Models\objectt;
                             </label>
                             <div class="selectFile">
                             <!-- <input type="hidden" name="oldfile2" value="{{$object->object }}"> -->
-                                <input type="file" name="file2" id="file-input2" value="{{ $object->object }}">
+                                <input type="file" name="file2[]" id="file-input2" value="{{ $object->object }}"multiple>
                             </div>
                             <p class="radiotext">3D, Image, Video. It will link to your marker or our QR code. Max size
                                 is 50 MB </p>
@@ -376,7 +376,7 @@ use App\Models\objectt;
 
                             </label>
                             <div class="selectFile">
-                                <input type="file" name="file3" id="file-input3">
+                                <input type="file" name="file3[]" id="file-input3" multiple>
                             </div>
                             <p class="radiotext">3D, Image, Video. It will link to your marker or our QR code. Max size
                                 is 50 MB </p>
