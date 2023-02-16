@@ -32,33 +32,17 @@ use App\Models\objectt;
 
      
 
-      <!-- <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
-        <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
-        <a-entity  position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
+      <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
+        <a-camera gps-new-camera='gpsMinDistance: 5' cursor></a-camera>
+        <!-- <a-entity  position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
+        gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"></a-entity> -->
+        <a-entity position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
+          animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 5000"></a-entity>
 
-        gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"></a-entity>
     </a-scene>
-    -->
+   
     
-    <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
-    <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
-    <a-entity id="gltf-entity" position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}" gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"></a-entity>
-
-    <script>
-        AFRAME.registerComponent('gltf-mover', {
-            tick: function () {
-                // Get the camera's position
-                var cameraPos = this.el.sceneEl.camera.el.object3D.getWorldPosition();
-
-                // Update the position of the GLTF entity to be in front of the camera
-                this.el.object3D.position.set(cameraPos.x, cameraPos.y, cameraPos.z - 10);
-            }
-        });
-        // Add the gltf-mover script to the gltf-entity
-        document.querySelector('#gltf-entity').setAttribute('gltf-mover', '');
-    </script>
-</a-scene>
-
+     
 
     <?php }
       
@@ -67,8 +51,6 @@ use App\Models\objectt;
       
 
 <?php } }?>
-
-
 
 </body>
 </html>
