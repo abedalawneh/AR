@@ -37,6 +37,10 @@ use App\Models\objectt;
         <a-entity  position="1 1 1" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
 
         gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"></a-entity>
+
+        <a-animation attribute="position" to="0 0 -1.5" dur="1000" easing="ease-in-out" begin="click"></a-animation>
+    <a-animation attribute="rotation" to="0 360 0" dur="2000" easing="linear" repeat="indefinite"></a-animation>
+    
     </a-scene>
    
     
