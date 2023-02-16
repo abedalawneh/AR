@@ -32,17 +32,31 @@ use App\Models\objectt;
 
      
 
-     <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
+      <!-- <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
+        <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+        <a-entity  position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
+
+        gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"></a-entity>
+    </a-scene> -->
+   
+    
+    <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
     <a-camera gps-new-camera='gpsMinDistance: 5' wasd-controls></a-camera>
-    <a-entity position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
-        gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"
-        position="{{this.parentNode.getObject3D('camera').position}}">
+    <a-entity id="gltfModel" position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
+        gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}">
     </a-entity>
 </a-scene>
 
-   
-    
-     
+<script>
+AFRAME.registerComponent('update-gltf-model-position', {
+    tick: function () {
+        var cameraPosition = this.el.getObject3D('camera').position;
+        var gltfModel = document.querySelector('#gltfModel');
+        gltfModel.setAttribute('position', cameraPosition);
+    }
+});
+</script>
+
 
     <?php }
       
