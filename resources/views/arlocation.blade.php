@@ -36,7 +36,7 @@ use App\Models\objectt;
         <a-camera gps-new-camera='gpsMinDistance: 5' cursor></a-camera>
         <a-entity  position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
         gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"
-        animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 5000"></a-entity>
+        ></a-entity>
         
 
     </a-scene>
