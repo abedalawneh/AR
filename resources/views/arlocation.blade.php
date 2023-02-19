@@ -42,7 +42,7 @@ use App\Models\objectt;
     <a-asset-item id="{{ $object->object }}" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
   </a-assets>
   
-  <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+  <a-camera gps-new-camera='gpsMinDistance: 5' raycaster></a-camera>
   
   <a-entity id="gltfContainer"
             position="0 0 0" scale="10 10 10"
