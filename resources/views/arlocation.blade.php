@@ -37,7 +37,8 @@ use App\Models\objectt;
         
         </a-scene> -->
 
-        <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
+        <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'
+        cursor="rayOrigin: mouse">
   <a-assets>
     <a-asset-item id="{{ $object->object }}" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
   </a-assets>
@@ -48,7 +49,7 @@ use App\Models\objectt;
           position="0 0 0" scale="10 10 10"
           gltf-model="#{{ $object->object }}"
           gps-new-entity-place="latitude:{{ $location->latitude }}; longitude:{{ $location->longitude }}"
-          animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000"
+          animation__rotate="property: rotation; to: 360 360 0; loop: true; dur: 10000"
           super-hands collider="type: mesh" 
           grabbable>
 </a-entity>
