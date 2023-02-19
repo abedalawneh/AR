@@ -32,7 +32,7 @@ use App\Models\objectt;
         super-hands ></a-entity>
         
         </a-scene> -->
-        
+
         <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
   <a-assets>
     <a-asset-item id="{{ $object->object }}" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
@@ -48,41 +48,22 @@ use App\Models\objectt;
             super-hands
             ></a-entity>
 </a-scene>
-      <!-- <script>
-        AFRAME.registerComponent('drag-rotate', {
-      init: function () {
-        this.el.addEventListener('touchstart', this.onTouchStart.bind(this));
-      },
-
-      onTouchStart: function (event) {
-        event.preventDefault();
-        this.el.sceneEl.canvas.addEventListener('touchmove', this.onTouchMove.bind(this), { passive: false });
-        this.el.sceneEl.canvas.addEventListener('touchend', this.onTouchEnd.bind(this));
-        this.previousTouchEvent = event.touches[0];
-      },
-
-      onTouchMove: function (event) {
-        event.preventDefault();
-        var dx = event.touches[0].clientX - this.previousTouchEvent.clientX;
-        var dy = event.touches[0].clientY - this.previousTouchEvent.clientY;
-
-        var rotation = this.el.getAttribute('rotation');
-        this.el.setAttribute('rotation', {
-          x: rotation.x - dy / 5,
-          y: rotation.y - dx / 5,
-          z: 0
-        });
-
-        this.previousTouchEvent = event.touches[0];
-      },
-
-      onTouchEnd: function () {
-        this.el.sceneEl.canvas.removeEventListener('touchmove', this.onTouchMove.bind(this), { passive: false });
-        this.el.sceneEl.canvas.removeEventListener('touchend', this.onTouchEnd.bind(this));
-      }
+<script>
+AFRAME.registerComponent('disable-on-grab', {
+  init: function() {
+    var el = this.el;
+    el.addEventListener('super-hands-down', function(event) {
+      el.removeAttribute('animation__rotate');
     });
+    el.addEventListener('super-hands-up', function(event) {
+      el.setAttribute('animation__rotate', 'property: rotation; to: 0 360 0; loop: true; dur: 10000');
+    });
+  }
+});
 
-      </script> -->
+document.querySelector('#gltfContainer').setAttribute('disable-on-grab', '');
+</script>
+      
    
     <?php }
       
