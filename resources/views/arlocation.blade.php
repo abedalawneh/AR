@@ -44,18 +44,18 @@ use App\Models\objectt;
   
   <a-camera gps-new-camera='gpsMinDistance: 5' raycaster></a-camera>
   
-  <!-- <a-entity id="gltfContainer"
+  <a-entity id="gltfContainer"
             position="0 0 0" scale="10 10 10"
             gltf-model="#{{ $object->object }}"
             gps-new-entity-place="latitude:{{ $location->latitude }}; longitude:{{ $location->longitude }}"
-            animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000"
-            ></a-entity>
-             -->
-  <a-entity id="gltfCollider"
+            super-hands collider="type: mesh"
+                        ></a-entity>
+            
+  <!-- <a-entity id="gltfCollider"
             position="0 0 0" scale="10 10 10"
             gps-new-entity-place="latitude:{{ $location->latitude }}; longitude:{{ $location->longitude }}"
             super-hands collider="type: mesh">
-  </a-entity>
+  </a-entity> -->
 </a-scene>
 
 
