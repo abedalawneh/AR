@@ -387,7 +387,6 @@ use App\Models\objectt;
                     <?php 
                     $idproject=$frontuserFor->id;
                     $url = route('qrlocation', ['id' => $idproject]);
-                    echo $url;
                     echo QrCode::size(200)->generate($url) ;
                         ?>
                     
