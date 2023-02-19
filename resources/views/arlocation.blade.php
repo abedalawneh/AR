@@ -40,10 +40,7 @@ use App\Models\objectt;
         position="0 0 0" scale="10 10 10"
         gltf-model="#{{ $object->object }}"
         gps-new-entity-place="latitude:{{ $location->latitude }}; longitude:{{ $location->longitude }}"
-        super-hands
-         grabbable
-         draggable
-         constraint="y: 0"
+        super-hands="colliderEvent: click"
         ></a-entity>
         
         
