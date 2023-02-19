@@ -368,7 +368,8 @@ use App\Models\objectt;
                             <?php
                             if ($frontuserFor->based_tybe=="Location based"){
                             ?>
-                            <a href="#qrcodepopup-{{$frontuserFor->id}}" data-toggle="modal"  class="totlesaved m-2 text-decoration-none">QR</a>
+                            <a href="#qrcodepopup-{{$frontuserFor->id}}"
+                             data-toggle="modal"  class="totlesaved m-2 text-decoration-none">QR</a>
                             <?php }?>
                         </div>
                          <!-- Modal -->
@@ -382,12 +383,15 @@ use App\Models\objectt;
                     <span class=" d-flex justify-content-end align-items-end" aria-hidden="true"><img src="../images/closeimage.png" alt="notfound"></span>
                     </button>
                     <div class="card-body d-flex justify-content-center">
-                    <!-- <a href=""onclick="event.preventDefault();
-                     document.getElementById('ar-form-{{$frontuserFor->id}}').submit();"> -->
-                    {!! QrCode::size(200)->generate(route('arlocation')) !!}
-                <!-- </a> -->
+                    
+                    <?php $idproject=$frontuserFor->id;
+                     $url = route('qrlocation', ['id' => $idproject]);
+                        echo QrCode::size(200)->generate($url) ?>
+                    
+                   
                     </div>
                 <div class="modal-body m-3">
+
                 <h1 class="modal-title qrtitle d-flex  justify-content-center" id="exampleModalLongTitle">Success</h1>
                 <p class="qrtext d-flex  justify-content-center" >Here you are your link you can send or save it.</p>
                 <?php 

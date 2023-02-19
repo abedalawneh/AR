@@ -26,14 +26,9 @@ Route::get('registration', [AuthController::class, 'registration'])->name('regis
 Route::post('custom-registration', [AuthController::class, 'customRegistration'])->name('register.custom'); 
 Route::get('signout', [AuthController::class, 'signOut'])->name('signout');
 Route::post('createproject', [AuthController::class, 'createproject'])->name('createprojectt');
-Route::get('createproject', [AuthController::class, 'createproject'])->name('createprojectt');
 Route::post('createvents', [AuthController::class, 'createvents'])->name('createvents');
-Route::get('createvents', [AuthController::class, 'createvents'])->name('createvents');
-// Route::get('dashbord', [AuthController::class, 'dashbord'])->name('dashbordd');
-Route::get('project', [projectcontroller::class, 'project'])->name('project');
 Route::post('project', [projectcontroller::class, 'project'])->name('project');
 Route::post('events', [AuthController::class, 'events'])->name('events');
-Route::get('events', [AuthController::class, 'events'])->name('events');
 Route::post('homeall', [AuthController::class, 'homeall'])->name('homeall');
 Route::get('homeall', [AuthController::class, 'homeall'])->name('homeall');
 Route::post('arlocation', [projectcontroller::class, 'arlocation'])->name('arlocation');
@@ -41,13 +36,10 @@ Route::post('delete', [projectcontroller::class, 'delete'])->name('delete');
 Route::post('delete', [locationcontroller::class, 'delete'])->name('delete');
 Route::post('deletevent', [eventcontroller::class, 'deletevent'])->name('deletevent');
 
-// Route::get('landingpage', [AuthController::class, 'landingpage'])->name('landingpage');
+
 Route::post('editproject', [projectcontroller::class, 'editproject'])->name('editproject');
 Route::post('editevents', [eventcontroller::class, 'editevents'])->name('editevents');
-// Route::get('resetemail', [AuthController::class, 'resetemail'])->name('resetemail');
-// Route::get('resetpassword', [AuthController::class, 'resetpassword'])->name('resetpass');
-// Route::post('stor', [projectcontroller::class, 'store'])->name('stor');
-// Route::post('submiemailtForm', [AuthController::class, 'submiemailtForm'])->name('submiemailtForm');
+
 Route::post('projectinsert', [projectcontroller::class, 'projectinsert'])->name('projectinsertt');
 Route::post('editmarkerproject', [projectcontroller::class, 'editmarkerproject'])->name('editmarkerproject');
 Route::post('locationinsert', [locationcontroller::class, 'locationinsert'])->name('locationinsertt');
@@ -58,6 +50,7 @@ Route::post('eventedit', [eventcontroller::class, 'eventedit'])->name('eventedit
 Route::get('/', function () {
     return view('landingpage');
 });
+Route::post('/qrlocation', [projectcontroller::class, 'generateQRCode'])->name('qrlocation');
 
 
 Auth::routes();

@@ -9,12 +9,17 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Http\UploadedFile;
 use App\Http\Requests\JsonRequest;
 use Illuminate\Support\Facades\File;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Models\project;
 use App\Models\objectt;
 use App\Models\giftfile;
 
 class projectcontroller extends Controller
 {
+    public function generateQRCode(Request $request)
+    {   $id=$request->id;
+        return redirect()->route('arlocation',['id' => $id]);
+    }
     public function project()
     {
         $userFront1 = project::all();
@@ -33,7 +38,6 @@ class projectcontroller extends Controller
         $userFront1 = project::where('id', $request->id)->get();
         return view('arlocation', ['userFront1' =>$userFront1]);
 
-        // return view('arlocation');
     }
 
   public function projectinsert(Request $request)
@@ -46,15 +50,7 @@ class projectcontroller extends Controller
         $filename = $file->getClientOriginalName();
         $file->move($destinationPath, $filename);
     }
-    // if ($request->hasFile('file2')) {
-    //     $file = $request->file('file2');
-    //     $destinationPath = public_path('object');
-    //     $filename = $file->getClientOriginalName();
-    //     $file->move($destinationPath, $filename);
-    // }
-   
-        // return $file;
-        
+           
         try {
             
             // $validator = Validator::make($request->all(), [
@@ -72,33 +68,20 @@ class projectcontroller extends Controller
             //     ], 422);
             // }
             // else{
-                // $item = project::create([
-                //     'based_tybe' => $request->typebased,
-                //     'project_name' => $request->Projectname,
-                // 'your_marker' => $request->detail,
-                //     'user_id' => $request->userid,
-                    // $file1 = $request->file('file1');
-                    // $file2 = $request->file('file2');
-
-                    // $path1 = $request->file('fileInput1');
-                    // $path = $path1->store('public/marker');
-                    // $image_path = Storage::url($path);
+                
                     $project = new project;
                     $project->based_tybe =$request->typebased;
                     $project->project_name =$request->Projectname;
                     $project->your_marker = $request->file1name;
                     $project->user_id =$request->userid;
                     $project->save();
-                    // $path2 = $request->fle2name->store('public/object');
-                    // $projectid = project::find(1);
-                    // return $project->id;
-                    // return $request;
+                    
+                    
                     $object = new objectt;
                     $object->object = 'scene.gltf';
                      $object->user_id =$request->userid;
                     $object->project_id =$project->id;
                     $object->save();
-                    // ]);
 
                     if ($request->hasFile('file2')) {
                         $files = $request->file('file2');   
@@ -110,9 +93,6 @@ class projectcontroller extends Controller
                             $file->move($destinationPath, $filename);
                         }
                     }
-
-                    
-                // ]);
 
                 
                 
@@ -133,7 +113,6 @@ class projectcontroller extends Controller
                   return redirect()->route('project');
 
             }
-        // } 
         catch (Exception $ex) {
            return $ex->getMessage();
         }
@@ -146,7 +125,7 @@ class projectcontroller extends Controller
         if(File::exists($path)) {
             File::deleteDirectory($path);
         }
-// return $request;
+
         $objectproject = objectt::where('project_id', $request->id)->get();
 
         foreach ($objectproject as $objectproject) {
@@ -173,9 +152,7 @@ class projectcontroller extends Controller
         }
     //    return $request;
         
-   
-    //    return $request;
-        if ($request->hasFile('file1')) {
+    if ($request->hasFile('file1')) {
             $file = $request->file('file1');
             $destinationPath = public_path('marker');
             $filename = $file->getClientOriginalName();
