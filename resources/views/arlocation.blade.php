@@ -28,6 +28,28 @@ use App\Models\objectt;
               $name='scene.gltf'.$frontuserFor->id;
      ?>
      
+     
+     <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
+       <a-assets>
+         <a-asset-item id="{{ $object->object }}" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
+        </a-assets>
+        
+        <a-camera gps-new-camera='gpsMinDistance: 5' raycaster></a-camera>
+        
+        <a-entity id="gltfContainer"
+        position="0 0 0" scale="10 10 10"
+        gltf-model="#{{ $object->object }}"
+        gps-new-entity-place="latitude:{{ $location->latitude }}; longitude:{{ $location->longitude }}"
+        super-hands
+         grabbable
+         draggable
+         constraint="y: 0"
+        ></a-entity>
+        
+        
+      </a-scene>
+      
+      
       <!-- <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
         <a-camera gps-new-camera='gpsMinDistance: 5' ></a-camera>
         <a-entity  position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
@@ -36,30 +58,7 @@ use App\Models\objectt;
         super-hands ></a-entity>
         
         </a-scene> -->
-
-        <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
-  <a-assets>
-    <a-asset-item id="{{ $object->object }}" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
-  </a-assets>
-  
-  <a-camera gps-new-camera='gpsMinDistance: 5' raycaster></a-camera>
-  
-  <a-entity id="gltfContainer"
-            position="0 0 0" scale="10 10 10"
-            gltf-model="#{{ $object->object }}"
-            gps-new-entity-place="latitude:{{ $location->latitude }}; longitude:{{ $location->longitude }}"
-            super-hands collider="type: mesh"
-                        ></a-entity>
-            
-  <!-- <a-entity id="gltfCollider"
-            position="0 0 0" scale="10 10 10"
-            gps-new-entity-place="latitude:{{ $location->latitude }}; longitude:{{ $location->longitude }}"
-            super-hands collider="type: mesh">
-  </a-entity> -->
-</a-scene>
-
-
-<!-- <script>
+      <!-- <script>
 AFRAME.registerComponent('disable-on-grab', {
   init: function() {
     var el = this.el;
