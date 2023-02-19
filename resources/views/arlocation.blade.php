@@ -12,7 +12,8 @@ use App\Models\objectt;
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
   <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script>
   <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
-
+  
+<script src="https://unpkg.com/aframe-click-drag-component"></script>
 
 </head>
 <body>
