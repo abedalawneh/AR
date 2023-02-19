@@ -38,27 +38,24 @@ use App\Models\objectt;
         
         </a-scene> -->
 
-        <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
+       <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
   <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
-
+  
   <a-entity position="0 0 0" scale="10 10 10" 
             gltf-model="{{ asset($name.'/'.$object->object) }}" 
             gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"
             animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000"
             super-hands>
   </a-entity>
-
+  
   <script>
     // Get a reference to the GLTF model entity
     var gltfModel = document.querySelector('a-entity');
-
+    
     // Define variables to store the previous and current touch or mouse positions
     var previousPosition = null;
     var currentPosition = null;
-
-    // Define a variable to store the animation__rotate state (enabled or disabled)
-    var animationEnabled = true;
-
+    
     // Add touch and mouse event listeners to the scene
     document.addEventListener('touchstart', onTouchStart, false);
     document.addEventListener('touchmove', onTouchMove, false);
@@ -66,46 +63,41 @@ use App\Models\objectt;
     document.addEventListener('mousedown', onMouseDown, false);
     document.addEventListener('mousemove', onMouseMove, false);
     document.addEventListener('mouseup', onMouseUp, false);
-
+    
     // Touch event handlers
     function onTouchStart(event) {
       previousPosition = { x: event.touches[0].clientX, y: event.touches[0].clientY };
-      disableAnimation();
     }
-
+    
     function onTouchMove(event) {
       currentPosition = { x: event.touches[0].clientX, y: event.touches[0].clientY };
       updateRotation();
       previousPosition = currentPosition;
     }
-
+    
     function onTouchEnd(event) {
       previousPosition = null;
       currentPosition = null;
-      enableAnimation();
     }
-
+    
     // Mouse event handlers
     function onMouseDown(event) {
       previousPosition = { x: event.clientX, y: event.clientY };
-      disableAnimation();
     }
-
+    
     function onMouseMove(event) {
       if (previousPosition) {
         currentPosition = { x: event.clientX, y: event.clientY };
         updateRotation();
         previousPosition = currentPosition;
-        disableAnimation();
       }
     }
-
+    
     function onMouseUp(event) {
       previousPosition = null;
       currentPosition = null;
-      enableAnimation();
     }
-
+    
     // Function to update the rotation of the model based on touch or mouse input
     function updateRotation() {
       if (previousPosition && currentPosition) {
@@ -114,23 +106,11 @@ use App\Models\objectt;
         gltfModel.object3D.rotation.y -= deltaX * 0.01; // Adjust the rotation speed here
         gltfModel.object3D.rotation.x -= deltaY * 0.01; // Adjust the rotation speed here
         gltfModel.object3D.rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, gltfModel.object3D.rotation.x)); // Clamp the rotation around the X axis to avoid flipping the model
-        disableAnimation();
+        gltfModel.setAttribute('animation__rotate', 'enabled', 'false'); // Disable the original rotation animation
       }
     }
-
-    // Function to enable the animation__rotate animation
-    // Function to disable the animation__rotate animation
-function disableAnimation() {
-  if (animationEnabled) {
-    gltfModel.setAttribute('animation__rotate', 'enabled', 'false');
-    animationEnabled = false;
-  }
-
-  else if (!previousPosition && !currentPosition) {
-    enableAnimation();
-  }
-}
-
+  </script>
+</a-scene>
 
 
 
