@@ -49,10 +49,17 @@ use App\Models\objectt;
             gltf-model="#{{ $object->object }}"
             gps-new-entity-place="latitude:{{ $location->latitude }}; longitude:{{ $location->longitude }}"
             animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000"
-            super-hands collider="type: mesh"
             ></a-entity>
+            
+  <a-entity id="gltfCollider"
+            position="0 0 0" scale="10 10 10"
+            gps-new-entity-place="latitude:{{ $location->latitude }}; longitude:{{ $location->longitude }}"
+            super-hands collider="type: mesh">
+  </a-entity>
 </a-scene>
-<script>
+
+
+<!-- <script>
 AFRAME.registerComponent('disable-on-grab', {
   init: function() {
     var el = this.el;
@@ -66,7 +73,7 @@ AFRAME.registerComponent('disable-on-grab', {
 });
 
 document.querySelector('#gltfContainer').setAttribute('disable-on-grab', '');
-</script>
+</script> -->
       
    
     <?php }
