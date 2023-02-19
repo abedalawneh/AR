@@ -106,10 +106,12 @@ use App\Models\objectt;
         gltfModel.object3D.rotation.y -= deltaX * 0.01; // Adjust the rotation speed here
         gltfModel.object3D.rotation.x -= deltaY * 0.01; // Adjust the rotation speed here
         gltfModel.object3D.rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, gltfModel.object3D.rotation.x)); // Clamp the rotation around the X axis to avoid flipping the model
+        gltfModel.setAttribute('animation__rotate', 'enabled', 'false'); // Disable the original rotation animation
       }
     }
   </script>
 </a-scene>
+
 
 
 
