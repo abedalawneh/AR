@@ -49,10 +49,10 @@ use App\Models\objectt;
           position="0 0 0" scale="10 10 10"
           gltf-model="#{{ $object->object }}"
           gps-new-entity-place="latitude:{{ $location->latitude }}; longitude:{{ $location->longitude }}"
+          animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000"
           super-hands collider="type: mesh" 
           grabbable>
-        </a-entity>
-        <!-- animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000" -->
+</a-entity>
 
 </a-scene>
 <script>
