@@ -125,18 +125,8 @@ function disableAnimation() {
     gltfModel.setAttribute('animation__rotate', 'enabled', 'false');
     animationEnabled = false;
   }
-}
 
-// Function to update the rotation of the model based on touch or mouse input
-function updateRotation() {
-  if (previousPosition && currentPosition) {
-    var deltaX = currentPosition.x - previousPosition.x;
-    var deltaY = currentPosition.y - previousPosition.y;
-    gltfModel.object3D.rotation.y -= deltaX * 0.01; // Adjust the rotation speed here
-    gltfModel.object3D.rotation.x -= deltaY * 0.01; // Adjust the rotation speed here
-    gltfModel.object3D.rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, gltfModel.object3D.rotation.x)); // Clamp the rotation around the X axis to avoid flipping the model
-    disableAnimation();
-  } else if (!previousPosition && !currentPosition) {
+  else if (!previousPosition && !currentPosition) {
     enableAnimation();
   }
 }
