@@ -49,67 +49,88 @@ use App\Models\objectt;
   </a-entity>
   
   <script>
-    // Get a reference to the GLTF model entity
-    var gltfModel = document.querySelector('a-entity');
-    
-    // Define variables to store the previous and current touch or mouse positions
-    var previousPosition = null;
-    var currentPosition = null;
-    
-    // Add touch and mouse event listeners to the scene
-    document.addEventListener('touchstart', onTouchStart, false);
-    document.addEventListener('touchmove', onTouchMove, false);
-    document.addEventListener('touchend', onTouchEnd, false);
-    document.addEventListener('mousedown', onMouseDown, false);
-    document.addEventListener('mousemove', onMouseMove, false);
-    document.addEventListener('mouseup', onMouseUp, false);
-    
-    // Touch event handlers
-    function onTouchStart(event) {
-      previousPosition = { x: event.touches[0].clientX, y: event.touches[0].clientY };
-    }
-    
-    function onTouchMove(event) {
-      currentPosition = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+  // Get a reference to the GLTF model entity
+  var gltfModel = document.querySelector('a-entity');
+
+  // Define variables to store the previous and current touch or mouse positions
+  var previousPosition = null;
+  var currentPosition = null;
+  var animationEnabled = true;
+
+  // Add touch and mouse event listeners to the scene
+  document.addEventListener('touchstart', onTouchStart, false);
+  document.addEventListener('touchmove', onTouchMove, false);
+  document.addEventListener('touchend', onTouchEnd, false);
+  document.addEventListener('mousedown', onMouseDown, false);
+  document.addEventListener('mousemove', onMouseMove, false);
+  document.addEventListener('mouseup', onMouseUp, false);
+
+  // Touch event handlers
+  function onTouchStart(event) {
+    previousPosition = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+    disableAnimation();
+  }
+
+  function onTouchMove(event) {
+    currentPosition = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+    updateRotation();
+    previousPosition = currentPosition;
+  }
+
+  function onTouchEnd(event) {
+    previousPosition = null;
+    currentPosition = null;
+    enableAnimation();
+  }
+
+  // Mouse event handlers
+  function onMouseDown(event) {
+    previousPosition = { x: event.clientX, y: event.clientY };
+    disableAnimation();
+  }
+
+  function onMouseMove(event) {
+    if (previousPosition) {
+      currentPosition = { x: event.clientX, y: event.clientY };
       updateRotation();
       previousPosition = currentPosition;
     }
-    
-    function onTouchEnd(event) {
-      previousPosition = null;
-      currentPosition = null;
+  }
+
+  function onMouseUp(event) {
+    previousPosition = null;
+    currentPosition = null;
+    enableAnimation();
+  }
+
+  // Function to update the rotation of the model based on touch or mouse input
+  function updateRotation() {
+    if (previousPosition && currentPosition) {
+      var deltaX = currentPosition.x - previousPosition.x;
+      var deltaY = currentPosition.y - previousPosition.y;
+      gltfModel.object3D.rotation.y -= deltaX * 0.01; // Adjust the rotation speed here
+      gltfModel.object3D.rotation.x -= deltaY * 0.01; // Adjust the rotation speed here
+      gltfModel.object3D.rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, gltfModel.object3D.rotation.x)); // Clamp the rotation around the X axis to avoid flipping the model
     }
-    
-    // Mouse event handlers
-    function onMouseDown(event) {
-      previousPosition = { x: event.clientX, y: event.clientY };
+  }
+
+  // Function to enable the animation__rotate animation
+  function enableAnimation() {
+    if (!animationEnabled) {
+      gltfModel.setAttribute('animation__rotate', 'enabled', 'true');
+      animationEnabled = true;
     }
-    
-    function onMouseMove(event) {
-      if (previousPosition) {
-        currentPosition = { x: event.clientX, y: event.clientY };
-        updateRotation();
-        previousPosition = currentPosition;
-      }
+  }
+
+  // Function to disable the animation__rotate animation
+  function disableAnimation() {
+    if (animationEnabled) {
+      gltfModel.setAttribute('animation__rotate', 'enabled', 'false');
+      animationEnabled = false;
     }
-    
-    function onMouseUp(event) {
-      previousPosition = null;
-      currentPosition = null;
-    }
-    
-    // Function to update the rotation of the model based on touch or mouse input
-    function updateRotation() {
-      if (previousPosition && currentPosition) {
-        var deltaX = currentPosition.x - previousPosition.x;
-        var deltaY = currentPosition.y - previousPosition.y;
-        gltfModel.object3D.rotation.y -= deltaX * 0.01; // Adjust the rotation speed here
-        gltfModel.object3D.rotation.x -= deltaY * 0.01; // Adjust the rotation speed here
-        gltfModel.object3D.rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, gltfModel.object3D.rotation.x)); // Clamp the rotation around the X axis to avoid flipping the model
-        gltfModel.setAttribute('animation__rotate', 'enabled', 'false'); // Disable the original rotation animation
-      }
-    }
-  </script>
+  }
+</script>
+
 </a-scene>
 
 
