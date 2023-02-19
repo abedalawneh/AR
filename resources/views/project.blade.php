@@ -384,9 +384,12 @@ use App\Models\objectt;
                     </button>
                     <div class="card-body d-flex justify-content-center">
                     
-                    <?php $idproject=$frontuserFor->id;
-                     $url = route('qrlocation', ['id' => $idproject]);
-                        echo QrCode::size(200)->generate($url) ?>
+                    <?php 
+                    $idproject=$frontuserFor->id;
+                    $url = route('qrlocation', ['id' => $idproject]);
+                    echo $url;
+                    echo QrCode::size(200)->generate($url) ;
+                        ?>
                     
                    
                     </div>

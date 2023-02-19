@@ -32,6 +32,7 @@ Route::post('events', [AuthController::class, 'events'])->name('events');
 Route::post('homeall', [AuthController::class, 'homeall'])->name('homeall');
 Route::get('homeall', [AuthController::class, 'homeall'])->name('homeall');
 Route::post('arlocation', [projectcontroller::class, 'arlocation'])->name('arlocation');
+Route::get('arlocation', [projectcontroller::class, 'arlocation'])->name('arlocation');
 Route::post('delete', [projectcontroller::class, 'delete'])->name('delete');
 Route::post('delete', [locationcontroller::class, 'delete'])->name('delete');
 Route::post('deletevent', [eventcontroller::class, 'deletevent'])->name('deletevent');
@@ -50,6 +51,7 @@ Route::post('eventedit', [eventcontroller::class, 'eventedit'])->name('eventedit
 Route::get('/', function () {
     return view('landingpage');
 });
+Route::get('/qrlocation', [projectcontroller::class, 'generateQRCode'])->name('qrlocation');
 Route::post('/qrlocation', [projectcontroller::class, 'generateQRCode'])->name('qrlocation');
 
 
