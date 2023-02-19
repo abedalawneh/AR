@@ -38,44 +38,74 @@ use App\Models\objectt;
         </a-scene> -->
 
         <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'
-        cursor="rayOrigin: mouse">
+        touchstart="startDraggingGltf" 
+    touchend="stopDraggingGltf" 
+    touchmove="dragGltf">
   <a-assets>
     <a-asset-item id="{{ $object->object }}" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
   </a-assets>
   
   <a-camera gps-new-camera='gpsMinDistance: 5' raycaster></a-camera>
   
-  <a-entity id="gltfContainer"
-          position="0 0 0" scale="10 10 10"
-          gltf-model="#{{ $object->object }}"
-          gps-new-entity-place="latitude:{{ $location->latitude }}; longitude:{{ $location->longitude }}"
-          animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000"
-          super-hands collider="type: mesh" 
-          grabbable>
-</a-entity>
+ <a-entity id="my-gltf" position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
+    gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"
+    animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000"
+    super-hands 
+    my-gltf-handler></a-entity>
+
 
 </a-scene>
-<script>
-AFRAME.registerComponent('disable-on-grab', {
-  init: function() {
-    var el = this.el;
-    el.addEventListener('super-hands-down', function(event) {
-      el.removeAttribute('animation__rotate');
-    });
-    el.addEventListener('super-hands-up', function(event) {
-      el.setAttribute('animation__rotate', 'property: rotation; to: 0 360 0; loop: true; dur: 10000');
-    });
+
+    <script>
+      AFRAME.registerComponent('my-gltf-handler', {
+  init: function () {
+    // Initialize variables to store starting position and dragging status
+    this.startPosition = new THREE.Vector3();
+    this.isDragging = false;
+    
+    // Add event listeners to the glTF entity
+    this.el.addEventListener('touchstart', this.startDragging.bind(this));
+    this.el.addEventListener('touchend', this.stopDragging.bind(this));
+    this.el.addEventListener('touchmove', this.drag.bind(this));
+  },
+  
+  startDragging: function (event) {
+    // Set the starting position and dragging status
+    this.startPosition.copy(this.el.object3D.position);
+    this.isDragging = true;
+    
+    // Prevent default touch behavior
+    event.preventDefault();
+  },
+  
+  stopDragging: function (event) {
+    // Set the dragging status
+    this.isDragging = false;
+    
+    // Prevent default touch behavior
+    event.preventDefault();
+  },
+  
+  drag: function (event) {
+    // Move the glTF entity based on the user's touch position
+    if (this.isDragging) {
+      var touch = event.touches[0];
+      var dx = touch.clientX / window.innerWidth * 2 - 1;
+      var dy = touch.clientY / window.innerHeight * 2 - 1;
+      var newPosition = this.startPosition.clone();
+      newPosition.x += dx * 5;
+      newPosition.y += dy * 5;
+      this.el.setAttribute('position', newPosition);
+    }
+    
+    // Prevent default touch behavior
+    event.preventDefault();
   }
 });
 
-document.querySelector('#gltfContainer').setAttribute('disable-on-grab', '');
-</script>
-      
+    </script>  
    
-    <?php }
-      
-      ?>
-<?php } }?>
+<?php }} }?>
 
 </body>
 </html>
