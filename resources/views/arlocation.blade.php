@@ -28,15 +28,15 @@ use App\Models\objectt;
               $name='scene.gltf'.$frontuserFor->id;
      ?>
      
-      <!-- <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
-        <a-camera gps-new-camera='gpsMinDistance: 5' ></a-camera>
+      <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
+        <a-camera gps-new-camera='gpsMinDistance: 5' cursor></a-camera>
         <a-entity  position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
         gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"
         animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000"
         super-hands ></a-entity>
         
-        </a-scene> -->
-
+        </a-scene>
+<!-- 
         <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'
         touchstart="startDraggingGltf" 
     touchend="stopDraggingGltf" 
@@ -70,6 +70,7 @@ use App\Models\objectt;
   },
   
   startDragging: function (event) {
+    console.log("startDragging called");
     // Set the starting position and dragging status
     this.startPosition.copy(this.el.object3D.position);
     this.isDragging = true;
@@ -103,7 +104,7 @@ use App\Models\objectt;
   }
 });
 
-    </script>  
+    </script>   -->
    
 <?php }} }?>
 
