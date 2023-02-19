@@ -24,16 +24,31 @@ use App\Models\objectt;
               $name='scene.gltf'.$frontuserFor->id;
      ?>
      
-      <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
+      <!-- <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
         <a-camera gps-new-camera='gpsMinDistance: 5' ></a-camera>
         <a-entity  position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
         gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"
-        drag-rotate ></a-entity>
+        animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000"
+        super-hands ></a-entity>
         
-      </a-scene>
-      
-      <!-- animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000" -->
-      <script>
+        </a-scene> -->
+        
+        <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
+  <a-assets>
+    <a-asset-item id="{{ $object->object }}" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
+  </a-assets>
+  
+  <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+  
+  <a-entity id="gltfContainer"
+            position="0 0 0" scale="10 10 10"
+            gltf-model="#{{ $object->object }}"
+            gps-new-entity-place="latitude:{{ $location->latitude }}; longitude:{{ $location->longitude }}"
+            animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000"
+            super-hands
+            ></a-entity>
+</a-scene>
+      <!-- <script>
         AFRAME.registerComponent('drag-rotate', {
       init: function () {
         this.el.addEventListener('touchstart', this.onTouchStart.bind(this));
@@ -67,7 +82,7 @@ use App\Models\objectt;
       }
     });
 
-      </script>
+      </script> -->
    
     <?php }
       
