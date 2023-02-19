@@ -10,8 +10,8 @@ use App\Models\objectt;
 <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
-<script src="https://cdn.jsdelivr.net/npm/aframe-super-hands-component@3.3.3/dist/aframe-super-hands.min.js"></script>
 <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v6.1.2/dist/aframe-extras.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aframe-super-hands-component@3.3.3/dist/aframe-super-hands.min.js"></script>
 
 
 </head>
@@ -49,7 +49,7 @@ use App\Models\objectt;
             gltf-model="#{{ $object->object }}"
             gps-new-entity-place="latitude:{{ $location->latitude }}; longitude:{{ $location->longitude }}"
             animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000"
-            super-hands
+            super-hands collider="type: mesh"
             ></a-entity>
 </a-scene>
 <script>
