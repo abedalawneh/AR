@@ -107,8 +107,8 @@ use App\Models\objectt;
     if (previousPosition && currentPosition) {
       var deltaX = currentPosition.x - previousPosition.x;
       var deltaY = currentPosition.y - previousPosition.y;
-      gltfModel.object3D.rotation.y -= deltaX; // Adjust the rotation speed here
-      gltfModel.object3D.rotation.x -= deltaY ; // Adjust the rotation speed here
+      gltfModel.object3D.rotation.y -= deltaX * 0.01; // Adjust the rotation speed here
+      gltfModel.object3D.rotation.x -= deltaY * 0.01; // Adjust the rotation speed here
       gltfModel.object3D.rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, gltfModel.object3D.rotation.x)); // Clamp the rotation around the X axis to avoid flipping the model
     }
   }
