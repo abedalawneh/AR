@@ -80,6 +80,7 @@ class projectcontroller extends Controller
                     $object = new objectt;
                     $object->object = 'scene.gltf';
                      $object->user_id =$request->userid;
+                     $object->animation =$request->objectanimation;
                     $object->project_id =$project->id;
                     $object->save();
 
@@ -97,11 +98,12 @@ class projectcontroller extends Controller
                 
                 
                 if ($object && $project) {
-                    return response()->json([
-                        'result'=>true,
-                        'message'=>'Added Successfully',
+                    // return response()->json([
+                    //     'result'=>true,
+                    //     'message'=>'Added Successfully',
                         
-                    ]);
+                    // ]);
+                    return redirect()->route('project');
                   } else {
                     return response()->json([
                         'result'=>false,
@@ -110,7 +112,7 @@ class projectcontroller extends Controller
                     ]);
                   }
                 
-                  return redirect()->route('project');
+                 
 
             }
         catch (Exception $ex) {

@@ -267,8 +267,22 @@
                                     <input type="file" name="file2[]" id="file-input2" multiple>
                                     </div>
                                     <p class="radiotext">3D, Image, Video. It will link to your marker or our QR code. Max size is 50 MB </p>
-                            </div>
 
+                                </div>
+                                
+                                <p class="radiotitle"><span class="spantitle"> 4 </span>How you like your object ?</p>
+                                <div class="form-check form-check-inline m-4">
+                                    <input class="form-check-input" type="radio" name="objectanimation" id="inlineRadio1" value="Animationrotate">
+                                    <label class="form-check-label" for="inlineRadio1">Animation_rotate</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="objectanimation" id="inlineRadio2" value="ONTouch">
+                                    <label class="form-check-label" for="inlineRadio2">ON Touch</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="objectanimation" id="inlineRadio3" value="Poth" >
+                                    <label class="form-check-label" for="inlineRadio3">Poth</label>
+                                </div>
                         
             
                         
@@ -367,7 +381,19 @@
                     </div>
 
                         
-                        
+                    <p class="radiotitle"><span class="spantitle"> 4 </span>How you like your object ?</p>
+                                <div class="form-check form-check-inline m-4">
+                                    <input class="form-check-input" type="radio" name="objectanimation" id="inlineRadio1" value="Animationrotate">
+                                    <label class="form-check-label" for="inlineRadio1">Animation_rotate</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="objectanimation" id="inlineRadio2" value="ONTouch">
+                                    <label class="form-check-label" for="inlineRadio2">ON Touch</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="objectanimation" id="inlineRadio3" value="Poth" >
+                                    <label class="form-check-label" for="inlineRadio3">Poth</label>
+                                </div>
 
                         <div class="d-grid justify-content-center mx-auto">
                                 <button type="submit" class="projectbutton ">

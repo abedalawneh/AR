@@ -64,6 +64,7 @@ class locationcontroller extends Controller
                     $object = new objectt;
                     $object->object = 'scene.gltf';
                      $object->user_id =$request->userid;
+                     $object->animation =$request->objectanimation;
                     $object->project_id =$project->id;
                     $object->save();
                     // ]);
@@ -82,11 +83,12 @@ class locationcontroller extends Controller
                 
 
                 if ($object && $project &&$location) {
-                    return response()->json([
-                        'result'=>true,
-                        'message'=>'Added Successfully',
+                    // return response()->json([
+                    //     'result'=>true,
+                    //     'message'=>'Added Successfully',
                         
-                    ]);
+                    // ]);
+                    return redirect()->route('project');
                   } else {
                     return response()->json([
                         'result'=>false,
@@ -95,7 +97,6 @@ class locationcontroller extends Controller
                     ]);
                   }
                   
-                  return redirect()->route('project');
                 
             }
         // } 
