@@ -13,7 +13,6 @@ use App\Models\objectt;
   <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script>
   <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
   
-<script src="https://unpkg.com/aframe-click-drag-component"></script>
 
 </head>
 <body>
@@ -108,8 +107,8 @@ use App\Models\objectt;
     if (previousPosition && currentPosition) {
       var deltaX = currentPosition.x - previousPosition.x;
       var deltaY = currentPosition.y - previousPosition.y;
-      gltfModel.object3D.rotation.y -= deltaX * 0.01; // Adjust the rotation speed here
-      gltfModel.object3D.rotation.x -= deltaY * 0.01; // Adjust the rotation speed here
+      gltfModel.object3D.rotation.y -= deltaX; // Adjust the rotation speed here
+      gltfModel.object3D.rotation.x -= deltaY ; // Adjust the rotation speed here
       gltfModel.object3D.rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, gltfModel.object3D.rotation.x)); // Clamp the rotation around the X axis to avoid flipping the model
     }
   }
