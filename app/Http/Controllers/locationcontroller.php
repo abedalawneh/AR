@@ -33,23 +33,14 @@ class locationcontroller extends Controller
             //     ], 422);
             // }
             // else{
-                // $item = project::create([
-                //     'based_tybe' => $request->typebased,
-                //     'project_name' => $request->Projectname,
-                // 'your_marker' => $request->detail,
-                //     'user_id' => $request->userid,
-                    // $file1 = $request->file('file1');
-                    // $file2 = $request->file('file2');
+                
 
-                    // $path1 = $request->file('fileInput1');
-                    // $path = $path1->store('public/marker');
-                    // $image_path = Storage::url($path);
+                  
                     $project = new project;
                     $project->based_tybe =$request->typebased;
                     $project->project_name =$request->Projectname;
                     $project->user_id =$request->userid;
                     $project->save();
-                    // $path2 = $request->fle2name->store('public/object');
                   
 
                     $location = new location;
@@ -60,13 +51,7 @@ class locationcontroller extends Controller
                     $location->user_id =$request->userid;
                     $location->save();
 
-                    // $object = new objectt;
-                    // $object->object = $request->file('file3');
-                    //  $object->user_id =$request->userid;
-                    //  $object->animation =$request->objectanimation;
-                    // $object->project_id =$project->id;
-                    // $object->save();
-                    // ]);
+                    
 
                     if ($request->hasFile('file3')) {
                         $files = $request->file('file3');   
