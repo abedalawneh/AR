@@ -117,22 +117,22 @@ use App\Models\objectt;
     }
   }
 
-  // // Function to enable the animation__rotate animation
-  // function enableAnimation() {
-  //   if (!animationEnabled) {
-  //     gltfModel.setAttribute('animation__rotate', 'enabled', 'true');
-  //     animationEnabled = true;
-  //   }
-  // }
+  // Function to enable the animation__rotate animation
+  function enableAnimation() {
+    if (!animationEnabled) {
+      gltfModel.setAttribute('animation__rotate', 'enabled', 'true');
+      animationEnabled = true;
+    }
+  }
 
-//  // Function to disable the animation__rotate animation
-//   function disableAnimation() {
-//     if (animationEnabled) {
-//       gltfModel.setAttribute('animation__rotate', 'enabled', 'false');
-//       animationEnabled = false;
-//     }
-//   }
-// }
+ // Function to disable the animation__rotate animation
+  function disableAnimation() {
+    if (animationEnabled) {
+      gltfModel.setAttribute('animation__rotate', 'enabled', 'false');
+      animationEnabled = false;
+    }
+  }
+
 // elseif(animation=="Animationrotate"){
 
 //  // Get a reference to the GLTF model entity
