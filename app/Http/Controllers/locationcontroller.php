@@ -15,7 +15,6 @@ class locationcontroller extends Controller
 {
   public function locationinsert(Request $request)
     {
-        // return $request;
         
         try {
             
@@ -61,19 +60,28 @@ class locationcontroller extends Controller
                     $location->user_id =$request->userid;
                     $location->save();
 
-                    $object = new objectt;
-                    $object->object = 'scene.gltf';
-                     $object->user_id =$request->userid;
-                     $object->animation =$request->objectanimation;
-                    $object->project_id =$project->id;
-                    $object->save();
+                    // $object = new objectt;
+                    // $object->object = $request->file('file3');
+                    //  $object->user_id =$request->userid;
+                    //  $object->animation =$request->objectanimation;
+                    // $object->project_id =$project->id;
+                    // $object->save();
                     // ]);
 
                     if ($request->hasFile('file3')) {
                         $files = $request->file('file3');   
                                 $name='scene.gltf'.$project->id;
-                                File::makeDirectory(public_path("{$name}"), 0755, true);                           
+                                File::makeDirectory(public_path("{$name}"), 0755, true);
+
                         foreach ($files as $file) {
+
+                            $object = new objectt;
+                    $object->object = $file->getClientOriginalName();
+                    $object->user_id =$request->userid;
+                    $object->animation =$request->objectanimation;
+                    $object->project_id =$project->id;
+                    $object->save();
+
                             $destinationPath = public_path("{$name}");
                             $filename = $file->getClientOriginalName();
                             $file->move($destinationPath, $filename);
@@ -81,14 +89,16 @@ class locationcontroller extends Controller
                     }
                     
                 
-
                 if ($object && $project &&$location) {
+                    // return "sssss";
                     // return response()->json([
                     //     'result'=>true,
                     //     'message'=>'Added Successfully',
                         
                     // ]);
-                    return redirect()->route('project');
+                    return redirect()->route('project') ;
+                    ;
+
                   } else {
                     return response()->json([
                         'result'=>false,
@@ -104,18 +114,18 @@ class locationcontroller extends Controller
            return $ex->getMessage();
         }
     }
-    public function delete(Request $request)
+    public function delete2(Request $request)
     {
         $name='scene.gltf'.$request->id;
         $path = public_path("{$name}");
         if(File::exists($path)) {
             File::deleteDirectory($path);
         }
-    $locationproject = location::where('project_id', $request->id)->get();
+    $locationproject = location::where('project_id', $request->id )->get();
 
-    foreach ($locationproject as $locationproject) {
-        $locationproject->project_id = null;
-        $locationproject->save();
+    foreach ($locationproject as $locationprojectt) {
+        $locationprojectt->project_id = null;
+        $locationprojectt->save();
     }
     $objectproject = objectt::where('project_id', $request->id)->get();
 

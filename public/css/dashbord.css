@@ -13,6 +13,9 @@ body{
     border-bottom:none ;
 
 }
+.userimageprofile{
+    display: none;
+}
 .sidebardiv1{
     width: 12%;
 }
@@ -20,7 +23,7 @@ body{
     height: 100vh;
 }
 .listheight{
-    margin-top:70%;
+    margin-top:40%;
     border-color:none ;
 }
 .sidebardiv:hover{
@@ -401,6 +404,12 @@ justify-content: space-evenly;
       flex-direction: column !important;  
 
     }
+    .dropdowninner{
+        display: none !important;
+    }
+    .userimageprofile{
+        margin-right: 10%;
+    }
     .textbuttonspan{
         font-size: 15px;
     }
@@ -424,6 +433,7 @@ justify-content: space-evenly;
     .divfluid{
         padding: 0;
         flex-direction: row-reverse;
+        justify-content: center !important;
     }
     .radiodiv{
         flex-direction: column;

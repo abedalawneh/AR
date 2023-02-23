@@ -26,7 +26,25 @@ use App\Models\objectt;
     <div class="barheight d-flex" id="wrapper">
         <div class="sidebardiv1  border-right" id="sidebar-wrapper">
             <div class="sidebar-heading"> </div>
-            <div class="listheight list-group list-group-flush ">
+            <div class="dropdowninner d-flex justify-content-start col-md-6 m-3" id="navbarNavDropdown">
+                        <ul class="navbar-nav ">
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle  " href="#" id="navbarDropdownMenuLink" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ Auth::user()->name }}
+                                </a>
+                                <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item" data-toggle="modal"
+                                            href="#exampleModalCenterprofile">My profile</a></li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <a class="userimageprofile d-inline-block" data-toggle="modal"href="#exampleModalCenterprofile"><img  width="18" height="18" src="../images/userimage.png" alt="noo"></a>
+                    <div class="listheight list-group list-group-flush ">
                 <a href="{{ route('homeall') }}"
                     onclick="event.preventDefault(); document.getElementById('homeall-form').submit();"
                     class="list-group-item list-group-item-action sidebardiv ">
@@ -70,22 +88,7 @@ use App\Models\objectt;
                         <img src="../images/project.png" alt="" width="18" height="18"
                             class="navtext d-inline-block align-text-center ">Projects
                     </a>
-                    <div class="dropdowninner d-flex justify-content-end col-md-6" id="navbarNavDropdown">
-                        <ul class="navbar-nav ">
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle  " href="#" id="navbarDropdownMenuLink" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    User Name
-                                </a>
-                                <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" data-toggle="modal"
-                                            href="#exampleModalCenterprofile">My profile</a></li>
-
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                    
                     <div class=" modal fade" id="exampleModalCenterprofile" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalCenterprofileTitle" aria-hidden="false">
                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -263,7 +266,7 @@ use App\Models\objectt;
            
     ?>
 
-    <form id="delete-form-{{$frontuserFor->id}}" action="{{route('delete')}}" method="post" class="d-none">
+    <form id="delete-form-{{$frontuserFor->id}}" action="{{route('delete2')}}" method="post" class="d-none">
                                             @csrf
          <input type="text" name="id" value="{{$frontuserFor->id}}">
 
@@ -301,7 +304,7 @@ use App\Models\objectt;
                                                                     onclick="event.preventDefault(); document.getElementById('delete-form-{{$frontuserFor->id}}').submit();" 
                                                                     class="creatbutton btn">
                                                                   
-                                                                        <span>{{ __('Delete') }}</span>
+                                                                        <span>{{ __('Delete') }}{{$frontuserFor->id}}</span>
                                                                 </a>
                                                                   
                                                             </div>
@@ -322,7 +325,7 @@ use App\Models\objectt;
                                 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
                                 <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
                                 <!-- Use it like any other HTML element -->
-                                <model-viewer id="toggle-poster" src="scene.gltf{{$frontuserFor->id}}/scene.gltf" controls
+                                <model-viewer id="toggle-poster" src="scene.gltf{{$frontuserFor->id}}/{{$gltf}}" controls
                                 auto-rotate poster="assets/poster2.png"></model-viewer>
                                 <script>
                                     const posters = ['poster.png', 'poster2.png'];
@@ -346,7 +349,7 @@ use App\Models\objectt;
                                         <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
                                             <li><a class="dropdown-item" href=""onclick="event.preventDefault();
                                              document.getElementById('edit-form-{{$frontuserFor->id}}').submit();"><img src="../images/editpencil.png"
-                                                        alt="" class="m-1" width="20px" height="20px">{{$frontuserFor->id}}Edit</a></li>
+                                                        alt="" class="m-1" width="20px" height="20px">Edit</a></li>
                                             <li><a class="dropdown-item" href="createvents"><img
                                                         src="../images/calendar.png" alt="" class="m-1" width="20px"
                                                         height="20px">Create event</a></li>
@@ -354,7 +357,7 @@ use App\Models\objectt;
                                             >
                                                     <img src="../images/trash.png" alt="" class="m-1" width="20px"
                                                         height="20px"><span class="redtext">
-                                                        {{$frontuserFor->id}}Delete</span>
+                                                        Delete </span>
                                                         
                                                      </a></li>
                                                     </ul>

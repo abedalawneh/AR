@@ -77,18 +77,19 @@ class projectcontroller extends Controller
                     $project->save();
                     
                     
-                    $object = new objectt;
-                    $object->object = 'scene.gltf';
-                     $object->user_id =$request->userid;
-                     $object->animation =$request->objectanimation;
-                    $object->project_id =$project->id;
-                    $object->save();
+                    
 
                     if ($request->hasFile('file2')) {
                         $files = $request->file('file2');   
                                 $name='scene.gltf'.$project->id;
                                 File::makeDirectory(public_path("{$name}"), 0755, true);                           
                         foreach ($files as $file) {
+                            $object = new objectt;
+                    $object->object = $file->getClientOriginalName();
+                     $object->user_id =$request->userid;
+                     $object->animation =$request->objectanimation;
+                    $object->project_id =$project->id;
+                    $object->save();
                             $destinationPath = public_path("{$name}");
                             $filename = $file->getClientOriginalName();
                             $file->move($destinationPath, $filename);
@@ -120,7 +121,7 @@ class projectcontroller extends Controller
         }
     }
   
-    public function delete(Request $request)
+    public function delete1(Request $request)
     {
         $name='scene.gltf'.$request->id;
         $path = public_path("{$name}");

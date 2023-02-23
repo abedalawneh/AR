@@ -73,11 +73,21 @@ class eventcontroller extends Controller
                     }
                     else if($request->optionlocation == null && $request->optionobject== null){
 
+                        if ($request->hasFile('file1')) {
+                            $files = $request->file('file1');   
+                                    $name='scene.gltf'.$event->id;
+                                    File::makeDirectory(public_path("{$name}"), 0755, true);                           
+                            foreach ($files as $file) {
+                                $object = new objectt;
+                                $object->object =  $file->getClientOriginalName();
+                                $object->user_id =$request->userid;
+                                $object->save();
+                                $destinationPath = public_path("{$name}");
+                                $filename = $file->getClientOriginalName();
+                                $file->move($destinationPath, $filename);
+                            }
+                        }
                         
-                        $object = new objectt;
-                    $object->object = 'scene.gltf';
-                     $object->user_id =$request->userid;
-                    $object->save();
                     
                       
                         $location = new location;
@@ -95,25 +105,26 @@ class eventcontroller extends Controller
                         $event->user_id =$request->userid;
                         $event->save();
 
-                        if ($request->hasFile('file1')) {
-                            $files = $request->file('file1');   
-                                    $name='scene.gltf'.$event->id;
-                                    File::makeDirectory(public_path("{$name}"), 0755, true);                           
-                            foreach ($files as $file) {
-                                $destinationPath = public_path("{$name}");
-                                $filename = $file->getClientOriginalName();
-                                $file->move($destinationPath, $filename);
-                            }
-                        }
+                        
                     }
                     
                     else if ($request->optionobject ==null  ){
                     
 
-                        $object = new objectt;
-                        $object->object = 'scene.gltf';
-                         $object->user_id =$request->userid;
-                        $object->save();
+                        if ($request->hasFile('file1')) {
+                            $files = $request->file('file1');   
+                                    $name='scene.gltf'.$event->id;
+                                    File::makeDirectory(public_path("{$name}"), 0755, true);                           
+                            foreach ($files as $file) {
+                                $object = new objectt;
+                                $object->object =  $file->getClientOriginalName();
+                                 $object->user_id =$request->userid;
+                                $object->save();
+                                $destinationPath = public_path("{$name}");
+                                $filename = $file->getClientOriginalName();
+                                $file->move($destinationPath, $filename);
+                            }
+                        }
                         
 
                     $event = new event;
@@ -124,16 +135,7 @@ class eventcontroller extends Controller
                     $event->user_id =$request->userid;
                     $event->save();
 
-                    if ($request->hasFile('file1')) {
-                        $files = $request->file('file1');   
-                                $name='scene.gltf'.$event->id;
-                                File::makeDirectory(public_path("{$name}"), 0755, true);                           
-                        foreach ($files as $file) {
-                            $destinationPath = public_path("{$name}");
-                            $filename = $file->getClientOriginalName();
-                            $file->move($destinationPath, $filename);
-                        }
-                    }
+                   
 
                     }
                     else if ($request->optionlocation == null) {

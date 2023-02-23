@@ -222,7 +222,7 @@
             <p class="textfluid">Marker based</p>
 
                 
-                <form id="markerform"  method="post" enctype="multipart/form-data" >
+                <form id="markerform"  method="post" enctype="multipart/form-data"  action="{{ route('projectinsertt') }}">
                             @csrf
                             <!-- {{ csrf_field() }} -->
                             <input id="typebased" type="hidden"   name="typebased" value="Marker based" >
@@ -281,7 +281,7 @@
                                     </div>
                                     <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="objectanimation" id="inlineRadio3" value="Poth" >
-                                    <label class="form-check-label" for="inlineRadio3">Poth</label>
+                                    <label class="form-check-label" for="inlineRadio3">Both</label>
                                 </div>
                         
             
@@ -302,7 +302,7 @@
         <div class="formdiv m-4 " id="formdiv2">
             <p class="textfluid">Location based</p>
 
-                <form id="locationform"  method="post" enctype="multipart/form-data">
+                <form id="locationform"  method="post" enctype="multipart/form-data" action="{{ route('locationinsertt') }}">
                             @csrf
                             <input id="typebased" type="hidden"   name="typebased" value="Location based" >
                             <input id="userid" type="hidden"  name="userid" value="{{ Auth::user()->id }}" >
@@ -392,7 +392,7 @@
                                     </div>
                                     <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="objectanimation" id="inlineRadio3" value="Poth" >
-                                    <label class="form-check-label" for="inlineRadio3">Poth</label>
+                                    <label class="form-check-label" for="inlineRadio3">Both</label>
                                 </div>
 
                         <div class="d-grid justify-content-center mx-auto">
@@ -575,75 +575,106 @@
 
 
 <script >
-    $(document).ready(function() {  
-        $('#markerform').on('submit', function(event) {
-            event.preventDefault();
-            var fileInput1 = document.getElementById('file-input1').files[0];
-            var fileInput2 = document.getElementById('file-input2').files[0];
-            var formData = new FormData($("#markerform")[0]);
-            // formData.append('file1', $("#file-input1").files[0]);
+    // $(document).ready(function() {  
+    //     $('#markerform').on('submit', function(event) {
+    //         event.preventDefault();
+    //         var fileInput1 = document.getElementById('file-input1').files[0];
+    //         var fileInput2 = document.getElementById('file-input2').files[0];
+    //         var formData = new FormData($("#markerform")[0]);
+    //         // formData.append('file1', $("#file-input1").files[0]);
             
-            console.log(fileInput1);
-            // formData.append('file1', fileInput1);
-            formData.append('file1name', fileInput1.name);
-            formData.append('fle2name', fileInput2.name);
-            $.ajax({
+    //         console.log(fileInput1);
+    //         // formData.append('file1', fileInput1);
+    //         formData.append('file1name', fileInput1.name);
+    //         formData.append('fle2name', fileInput2.name);
+    //         $.ajax({
       
-                url:"{{ route('projectinsertt') }}",
-                data: formData,
-                type: 'POST',
-                dataType: 'json',
-                contentType: false,
-                cache: false,
-                processData: false,
-                async: false,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(data) {
-                console.log(data);
-                },
-                error: function(data){
-                console.log(data);
-                }
-            });
+    //             url:"{{ route('projectinsertt') }}",
+    //             data: formData,
+    //             type: 'POST',
+    //             dataType: 'json',
+    //             contentType: false,
+    //             cache: false,
+    //             processData: false,
+    //             async: false,
+    //             headers: {
+    //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //             },
+    //             success: function(data) {
+    //             console.log(data);
+    //             },
+    //             error: function(data){
+    //             console.log(data);
+    //             }
+    //         });
             
-        });
-    });
+    //     });
+    // });
 
 
-    $(document).ready(function() {  
-        $('#locationform').on('submit', function(event) {
-            event.preventDefault();
-            var fileInput1 = document.getElementById('file-input3').files[0];
-            var formData = new FormData($("#locationform")[0]);
+    // $(document).ready(function() {  
+    //     $('#locationform').on('submit', function(event) {
+    //         event.preventDefault();
+    //         var fileInput1 = document.getElementById('file-input3').files[0];
+    //         var formData = new FormData($("#locationform")[0]);
             
-            // console.log(fileInput1);
+    //         // console.log(fileInput1);
 
-            formData.append('file1name', fileInput1.name);
-            $.ajax({
+    //         formData.append('file1name', fileInput1.name);
+    //         $.ajax({
       
-                url:"{{ route('locationinsertt') }}",
-                data: formData,
-                type: 'POST',
-                dataType:'JSON',
-                contentType: false,
-                cache: false,
-                processData: false,
-                async: false,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(data) {
-                console.log(data);
-                },
-                error: function(data){
-                console.log(data);
-                }
-            });
+    //             url:"{{ route('locationinsertt') }}",
+    //             data: formData,
+    //             type: 'POST',
+    //             dataType:'JSON',
+    //             contentType: false,
+    //             cache: false,
+    //             processData: false,
+    //             async: false,
+    //             headers: {
+    //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //             },
+    //             success: function(data) {
+    //             // console.log(data);
+    //             },
+    //             error: function(data){
+    //             // console.log(data);
+    //             }
+    //         });
             
-        });
-    });
+    //     });
+    // });
+
+//     $(document).ready(function() {  
+//   $('#locationform').on('submit', function(event) {
+//     event.preventDefault();
+//     var fileInput = document.getElementById('file-input3').files[0];
+//     var formData = new FormData($(this)[0]);
+//     // formData.append('file1name', fileInput);
+
+//     $.ajax({
+//       url: "{{ route('locationinsertt') }}",
+//       data: formData,
+//       type: 'POST',
+//     //   dataType: 'JSON',
+//       contentType: false,
+//       cache: false,
+//       processData: false,
+//       headers: {
+//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//       },
+//       success: function(data) {
+//         // console.log(data);
+//         // Handle success response here
+//       },
+//       error: function(data) {
+//         // console.log(data);
+//         // Handle error response here
+//       }
+//     });
+//   });
+// });
+
 </script>
 
 

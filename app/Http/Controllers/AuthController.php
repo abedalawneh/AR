@@ -36,7 +36,7 @@ class AuthController extends Controller
     
     public function registration()
     {
-        return view('Auth.register');
+        return view('auth.register');
     }
     // public function dashbord()
     // {

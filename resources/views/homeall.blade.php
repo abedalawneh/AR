@@ -23,6 +23,20 @@ use App\Models\location;
 <div class="barheight d-flex" id="wrapper">
   <div class="sidebardiv1  border-right" id="sidebar-wrapper">
     <div class="sidebar-heading"> </div>
+    <div class="dropdowninner d-flex justify-content-start m-3 col-md-6" id="navbarNavDropdown">
+            <ul class="navbar-nav ">
+               
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle  " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ Auth::user()->name }}
+                </a>
+                <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" data-toggle="modal" href="#exampleModalCenterprofile">My profile</a></li>
+                    
+                </ul>
+                </li>
+            </ul>
+            </div>
     <div class="listheight list-group list-group-flush ">
       <a href="{{ route('homeall') }}"onclick="event.preventDefault(); document.getElementById('homeall-form').submit();"
        class="list-group-item list-group-item-action sidebardiv ">
@@ -57,20 +71,7 @@ use App\Models\location;
         <a class="navbar-brand " href="#">
         <img src="../images/calendar.png" alt="" width="18" height="18" class="navtext d-inline-block align-text-center ">All
     </a>
-            <div class="dropdowninner d-flex justify-content-end col-md-6" id="navbarNavDropdown">
-            <ul class="navbar-nav ">
-               
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle  " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                User Name
-                </a>
-                <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" data-toggle="modal" href="#exampleModalCenterprofile">My profile</a></li>
-                    
-                </ul>
-                </li>
-            </ul>
-            </div>
+            
             <div class=" modal fade" id="exampleModalCenterprofile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterprofileTitle" aria-hidden="false">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class=" modal-content">
@@ -294,14 +295,14 @@ use App\Models\location;
                 <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
                 <li><a class="dropdown-item" href=""onclick="event.preventDefault();
                                              document.getElementById('edit-{{$frontuserFor->id}}').submit();"><img src="../images/editpencil.png"
-                                                        alt="" class="m-1" width="20px" height="20px">{{$frontuserFor->id}}Edit</a></li>
+                                                        alt="" class="m-1" width="20px" height="20px">Edit</a></li>
                     <li><a class="dropdown-item" href="object/{{$objectevent[0]->object}}" download >
                     <img src="../images/downloadrow.png" alt=""class="m-1"width="20px" height="20px">Download file</a></li>
                     <li><a class="dropdown-item" data-toggle="modal" href="#delete-popup-{{$frontuserFor->id}}"
                                             >
                                                     <img src="../images/trash.png" alt="" class="m-1" width="20px"
                                                         height="20px"><span class="redtext">
-                                                        {{$frontuserFor->id}}Delete</span>
+                                                        Delete</span>
                                                         
                                                      </a></li>
                 </ul>

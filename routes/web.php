@@ -28,13 +28,15 @@ Route::get('signout', [AuthController::class, 'signOut'])->name('signout');
 Route::post('createproject', [AuthController::class, 'createproject'])->name('createprojectt');
 Route::post('createvents', [AuthController::class, 'createvents'])->name('createvents');
 Route::post('project', [projectcontroller::class, 'project'])->name('project');
+Route::get('project', [projectcontroller::class, 'project'])->name('project');
 Route::post('events', [AuthController::class, 'events'])->name('events');
+Route::get('events', [AuthController::class, 'events'])->name('events');
 Route::post('homeall', [AuthController::class, 'homeall'])->name('homeall');
 Route::get('homeall', [AuthController::class, 'homeall'])->name('homeall');
 Route::post('arlocation', [projectcontroller::class, 'arlocation'])->name('arlocation');
 Route::get('arlocation', [projectcontroller::class, 'arlocation'])->name('arlocation');
-Route::post('delete', [projectcontroller::class, 'delete'])->name('delete');
-Route::post('delete', [locationcontroller::class, 'delete'])->name('delete');
+Route::post('delete', [projectcontroller::class, 'delete1'])->name('delete1');
+Route::post('delete', [locationcontroller::class, 'delete2'])->name('delete2');
 Route::post('deletevent', [eventcontroller::class, 'deletevent'])->name('deletevent');
 
 
