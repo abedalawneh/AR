@@ -264,6 +264,8 @@ use App\Models\location;
                                         <input type="file" name="file1[]"  id="file-input1" multiple>
                                         </div>
                                         <p class="radiotext">upload your marker (black and white). It will be like a QR code. </p>
+                                    <p class="radiotext">Your object should be (.glb) </p>
+
                                 </div>
                             </div>
 

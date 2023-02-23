@@ -14,7 +14,7 @@ body{
 
 }
 .userimageprofile{
-    display: none;
+    display: none !important;
 }
 .sidebardiv1{
     width: 12%;
@@ -408,7 +408,9 @@ justify-content: space-evenly;
         display: none !important;
     }
     .userimageprofile{
-        margin-right: 10%;
+        display: inline-block !important;
+        margin-left: 15%;
+        margin-top: 30%;
     }
     .textbuttonspan{
         font-size: 15px;
@@ -493,8 +495,13 @@ justify-content: space-evenly;
     .saved{
         width: 35.666667% !important;
     }
+    
 }
-
+@media screen and (max-width:1200px){
+    .sidebardiv1 {
+        width: 20%;
+    }
+}
 @media screen and (min-width:800px){
 
     .saved{

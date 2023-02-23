@@ -37,6 +37,8 @@ use App\Models\location;
                 </li>
             </ul>
             </div>
+            <a class="userimageprofile " data-toggle="modal"href="#exampleModalCenterprofile"><img  width="18" height="18" src="../images/userimage.png" alt="noo"></a>
+
     <div class="listheight list-group list-group-flush ">
       <a href="{{ route('homeall') }}"onclick="event.preventDefault(); document.getElementById('homeall-form').submit();"
        class="list-group-item list-group-item-action sidebardiv ">
@@ -329,13 +331,26 @@ use App\Models\location;
         $objectproject = objectt::where('project_id', $userFrontproject->id)->get();
         // $iduser=$userFrontproject->id;
         // return $$objectproject;
+        
+    
+if($frontuserFor->based_tybe=="Location based"){
     ?>
-
-<form id="delete-form-{{$userFrontproject->id}}" action="{{route('delete')}}" method="post" class="d-none">
+    <form id="delete-form-{{$userFrontproject->id}}" action="{{route('delete2')}}" method="post" class="d-none">
                                             @csrf
          <input type="text" name="id" value="{{$userFrontproject->id}}">
 
     </form>
+<?php }
+else {?>
+    <form id="delete-form-{{$userFrontproject->id}}" action="{{route('delete1')}}" method="post" class="d-none">
+                                            @csrf
+         <input type="text" name="id" value="{{$userFrontproject->id}}">
+
+    </form>
+<?php
+}
+?>
+
     <form id="editform-{{$userFrontproject->id}}" action="{{route('editproject')}}" method="post" class="d-none">
                                             @csrf
          <input type="text" name="id" value="{{$userFrontproject->id}}">
@@ -403,7 +418,7 @@ use App\Models\location;
                                         <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
                                         <li><a class="dropdown-item" href=""onclick="event.preventDefault();
                                              document.getElementById('editform-{{$userFrontproject->id}}').submit();"><img src="../images/editpencil.png"
-                                                        alt="" class="m-1" width="20px" height="20px">{{$userFrontproject->id}}Edit</a></li>
+                                                        alt="" class="m-1" width="20px" height="20px">Edit</a></li>
                                             <li><a class="dropdown-item" href="createvents"><img
                                                         src="../images/calendar.png" alt="" class="m-1" width="20px"
                                                         height="20px">Create event</a></li>
@@ -411,7 +426,7 @@ use App\Models\location;
                                             >
                                                     <img src="../images/trash.png" alt="" class="m-1" width="20px"
                                                         height="20px"><span class="redtext">
-                                                        {{$userFrontproject->id}}Delete</span>
+                                                             Delete</span>
                                                         
                                                      </a></li>
                                                     </ul>

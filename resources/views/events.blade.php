@@ -37,6 +37,8 @@ use App\Models\location;
                 </li>
             </ul>
             </div>
+            <a class="userimageprofile " data-toggle="modal"href="#exampleModalCenterprofile"><img  width="18" height="18" src="../images/userimage.png" alt="noo"></a>
+
     <div class="listheight list-group list-group-flush ">
       <a href="{{ route('homeall') }}"onclick="event.preventDefault(); document.getElementById('homeall-form').submit();"
        class="list-group-item list-group-item-action sidebardiv ">

@@ -43,7 +43,7 @@ use App\Models\objectt;
                         </ul>
                     </div>
                     
-                    <a class="userimageprofile d-inline-block" data-toggle="modal"href="#exampleModalCenterprofile"><img  width="18" height="18" src="../images/userimage.png" alt="noo"></a>
+                    <a class="userimageprofile " data-toggle="modal"href="#exampleModalCenterprofile"><img  width="18" height="18" src="../images/userimage.png" alt="noo"></a>
                     <div class="listheight list-group list-group-flush ">
                 <a href="{{ route('homeall') }}"
                     onclick="event.preventDefault(); document.getElementById('homeall-form').submit();"
@@ -264,13 +264,24 @@ use App\Models\objectt;
           // $iduser=$frontuserFor->id;
           // return $$objectproject;
            
+    
+if($frontuserFor->based_tybe=="Location based"){
     ?>
-
     <form id="delete-form-{{$frontuserFor->id}}" action="{{route('delete2')}}" method="post" class="d-none">
                                             @csrf
          <input type="text" name="id" value="{{$frontuserFor->id}}">
 
     </form>
+<?php }
+else {?>
+    <form id="delete-form-{{$frontuserFor->id}}" action="{{route('delete1')}}" method="post" class="d-none">
+                                            @csrf
+         <input type="text" name="id" value="{{$frontuserFor->id}}">
+
+    </form>
+<?php
+}
+?>
     <form id="edit-form-{{$frontuserFor->id}}" action="{{route('editproject')}}" method="post" class="d-none">
                                             @csrf
          <input type="text" name="id" value="{{$frontuserFor->id}}">
@@ -304,7 +315,7 @@ use App\Models\objectt;
                                                                     onclick="event.preventDefault(); document.getElementById('delete-form-{{$frontuserFor->id}}').submit();" 
                                                                     class="creatbutton btn">
                                                                   
-                                                                        <span>{{ __('Delete') }}{{$frontuserFor->id}}</span>
+                                                                        <span>{{ __('Delete') }}</span>
                                                                 </a>
                                                                   
                                                             </div>

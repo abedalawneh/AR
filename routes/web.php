@@ -35,8 +35,8 @@ Route::post('homeall', [AuthController::class, 'homeall'])->name('homeall');
 Route::get('homeall', [AuthController::class, 'homeall'])->name('homeall');
 Route::post('arlocation', [projectcontroller::class, 'arlocation'])->name('arlocation');
 Route::get('arlocation', [projectcontroller::class, 'arlocation'])->name('arlocation');
-Route::post('delete', [projectcontroller::class, 'delete1'])->name('delete1');
-Route::post('delete', [locationcontroller::class, 'delete2'])->name('delete2');
+Route::post('delete1', [projectcontroller::class, 'delete1'])->name('delete1');
+Route::post('delete2', [locationcontroller::class, 'delete2'])->name('delete2');
 Route::post('deletevent', [eventcontroller::class, 'deletevent'])->name('deletevent');
 
 
