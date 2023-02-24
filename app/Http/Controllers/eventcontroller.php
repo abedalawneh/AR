@@ -73,13 +73,17 @@ class eventcontroller extends Controller
                     }
                     else if($request->optionlocation == null && $request->optionobject== null){
 
+                        $event = new event;
+                        $event->event_name =$request->eventname;
+                        $event->event_radius =$request->radiusevent;
+                        
                         if ($request->hasFile('file1')) {
                             $files = $request->file('file1');   
                                     $name='scene.gltf'.$event->id;
                                     File::makeDirectory(public_path("{$name}"), 0755, true);                           
-                            foreach ($files as $file) {
+                            foreach ($files as $file) { 
                                 $object = new objectt;
-                                $object->object =  $file->getClientOriginalName();
+                                $object->object = $file->getClientOriginalName();
                                 $object->user_id =$request->userid;
                                 $object->save();
                                 $destinationPath = public_path("{$name}");
@@ -97,9 +101,6 @@ class eventcontroller extends Controller
                         $location->user_id =$request->userid;
                         $location->save();
 
-                        $event = new event;
-                        $event->event_name =$request->eventname;
-                        $event->event_radius =$request->radiusevent;
                         $event->object_id =$object->id;
                         $event->location_id =$location->id;
                         $event->user_id =$request->userid;
@@ -110,6 +111,9 @@ class eventcontroller extends Controller
                     
                     else if ($request->optionobject ==null  ){
                     
+                        $event = new event;
+                        $event->event_name =$request->eventname;
+                        $event->event_radius =$request->radiusevent;
 
                         if ($request->hasFile('file1')) {
                             $files = $request->file('file1');   
@@ -117,25 +121,24 @@ class eventcontroller extends Controller
                                     File::makeDirectory(public_path("{$name}"), 0755, true);                           
                             foreach ($files as $file) {
                                 $object = new objectt;
-                                $object->object =  $file->getClientOriginalName();
-                                 $object->user_id =$request->userid;
-                                $object->save();
+                        $object->object = $file->getClientOriginalName();
+                         $object->user_id =$request->userid;
+                        $object->save();
                                 $destinationPath = public_path("{$name}");
                                 $filename = $file->getClientOriginalName();
                                 $file->move($destinationPath, $filename);
                             }
                         }
                         
+                        
 
-                    $event = new event;
-                    $event->event_name =$request->eventname;
-                    $event->event_radius =$request->radiusevent;
+                    
                     $event->object_id =$object->id;
                     $event->location_id =$request->optionlocation;
                     $event->user_id =$request->userid;
                     $event->save();
 
-                   
+                    
 
                     }
                     else if ($request->optionlocation == null) {
@@ -162,11 +165,8 @@ class eventcontroller extends Controller
                     // ]);
 
                     if ($object && $event &&$location) {
-                        return response()->json([
-                            'result'=>true,
-                            'message'=>'Added Successfully',
-                            
-                        ]);
+                        return redirect()->route('events');
+
                       }
                   else {
                     return response()->json([

@@ -228,8 +228,9 @@ use App\Models\location;
       foreach ($userFront1 as $frontuserFor) {
         $objectid=$frontuserFor->object_id;
         $objectevent = objectt::where('id', $objectid)->get();
-        ?>
+        $gltf=$objectevent[0]->object;
 
+        ?>
     <form id="edit-form-{{$frontuserFor->id}}" action="{{route('editevents')}}" method="post" class="d-none">
                                             @csrf
          <input type="text" name="id" value="{{$frontuserFor->id}}">
@@ -283,7 +284,7 @@ use App\Models\location;
       <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
                                 <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
                                 <!-- Use it like any other HTML element -->
-                                <model-viewer id="toggle-poster" src="scene.gltf{{$frontuserFor->id}}/scene.gltf" controls
+                                <model-viewer id="toggle-poster" src="scene.gltf{{$frontuserFor->id}}/{{$gltf}}" controls
                                 auto-rotate poster="assets/poster2.png"></model-viewer>
                                 <script>
                                     const posters = ['poster.png', 'poster2.png'];
