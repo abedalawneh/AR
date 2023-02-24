@@ -23,13 +23,14 @@ body{
     height: 100vh;
 }
 .listheight{
-    margin-top:40%;
+    margin-top:20%;
     border-color:none ;
 }
 .sidebardiv:hover{
     background-color: #e2e1ea26;
 
 }
+
 .creatbutton{
     width: 249px;
     height: 44px;
@@ -404,8 +405,8 @@ justify-content: space-evenly;
       flex-direction: column !important;  
 
     }
-    .dropdowninner{
-        display: none !important;
+    .logopage{
+        width: 40px !important;
     }
     .userimageprofile{
         display: inline-block !important;

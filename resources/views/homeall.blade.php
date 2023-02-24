@@ -23,21 +23,10 @@ use App\Models\location;
 <div class="barheight d-flex" id="wrapper">
   <div class="sidebardiv1  border-right" id="sidebar-wrapper">
     <div class="sidebar-heading"> </div>
-    <div class="dropdowninner d-flex justify-content-start m-3 col-md-6" id="navbarNavDropdown">
-            <ul class="navbar-nav ">
-               
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle  " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {{ Auth::user()->name }}
-                </a>
-                <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" data-toggle="modal" href="#exampleModalCenterprofile">My profile</a></li>
-                    
-                </ul>
-                </li>
-            </ul>
-            </div>
-            <a class="userimageprofile " data-toggle="modal"href="#exampleModalCenterprofile"><img  width="18" height="18" src="../images/userimage.png" alt="noo"></a>
+    
+    <div class="m-3 ">
+    <a class="navbar-brand " href="#"><img src="../images/logoregister.svg"class="logopage" alt="not found"></a>
+    </div>
 
     <div class="listheight list-group list-group-flush ">
       <a href="{{ route('homeall') }}"onclick="event.preventDefault(); document.getElementById('homeall-form').submit();"
@@ -73,7 +62,20 @@ use App\Models\location;
         <a class="navbar-brand " href="#">
         <img src="../images/calendar.png" alt="" width="18" height="18" class="navtext d-inline-block align-text-center ">All
     </a>
-            
+    <div class="dropdowninner d-flex justify-content-end m-3 col-md-6" id="navbarNavDropdown">
+            <ul class="navbar-nav ">
+               
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle  " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ Auth::user()->name }}
+                </a>
+                <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" data-toggle="modal" href="#exampleModalCenterprofile">My profile</a></li>
+                    
+                </ul>
+                </li>
+            </ul>
+            </div>
             <div class=" modal fade" id="exampleModalCenterprofile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterprofileTitle" aria-hidden="false">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class=" modal-content">

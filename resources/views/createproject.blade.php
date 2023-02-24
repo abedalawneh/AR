@@ -274,7 +274,7 @@
                                 <p class="radiotitle"><span class="spantitle"> 4 </span>How you like your object ?</p>
                                 <div class="form-check form-check-inline m-4">
                                     <input class="form-check-input" type="radio" name="objectanimation" id="inlineRadio1" value="Animationrotate">
-                                    <label class="form-check-label" for="inlineRadio1">Animation_rotate</label>
+                                    <label class="form-check-label" for="inlineRadio1">Animation Rotate</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="objectanimation" id="inlineRadio2" value="ONTouch">
@@ -383,11 +383,56 @@
 
                     </div>
 
+
+<script>
+  let modelViewer;
+  
+  const fileInput = document.getElementById('file-input3');
+  fileInput.addEventListener('change', (event) => {
+    const selectedFile = event.target.files[0];
+    const fileURL = URL.createObjectURL(selectedFile);
+    if (modelViewer) {
+      modelViewer.setAttribute('src', fileURL);
+      modelViewer.setAttribute('poster', '');
+      modelViewer.load();
+    } else {
+      modelViewer = createModelViewer(fileURL);
+    }
+  });
+
+  function createModelViewer(src) {
+    const modelViewerContainer = document.getElementById('model-viewer-container');
+    const modelViewer = document.createElement('model-viewer');
+    modelViewer.setAttribute('src', src);
+    modelViewer.setAttribute('controls', '');
+    modelViewer.setAttribute('auto-rotate', '');
+    modelViewer.setAttribute('poster', 'assets/poster2.png');
+    modelViewerContainer.appendChild(modelViewer);
+    return modelViewer;
+  }
+</script>
+
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+
+<!-- Create a container element for the model-viewer -->
+<div id="model-viewer-container"></div>
+
+<script>
+  const posters = ['poster.png', 'poster2.png'];
+  let i = 0;
+  setInterval(() =>
+    modelViewer.setAttribute('poster', `assets/${posters[i++ % 2]}`), 2000);
+</script>
+
+
+
+                    
                         
                     <p class="radiotitle"><span class="spantitle"> 4 </span>How you like your object ?</p>
                                 <div class="form-check form-check-inline m-4">
                                     <input class="form-check-input" type="radio" name="objectanimation" id="inlineRadio1" value="Animationrotate">
-                                    <label class="form-check-label" for="inlineRadio1">Animation_rotate</label>
+                                    <label class="form-check-label" for="inlineRadio1">Animation Rotate</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="objectanimation" id="inlineRadio2" value="ONTouch">
