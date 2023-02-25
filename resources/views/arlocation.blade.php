@@ -44,10 +44,8 @@ use App\Models\objectt;
             gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"
             animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"
             super-hands>
+            <a-text value="my first text" position="0 -5 0" color="white" transparent="true"></a-text>
   </a-entity>
-  <a-entity position="0 -5 0">
-    <a-text value="my first text" style="text-align: center" color="white"></a-text>
-</a-entity>
   <script>
     // var animation='{{$object->animation}}';
     // console.log(animation);
