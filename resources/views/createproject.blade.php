@@ -250,7 +250,7 @@
 
                             </label>
                                     <div class="selectFile">       
-                                    <input type="file" name="file1"  id="file-input1" multiple accept=".glb">
+                                    <input type="file" name="file1"  id="file-input1" multiple >
                                     </div>
                                     <p class="radiotext">upload your marker (black and white). It will be like a QR code. </p>
                             </div>
@@ -273,7 +273,6 @@
                                 
                                 <p class="radiotitle "><span class="spantitle">4</span> Your text</p>
                             <div class=" form-group mb-3 m-3">
-                            <label for="Projectname" class="radiotitle p-2">{{ __('Project') }}</label>
 
                            
                                 <input id="Projectname" type="text"placeholder="Your text"  class="imageproject form-control" name="textobject" value="{{ old('textproject') }}"   >

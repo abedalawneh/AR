@@ -415,7 +415,7 @@ else {?>
                 // $randomString =Str::random() ;
                 // $link = 'https://'.$randomString;
                 ?>
-                   <span class="textqr2"><a href=""onclick="event.preventDefault();
+                   <span class="textqr2 d-flex justify-content-center" ><a href=""onclick="event.preventDefault();
                      document.getElementById('ar-form-{{$frontuserFor->id}}').submit();">{{ asset('arlocation?id='.$frontuserFor->id)}}</a></span>
                      
                </div>

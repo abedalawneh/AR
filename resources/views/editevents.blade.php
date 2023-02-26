@@ -22,7 +22,7 @@ use App\Models\location;
 <body>
 <!-- $user = User::findOrFail(Auth::user()->id); -->
 
-<div class="barheight1 d-flex" id="wrapper">
+<div class="barheightedit d-flex" id="wrapper">
   <div class="sidebardiv1  border-right" id="sidebar-wrapper">
     <div class="sidebar-heading"> </div>
     <div class="listheight list-group list-group-flush ">
@@ -206,7 +206,7 @@ use App\Models\location;
     ?>
         <div class="formdiv m-4 " >
    
-                <form  id="eventform"  method="post" enctype="multipart/form-data">
+                <form  id="eventform"  method="post" enctype="multipart/form-data" action="{{ route('eventedit') }}">
                             @csrf
 
                             <input type="hidden" name="id" value="{{$frontuserFor->id}}">
@@ -353,7 +353,7 @@ progressBar.style.width = $value + '%'
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script >
+<!-- <script >
     $(document).ready(function() {  
         $('#eventform').on('submit', function(event) {
             event.preventDefault();
@@ -385,7 +385,7 @@ progressBar.style.width = $value + '%'
     });
 
 
-</script>
+</script> -->
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

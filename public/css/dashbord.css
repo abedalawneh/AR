@@ -22,6 +22,9 @@ body{
 .barheight{
     height: 100vh;
 }
+.barheightedit{
+    height: auto;
+}
 .listheight{
     margin-top:20%;
     border-color:none ;

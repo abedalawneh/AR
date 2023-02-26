@@ -128,28 +128,25 @@ class locationcontroller extends Controller
     public function locationedit(Request $request)
     {
 
-        if ($request->hasFile('file3')) {
-            $files = $request->file('file3');   
-            $name = 'scene.gltf'.$project->id;
-            $destinationPath = public_path($name);
-            
-            // If the file already exists, delete it
-            if (file_exists($destinationPath)) {
-                unlink($destinationPath);
-            }
-            
-            // Upload the new file
-            foreach ($files as $file) {
-                $filename = $file->getClientOriginalName();
-                $file->move(public_path(), $name);
-            }
-        }
+       
         
         $objectproject = objectt::where('project_id', $request->id)->get();
-        foreach ($objectproject as $objectproject) {
-            $objectproject->object = $request->file1name;
-            $objectproject->save();
+        foreach ($objectproject as $editobject) {
+            if ($request->hasFile('file2')) {
+                $files = $request->file('file2');                             
+                foreach ($files as $file) {
+            $editobject->object = $file->getClientOriginalName();
+            $editobject->animation =$request->objectanimation;
+            $editobject->textobject =$request->textobject;
+            $editobject->save();
+                    $destinationPath = public_path("glbobject");
+                    $filename = $file->getClientOriginalName();
+                    $file->move($destinationPath, $filename);
+                }
+            }
+
         }
+           
         $locationproject = location::where('project_id', $request->id)->get();
         
         foreach ($locationproject as $locationproject) {
@@ -158,7 +155,7 @@ class locationcontroller extends Controller
             $locationproject->longitude=$request->Longitude;
             $locationproject->save();
         }
-        $editproject = project::find($request->id);
+            $editproject = project::find($request->id);
             $editproject->project_name = $request->Projectname;
             $editproject->save();
         return redirect()->route('project');

@@ -24,7 +24,7 @@ use App\Models\objectt;
 <body>
 <!-- $user = User::findOrFail(Auth::user()->id); -->
 
-<div class="barheight d-flex" id="wrapper">
+<div class="barheightedit d-flex" id="wrapper">
   <div class="sidebardiv1  border-right" id="sidebar-wrapper">
     <div class="sidebar-heading"> </div>
     <div class="listheight list-group list-group-flush ">
@@ -212,7 +212,7 @@ use App\Models\objectt;
                 <div class="formdiv m-4 " >
 
 
-                    <form id="markerform" method="post" enctype="multipart/form-data">
+                    <form id="markerform" method="post" enctype="multipart/form-data"  action="{{ route('editmarkerproject') }}">
                         @csrf
                         <!-- {{ csrf_field() }} -->
                         <input type="hidden" name="id" value="{{$frontuserFor->id}}">
@@ -263,13 +263,80 @@ use App\Models\objectt;
                             </label>
                             <div class="selectFile">
                             <!-- <input type="hidden" name="oldfile2" value="{{$object->object }}"> -->
-                                <input type="file" name="file2[]" id="file-input2" value="{{ $object->object }}"multiple>
+                                <input type="file" name="file2[]" id="file-input2" value="{{ $object->object }}" multiple accept=".glb">
                             </div>
                             <p class="radiotext">3D, Image, Video. It will link to your marker or our QR code. Max size
                                 is 50 MB </p>
                         </div>
+                        <script>
+  let modelViewer;
+  
+  const fileInput = document.getElementById('file-input2');
+  fileInput.addEventListener('change', (event) => {
+    const selectedFile = event.target.files[0];
+    const fileURL = URL.createObjectURL(selectedFile);
+    if (modelViewer) {
+      modelViewer.setAttribute('src', fileURL);
+      modelViewer.setAttribute('poster', '');
+      modelViewer.load();
+    } else {
+      modelViewer = createModelViewer(fileURL);
+    }
+  });
+
+  function createModelViewer(src) {
+    const modelViewerContainer = document.getElementById('model-viewer-container');
+    const modelViewer = document.createElement('model-viewer');
+    modelViewer.setAttribute('src', src);
+    modelViewer.setAttribute('controls', '');
+    modelViewer.setAttribute('auto-rotate', '');
+    modelViewer.setAttribute('poster', 'assets/poster2.png');
+    modelViewerContainer.appendChild(modelViewer);
+    return modelViewer;
+  }
+</script>
+
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+
+<!-- Create a container element for the model-viewer -->
+<div id="model-viewer-container"></div>
+
+<script>
+  const posters = ['poster.png', 'poster2.png'];
+  let i = 0;
+  setInterval(() =>
+    modelViewer.setAttribute('poster', `assets/${posters[i++ % 2]}`), 2000);
+</script>
 
 
+                        <p class="radiotitle "><span class="spantitle">4</span> Your text</p>
+                            <div class=" form-group mb-3 m-3">
+
+                           
+                                <input id="Projectname" type="text"  class="imageproject form-control" name="textobject" value="{{ $object->textobject}}"   >
+                                
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                 
+                            </div>
+
+                                <p class="radiotitle"><span class="spantitle"> 5 </span>How you like your object ?</p>
+                                <div class="form-check form-check-inline m-4">
+                                    <input class="form-check-input" type="radio" name="objectanimation" id="inlineRadio1" value="Animationrotate">
+                                    <label class="form-check-label" for="inlineRadio1">Animation Rotate</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="objectanimation" id="inlineRadio2" value="ONTouch">
+                                    <label class="form-check-label" for="inlineRadio2">ON Touch</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="objectanimation" id="inlineRadio3" value="Poth" >
+                                    <label class="form-check-label" for="inlineRadio3">Both</label>
+                                </div>
 
 
                         {{ csrf_field() }}
@@ -292,7 +359,7 @@ use App\Models\objectt;
 <!-- <h1>ffffff</h1> -->
                 <div class="formdiv m-4 " >
 
-                    <form id="locationform" method="post" enctype="multipart/form-data">
+                    <form id="locationform" method="post" enctype="multipart/form-data" action="{{ route('locationedit') }}">
                         @csrf
                         <input type="hidden" name="id" value="{{$frontuserFor->id}}">
                         <input id="typebased" type="hidden" name="typebased" value="Location based">
@@ -376,13 +443,80 @@ use App\Models\objectt;
 
                             </label>
                             <div class="selectFile">
-                                <input type="file" name="file3[]" id="file-input3" multiple>
+                                <input type="file" name="file3[]" id="file-input3" multiple accept=".glb">
                             </div>
                             <p class="radiotext">3D, Image, Video. It will link to your marker or our QR code. Max size
                                 is 50 MB </p>
                         </div>
+<script>
+                        let modelViewer;
+  
+  const fileInput = document.getElementById('file-input3');
+  fileInput.addEventListener('change', (event) => {
+    const selectedFile = event.target.files[0];
+    const fileURL = URL.createObjectURL(selectedFile);
+    if (modelViewer) {
+      modelViewer.setAttribute('src', fileURL);
+      modelViewer.setAttribute('poster', '');
+      modelViewer.load();
+    } else {
+      modelViewer = createModelViewer(fileURL);
+    }
+  });
+
+  function createModelViewer(src) {
+    const modelViewerContainer = document.getElementById('model-viewer-container');
+    const modelViewer = document.createElement('model-viewer');
+    modelViewer.setAttribute('src', src);
+    modelViewer.setAttribute('controls', '');
+    modelViewer.setAttribute('auto-rotate', '');
+    modelViewer.setAttribute('poster', 'assets/poster2.png');
+    modelViewerContainer.appendChild(modelViewer);
+    return modelViewer;
+  }
+</script>
+
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+
+<!-- Create a container element for the model-viewer -->
+<div id="model-viewer-container"></div>
+
+<script>
+  const posters = ['poster.png', 'poster2.png'];
+  let i = 0;
+  setInterval(() =>
+    modelViewer.setAttribute('poster', `assets/${posters[i++ % 2]}`), 2000);
+</script>
 
 
+                        <p class="radiotitle "><span class="spantitle">4</span> Your text</p>
+                            <div class=" form-group mb-3 m-3">
+
+                           <h1 class="radiotitle m-2">{{ $object->textobject}}</h1>
+                                <input id="Projectname" type="text" class="imageproject form-control" name="textobject" value="{{ $object->textobject}}"   >
+                                
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                 
+                            </div>
+
+                                <p class="radiotitle"><span class="spantitle"> 5 </span>How you like your object ?</p>
+                                <div class="form-check form-check-inline m-4">
+                                    <input class="form-check-input" type="radio" name="objectanimation" id="inlineRadio1" value="Animationrotate">
+                                    <label class="form-check-label" for="inlineRadio1">Animation Rotate</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="objectanimation" id="inlineRadio2" value="ONTouch">
+                                    <label class="form-check-label" for="inlineRadio2">ON Touch</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="objectanimation" id="inlineRadio3" value="Poth" >
+                                    <label class="form-check-label" for="inlineRadio3">Both</label>
+                                </div>
 
 
                         <div class="d-grid justify-content-center mx-auto">
@@ -568,7 +702,7 @@ use App\Models\objectt;
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-    <script>
+    <!-- <script>
      $(document).ready(function() {  
         $('#markerform').on('submit', function(event) {
             event.preventDefault();
@@ -638,7 +772,7 @@ use App\Models\objectt;
 
         });
     });
-    </script>
+    </script> -->
 
 </body>
 

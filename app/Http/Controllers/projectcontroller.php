@@ -82,9 +82,7 @@ class projectcontroller extends Controller
                     
 
                     if ($request->hasFile('file2')) {
-                        $files = $request->file('file2');   
-                                // $name='scene.gltf'.$project->id;
-                                // File::makeDirectory(public_path("{$name}"), 0755, true);                           
+                        $files = $request->file('file2');                             
                         foreach ($files as $file) {
                             $object = new objectt;
                     $object->object = $file->getClientOriginalName();
@@ -126,11 +124,7 @@ class projectcontroller extends Controller
   
     public function delete1(Request $request)
     {
-        $name='scene.gltf'.$request->id;
-        $path = public_path("{$name}");
-        if(File::exists($path)) {
-            File::deleteDirectory($path);
-        }
+        
 
         $objectproject = objectt::where('project_id', $request->id)->get();
 
@@ -151,41 +145,30 @@ class projectcontroller extends Controller
 
     public function editmarkerproject(Request $request)
     {
-        $name='scene.gltf'.$request->id;
-        $path = public_path("{$name}");
-        if(File::exists($path)) {
-            File::deleteDirectory($path);
-        }
-    //    return $request;
         
-    if ($request->hasFile('file1')) {
-            $file = $request->file('file1');
-            $destinationPath = public_path('marker');
-            $filename = $file->getClientOriginalName();
-            $file->move($destinationPath, $filename);
-        }
-        if ($request->hasFile('file2')) {
-            $files = $request->file('file2');   
-                    $name='scene.gltf'.$project->id;
-                    File::makeDirectory(public_path("{$name}"), 0755, true);                           
-            foreach ($files as $file) {
-                $destinationPath = public_path("{$name}");
-                $filename = $file->getClientOriginalName();
-                $file->move($destinationPath, $filename);
-            }
-        }
         $objectproject = objectt::where('project_id', $request->id)->get();
-        foreach ($objectproject as $objectproject) {
-            $objectproject->object = $request->fle2name;
-            $objectproject->save();
+        foreach ($objectproject as $editobject) {
+            if ($request->hasFile('file2')) {
+                $files = $request->file('file2');                             
+                foreach ($files as $file) {
+            $editobject->object = $file->getClientOriginalName();
+            $editobject->animation =$request->objectanimation;
+            $editobject->textobject =$request->textobject;
+            $editobject->save();
+                    $destinationPath = public_path("glbobject");
+                    $filename = $file->getClientOriginalName();
+                    $file->move($destinationPath, $filename);
+                }
+            }
+
         }
             $editproject = project::find($request->id);
             $editproject->project_name = $request->Projectname;
-            $editproject->user_id = $request->userid;
             $editproject->based_tybe = $request->typebased;
             $editproject->your_marker = $request->file1name;
             $editproject->save();
-        return redirect()->route('project');
+        
+            return redirect()->route('project');
 
     
     }
