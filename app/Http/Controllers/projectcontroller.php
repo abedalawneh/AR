@@ -20,9 +20,9 @@ class projectcontroller extends Controller
     {   $id=$request->id;
         return redirect()->route('arlocation',['id' => $id]);
     }
-    public function project()
+    public function project(Request $request)
     {
-        $userFront1 = project::all();
+        $userFront1 =project::where('id', $request->id)->get();
 
         return view('project', ['userFront1' =>$userFront1]);
     }
