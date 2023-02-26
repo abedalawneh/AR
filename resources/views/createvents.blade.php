@@ -261,13 +261,88 @@ use App\Models\location;
 
                                 </label>
                                         <div class="selectFile">       
-                                        <input type="file" name="file1[]"  id="file-input1" multiple>
+                                        <input type="file" name="file1[]"  id="file-input1" multiple accept=".glb">
                                         </div>
                                         <p class="radiotext">upload your marker (black and white). It will be like a QR code. </p>
                                     <p class="radiotext">Your object should be (.glb) </p>
 
                                 </div>
+
+                                <script>
+  let modelViewer;
+  
+  const fileInput = document.getElementById('file-input1');
+  fileInput.addEventListener('change', (event) => {
+    const selectedFile = event.target.files[0];
+    const fileURL = URL.createObjectURL(selectedFile);
+    if (modelViewer) {
+      modelViewer.setAttribute('src', fileURL);
+      modelViewer.setAttribute('poster', '');
+      modelViewer.load();
+    } else {
+      modelViewer = createModelViewer(fileURL);
+    }
+  });
+
+  function createModelViewer(src) {
+    const modelViewerContainer = document.getElementById('model-viewer-container');
+    const modelViewer = document.createElement('model-viewer');
+    modelViewer.setAttribute('src', src);
+    modelViewer.setAttribute('controls', '');
+    modelViewer.setAttribute('auto-rotate', '');
+    modelViewer.setAttribute('poster', 'assets/poster2.png');
+    modelViewerContainer.appendChild(modelViewer);
+    return modelViewer;
+  }
+</script>
+
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+
+<!-- Create a container element for the model-viewer -->
+<div id="model-viewer-container"></div>
+
+<script>
+  const posters = ['poster.png', 'poster2.png'];
+  let i = 0;
+  setInterval(() =>
+    modelViewer.setAttribute('poster', `assets/${posters[i++ % 2]}`), 2000);
+</script>
+
+
+                                <p class="radiotitle "> Your text</p>
+                            <div class=" form-group mb-3 m-3">
+                            <label for="Projectname" class="radiotitle p-2">{{ __('Project') }}</label>
+
+                           
+                                <input id="Projectname" type="text"placeholder="Your text"  class="imageproject form-control" name="textobject" value="{{ old('textproject') }}"   >
+                                
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                 
                             </div>
+
+                           
+
+
+                                <p class="radiotitle">How you like your object ?</p>
+                                <div class="form-check form-check-inline m-4">
+                                    <input class="form-check-input" type="radio" name="objectanimation" id="inlineRadio1" value="Animationrotate">
+                                    <label class="form-check-label" for="inlineRadio1">Animation Rotate</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="objectanimation" id="inlineRadio2" value="ONTouch">
+                                    <label class="form-check-label" for="inlineRadio2">ON Touch</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="objectanimation" id="inlineRadio3" value="Poth" >
+                                    <label class="form-check-label" for="inlineRadio3">Both</label>
+                                </div>
+                            </div>
+
 
                             <p class="radiotitle"><span class="spantitle"> 3 </span> Select Location</p>
 

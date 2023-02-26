@@ -229,7 +229,7 @@ use App\Models\location;
       foreach ($userFront1 as $frontuserFor) {
         $objectid=$frontuserFor->object_id;
         $objectevent = objectt::where('id', $objectid)->get();
-        $gltf=$objectevent[0]->object;
+        
 
         ?>
     <form id="edit-form-{{$frontuserFor->id}}" action="{{route('editevents')}}" method="post" class="d-none">
@@ -282,10 +282,16 @@ use App\Models\location;
       <div class="imgmenu m-2 d-flex justify-content-center">
         
         
-      <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+      <?php if (count($objectevent) > 0) {
+                                // Access the first element in the array
+                            $object = $objectevent[0];
+                            $gltf=$object->object;
+                            ?>
+                            <!-- <img src="/scene.gltf{{$frontuserFor->id}}/{{$object->object}}" alt="not found" class="m-3" width="150px" height="150px"> -->
+                                <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
                                 <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
                                 <!-- Use it like any other HTML element -->
-                                <model-viewer id="toggle-poster" src="scene.gltf{{$frontuserFor->id}}/{{$gltf}}" controls
+                                <model-viewer id="toggle-poster" src="glbobject/{{$gltf}}" controls
                                 auto-rotate poster="assets/poster2.png"></model-viewer>
                                 <script>
                                     const posters = ['poster.png', 'poster2.png'];
@@ -293,7 +299,11 @@ use App\Models\location;
                                     setInterval(() =>
                                         document.querySelector('#toggle-poster').setAttribute('poster',
                                             `assets/${posters[i++ % 2]}`), 2000);
-                                </script>        
+                                </script>
+
+
+                                <?php }
+                                    ?>
       <div class="dropdowninner " id="navbarNavDropdown">
             <ul class="navbar-nav ">
                

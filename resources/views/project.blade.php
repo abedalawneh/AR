@@ -337,7 +337,7 @@ else {?>
                                 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
                                 <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
                                 <!-- Use it like any other HTML element -->
-                                <model-viewer id="toggle-poster" src="scene.gltf{{$frontuserFor->id}}/{{$gltf}}" controls
+                                <model-viewer id="toggle-poster" src="glbobject/{{$gltf}}" controls
                                 auto-rotate poster="assets/poster2.png"></model-viewer>
                                 <script>
                                     const posters = ['poster.png', 'poster2.png'];

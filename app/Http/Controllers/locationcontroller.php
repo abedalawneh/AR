@@ -55,8 +55,8 @@ class locationcontroller extends Controller
 
                     if ($request->hasFile('file3')) {
                         $files = $request->file('file3');   
-                                $name='scene.gltf'.$project->id;
-                                File::makeDirectory(public_path("{$name}"), 0755, true);
+                                // $name='scene.gltf'.$project->id;
+                                // File::makeDirectory(public_path("{$name}"), 0755, true);
 
                         foreach ($files as $file) {
 
@@ -68,7 +68,7 @@ class locationcontroller extends Controller
                     $object->project_id =$project->id;
                     $object->save();
 
-                            $destinationPath = public_path("{$name}");
+                            $destinationPath = public_path("glbobject");
                             $filename = $file->getClientOriginalName();
                             $file->move($destinationPath, $filename);
                         }

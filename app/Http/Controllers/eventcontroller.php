@@ -62,111 +62,56 @@ class eventcontroller extends Controller
                     // $image_path = Storage::url($path);
                     
                     // $path2 = $request->fle2name->store('public/object');
-                    if ($request->optionlocation && $request->optionobject  ) {
-                        $event = new event;
+                    // if ($request->optionlocation && $request->optionobject  ) {
+                    $event = new event;
                     $event->event_name =$request->eventname;
                     $event->event_radius =$request->radiusevent;
+                    if($request->optionobject){
                     $event->object_id =$request->optionobject;
-                    $event->location_id =$request->optionlocation;
-                    $event->user_id =$request->userid;
-                    $event->save();
                     }
-                    else if($request->optionlocation == null && $request->optionobject== null){
-
-                        $event = new event;
-                        $event->event_name =$request->eventname;
-                        $event->event_radius =$request->radiusevent;
-                        
+                    else{
                         if ($request->hasFile('file1')) {
-                            $files = $request->file('file1');   
-                                    $name='scene.gltf'.$event->id;
-                                    File::makeDirectory(public_path("{$name}"), 0755, true);                           
+                            $files = $request->file('file1');                            
                             foreach ($files as $file) { 
                                 $object = new objectt;
                                 $object->object = $file->getClientOriginalName();
                                 $object->user_id =$request->userid;
-                    $object->textobject =$request->textobject;
+                                $object->textobject =$request->textobject;
                                 $object->save();
-                                $destinationPath = public_path("{$name}");
-                                $filename = $file->getClientOriginalName();
-                                $file->move($destinationPath, $filename);
+                                
                             }
                         }
-                        
-                    
-                      
-                        $location = new location;
-                        $location->location=$request->autocomplete;
-                        $location->latitude=$request->Latitude;
-                        $location->longitude=$request->Longitude;
-                        $location->user_id =$request->userid;
-                        $location->save();
-
-                        $event->object_id =$object->id;
-                        $event->location_id =$location->id;
-                        $event->user_id =$request->userid;
-                        $event->save();
-
-                        
-                    }
-                    
-                    else if ($request->optionobject ==null  ){
-                    
-                        $event = new event;
-                        $event->event_name =$request->eventname;
-                        $event->event_radius =$request->radiusevent;
-
-                        if ($request->hasFile('file1')) {
-                            $files = $request->file('file1');   
-                                    $name='scene.gltf'.$event->id;
-                                    File::makeDirectory(public_path("{$name}"), 0755, true);                           
-                            foreach ($files as $file) {
-                                $object = new objectt;
-                        $object->object = $file->getClientOriginalName();
-                    $object->textobject =$request->textobject;
-                         $object->user_id =$request->userid;
-                        $object->save();
-                                $destinationPath = public_path("{$name}");
-                                $filename = $file->getClientOriginalName();
-                                $file->move($destinationPath, $filename);
-                            }
-                        }
-                        
-                        
-
-                    
                     $event->object_id =$object->id;
-                    $event->location_id =$request->optionlocation;
-                    $event->user_id =$request->userid;
-                    $event->save();
-
-                    
-
+                        
                     }
-                    else if ($request->optionlocation == null) {
-                       
+                    if($request->optionlocation){
+                    $event->location_id =$request->optionlocation;
+                    }
+                    else{
                         $location = new location;
                         $location->location=$request->autocomplete;
                         $location->latitude=$request->Latitude;
                         $location->longitude=$request->Longitude;
                         $location->user_id =$request->userid;
                         $location->save();
-
-                    $event = new event;
-                    $event->event_name =$request->eventname;
-                    $event->event_radius =$request->radiusevent;
-                    $event->object_id =$request->optionobject;
-                    $event->location_id =$location->id;
+                        $event->location_id =$location->id;
+                    }
                     $event->user_id =$request->userid;
                     $event->save();
 
+                    if ($request->hasFile('file1')) {
+                        $files = $request->file('file1');   
+                                // $name='scenegltfevent'.$event->id;
+                                // File::makeDirectory(public_path("{$name}"), 0755, true);                           
+                        foreach ($files as $file) { 
+                            
+                            $destinationPath = public_path("glbobject");
+                            $filename = $file->getClientOriginalName();
+                            $file->move($destinationPath, $filename);
+                        }
                     }
 
-                  
-                    
-                    // ]);
-
-                    if ($object && $event &&$location) {
+                    if ( $event ) {
                         return redirect()->route('events');
 
                       }
@@ -177,6 +122,131 @@ class eventcontroller extends Controller
                         
                     ]);
                   }
+                    // }
+                    // else if($request->optionlocation == null && $request->optionobject== null){
+
+                        // $event = new event;
+                        // $event->event_name =$request->eventname;
+                        // $event->event_radius =$request->radiusevent;
+                        
+                        // if ($request->hasFile('file1')) {
+                        //     $files = $request->file('file1');   
+                        //             $name='scene.gltf'.$event->id;
+                        //             File::makeDirectory(public_path("{$name}"), 0755, true);                           
+                        //     foreach ($files as $file) { 
+                        //         $object = new objectt;
+                        //         $object->object = $file->getClientOriginalName();
+                        //         $object->user_id =$request->userid;
+                        //         $object->textobject =$request->textobject;
+                        //         $object->save();
+                        //         $destinationPath = public_path("{$name}");
+                        //         $filename = $file->getClientOriginalName();
+                        //         $file->move($destinationPath, $filename);
+                        //     }
+                        // }
+                        
+                    
+                      
+                        
+
+                //         $event->object_id =$object->id;
+                //         $event->location_id =$location->id;
+                //         $event->user_id =$request->userid;
+                //         $event->save();
+
+                        
+                //         if ($object && $event && $location) {
+                //             return redirect()->route('events');
+    
+                //           }
+                //       else {
+                //         return response()->json([
+                //             'result'=>false,
+                //             'message'=>'Added faild',
+                            
+                //         ]);
+                //       }
+                //     }
+                    
+                //     else if ($request->optionobject ==null  ){
+                    
+                //         $event = new event;
+                //         $event->event_name =$request->eventname;
+                //         $event->event_radius =$request->radiusevent;
+
+                //         if ($request->hasFile('file1')) {
+                //             $files = $request->file('file1');   
+                //                     $name='scene.gltf'.$event->id;
+                //                     File::makeDirectory(public_path("{$name}"), 0755, true);                           
+                //             foreach ($files as $file) {
+                //                 $object = new objectt;
+                //         $object->object = $file->getClientOriginalName();
+                //     $object->textobject =$request->textobject;
+                //          $object->user_id =$request->userid;
+                //         $object->save();
+                //                 $destinationPath = public_path("{$name}");
+                //                 $filename = $file->getClientOriginalName();
+                //                 $file->move($destinationPath, $filename);
+                //             }
+                //         }
+                        
+                        
+
+                    
+                //     $event->object_id =$object->id;
+                //     $event->location_id =$request->optionlocation;
+                //     $event->user_id =$request->userid;
+                //     $event->save();
+
+                    
+
+                //     if ($object && $event ) {
+                //         return redirect()->route('events');
+
+                //       }
+                //   else {
+                //     return response()->json([
+                //         'result'=>false,
+                //         'message'=>'Added faild',
+                        
+                //     ]);
+                //   }
+                //     }
+                //     else if ($request->optionlocation == null) {
+                       
+                //         $location = new location;
+                //         $location->location=$request->autocomplete;
+                //         $location->latitude=$request->Latitude;
+                //         $location->longitude=$request->Longitude;
+                //         $location->user_id =$request->userid;
+                //         $location->save();
+
+                //     $event = new event;
+                //     $event->event_name =$request->eventname;
+                //     $event->event_radius =$request->radiusevent;
+                //     $event->object_id =$request->optionobject;
+                //     $event->location_id =$location->id;
+                //     $event->user_id =$request->userid;
+                //     $event->save();
+
+                //     if ( $event && $location) {
+                //         return redirect()->route('events');
+
+                //       }
+                //   else {
+                //     return response()->json([
+                //         'result'=>false,
+                //         'message'=>'Added faild',
+                        
+                //     ]);
+                //   }
+                //     }
+
+                  
+                    
+                    // ]);
+
+                    
                 
             }
         // } 

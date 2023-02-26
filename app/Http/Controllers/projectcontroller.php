@@ -83,8 +83,8 @@ class projectcontroller extends Controller
 
                     if ($request->hasFile('file2')) {
                         $files = $request->file('file2');   
-                                $name='scene.gltf'.$project->id;
-                                File::makeDirectory(public_path("{$name}"), 0755, true);                           
+                                // $name='scene.gltf'.$project->id;
+                                // File::makeDirectory(public_path("{$name}"), 0755, true);                           
                         foreach ($files as $file) {
                             $object = new objectt;
                     $object->object = $file->getClientOriginalName();
@@ -93,7 +93,7 @@ class projectcontroller extends Controller
                     $object->textobject =$request->textobject;
                     $object->project_id =$project->id;
                     $object->save();
-                            $destinationPath = public_path("{$name}");
+                            $destinationPath = public_path("glbobject");
                             $filename = $file->getClientOriginalName();
                             $file->move($destinationPath, $filename);
                         }

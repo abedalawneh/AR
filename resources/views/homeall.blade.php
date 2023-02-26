@@ -210,26 +210,17 @@ use App\Models\location;
     </div>
    
     <?php
-    }
-    
-    elseif(count($userFront1)>0 || count($userproject)>0){
-
-        // echo $userproject;
-        // if(false){
-  foreach ($userFront1 as $frontuserFor) {
-    
+    }else{
     ?>
-   <div class="saveddiv d-flex">
-       <?php
-    //   if(count($userFront1)>0){
+    <div class="saveddiv d-flex">
+      <?php
+      foreach ($userFront1 as $frontuserFor) {
         $objectid=$frontuserFor->object_id;
         $objectevent = objectt::where('id', $objectid)->get();
         $gltf=$objectevent[0]->object;
 
         ?>
-
-
-    <form id="edit-{{$frontuserFor->id}}" action="{{route('editevents')}}" method="post" class="d-none">
+    <form id="edit-form-{{$frontuserFor->id}}" action="{{route('editevents')}}" method="post" class="d-none">
                                             @csrf
          <input type="text" name="id" value="{{$frontuserFor->id}}">
 
@@ -239,7 +230,7 @@ use App\Models\location;
          <input type="text" name="id" value="{{$frontuserFor->id}}">
 
     </form>
-                
+                            
     <div class=" modal fade" id="delete-popup-{{$frontuserFor->id}}" tabindex="-1" role="dialog"
                                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -282,8 +273,8 @@ use App\Models\location;
       <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
                                 <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
                                 <!-- Use it like any other HTML element -->
-                                <model-viewer id="toggle-poster" src="scene.gltf{{$frontuserFor->id}}/{{$gltf}}" controls
-                                auto-rotate poster="assets/poster2.png"></model-viewer>
+                                <model-viewer id="toggle-poster" src="glbobject/{{$gltf}}" controls
+                                    auto-rotate poster="assets/poster2.png"></model-viewer>
                                 <script>
                                     const posters = ['poster.png', 'poster2.png'];
                                     let i = 0;
@@ -299,11 +290,13 @@ use App\Models\location;
                 ...
                 </a>
                 <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href=""onclick="event.preventDefault();
-                                             document.getElementById('edit-{{$frontuserFor->id}}').submit();"><img src="../images/editpencil.png"
+                    <li><a class="dropdown-item" href=""onclick="event.preventDefault();
+                                             document.getElementById('edit-form-{{$frontuserFor->id}}').submit();"><img src="../images/editpencil.png"
                                                         alt="" class="m-1" width="20px" height="20px">Edit</a></li>
-                    <li><a class="dropdown-item" href="object/{{$objectevent[0]->object}}" download >
-                    <img src="../images/downloadrow.png" alt=""class="m-1"width="20px" height="20px">Download file</a></li>
+                    <li><a class="dropdown-item" href="object/{{$objectevent[0]->object}}" download
+                    >
+                    <img src="../images/downloadrow.png" alt=""class="m-1"width="20px" height="20px">Download file  </a></li>
+
                     <li><a class="dropdown-item" data-toggle="modal" href="#delete-popup-{{$frontuserFor->id}}"
                                             >
                                                     <img src="../images/trash.png" alt="" class="m-1" width="20px"
@@ -331,36 +324,48 @@ use App\Models\location;
     </div>
     <?php
     } 
-     foreach ($userproject as $userFrontproject) {
-        $objectproject = objectt::where('project_id', $userFrontproject->id)->get();
-        // $iduser=$userFrontproject->id;
-        // return $$objectproject;
-        
+    ?>
+    </div>
+    
+    </div>
+    <div class="saveddiv d-flex">
+                    <?php
+          
+      foreach ($userproject as $frontuserFor) {
+          $objectproject = objectt::where('project_id', $frontuserFor->id)->get();
+          
+          // $iduser=$frontuserFor->id;
+          // return $$objectproject;
+           
     
 if($frontuserFor->based_tybe=="Location based"){
     ?>
-    <form id="delete-form-{{$userFrontproject->id}}" action="{{route('delete2')}}" method="post" class="d-none">
+    <form id="delete-form-{{$frontuserFor->id}}" action="{{route('delete2')}}" method="post" class="d-none">
                                             @csrf
-         <input type="text" name="id" value="{{$userFrontproject->id}}">
+         <input type="text" name="id" value="{{$frontuserFor->id}}">
 
     </form>
 <?php }
 else {?>
-    <form id="delete-form-{{$userFrontproject->id}}" action="{{route('delete1')}}" method="post" class="d-none">
+    <form id="delete-form-{{$frontuserFor->id}}" action="{{route('delete1')}}" method="post" class="d-none">
                                             @csrf
-         <input type="text" name="id" value="{{$userFrontproject->id}}">
+         <input type="text" name="id" value="{{$frontuserFor->id}}">
 
     </form>
 <?php
 }
 ?>
-
-    <form id="editform-{{$userFrontproject->id}}" action="{{route('editproject')}}" method="post" class="d-none">
+    <form id="edit-form-{{$frontuserFor->id}}" action="{{route('editproject')}}" method="post" class="d-none">
                                             @csrf
-         <input type="text" name="id" value="{{$userFrontproject->id}}">
+         <input type="text" name="id" value="{{$frontuserFor->id}}">
+
+    </form>                  
+    <form id="ar-form-{{$frontuserFor->id}}" action="{{route('qrlocation')}}" method="post" class="d-none">
+                                            @csrf
+         <input type="text" name="id" value="{{$frontuserFor->id}}">
 
     </form> 
-    <div class=" modal fade" id="delete-popup-{{$userFrontproject->id}}" tabindex="-1" role="dialog"
+    <div class=" modal fade" id="delete-popup-{{$frontuserFor->id}}" tabindex="-1" role="dialog"
                                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                                     <div class="bgroundmodal modal-content">
@@ -380,7 +385,7 @@ else {?>
                                                             <div class="  d-flex  justify-content-center m-2">
                                                                
                                                                     <a href=""
-                                                                    onclick="event.preventDefault(); document.getElementById('delete-form-{{$userFrontproject->id}}').submit();" 
+                                                                    onclick="event.preventDefault(); document.getElementById('delete-form-{{$frontuserFor->id}}').submit();" 
                                                                     class="creatbutton btn">
                                                                   
                                                                         <span>{{ __('Delete') }}</span>
@@ -397,11 +402,14 @@ else {?>
                         <div class="imgmenu m-2 d-flex ">
                             <?php if (count($objectproject) > 0) {
                                 // Access the first element in the array
-                            $object = $objectproject[0];?>
-                            <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+                            $object = $objectproject[0];
+                            $gltf=$object->object;
+                            ?>
+                            <!-- <img src="/scene.gltf{{$frontuserFor->id}}/{{$object->object}}" alt="not found" class="m-3" width="150px" height="150px"> -->
+                                <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
                                 <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
                                 <!-- Use it like any other HTML element -->
-                                <model-viewer id="toggle-poster" src="scene.gltf{{$userFrontproject->id}}/scene.gltf" controls
+                                <model-viewer id="toggle-poster" src="glbobject/{{$gltf}}" controls
                                 auto-rotate poster="assets/poster2.png"></model-viewer>
                                 <script>
                                     const posters = ['poster.png', 'poster2.png'];
@@ -410,7 +418,10 @@ else {?>
                                         document.querySelector('#toggle-poster').setAttribute('poster',
                                             `assets/${posters[i++ % 2]}`), 2000);
                                 </script>
-                                <?php }?>
+
+
+                                <?php }
+                                    ?>
                             <div class="dropdowninner " id="navbarNavDropdown">
                                 <ul class="navbar-nav ">
 
@@ -420,17 +431,17 @@ else {?>
                                             ...
                                         </a>
                                         <ul class="dropdown-menu innermenu" aria-labelledby="navbarDropdownMenuLink">
-                                        <li><a class="dropdown-item" href=""onclick="event.preventDefault();
-                                             document.getElementById('editform-{{$userFrontproject->id}}').submit();"><img src="../images/editpencil.png"
+                                            <li><a class="dropdown-item" href=""onclick="event.preventDefault();
+                                             document.getElementById('edit-form-{{$frontuserFor->id}}').submit();"><img src="../images/editpencil.png"
                                                         alt="" class="m-1" width="20px" height="20px">Edit</a></li>
                                             <li><a class="dropdown-item" href="createvents"><img
                                                         src="../images/calendar.png" alt="" class="m-1" width="20px"
                                                         height="20px">Create event</a></li>
-                                            <li><a class="dropdown-item" data-toggle="modal" href="#delete-popup-{{$userFrontproject->id}}"
+                                            <li><a class="dropdown-item" data-toggle="modal" href="#delete-popup-{{$frontuserFor->id}}"
                                             >
                                                     <img src="../images/trash.png" alt="" class="m-1" width="20px"
                                                         height="20px"><span class="redtext">
-                                                             Delete</span>
+                                                        Delete </span>
                                                         
                                                      </a></li>
                                                     </ul>
@@ -439,13 +450,63 @@ else {?>
                                            
                             </div>
                         </div>
-
-                        <p class="totlesaved m-2">{{$userFrontproject->project_name}}</p>
-                        <div class="d-flex ">
-                            <p class="textsaved m-2 p-2">{{$userFrontproject->based_tybe}}</p>
+                        <div class="d-flex justify-content-between align-items-center ">
+                            <p class="totlesaved m-2">{{$frontuserFor->project_name}}</p>
                             <?php
-                if ($userFrontproject->based_tybe=="Location based"){
-                  $locationproject = location::where('project_id', $userFrontproject->id)->get();
+                            if ($frontuserFor->based_tybe=="Location based"){
+                            ?>
+                            <a href="#qrcodepopup-{{$frontuserFor->id}}"
+                             data-toggle="modal"  class="totlesaved m-2 text-decoration-none">QR</a>
+                            <?php }?>
+                        </div>
+                         <!-- Modal -->
+
+         <div class=" modal fade" id="qrcodepopup-{{$frontuserFor->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="bgroundmodal modal-content">
+                <!-- <div class="modal-header">
+                    </div> -->
+                    <button type="button" class="closeimage close m-3" data-dismiss="modal" aria-label="Close">
+                    <span class=" d-flex justify-content-end align-items-end" aria-hidden="true"><img src="../images/closeimage.png" alt="notfound"></span>
+                    </button>
+                    <div class="card-body d-flex justify-content-center">
+                    
+                    <?php 
+                    $idproject=$frontuserFor->id;
+                    $url = route('qrlocation', ['id' => $idproject]);
+                    echo QrCode::size(200)->generate($url) ;
+                        ?>
+                    
+                   
+                    </div>
+                <div class="modal-body m-3">
+
+                <h1 class="modal-title qrtitle d-flex  justify-content-center" id="exampleModalLongTitle">Success</h1>
+                <p class="qrtext d-flex  justify-content-center" >Here you are your link you can send or save it.</p>
+                <?php 
+                // $randomString =Str::random() ;
+                // $link = 'https://'.$randomString;
+                ?>
+                   <span class="textqr2"><a href=""onclick="event.preventDefault();
+                     document.getElementById('ar-form-{{$frontuserFor->id}}').submit();">{{ asset('arlocation?id='.$frontuserFor->id)}}</a></span>
+                     
+               </div>
+               <div class=" m-3 d-flex row justify-content-evenly align-items-center">
+                <button type="button" class="creatbuttonqr2 btn  btn-block m-0  " data-dismiss="modal" download><span  class="textbuttonqr2">Download</span> </button>
+               <button type="button" class="creatbuttonqr btn  btn-block m-0  " data-dismiss="modal">Send</button>
+               </div>
+                <!-- <div class="modal-footer">
+                </div> -->
+                </div>
+            </div>
+            </div>
+
+
+                        <div class="d-flex ">
+                            <p class="textsaved m-2 p-2">{{$frontuserFor->based_tybe}}</p>
+                            <?php
+                if ($frontuserFor->based_tybe=="Location based"){
+                  $locationproject = location::where('project_id', $frontuserFor->id)->get();
                      if (count($locationproject) > 0) {
                                 // Access the first element in the array
                             $location = $locationproject[0];?>
@@ -456,11 +517,10 @@ else {?>
                     </div>
                     <?php
     } 
-}
-
-// }
+  
     ?>
-    </div>
+                </div>
+                <?php }?>
 </div>
   </div>
 </div>
