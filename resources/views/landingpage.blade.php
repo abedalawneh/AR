@@ -48,7 +48,7 @@
                 
                 <div class="buttonnav d-flex justify-content-center p-3 ">
                 @if (Auth::check())
-                <a href="{{ route('homeall') }}" class="navebutton btn  btn-block">Home</a>
+                <a href="{{ route('project') }}" class="navebutton btn  btn-block">project</a>
                 @else
                 <a href="{{ route('login') }}" class="navebutton btn  btn-block">Sign in</a>
                 @endif

@@ -126,24 +126,23 @@ class locationcontroller extends Controller
   
     public function locationedit(Request $request)
     {
-        $name='scene.gltf'.$request->id;
-        $path = public_path("{$name}");
-        if(File::exists($path)) {
-            File::deleteDirectory($path);
+
+        if ($request->hasFile('file3')) {
+            $files = $request->file('file3');   
+            $name = 'scene.gltf'.$project->id;
+            $destinationPath = public_path($name);
+            
+            // If the file already exists, delete it
+            if (file_exists($destinationPath)) {
+                unlink($destinationPath);
+            }
+            
+            // Upload the new file
+            foreach ($files as $file) {
+                $filename = $file->getClientOriginalName();
+                $file->move(public_path(), $name);
+            }
         }
-    //    return $request;
-        
-    if ($request->hasFile('file3')) {
-        $files = $request->file('file3');   
-                $name='scene.gltf'.$project->id;
-                File::makeDirectory(public_path("{$name}"), 0755, true);                           
-        foreach ($files as $file) {
-            $destinationPath = public_path("{$name}");
-            $filename = $file->getClientOriginalName();
-            $file->move($destinationPath, $filename);
-        }
-    }
-    
         
         $objectproject = objectt::where('project_id', $request->id)->get();
         foreach ($objectproject as $objectproject) {
