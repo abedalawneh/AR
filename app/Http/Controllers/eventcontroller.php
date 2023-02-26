@@ -85,6 +85,7 @@ class eventcontroller extends Controller
                                 $object = new objectt;
                                 $object->object = $file->getClientOriginalName();
                                 $object->user_id =$request->userid;
+                    $object->textobject =$request->textobject;
                                 $object->save();
                                 $destinationPath = public_path("{$name}");
                                 $filename = $file->getClientOriginalName();
@@ -122,6 +123,7 @@ class eventcontroller extends Controller
                             foreach ($files as $file) {
                                 $object = new objectt;
                         $object->object = $file->getClientOriginalName();
+                    $object->textobject =$request->textobject;
                          $object->user_id =$request->userid;
                         $object->save();
                                 $destinationPath = public_path("{$name}");

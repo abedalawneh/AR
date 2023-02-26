@@ -64,6 +64,7 @@ class locationcontroller extends Controller
                     $object->object = $file->getClientOriginalName();
                     $object->user_id =$request->userid;
                     $object->animation =$request->objectanimation;
+                    $object->textobject =$request->textobject;
                     $object->project_id =$project->id;
                     $object->save();
 

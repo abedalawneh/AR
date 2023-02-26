@@ -45,7 +45,7 @@ use App\Models\objectt;
             animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"
             super-hands
             geometry="primitive: sphere; radius: 20">
-            <a-text value="my first text" position="0 -5 0" color="white" transparent="true"></a-text>
+            <a-text value="{{$object->textobject}}" position="0 -5 0" color="white" transparent="true"></a-text>
   </a-entity>
   <script>
     // var animation='{{$object->animation}}';

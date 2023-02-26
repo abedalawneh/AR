@@ -13,6 +13,7 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Models\project;
 use App\Models\objectt;
 use App\Models\giftfile;
+use Illuminate\Support\Facades\Auth;
 
 class projectcontroller extends Controller
 {
@@ -22,7 +23,8 @@ class projectcontroller extends Controller
     }
     public function project(Request $request)
     {
-        $userFront1 =project::where('id', $request->id)->get();
+        $iduser=Auth::user()->id;
+        $userFront1 =project::where('user_id', $iduser)->get();
 
         return view('project', ['userFront1' =>$userFront1]);
     }
@@ -88,6 +90,7 @@ class projectcontroller extends Controller
                     $object->object = $file->getClientOriginalName();
                      $object->user_id =$request->userid;
                      $object->animation =$request->objectanimation;
+                    $object->textobject =$request->textobject;
                     $object->project_id =$project->id;
                     $object->save();
                             $destinationPath = public_path("{$name}");
