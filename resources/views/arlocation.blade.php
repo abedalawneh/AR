@@ -25,7 +25,7 @@ use App\Models\objectt;
               $location = $locationproject[0];
              if (count($objectproject) > 0) {
               $object = $objectproject[0];
-              $name='scene.gltf'.$frontuserFor->id;
+              $name='glbobject'.$frontuserFor->id;
      ?>
      
       <!-- <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
@@ -45,7 +45,7 @@ use App\Models\objectt;
             animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"
             super-hands
             geometry="primitive: sphere; radius: 1000">
-            <a-text value="{{$object->textobject}}" position="0 -5 0" color="white" transparent="true"></a-text>
+            <a-text value="{{$object->textobject}}" position="0 -5 0" color="red" transparent="true"></a-text>
   </a-entity>
   <script>
     // var animation='{{$object->animation}}';
