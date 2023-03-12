@@ -25,7 +25,7 @@ use App\Models\objectt;
               $location = $locationproject[0];
              if (count($objectproject) > 0) {
               $object = $objectproject[0];
-              $name='glbobject'.$frontuserFor->id;
+              $name='glbobject';
      ?>
      
       <!-- <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
