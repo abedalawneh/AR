@@ -384,7 +384,7 @@ else {?>
                             if ($frontuserFor->based_tybe=="Location based"){
                             ?>
                             <a href="#qrcodepopup-{{$frontuserFor->id}}"
-                             data-toggle="modal"  class="totlesaved m-2 text-decoration-none"> {{$frontuserFor->id}} QR</a>
+                             data-toggle="modal"  class="totlesaved m-2 text-decoration-none"> QR</a>
                             <?php }?>
                         </div>
                          <!-- Modal -->
