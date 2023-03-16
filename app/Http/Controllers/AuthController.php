@@ -38,10 +38,7 @@ class AuthController extends Controller
     {
         return view('auth.register');
     }
-    // public function dashbord()
-    // {
-    //     return view('dashbord');
-    // }
+
     public function landingpage()
     {
         return view('landingpage');

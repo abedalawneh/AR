@@ -419,10 +419,10 @@ else {?>
                      document.getElementById('ar-form-{{$frontuserFor->id}}').submit();">{{ asset('arlocation?id='.$frontuserFor->id)}}</a></span>
                      
                </div>
-               <div class=" m-3 d-flex row justify-content-evenly align-items-center">
+               <!-- <div class=" m-3 d-flex row justify-content-evenly align-items-center">
                 <button type="button" class="creatbuttonqr2 btn  btn-block m-0  " data-dismiss="modal" download><span  class="textbuttonqr2">Download</span> </button>
                <button type="button" class="creatbuttonqr btn  btn-block m-0  " data-dismiss="modal">Send</button>
-               </div>
+               </div> -->
                 <!-- <div class="modal-footer">
                 </div> -->
                 </div>
