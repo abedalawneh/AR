@@ -17,22 +17,23 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::post('login', [AuthController::class, 'index'])->name('login');
+Auth::routes();
+// Route::post('login', [AuthController::class, 'index'])->name('login');
 
 
 
-Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom'); 
-Route::get('registration', [AuthController::class, 'registration'])->name('register-user');
-Route::post('custom-registration', [AuthController::class, 'customRegistration'])->name('register.custom'); 
-Route::get('signout', [AuthController::class, 'signOut'])->name('signout');
+// Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom'); 
+// Route::get('registration', [AuthController::class, 'registration'])->name('register-user');
+// Route::post('custom-registration', [AuthController::class, 'customRegistration'])->name('register.custom'); 
+// Route::get('signout', [AuthController::class, 'signOut'])->name('signout');
 Route::post('createproject', [AuthController::class, 'createproject'])->name('createprojectt');
 Route::post('createvents', [AuthController::class, 'createvents'])->name('createvents');
 Route::post('project', [projectcontroller::class, 'project'])->name('project');
 Route::get('project', [projectcontroller::class, 'project'])->name('project');
 Route::post('events', [AuthController::class, 'events'])->name('events');
 Route::get('events', [AuthController::class, 'events'])->name('events');
-Route::post('Home', [AuthController::class, 'homeall'])->name('homeall');
-Route::get('Home', [AuthController::class, 'homeall'])->name('homeall');
+Route::post('home', [AuthController::class, 'homeall'])->name('homeall');
+Route::get('home', [AuthController::class, 'homeall'])->name('homeall');
 Route::post('arlocation', [projectcontroller::class, 'arlocation'])->name('arlocation');
 Route::get('arlocation', [projectcontroller::class, 'arlocation'])->name('arlocation');
 Route::post('delete1', [projectcontroller::class, 'delete1'])->name('delete1');
@@ -53,11 +54,13 @@ Route::post('eventedit', [eventcontroller::class, 'eventedit'])->name('eventedit
 Route::get('/', function () {
     return view('landingpage');
 });
+// Route::get('/', function () {
+//     return view('landingpage');
+// })->name('home');
 Route::get('/qrlocation', [projectcontroller::class, 'generateQRCode'])->name('qrlocation');
 Route::post('/qrlocation', [projectcontroller::class, 'generateQRCode'])->name('qrlocation');
 
 
-Auth::routes();
 
 
 

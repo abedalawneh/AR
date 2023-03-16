@@ -7,6 +7,7 @@
     <!-- bootstrap link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="../css/registration.css" rel="stylesheet">
+    <link href="../css/emailreset.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
@@ -27,7 +28,7 @@
                     <p class="alreadytext m-2 text-start">Already have an account? <a href="{{ route('login') }}">Sign in</a></p>
                     <div class="card-body">
 
-                    <form method="POST" action="{{ route('register.custom') }}"> 
+                    <form method="POST" action="{{ route('register') }}"> 
                     @csrf
                         <div class="form-group mb-3">
                             <label for="name" class="labelcolor p-2 ">{{ __('Full name') }}</label>
@@ -57,10 +58,9 @@
                             <!-- </div> -->
                         </div>
 
-                        <div class="form-group mb-3 ">
+                        <!-- <div class="form-group mb-3 ">
                             <label for="password" class="labelcolor p-2">{{ __('Password') }}</label>
 
-                            <!-- <div class="col-md-6"> -->
                                 <input id="password" type="password"placeholder="At least 8 characters" class="form-control imagpass @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                 <span class="show-passwordlogin" id="showPasswordIcon">
                                     <img src="../images/eyeclose.svg" class="show-passwordlogin" id="showPasswordIcon">
@@ -70,16 +70,37 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                        </div> -->
+
+                        <div class="row mb-3">
+                            <label for="password" class="labelemail p-2">{{ __('Password') }}</label>
+
+                            <!-- <div class="col-md-6"> -->
+                                <input id="password" type="password"placeholder="At least 8 characters" class="imagpass form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <span class="show-passwordreset1" id="showPasswordIcon1">
+                                    <img src="../images/eyeclose.svg" class="show-passwordreset1" id="showPasswordIcon1">
+                                    </span>
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             <!-- </div> -->
                         </div>
 
-                        <!-- <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+                        
+                        <div class="row mb-3">
+                            <label for="password-confirm" class="labelemail p-2">{{ __('Confirm Password') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div> -->
+                            <!-- <div class="col-md-6"> -->
+                                <input id="password-confirm" type="password" placeholder="At least 8 characters" class="imagpass form-control" name="password_confirmation" required autocomplete="new-password">
+                                <span class="show-passwordreset2" id="showPasswordIcon2">
+                                    <img src="../images/eyeclose.svg" class="show-passwordreset2" id="showPasswordIcon2">
+                                </span>
+                            <!-- </div> -->
+                        </div>
+                        
+                        
 
                         <div class="d-grid mx-auto">
                             <!-- <div class="col-md-6 offset-md-4"> -->
@@ -100,16 +121,28 @@
 </section>
 
 <script>
-    document.getElementById("showPasswordIcon").addEventListener("click", function() {
+    document.getElementById("showPasswordIcon1").addEventListener("click", function() {
     var passwordField = document.getElementById("password");
     if (passwordField.type === "password") {
         passwordField.type = "text";
-        this.innerHTML = '<img src="../images/eyealt.svg" class="show-password">';
+        this.innerHTML = '<img src="../images/eyealt.svg" class="show-passwordreset1">';
     } else {
         passwordField.type = "password";
-        this.innerHTML = '<img src="../images/eyeclose.svg" class="show-password">';
+        this.innerHTML = '<img src="../images/eyeclose.svg" class="show-passwordreset1">';
     }
 });
+
+document.getElementById("showPasswordIcon2").addEventListener("click", function() {
+    var passwordField = document.getElementById("password-confirm");
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        this.innerHTML = '<img src="../images/eyealt.svg" class="show-passwordreset2">';
+    } else {
+        passwordField.type = "password";
+        this.innerHTML = '<img src="../images/eyeclose.svg" class="show-passwordreset2">';
+    }
+});
+
 
 </script>
 </body>

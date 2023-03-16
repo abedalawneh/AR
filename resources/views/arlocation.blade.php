@@ -37,9 +37,9 @@ use App\Models\objectt;
     <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
         renderer='antialias: true; alpha: true'>
         <a-camera position="0 0 0" fov="100" gps-new-camera='gpsMinDistance: 5'></a-camera>
-        <a-entity position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
+        <a-entity position="0 0 -1.5" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
             gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"
-            animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000" super-hands
+            animation__rotate="property: rotation; to: 0 180 0; loop: true; dur: 20000" super-hands
             geometry="primitive: sphere; radius: 1000">
             <a-text value="{{$object->textobject}}" position="0 -5 0" color="red" transparent="true"></a-text>
         </a-entity>

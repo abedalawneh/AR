@@ -24,32 +24,33 @@
                 <div class="card p-md-4">
                     <img class="logoform m-2"src="../images/logoregister.svg" alt="not found">
                     <p class="creattext m-2 text-start">Sign in</p>
-                    <p class="alreadytext m-2 text-start">Don’t have an account? <a href="{{ route('register-user') }}">Sign up </a></p>
+                    <p class="alreadytext m-2 text-start">Don’t have an account? <a href="{{ route('register') }}">Sign up </a></p>
                     <div class="card-body">
-                    <form method="POST" action="{{ route('login.custom') }}">
+                    <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group mb-3">
-                            <label for="email" class="labelcolor p-2">{{ __('E-mail') }}</label>
+                                <label for="email" class="labelcolor p-2  ">{{ __('E-mail') }}</label>
 
-                            <!-- <div class="col-md-6"> -->
-                                <input id="email" type="email"placeholder="Name@domain.com"  class="imagemail form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <!-- <div class="col-md-6"> -->
+                                    <input id="email"placeholder="Name@domain.com" type="email" class="imagemail form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                    
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                <!-- </div> -->
+                            </div>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            <!-- </div> -->
-                        </div>
 
-                        <div class="form-group mb-3 ">
+                        <div class="row mb-3">
                             <label for="password" class="labelcolor p-2">{{ __('Password') }}</label>
 
                             <!-- <div class="col-md-6"> -->
-                                <input id="password" type="password"placeholder="At least 8 characters" class="form-control imagpass @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <input id="password" type="password"placeholder="At least 8 characters" class="imagpass form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                                 <span class="show-passwordlogin1" id="showPasswordIcon">
                                     <img src="../images/eyeclose.svg" class="show-passwordlogin1" id="showPasswordIcon">
-                                    </span> 
+                                </span>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
