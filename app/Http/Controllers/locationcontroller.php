@@ -128,12 +128,10 @@ class locationcontroller extends Controller
     public function locationedit(Request $request)
     {
 
-       
-        
         $objectproject = objectt::where('project_id', $request->id)->get();
         foreach ($objectproject as $editobject) {
-            if ($request->hasFile('file2')) {
-                $files = $request->file('file2');                             
+            if ($request->hasFile('file3')) {
+                $files = $request->file('file3');                             
                 foreach ($files as $file) {
             $editobject->object = $file->getClientOriginalName();
             $editobject->animation =$request->objectanimation;
