@@ -48,8 +48,8 @@
 
                             <!-- <div class="col-md-6"> -->
                                 <input id="password" type="password"placeholder="At least 8 characters" class="imagpass form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                                <span class="show-passwordlogin1" id="showPasswordIcon">
-                                    <img src="../images/eyeclose.svg" class="show-passwordlogin1" id="showPasswordIcon">
+                                <span class="show-passwordlogin1" id="showPasswordIcon1">
+                                    <img src="../images/eyeclose.svg" class="show-passwordlogin1" id="showPasswordIcon1">
                                 </span>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">

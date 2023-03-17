@@ -83,7 +83,7 @@ padding-left:40px;
 }
 .show-passwordlogin1{
     position: absolute;
-    right: 12%;
+    right: 4%;
     top: 68%;
     transform: translateY(-50%);   
 }
@@ -147,7 +147,7 @@ padding-left:40px;
     top: 80%;
     }
     .show-passwordlogin1{
-        right: 10%;
+        right: 5%;
     top: 71%;
     }
 }
@@ -169,7 +169,7 @@ padding-left:40px;
     top: 78%;
 }
 .show-passwordlogin1{
-    right: 10%;
+    right: 5%;
 top: 69%;
 }
 }
@@ -184,7 +184,7 @@ top: 69%;
         top: 74%;
     }
     .show-passwordlogin1{
-        right: 8%;
+        right: 5%;
     top: 65%;
     }
     }
