@@ -34,14 +34,14 @@ use App\Models\objectt;
 
 
 
-    <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
+    <!-- <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
         renderer='antialias: true; alpha: true'>
         <a-camera position="0 0 0" fov="100" gps-new-camera='gpsMinDistance: 5'></a-camera>
         <a-entity position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
             gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"
             animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000" super-hands
             geometry="primitive: sphere; radius: 1000">
-            <a-text value="{{$object->textobject}}" position="0 -1 0" color="red" transparent="true"></a-text>
+            <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
         </a-entity>
 
 
@@ -223,8 +223,41 @@ use App\Models\objectt;
         // }
         </script>
 
-    </a-scene>
+    </a-scene> -->
 
+    <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false; trackingMethod: best;'
+        renderer='antialias: true; alpha: true'>
+
+        <!-- Define the marker -->
+        <a-marker preset="custom" type="pattern" url="path/to/marker.patt">
+
+            <!-- Define the virtual object -->
+            <a-entity position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
+                animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000" super-hands
+                geometry="primitive: sphere; radius: 1000">
+                <a-text value="{{$object->textobject}}" position="0 -1 0" color="red" transparent="true"></a-text>
+            </a-entity>
+
+        </a-marker>
+
+        <!-- Define the camera -->
+        <a-entity camera></a-entity>
+
+        <!-- Define a script to set the marker position -->
+        <script>
+            // Get the latitude and longitude from your database
+            var latitude = {{ $location->latitude }};
+            var longitude = {{ $location->longitude }};
+
+            // Convert the latitude and longitude to an AR.js compatible format
+            var arjsLocation = ARjsUtils.wgs84ToArg('N', latitude, longitude, 0);
+
+            // Set the marker position based on the location
+            var marker = document.querySelector('a-marker');
+            marker.setAttribute('position', arjsLocation.x + ' ' + arjsLocation.y + ' ' + arjsLocation.z);
+        </script>
+
+</a-scene>
 
 
 
