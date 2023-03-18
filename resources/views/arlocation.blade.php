@@ -36,16 +36,29 @@ use App\Models\objectt;
 
     <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
         renderer='antialias: true; alpha: true'>
-        <a-camera position="0 0 0" fov="100" gps-new-camera='gpsMinDistance: 5'></a-camera>
+        <!-- <a-camera position="0 0 0" fov="100" gps-new-camera='gpsMinDistance: 5'></a-camera>
         <a-entity position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
             gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"
             animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000" super-hands
             geometry="primitive: sphere; radius: 1000">
-            <a-text value="{{$object->textobject}}" position="0 -5 0" color="red" transparent="true"></a-text>
+            <a-text value="{{$object->textobject}}" position="0 -1 0" color="red" transparent="true"></a-text>
+        </a-entity> -->
+
+
+ <!-- Define the marker -->
+ <a-marker preset="custom" type="pattern" url="path/to/marker.patt">
+        
+        <!-- Define the virtual object -->
+        <a-entity position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
+            animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000" super-hands
+            geometry="primitive: sphere; radius: 1000">
+            <a-text value="{{$object->textobject}}" position="0 -1 0" color="red" transparent="true"></a-text>
         </a-entity>
 
+    </a-marker>
 
-
+    <!-- Define the camera -->
+    <a-entity camera></a-entity>
 
         <script>
         // var animation='{{$object->animation}}';
