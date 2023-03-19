@@ -42,7 +42,7 @@ use App\Models\objectt;
   <a-entity gps-camera rotation-reader look-controls></a-entity>
 
   <a-entity gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }} altitude: 100000;"
-    gltf-model="#tree" scale="0.5 0.5 0.5" position="0 1 0">
+    gltf-model="#tree" scale="0.2 0.2 0.2" position="0 0 0">
   </a-entity>
 
   <a-marker-camera preset="hiro"></a-marker-camera>
