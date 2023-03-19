@@ -39,7 +39,6 @@ use App\Models\objectt;
     <a-asset-item id="tree" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
   </a-assets>
 
-  <!-- <a-entity gps-camera rotation-reader></a-entity> -->
 
   <a-entity  gps-camera rotation-reader gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
     position="0 0 -4" 
