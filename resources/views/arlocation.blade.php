@@ -39,10 +39,10 @@ use App\Models\objectt;
     <a-asset-item id="tree" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
   </a-assets>
 
-  <a-entity gps-camera rotation-reader></a-entity>
+  <a-entity gps-camera rotation-reader look-controls></a-entity>
 
   <a-entity gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
-    gltf-model="#tree" scale="0.5 0.5 0.5">
+    gltf-model="#tree" scale="0.5 0.5 0.5" position="0 -1.5 0">
   </a-entity>
 
   <a-marker-camera preset="hiro"></a-marker-camera>
