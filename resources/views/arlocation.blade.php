@@ -34,18 +34,20 @@ use App\Models\objectt;
 
 
 
-        <a-scene embedded vr-mode-ui='enabled: false' arjs='sourceType: webcam; debugUIEnabled: false;'>
+<a-scene embedded vr-mode-ui='enabled: false' arjs='sourceType: webcam; debugUIEnabled: false;'>
   <a-assets>
     <a-asset-item id="tree" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
   </a-assets>
 
-  <a-entity gps-camera rotation-reader look-controls></a-entity>
+  <a-entity gps-camera rotation-reader></a-entity>
 
-  <a-entity gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }} altitude: 100000;"
-    gltf-model="#tree" scale="0.2 0.2 0.2" position="0 0 0">
+  <a-entity gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
+    position="0 1 0"
+    gltf-model="#tree" scale="0.5 0.5 0.5">
   </a-entity>
 
   <a-marker-camera preset="hiro"></a-marker-camera>
+
 
 
 
