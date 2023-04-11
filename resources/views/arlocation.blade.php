@@ -40,7 +40,7 @@ use App\Models\objectt;
   </a-assets>
 
 
-  <a-entity  gps-camera rotation-reader gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
+  <a-entity id="myEntity" gps-camera rotation-reader gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
     position="0 0 -40" 
     gltf-model="#tree" scale="0.5 0.5 0.5"
     animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000" super-hands
@@ -54,6 +54,17 @@ use App\Models\objectt;
 
 
         <script>
+
+             // Get the entity element
+            var myEntity = document.getElementById('myEntity');
+
+            // Calculate the new scale based on objectSize
+            var newScale = objectSize / 100; // Example calculation, adjust as needed
+            
+
+            // Update the scale attribute of the entity element
+            myEntity.setAttribute('scale', newScale + ' ' + newScale + ' ' + newScale);
+
         // var animation='{{$object->animation}}';
         // console.log(animation);
         // if (animation =='Poth') {
