@@ -60,8 +60,8 @@ use App\Models\objectt;
   loader.load('{{ asset($name.'/'.$object->object) }}', function(glb) {
     var objectSize = getObjectSize(glb.scene);
     var newScale = objectSize.x / 10; // Example calculation, adjust as needed
-    if (newScale > 0.2) {
-        newScale=0.5;
+    if (newScale > 0.5) {
+        newScale=0.2;
     }
     else if (newScale < 0.5) {
         newScale=0.5;
