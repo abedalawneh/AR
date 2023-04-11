@@ -53,17 +53,24 @@ use App\Models\objectt;
 
 
   <script>
-    // Get the entity element
-    var myEntity = document.getElementById('myEntity');
+  var myEntity = document.getElementById('myEntity');
 
-    // Estimate the object size
-    var objectSize = estimateObjectSize(); // Call your own function to estimate object size
-
-    // Calculate the new scale based on objectSize
-    var newScale = objectSize / 100; // Example calculation, adjust as needed
+  // Load the GLB model
+  var loader = new THREE.GLTFLoader();
+  loader.load('{{ asset($name.'/'.$object->object) }}', function(glb) {
+    var objectSize = getObjectSize(glb.scene);
+    var newScale = objectSize.x / 10; // Example calculation, adjust as needed
+    console.log('ttttt'+newScale);
     // Update the scale attribute of the entity element
     myEntity.setAttribute('scale', newScale + ' ' + newScale + ' ' + newScale);
-    console.log('ttttt'+ newScale);
+  });
+
+  function getObjectSize(glbModel) {
+    var boundingBox = new THREE.Box3().setFromObject(glbModel);
+    var size = new THREE.Vector3();
+    boundingBox.getSize(size);
+    return size;
+  }
 </script>
 
         <script>
