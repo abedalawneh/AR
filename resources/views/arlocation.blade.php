@@ -51,20 +51,38 @@ use App\Models\objectt;
   <a-marker-camera preset="hiro"></a-marker-camera>
 
 
+  <script>
+
+// Get the entity element
+var myEntity = document.getElementById('myEntity');
+
+// Function to update the scale based on object size
+function updateScale(objectSize) {
+  // Calculate the new scale based on objectSize
+  var newScale = objectSize / 100; // Example calculation, adjust as needed
+  // Update the scale attribute of the entity element
+  myEntity.setAttribute('scale', newScale + ' ' + newScale + ' ' + newScale);
+}
+
+// Function to estimate object size based on distance from camera
+function estimateObjectSize() {
+  var camera = document.querySelector('[gps-camera]');
+  var distanceToCamera = myEntity.object3D.position.distanceTo(camera.object3D.position);
+  updateScale(distanceToCamera);
+}
+
+// Call the estimateObjectSize function initially
+estimateObjectSize();
+
+</script>
+
+
+
+
+
 
 
         <script>
-
-             // Get the entity element
-            var myEntity = document.getElementById('myEntity');
-
-            // Calculate the new scale based on objectSize
-            var newScale = objectSize / 100; // Example calculation, adjust as needed
-            
-
-            // Update the scale attribute of the entity element
-            myEntity.setAttribute('scale', newScale + ' ' + newScale + ' ' + newScale);
-
         // var animation='{{$object->animation}}';
         // console.log(animation);
         // if (animation =='Poth') {
