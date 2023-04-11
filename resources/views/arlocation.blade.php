@@ -60,6 +60,12 @@ use App\Models\objectt;
   loader.load('{{ asset($name.'/'.$object->object) }}', function(glb) {
     var objectSize = getObjectSize(glb.scene);
     var newScale = objectSize.x / 10; // Example calculation, adjust as needed
+    if (newScale > 0.5) {
+        newScale=0.5;
+    }
+    else if (newScale < 0.5) {
+        newScale=0.5;
+    }
     console.log('ttttt'+newScale);
     // Update the scale attribute of the entity element
     myEntity.setAttribute('scale', newScale + ' ' + newScale + ' ' + newScale);
