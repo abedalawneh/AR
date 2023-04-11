@@ -56,25 +56,25 @@ use App\Models\objectt;
   // Get the entity element
   var myEntity = document.getElementById('myEntity');
 
-  // Function to update the scale based on object size
-  function updateScale(objectSize) {
-    // Calculate the new scale based on objectSize
-    var newScale = objectSize / 100; // Example calculation, adjust as needed
-    // Update the scale attribute of the entity element
-    myEntity.setAttribute('scale', newScale + ' ' + newScale + ' ' + newScale);
-  }
-
+  
   // Function to estimate object size based on bounding box dimensions
   function estimateObjectSize() {
-    // Get the bounding box of the object
-    var boundingBox = new THREE.Box3().setFromObject(myEntity.object3D);
-    // Calculate the object size based on bounding box dimensions
-    var objectSize = boundingBox.getSize(new THREE.Vector3()).length();
-    updateScale(objectSize);
-  }
-
-  // Call the estimateObjectSize function initially
-  estimateObjectSize();
+      // Get the bounding box of the object
+      var boundingBox = new THREE.Box3().setFromObject(myEntity.object3D);
+      // Calculate the object size based on bounding box dimensions
+      var objectSize = boundingBox.getSize(new THREE.Vector3()).length();
+      updateScale(objectSize);
+    }
+    
+    // Call the estimateObjectSize function initially
+    estimateObjectSize();
+// Function to update the scale based on object size
+function updateScale(objectSize) {
+  // Calculate the new scale based on objectSize
+  var newScale = objectSize / 100; // Example calculation, adjust as needed
+  // Update the scale attribute of the entity element
+  myEntity.setAttribute('scale', newScale + ' ' + newScale + ' ' + newScale);
+}
 </script>
 
         <script>
