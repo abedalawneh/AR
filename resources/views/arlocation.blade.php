@@ -61,9 +61,9 @@ use App\Models\objectt;
 
     // Calculate the new scale based on objectSize
     var newScale = objectSize / 100; // Example calculation, adjust as needed
-
     // Update the scale attribute of the entity element
     myEntity.setAttribute('scale', newScale + ' ' + newScale + ' ' + newScale);
+    console.log('ttttt'+ newScale);
 </script>
 
         <script>
