@@ -61,7 +61,8 @@ use App\Models\objectt;
     var objectSize = getObjectSize(glb.scene);
     var newScale = objectSize.x / 10; // Example calculation, adjust as needed
     if (newScale > 0.5) {
-        newScale=0.2;
+        newScale=0.5;
+        myEntity.setAttribute('position', 0 + ' ' + 0 + ' ' + -80);
     }
     else if (newScale < 0.5) {
         newScale=0.5;
