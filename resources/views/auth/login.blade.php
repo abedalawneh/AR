@@ -94,7 +94,7 @@
 
 </section>
 <script>
-    document.getElementById("showPasswordIcon").addEventListener("click", function() {
+    document.getElementById("showPasswordIcon1").addEventListener("click", function() {
     var passwordField = document.getElementById("password");
     if (passwordField.type === "password") {
         passwordField.type = "text";
