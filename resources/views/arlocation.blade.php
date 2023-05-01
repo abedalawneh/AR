@@ -40,7 +40,7 @@ use App\Models\objectt;
     <a-asset-item id="tree" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
   </a-assets>
 
-  <a-marker preset='hiro'>
+  <!-- <a-marker preset='hiro'> -->
   <a-entity id="myEntity" gps-camera rotation-reader gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
     position="0 0 -4" 
     gltf-model="#tree"  animation-mixer="clip: myAnimation" scale="0.5 0.5 0.5"
@@ -48,7 +48,7 @@ use App\Models\objectt;
             geometry="primitive: sphere; radius: 1000">
             <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
         </a-entity>
-    </a-marker>
+    <!-- </a-marker> -->
   <a-marker-camera preset="hiro"></a-marker-camera>
 
 
