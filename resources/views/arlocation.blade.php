@@ -52,7 +52,7 @@ use App\Models\objectt;
 
 
 
-  <!-- <script>
+  <script>
   var myEntity = document.getElementById('myEntity');
 
   // Load the GLB model
@@ -78,7 +78,7 @@ use App\Models\objectt;
     boundingBox.getSize(size);
     return size;
   }
-</script> -->
+</script>
 
         <script>
         // var animation='{{$object->animation}}';
