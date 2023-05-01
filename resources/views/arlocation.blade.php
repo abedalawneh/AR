@@ -52,7 +52,7 @@ use App\Models\objectt;
 
 
 
-  <script>
+  <!-- <script>
   var myEntity = document.getElementById('myEntity');
 
   // Load the GLB model
@@ -62,7 +62,7 @@ use App\Models\objectt;
     var newScale = objectSize.x / 10; // Example calculation, adjust as needed
     if (newScale > 0.5) {
         newScale=0.5;
-        myEntity.setAttribute('position', 0 + ' ' + 0 + ' ' + -80);
+        myEntity.setAttribute('position', 0 + ' ' + 0 + ' ' + -90);
     }
     else if (newScale < 0.5) {
         newScale=0.5;
@@ -78,7 +78,7 @@ use App\Models\objectt;
     boundingBox.getSize(size);
     return size;
   }
-</script>
+</script> -->
 
         <script>
         // var animation='{{$object->animation}}';
