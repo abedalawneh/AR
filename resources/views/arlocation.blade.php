@@ -15,6 +15,7 @@ use App\Models\objectt;
     </script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script>
     <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.0.0/dist/aframe-extras.min.js"></script>
 
 
 </head>
@@ -33,23 +34,22 @@ use App\Models\objectt;
      ?>
 
 
+
 <a-scene embedded vr-mode-ui='enabled: false' arjs='sourceType: webcam; debugUIEnabled: false; '>
   <a-assets>
     <a-asset-item id="tree" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
   </a-assets>
 
+
   <a-entity id="myEntity" gps-camera rotation-reader gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
     position="0 0 -4" 
-    gltf-model="#tree" scale="0.5 0.5 0.5"
-    animation-mixer  
-    super-hands
-    geometry="primitive: sphere; radius: 1000">
-    <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
-  </a-entity>
+    gltf-model="#tree"  animation-mixer="clip: myAnimation" scale="0.5 0.5 0.5"
+    animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000" super-hands
+            geometry="primitive: sphere; radius: 1000">
+            <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
+        </a-entity>
 
   <a-marker-camera preset="hiro"></a-marker-camera>
-</a-scene>
-
 
 
 
