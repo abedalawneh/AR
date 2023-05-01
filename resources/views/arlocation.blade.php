@@ -15,8 +15,8 @@ use App\Models\objectt;
     </script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script>
     <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.0.0/dist/aframe-extras.min.js"></script>
-
+    <script src='https://aframe.io/releases/1.2.0/aframe.min.js'></script>
+  <script src='https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.5/aframe/build/aframe-ar.js'></script>
 
 </head>
 
@@ -40,15 +40,15 @@ use App\Models\objectt;
     <a-asset-item id="tree" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
   </a-assets>
 
-
+  <a-marker preset='hiro'>
   <a-entity id="myEntity" gps-camera rotation-reader gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
     position="0 0 -4" 
     gltf-model="#tree"  animation-mixer="clip: myAnimation" scale="0.5 0.5 0.5"
-    animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000" super-hands
+    animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"   animation-mixer super-hands
             geometry="primitive: sphere; radius: 1000">
             <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
         </a-entity>
-
+    </a-marker>
   <a-marker-camera preset="hiro"></a-marker-camera>
 
 
