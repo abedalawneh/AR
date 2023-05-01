@@ -43,8 +43,8 @@ use App\Models\objectt;
 
   <a-entity id="myEntity" gps-camera rotation-reader gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
     position="0 0 -4" 
-    gltf-model="#tree" animation-mixer scale="0.5 0.5 0.5"
-    animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000" super-hands
+    gltf-model="#tree"  scale="0.5 0.5 0.5"
+    animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000" animation-mixer super-hands
             geometry="primitive: sphere; radius: 1000">
             <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
         </a-entity>
