@@ -17,9 +17,9 @@ use App\Models\objectt;
     <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
     <!-- <script src='https://aframe.io/releases/1.2.0/aframe.min.js'></script>
   <script src='https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.5/aframe/build/aframe-ar.js'></script> -->
-  <script type="module">
+  <!-- <script type="module">
 import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extras.animation-mixer@6.1.1/+esm'
-</script>
+</script> -->
 
 </head>
 
