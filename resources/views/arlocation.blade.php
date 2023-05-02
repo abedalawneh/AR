@@ -35,7 +35,7 @@ use App\Models\objectt;
 
 
 
-<!-- <a-scene embedded vr-mode-ui='enabled: false' arjs='sourceType: webcam; debugUIEnabled: false; '>
+<a-scene embedded vr-mode-ui='enabled: false' arjs='sourceType: webcam; debugUIEnabled: false; '>
   <a-assets>
     <a-asset-item id="tree" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
   </a-assets>
@@ -49,18 +49,9 @@ use App\Models\objectt;
             <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
         </a-entity>
 
-  <a-marker-camera preset="hiro"></a-marker-camera> -->
-
-  <a-scene embedded vr-mode-ui='enabled: false' arjs='sourceType: webcam; debugUIEnabled: false;'>
-  <a-assets>
-    <a-asset-item id="animated-model" src="model.glb"></a-asset-item>
-  </a-assets>
-
-  <a-entity gps-camera position="0 0 0" rotation="0 180 0">
-    <a-entity gltf-model="#animated-model" scale="0.5 0.5 0.5" animation-mixer="loop: repeat;"></a-entity>
-  </a-entity>
-
   <a-marker-camera preset="hiro"></a-marker-camera>
+
+
 
   <script>
   var myEntity = document.getElementById('myEntity');
