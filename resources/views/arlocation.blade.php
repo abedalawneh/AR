@@ -35,7 +35,7 @@ use App\Models\objectt;
 
 
 
-<a-scene embedded vr-mode-ui='enabled: false' arjs='sourceType: webcam; debugUIEnabled: false; '>
+<!-- <a-scene embedded vr-mode-ui='enabled: false' arjs='sourceType: webcam; debugUIEnabled: false; '>
   <a-assets>
     <a-asset-item id="tree" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
   </a-assets>
@@ -44,15 +44,23 @@ use App\Models\objectt;
   <a-entity id="myEntity" gps-camera rotation-reader gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
     position="0 0 -4" 
     gltf-model="#tree"  scale="0.5 0.5 0.5"
-    animation-mixer="loop: repeat; timeScale: 2"
     animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"  super-hands
             geometry="primitive: sphere; radius: 1000">
             <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
         </a-entity>
 
+  <a-marker-camera preset="hiro"></a-marker-camera> -->
+
+  <a-scene embedded vr-mode-ui='enabled: false' arjs='sourceType: webcam; debugUIEnabled: false;'>
+  <a-assets>
+    <a-asset-item id="animated-model" src="model.glb"></a-asset-item>
+  </a-assets>
+
+  <a-entity gps-camera position="0 0 0" rotation="0 180 0">
+    <a-entity gltf-model="#animated-model" scale="0.5 0.5 0.5" animation-mixer="loop: repeat;"></a-entity>
+  </a-entity>
+
   <a-marker-camera preset="hiro"></a-marker-camera>
-
-
 
   <script>
   var myEntity = document.getElementById('myEntity');
