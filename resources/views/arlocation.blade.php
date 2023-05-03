@@ -54,7 +54,7 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
     </a-entity> -->
 
 
-<a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
+<!-- <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
     renderer='antialias: true; alpha: true'>
     <a-assets>
         <a-asset-item id="tree" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
@@ -66,7 +66,23 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
             gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }}">
             <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
         </a-entity>
+    </a-entity> -->
+
+    <a-scene embedded vr-mode-ui='enabled: false' arjs='sourceType: webcam; debugUIEnabled: false; '>
+    
+    <a-assets>
+        <a-asset-item id="tree" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
+    </a-assets>
+
+    <a-entity id="gps-entity" gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};">
+        <a-entity id="myEntity" gltf-model="#tree" animation-mixer scale="0.5 0.5 0.5"
+            animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000" super-hands
+            geometry="primitive: sphere; radius: 1000">
+            <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
+        </a-entity>
     </a-entity>
+
+    <a-marker-camera preset="hiro"></a-marker-camera>
 
 
 
