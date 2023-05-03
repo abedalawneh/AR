@@ -54,7 +54,7 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
         </a-entity> -->
 
 
-        <a-entity id="targetLocation" gps-entity-place="latitude: 37.7749; longitude: -122.4194;"></a-entity>
+        <a-entity id="targetLocation" gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"></a-entity>
 
 <a-entity id="myEntity" rotation-reader gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
     gltf-model="#tree" animation-mixer scale="0.5 0.5 0.5"
