@@ -48,7 +48,8 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
     position="0 0 -4" 
     gltf-model="#tree" animation-mixer scale="0.5 0.5 0.5"
     animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"  super-hands
-            geometry="primitive: sphere; radius: 1000">
+            geometry="primitive: sphere; radius: 1000"
+            visible="{{ isWithinThreshold($location->latitude, $location->longitude, $threshold) ? 'true' : 'false' }}">
             <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
         </a-entity>
 
