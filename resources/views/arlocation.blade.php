@@ -59,7 +59,7 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
         <a-asset-item id="tree" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
     </a-assets>
     <a-entity gps-camera rotation-reader>
-        <a-entity id="myEntity" gltf-model="#tree" animation-mixer scale="0.5 0.5 0.5"
+        <a-entity id="myEntity" gltf-model="#tree" animation-mixer position="0 0 -4" scale="0.5 0.5 0.5"
             animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000" super-hands
             geometry="primitive: sphere; radius: 1000"
             gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }}">
@@ -67,62 +67,6 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
         </a-entity>
     </a-entity>
 
-        <!-- <a-entity id="targetLocation" gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"></a-entity>
-
-<a-entity id="myEntity" rotation-reader gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
-    gltf-model="#tree" animation-mixer scale="0.5 0.5 0.5"
-    animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"  super-hands
-    geometry="primitive: sphere; radius: 1000" visible="false">
-    <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
-    </a-entity>
-
-
-<script>
-AFRAME.registerComponent('distance-check', {
-  init: function () {
-    // Set the target location coordinates
-    var targetLocation = document.querySelector('#targetLocation').components['gps-entity-place'].data;
-    
-    // Get the user's location
-    navigator.geolocation.watchPosition(function (position) {
-      var userLocation = {
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude
-      };
-      
-      // Calculate the distance between the user's location and the target location
-      var distance = getDistanceFromLatLonInKm(userLocation.latitude, userLocation.longitude, targetLocation.latitude, targetLocation.longitude);
-      
-      // Display the object if the distance is less than or equal to 50 meters
-      if (distance <= 0.05) {
-        document.querySelector('#myEntity').setAttribute('visible', true);
-      } else {
-        document.querySelector('#myEntity').setAttribute('visible', false);
-      }
-    });
-    
-    // Haversine formula to calculate the distance between two GPS coordinates
-    function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
-      var R = 6371; // Radius of the earth in km
-      var dLat = deg2rad(lat2-lat1);  // deg2rad below
-      var dLon = deg2rad(lon2-lon1); 
-      var a = 
-        Math.sin(dLat/2) * Math.sin(dLat/2) +
-        Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
-        Math.sin(dLon/2) * Math.sin(dLon/2)
-        ; 
-      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-      var d = R * c; // Distance in km
-      return d;
-    }
-
-    function deg2rad(deg) {
-      return deg * (Math.PI/180)
-    }
-  }
-});
-document.querySelector('#myEntity').setAttribute('distance-check', '');
-</script> -->
 
 
   <script>
