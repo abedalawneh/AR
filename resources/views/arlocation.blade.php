@@ -78,6 +78,8 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
   var loader = new THREE.GLTFLoader();
   loader.load('{{ asset($name.'/'.$object->object) }}', function(glb) {
     var objectSize = getObjectSize(glb.scene);
+    console.log('ttttt'+objectSize);
+
     var newScale = objectSize.x / 10; // Example calculation, adjust as needed
     if (newScale > 0.5) {
         newScale=0.5;
