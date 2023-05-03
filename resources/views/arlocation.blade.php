@@ -55,7 +55,8 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
     <a-asset-item id="tree" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
   </a-assets>
 
-  <a-entity id="myEntity" gps-camera rotation-reader position="0 0 -4" super-hands>
+  <a-entity id="myEntity" gps-camera rotation-reader gltf-model="#tree" position="0 0 -4" scale="0.5 0.5 0.5"
+      animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000">
     <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
   </a-entity>
 
