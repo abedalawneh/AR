@@ -50,22 +50,42 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
     </a-entity>
   </a-entity> -->
 
-  <a-scene embedded vr-mode-ui='enabled: false' arjs='sourceType: webcam; debugUIEnabled: false; '>
+  <a-scene embedded vr-mode-ui='enabled: false' arjs='sourceType: webcam; debugUIEnabled: false;'>
   <a-assets>
     <a-asset-item id="tree" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
   </a-assets>
 
+  <a-entity id="myEntity" gps-camera rotation-reader position="0 0 -4" super-hands>
+    <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
+  </a-entity>
 
-  <a-entity id="myEntity" gps-camera rotation-reader gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
-    position="0 0 -4" 
-    gltf-model="#tree" animation-mixer scale="0.5 0.5 0.5"
-    animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"  super-hands
-            geometry="primitive: sphere; radius: 1000">
-            <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
-        </a-entity>
+  <script>
+    // Define the GPS coordinates of the location you want to place the model
+    var latitude = {{ $location->latitude }};
+    var longitude = {{ $location->longitude }};
 
-  <a-marker-camera preset="hiro"></a-marker-camera>
+    // Create a new GPS object with the specified coordinates
+    var gps = new THREE.GPS();
 
+    // Set the latitude and longitude of the GPS object
+    gps.setCoordLatitude(latitude);
+    gps.setCoordLongitude(longitude);
+
+    // Get the 3D position of the GPS object in the scene
+    var position = gps.gpsToVector3();
+
+    // Place the 3D model in the scene at the calculated position
+    var myModel = document.createElement("a-entity");
+    myModel.setAttribute("gltf-model", "#tree");
+    myModel.setAttribute("scale", "0.5 0.5 0.5");
+    myModel.setAttribute("animation-mixer", "");
+    myModel.setAttribute("animation__rotate", "property: rotation; to: 0 360 0; loop: true; dur: 20000");
+    myModel.setAttribute("position", position.x + " " + position.y + " " + position.z);
+
+    // Append the model to the scene
+    var scene = document.querySelector("a-scene");
+    scene.appendChild(myModel);
+  </script>
 
 
 
