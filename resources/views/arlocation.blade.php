@@ -44,20 +44,39 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
   </a-assets>
 
 
-  <a-entity id="myEntity"  rotation-reader gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
-    position="0 0 -4" 
-    gltf-model="#tree" animation-mixer scale="0.5 0.5 0.5"
-    animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"  super-hands
-            geometry="primitive: sphere; radius: 1000"
-            visible="{{ isWithinThreshold($location->latitude, $location->longitude, $threshold) ? 'true' : 'false' }}">
-            <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
-        </a-entity>
+  <a-entity id="myEntity" rotation-reader
+  gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
+  position="0 0 -4"
+  {% if isWithinThreshold($location->latitude, $location->longitude, $object->latitude, $object->longitude, $threshold) %}
+    gltf-model="#tree"
+    animation-mixer
+    scale="0.5 0.5 0.5"
+    animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"
+    super-hands
+    geometry="primitive: sphere; radius: 1000">
+    <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
+  {% endif %}
+</a-entity>
 
   <a-marker-camera preset="hiro"></a-marker-camera>
 
 
 
   <script>
+    function isWithinThreshold($latitude1, $longitude1, $latitude2, $longitude2, $threshold) {
+  $earthRadius = 6371; // in km
+  $dLat = deg2rad($latitude2 - $latitude1);
+  $dLon = deg2rad($longitude2 - $longitude1);
+
+  $a = sin($dLat / 2) * sin($dLat / 2) +
+       cos(deg2rad($latitude1)) * cos(deg2rad($latitude2)) *
+       sin($dLon / 2) * sin($dLon / 2);
+  $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+  $distance = $earthRadius * $c;
+
+  return ($distance <= $threshold);
+}
+
   var myEntity = document.getElementById('myEntity');
 
   // Load the GLB model
