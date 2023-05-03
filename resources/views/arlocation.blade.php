@@ -55,9 +55,9 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
   <a-marker-camera preset="hiro"></a-marker-camera> -->
 
   <a-scene embedded vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
-  <a-assets>
+  <!-- <a-assets>
     <a-asset-item id="tree" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
-  </a-assets>  
+  </a-assets>   -->
   <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
     <a-entity id="myEntity" gps-camera rotation-reader gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
     position="0 0 -4" 
