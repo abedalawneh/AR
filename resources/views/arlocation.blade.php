@@ -64,9 +64,9 @@ use App\Models\objectt;
                   newScale=0.5;
                   myEntity.setAttribute('position', 0 + ' ' + 0 + ' ' + -90);
               }
-            //   else if (newScale < 0.5) {
-            //       newScale=0.5;
-            //   }
+              else if (newScale < 0.5) {
+                  newScale=1;
+              }
               console.log('ttttt'+newScale);
               // Update the scale attribute of the entity element
               myEntity.setAttribute('scale', newScale + ' ' + newScale + ' ' + newScale);
