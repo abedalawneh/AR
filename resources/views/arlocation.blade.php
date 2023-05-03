@@ -15,10 +15,11 @@ use App\Models\objectt;
     </script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script>
     <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
-
-    <script type="module">
-        import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extras.animation-mixer@6.1.1/+esm'
-        </script>
+    <!-- <script src='https://aframe.io/releases/1.2.0/aframe.min.js'></script>
+  <script src='https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.5/aframe/build/aframe-ar.js'></script> -->
+  <script type="module">
+import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extras.animation-mixer@6.1.1/+esm'
+</script>
 
 </head>
 
@@ -38,47 +39,50 @@ use App\Models\objectt;
 
 
 <a-scene embedded vr-mode-ui='enabled: false' arjs='sourceType: webcam; debugUIEnabled: false; '>
-<a-asset-item id="tree" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
+  <a-assets>
+    <a-asset-item id="tree" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
   </a-assets>
-   <!-- <a-camera  fov="100" gps-new-camera='gpsMinDistance: 5'></a-camera> -->
-          <a-entity id="myEntity" gps-camera rotation-reader gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
+
+
+  <a-entity id="myEntity" gps-camera rotation-reader gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
     position="0 0 -4" 
     gltf-model="#tree" animation-mixer scale="0.5 0.5 0.5"
     animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"  super-hands
             geometry="primitive: sphere; radius: 1000">
             <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
         </a-entity>
-        <a-marker-camera preset="hiro"></a-marker-camera>
+
+  <a-marker-camera preset="hiro"></a-marker-camera>
 
 
 
-        <script>
-            var myEntity = document.getElementById('myEntity');
-          
-            // Load the GLB model
-            var loader = new THREE.GLTFLoader();
-            loader.load('{{ asset($name.'/'.$object->object) }}', function(glb) {
-              var objectSize = getObjectSize(glb.scene);
-              var newScale = objectSize.x / 10; // Example calculation, adjust as needed
-              if (newScale > 0.5) {
-                  newScale=0.5;
-                  myEntity.setAttribute('position', 0 + ' ' + 0 + ' ' + -90);
-              }
-              else if (newScale < 0.5) {
-                  newScale=1;
-              }
-              console.log('ttttt'+newScale);
-              // Update the scale attribute of the entity element
-              myEntity.setAttribute('scale', newScale + ' ' + newScale + ' ' + newScale);
-            });
-          
-            function getObjectSize(glbModel) {
-              var boundingBox = new THREE.Box3().setFromObject(glbModel);
-              var size = new THREE.Vector3();
-              boundingBox.getSize(size);
-              return size;
-            }
-          </script>
+  <script>
+  var myEntity = document.getElementById('myEntity');
+
+  // Load the GLB model
+  var loader = new THREE.GLTFLoader();
+  loader.load('{{ asset($name.'/'.$object->object) }}', function(glb) {
+    var objectSize = getObjectSize(glb.scene);
+    var newScale = objectSize.x / 10; // Example calculation, adjust as needed
+    if (newScale > 0.5) {
+        newScale=0.5;
+        myEntity.setAttribute('position', 0 + ' ' + 0 + ' ' + -90);
+    }
+    else if (newScale < 0.5) {
+        newScale=0.5;
+    }
+    console.log('ttttt'+newScale);
+    // Update the scale attribute of the entity element
+    myEntity.setAttribute('scale', newScale + ' ' + newScale + ' ' + newScale);
+  });
+
+  function getObjectSize(glbModel) {
+    var boundingBox = new THREE.Box3().setFromObject(glbModel);
+    var size = new THREE.Vector3();
+    boundingBox.getSize(size);
+    return size;
+  }
+</script>
 
         <script>
         // var animation='{{$object->animation}}';
