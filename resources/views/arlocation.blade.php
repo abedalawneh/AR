@@ -44,7 +44,7 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
   </a-assets>
 
 
-  <a-entity id="myEntity" gps-camera rotation-reader gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
+  <a-entity id="myEntity"  rotation-reader gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
     position="0 0 -4" 
     gltf-model="#tree" animation-mixer scale="0.5 0.5 0.5"
     animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"  super-hands
