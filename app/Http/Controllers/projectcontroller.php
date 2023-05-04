@@ -19,7 +19,7 @@ class projectcontroller extends Controller
 {
     public function generateQRCode(Request $request)
     {   $id=$request->id;
-        return redirect()->route('arlocation',['id' => $id]);
+        return redirect()->route('location',['id' => $id]);
     }
     public function project(Request $request)
     {
@@ -35,10 +35,10 @@ class projectcontroller extends Controller
         return view('editproject', ['userFront1' =>$userFront1]);
 
     }
-    public function arlocation(Request $request)
+    public function location(Request $request)
     {
         $userFront1 = project::where('id', $request->id)->get();
-        return view('arlocation', ['userFront1' =>$userFront1]);
+        return view('location', ['userFront1' =>$userFront1]);
 
     }
 
