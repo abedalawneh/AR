@@ -38,8 +38,8 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
 
     <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
         renderer='antialias: true; alpha: true'>
-        <a-camera position="0 0 -4" gps-new-camera='gpsMinDistance: 5'></a-camera>
-        <a-entity  animation-mixer scale="0.5 0.5 0.5" gltf-model="{{ asset($name.'/'.$object->object) }}"
+        <a-camera  gps-new-camera='gpsMinDistance: 3'></a-camera>
+        <a-entity position="0 0 0" animation-mixer scale="2 2 2" gltf-model="{{ asset($name.'/'.$object->object) }}"
             gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"
             animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000" super-hands
             geometry="primitive: sphere; radius: 1000">
@@ -49,7 +49,7 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
 
 
 
-        <script>
+        <!-- <script>
   var myEntity = document.getElementById('myEntity');
 
   // Load the GLB model
@@ -77,7 +77,7 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
     boundingBox.getSize(size);
     return size;
   }
-</script>
+</script> -->
 
 
         <script>
