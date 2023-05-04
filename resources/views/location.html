@@ -9,7 +9,7 @@
 <body>
 <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
     <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
-    <a-entity gltf-model="{{ asset($name.'/'.$object->object) }}" gps-new-entity-place="latitude: 32.085787; longitude: 36.0933741" scale="10 10 10"></a-entity>
+    <a-entity gltf-model="glbobject/bouquet.glb" gps-new-entity-place="latitude: 32.085787; longitude: 36.0933741" scale="10 10 10"></a-entity>
 </a-scene>
 </body>
 </html>
