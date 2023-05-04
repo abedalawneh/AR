@@ -34,12 +34,10 @@ use App\Models\objectt;
               $name='glbobject';
      ?>
 
-
-
     <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
         renderer='antialias: true; alpha: true'>
-        <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
-        <a-entity position="0 0 -4" animation-mixer scale="0.5 0.5 0.5" gltf-model="{{ asset($name.'/'.$object->object) }}"
+        <a-camera position="0 0 -4" gps-new-camera='gpsMinDistance: 5'></a-camera>
+        <a-entity  animation-mixer scale="0.5 0.5 0.5" gltf-model="{{ asset($name.'/'.$object->object) }}"
             gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"
             animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000" super-hands
             geometry="primitive: sphere; radius: 1000">
@@ -47,6 +45,37 @@ use App\Models\objectt;
         </a-entity>
 
 
+
+
+        <script>
+  var myEntity = document.getElementById('myEntity');
+
+  // Load the GLB model
+  var loader = new THREE.GLTFLoader();
+  loader.load('{{ asset($name.'/'.$object->object) }}', function(glb) {
+    var objectSize = getObjectSize(glb.scene);
+    
+    var newScale = objectSize.x / 10; // Example calculation, adjust as needed
+    console.log('ttttt'+newScale);
+    if (newScale > 0.5) {
+        newScale=0.5;
+        myEntity.setAttribute('position', 0 + ' ' + 0 + ' ' + -90);
+    }
+    else if (newScale < 0.5) {
+        newScale=0.5;
+    }
+    console.log('ttttt'+newScale);
+    // Update the scale attribute of the entity element
+    myEntity.setAttribute('scale', newScale + ' ' + newScale + ' ' + newScale);
+  });
+
+  function getObjectSize(glbModel) {
+    var boundingBox = new THREE.Box3().setFromObject(glbModel);
+    var size = new THREE.Vector3();
+    boundingBox.getSize(size);
+    return size;
+  }
+</script>
 
 
         <script>
