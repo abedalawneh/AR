@@ -40,7 +40,7 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
     <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
         renderer='antialias: true; alpha: true'>
         <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
-        <a-entity position="0 0 0" animation-mixer scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
+        <a-entity position="0 0 0" scale="10 10 10" gltf-model="{{ asset($name.'/'.$object->object) }}"
             gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}"
             animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000" super-hands
             geometry="primitive: sphere; radius: 1000">
