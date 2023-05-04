@@ -82,10 +82,10 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
 </a-entity> -->
 
     <!-- <a-marker-camera preset="hiro"></a-marker-camera> -->
-    
+
     <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
     <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
-    <a-entity id="myEntity" gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
+    <a-entity id="myEntity" position="0 0 -4" gps-entity-place="latitude: {{$location->latitude}}; longitude: {{$location->longitude}};"
         gltf-model="#tree"   >
         <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
     </a-entity>
