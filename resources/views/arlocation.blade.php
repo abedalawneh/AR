@@ -76,8 +76,7 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
 
     <a-entity gps-camera position="0 0 -4" rotation-reader>
     <a-entity id="myEntity" gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
-        gltf-model="#tree" animation-mixer scale="0.5 0.5 0.5"
-        geometry="primitive: sphere; radius: 500">
+        gltf-model="#tree"   >
         <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
     </a-entity>
 </a-entity>
