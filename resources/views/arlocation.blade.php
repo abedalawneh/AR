@@ -15,9 +15,7 @@ use App\Models\objectt;
     </script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script>
     <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
-    <!-- <script src='https://aframe.io/releases/1.2.0/aframe.min.js'></script>
-  <script src='https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.5/aframe/build/aframe-ar.js'></script> -->
-  <script type="module">
+   <script type="module">
 import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extras.animation-mixer@6.1.1/+esm'
 </script>
 
@@ -49,35 +47,6 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
 
 
 
-        <!-- <script>
-  var myEntity = document.getElementById('myEntity');
-
-  // Load the GLB model
-  var loader = new THREE.GLTFLoader();
-  loader.load('{{ asset($name.'/'.$object->object) }}', function(glb) {
-    var objectSize = getObjectSize(glb.scene);
-    
-    var newScale = objectSize.x / 10; // Example calculation, adjust as needed
-    console.log('ttttt'+newScale);
-    if (newScale > 0.5) {
-        newScale=0.5;
-        myEntity.setAttribute('position', 0 + ' ' + 0 + ' ' + -90);
-    }
-    else if (newScale < 0.5) {
-        newScale=0.5;
-    }
-    console.log('ttttt'+newScale);
-    // Update the scale attribute of the entity element
-    myEntity.setAttribute('scale', newScale + ' ' + newScale + ' ' + newScale);
-  });
-
-  function getObjectSize(glbModel) {
-    var boundingBox = new THREE.Box3().setFromObject(glbModel);
-    var size = new THREE.Vector3();
-    boundingBox.getSize(size);
-    return size;
-  }
-</script> -->
 
 
         <script>
