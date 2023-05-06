@@ -37,7 +37,7 @@ use App\Models\objectt;
     animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"  super-hands
     geometry="primitive: sphere; radius: 1000"
     gltf-model="{{ asset($name.'/'.$object->object) }}"
-            gps-new-entity-place="latitude:{{$location->latitude}}; longitude:{{ $location->longitude}}">
+            gps-new-entity-place="latitude:24.6788271; longitude:46.7448647">
     <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
     </a-entity>
         
