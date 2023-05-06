@@ -44,7 +44,7 @@ use App\Models\objectt;
     geometry="primitive: sphere; radius: 1000"
     gltf-model="{{ asset($name.'/'.$object->object) }}"
             gps-new-entity-place="latitude:24.6788271; longitude:46.7448647">
-    <a-text value="test" position="0 1 0" color="red" transparent="true"></a-text>
+    <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
     </a-entity>
         
     <script>
