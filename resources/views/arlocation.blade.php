@@ -37,7 +37,7 @@ use App\Models\objectt;
 
 
 
-<a-scene embedded vr-mode-ui='enabled: false' arjs='sourceType: webcam; debugUIEnabled: false;'>
+<a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
     
     <a-assets>
         <a-asset-item id="tree" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
