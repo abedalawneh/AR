@@ -45,27 +45,9 @@ use App\Models\objectt;
 
     <a-entity gps-camera rotation-reader></a-entity>
 
-    <script>
-        // get the user's current location
-        navigator.geolocation.watchPosition(function(position) {
-            // calculate the distance between the user's location and the target location
-            var distance = AFRAME.THREE.Math.distanceTo(
-                position.coords,
-                {latitude: {{ $location->latitude }}, longitude: {{ $location->longitude }}, altitude: 0}
-            );
-            
-            // if the distance is greater than 1000 meters, hide the object
-            if (distance > 1000) {
-                document.querySelector("#myEntity").setAttribute("visible", false);
-            } else {
-                document.querySelector("#myEntity").setAttribute("visible", true);
-            }
-        });
-    </script>
-
     <a-entity id="myEntity" gltf-model="#tree" animation-mixer scale="0.5 0.5 0.5"
     animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"  super-hands
-    geometry="primitive: sphere; radius: 1000"
+    geometry="primitive: sphere; radius: 1000" position="0 0 -4"
     gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }}; altitude: 0;">
             <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
     </a-entity>
