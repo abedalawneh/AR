@@ -416,7 +416,7 @@ else {?>
                 // $link = 'https://'.$randomString;
                 ?>
                    <span class="textqr2 d-flex justify-content-center" ><a href=""onclick="event.preventDefault();
-                     document.getElementById('ar-form-{{$frontuserFor->id}}').submit();">{{ asset('location?id='.$frontuserFor->id)}}</a></span>
+                     document.getElementById('ar-form-{{$frontuserFor->id}}').submit();">{{ asset('arlocation?id='.$frontuserFor->id)}}</a></span>
                      
                </div>
                <!-- <div class=" m-3 d-flex row justify-content-evenly align-items-center">
