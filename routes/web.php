@@ -61,7 +61,9 @@ Route::get('/qrlocation', [projectcontroller::class, 'generateQRCode'])->name('q
 Route::post('/qrlocation', [projectcontroller::class, 'generateQRCode'])->name('qrlocation');
 
 
-
+Route::get('/location', function () {
+    return view('location');
+});
 
 
 Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
