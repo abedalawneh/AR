@@ -43,8 +43,7 @@ use App\Models\objectt;
         <a-asset-item id="tree" src="{{ asset($name.'/'.$object->object) }}"></a-asset-item>
     </a-assets>
 
-    <a-entity gps-camera gps-min-distance="5" rotation-reader></a-entity>
-
+    <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
     <a-entity id="myEntity" gltf-model="#tree" animation-mixer scale="0.5 0.5 0.5"
     animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"  super-hands
     geometry="primitive: sphere; radius: 1000" position="0 0 -4"
