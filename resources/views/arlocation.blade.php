@@ -14,7 +14,6 @@ use App\Models\objectt;
 <!-- Include A-Frame -->
 <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
-
 <script src="https://cdn.jsdelivr.net/npm/aframe-extras.animation-mixer@6.1.1/+esm"></script>
 <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
 
