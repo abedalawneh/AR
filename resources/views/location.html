@@ -9,11 +9,12 @@
     </head>
 <body>
 <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
-    <a-entity gps-camera >
+    <a-entity gps-camera position="0 0 -4" rotation-reader>
         <a-entity  position="0 0 -4" scale="2 2 2" 
          gltf-model="https://gracious-cori.65-108-72-55.plesk.page/glbobject/bouquet.glb"
             gps-new-entity-place="latitude:32.02589689902887; longitude:36.06037521282807">
     </a-entity>
+</a-entity>
 </a-scene>
 
 </body>
