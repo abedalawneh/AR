@@ -20,7 +20,7 @@ use App\Models\objectt;
 
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
 
-<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script> -->
     <!-- <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script> -->
     <!-- <script src='https://aframe.io/releases/1.2.0/aframe.min.js'></script>
   <script src='https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.5/aframe/build/aframe-ar.js'></script> -->
