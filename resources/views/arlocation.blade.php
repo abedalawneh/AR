@@ -11,13 +11,7 @@ use App\Models\objectt;
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
 
-<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script>
-    <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
-    <!-- <script src='https://aframe.io/releases/1.2.0/aframe.min.js'></script>
-  <script src='https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.5/aframe/build/aframe-ar.js'></script> -->
-  <script type="module">
-    import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extras.animation-mixer@6.1.1/+esm'
-    </script>
+
 </head>
 
 
@@ -40,9 +34,12 @@ use App\Models\objectt;
 
 <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
 
-    <a-entity gps-camera position="0 0 -4" >
-        <a-entity  gltf-model="{{ asset($name.'/'.$object->object) }}"  scale="0.5 0.5 0.5"
-        gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }}; distance: 5;">
+    <a-entity gps-camera position="0 0 -4" rotation-reader>
+        <a-entity  gltf-model="{{ asset($name.'/'.$object->object) }}" animation-mixer scale="0.5 0.5 0.5"
+        animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000" super-hands
+        geometry="primitive: sphere; radius: 1000" 
+        gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }}; distance: 5;" look-at="[gps-camera]">
+            <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
         </a-entity>
     </a-entity>
 
@@ -225,7 +222,13 @@ use App\Models\objectt;
     </a-scene>
 
     <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
-
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script>
+    <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
+    <!-- <script src='https://aframe.io/releases/1.2.0/aframe.min.js'></script>
+  <script src='https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.5/aframe/build/aframe-ar.js'></script> -->
+  <script type="module">
+    import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extras.animation-mixer@6.1.1/+esm'
+    </script>
 
     <?php }
       
