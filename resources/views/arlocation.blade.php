@@ -10,7 +10,8 @@ use App\Models\objectt;
     <title>AR.js A-Frame Location-based</title>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
-<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+<!-- <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script> -->
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 
 <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script>
     <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
