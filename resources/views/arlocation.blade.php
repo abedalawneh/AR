@@ -47,7 +47,7 @@ use App\Models\objectt;
     <a-entity id="myEntity" gltf-model="{{ asset($name.'/'.$object->object) }}" animation-mixer scale="0.5 0.5 0.5"
     animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"  super-hands
     geometry="primitive: sphere; radius: 1000" 
-    gps-entity-place="latitude: 24.6788271; longitude: 46.7448647;" look-at="[gps-camera]">
+    gps-new-entity-place="latitude: {{$location->latitude}}; longitude:{{ $location->longitude}}" look-at="[gps-camera]">
         <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
     </a-entity>
 
