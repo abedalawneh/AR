@@ -10,15 +10,15 @@ use App\Models\objectt;
     <title>AR.js A-Frame Location-based</title>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
-<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+<!-- <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script> -->
 
-<!-- <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script> -->
-    <!-- <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script>
+    <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
     <!-- <script src='https://aframe.io/releases/1.2.0/aframe.min.js'></script>
   <script src='https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.5/aframe/build/aframe-ar.js'></script> -->
-  <!-- <script type="module">
+  <script type="module">
     import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extras.animation-mixer@6.1.1/+esm'
-    </script> -->
+    </script>
 </head>
 
 
@@ -227,8 +227,14 @@ use App\Models\objectt;
         </script>
 
     </a-scene>
-
-
+    <!-- <script src="aframe-ar.js"></script> -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var scriptEl = document.createElement('script');
+      scriptEl.src = 'aframe-ar.js';
+      document.body.appendChild(scriptEl);
+    });
+  </script> 
 
     <?php }
       
