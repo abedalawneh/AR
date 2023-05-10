@@ -54,6 +54,8 @@ use App\Models\objectt;
 </a-entity>
     </a-entity>
     <script>
+        console.log('fff');
+
     var arObject = document.getElementById("ar-object");
     var location = <?php echo json_encode($location); ?>;
     if (location && typeof location.longitude !== 'undefined') {
