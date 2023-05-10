@@ -53,14 +53,14 @@ use App\Models\objectt;
         <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
 </a-entity>
     </a-entity>
-    <script>
+    <!-- <script>
     var arObject = document.getElementById("ar-object");
     var location = <?php echo json_encode($location); ?>;
     if (location.longitude) {
         console.log('fff');
         arObject.setAttribute("gps-entity-place", "latitude: "+location.latitude+"; longitude: "+location.longitude+"; distance: 5;");
     }
-</script>
+</script> -->
     <script>
         // var animation='{{$object->animation}}';
         // console.log(animation);
