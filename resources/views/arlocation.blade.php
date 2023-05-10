@@ -16,7 +16,9 @@ use App\Models\objectt;
   <script type="module">
     import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extras.animation-mixer@6.1.1/+esm'
     </script>
-
+<script type="module">
+import { ArToolkitProfile, ArToolkitSource, ArToolkitContext, ArMarkerControls} from 'arjs/three.js/build/ar-threex.js';
+    </script>
 
 <body>
     <?php
