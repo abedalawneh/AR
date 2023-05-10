@@ -33,6 +33,7 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
   <script type="module">
 import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extras.animation-mixer@6.1.1/+esm'
 </script>
+<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
 <body>
     <?php
         foreach ($userFront1 as $frontuserFor) {
