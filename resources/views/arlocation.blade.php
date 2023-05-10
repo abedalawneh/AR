@@ -19,7 +19,7 @@ use App\Models\objectt;
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.4.2/aframe.min.js"></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
-<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/ar.js/2.2.2/aframe-ar.min.js'></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/ar.js/2.2.2/aframe-ar.js'></script>
 <body>
     <?php
         foreach ($userFront1 as $frontuserFor) {
