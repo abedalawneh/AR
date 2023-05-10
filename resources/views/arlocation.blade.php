@@ -33,12 +33,9 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
             
             if (count($locationproject) > 0){
               $location = $locationproject[0];
-              if ($location && $location->longitude) {
              if (count($objectproject) > 0) {
               $object = $objectproject[0];
               $name='glbobject';
-              
-
               
      ?>
 
@@ -238,7 +235,7 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
 <!-- <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script> -->
 
 
-    <?php }}
+    <?php }
       
       ?>
     <?php } }?>
