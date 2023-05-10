@@ -47,7 +47,7 @@ use App\Models\objectt;
         gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }}; distance: 5;" look-at="[gps-camera]">
             <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
         </a-entity> -->
-        @if (isset($location) && isset($location->longitude))
+        @if (isset($location) && isset($location->longitude1))
     <a-entity gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }}; distance: 5;" gltf-model="{{ asset($name.'/'.$object->object) }}" scale="0.5 0.5 0.5">
         <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
     </a-entity>
