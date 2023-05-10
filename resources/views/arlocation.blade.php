@@ -57,6 +57,7 @@ use App\Models\objectt;
     var arObject = document.getElementById("ar-object");
     var location = <?php echo json_encode($location); ?>;
     if (location.longitude) {
+        console.log('fff');
         arObject.setAttribute("gps-entity-place", "latitude: "+location.latitude+"; longitude: "+location.longitude+"; distance: 5;");
     }
 </script>
