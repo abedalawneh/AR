@@ -11,7 +11,7 @@ use App\Models\objectt;
 
 <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
-<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/ar.js/3.1.2/aframe-ar.js'></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/ar.js/2.2.2/aframe-ar.js'></script>
 <!-- <script src="https://unpkg.com/super-hands@^4.0.1/dist/super-hands.min.js"></script>
 <script type="module">
   import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extras.animation-mixer@6.2.0/+esm'
