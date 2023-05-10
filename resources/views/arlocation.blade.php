@@ -47,13 +47,19 @@ use App\Models\objectt;
         gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }}; distance: 5;" look-at="[gps-camera]">
             <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
         </a-entity> -->
-        @if (isset($location) && isset($location->longitude))
-    <a-entity gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }}; distance: 5;" gltf-model="{{ asset($name.'/'.$object->object) }}" scale="0.5 0.5 0.5">
+        <a-entity id="ar-object" gltf-model="{{ asset($name.'/'.$object->object) }}" animation-mixer scale="0.5 0.5 0.5"
+    animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000" super-hands
+    geometry="primitive: sphere; radius: 1000" look-at="[gps-camera]">
         <a-text value="{{$object->textobject}}" position="0 1 0" color="red" transparent="true"></a-text>
+</a-entity>
     </a-entity>
-@endif
-    </a-entity>
-
+    <script>
+    var arObject = document.getElementById("ar-object");
+    var location = <?php echo json_encode($location); ?>;
+    if (location.longitude) {
+        arObject.setAttribute("gps-entity-place", "latitude: "+location.latitude+"; longitude: "+location.longitude+"; distance: 5;");
+    }
+</script>
     <script>
         // var animation='{{$object->animation}}';
         // console.log(animation);
