@@ -31,8 +31,7 @@ use App\Models\objectt;
              if (count($objectproject) > 0) {
               $object = $objectproject[0];
               $name='glbobject';
-              echo'$location->latitude';
-              echo'$location->longitude';
+              
      ?>
 
 
