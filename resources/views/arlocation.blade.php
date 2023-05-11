@@ -41,7 +41,7 @@ use App\Models\objectt;
         position="0 0 -4"
         look-at="[gps-camera]"
         gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
-        animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
+        animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000"
         animation-mixer
       ></a-text>
       <a-camera gps-camera rotation-reader super-hands animation-mixer></a-camera>
@@ -72,6 +72,8 @@ use App\Models\objectt;
         }
 
         function onTouchMove(event) {
+            console.log('ddd1');
+
             currentPosition = {
                 x: event.touches[0].clientX,
                 y: event.touches[0].clientY
@@ -81,6 +83,8 @@ use App\Models\objectt;
         }
 
         function onTouchEnd(event) {
+            console.log('ddd1');
+
             previousPosition = null;
             currentPosition = null;
             enableAnimation();
