@@ -38,7 +38,7 @@ use App\Models\objectt;
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
     >
       <a-entity  position="0 0 -4" scale="2 2 2" geometry="primitive: sphere; radius: 1000"
-        animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000" animation-mixer super-hands
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 20000" animation-mixer super-hands
         gltf-model="{{ asset($name.'/'.$object->object) }}" look-at="[gps-camera]"
          gps-entity-place="latitude:{{ $location->latitude }}; longitude: {{ $location->longitude }};">    
         <a-text value="test" position="0 1 0" color="red" transparent="true"></a-text>
