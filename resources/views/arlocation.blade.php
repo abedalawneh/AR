@@ -91,6 +91,8 @@ use App\Models\objectt;
 
         // Mouse event handlers
         function onMouseDown(event) {
+            console.log('ddd1');
+
             previousPosition = {
                 x: event.clientX,
                 y: event.clientY
@@ -99,6 +101,8 @@ use App\Models\objectt;
         }
 
         function onMouseMove(event) {
+            console.log('ddd2');
+
             if (previousPosition) {
                 currentPosition = {
                     x: event.clientX,
@@ -110,6 +114,8 @@ use App\Models\objectt;
         }
 
         function onMouseUp(event) {
+            console.log('ddd3');
+
             previousPosition = null;
             currentPosition = null;
             enableAnimation();
