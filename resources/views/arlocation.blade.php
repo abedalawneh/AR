@@ -13,7 +13,6 @@ use App\Models\objectt;
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-    <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v6.0.0/dist/aframe-extras.min.js"></script>
 
 
@@ -40,12 +39,12 @@ use App\Models\objectt;
         gltf-model="{{ asset($name.'/'.$object->object) }}"
         value="{{$object->textobject}}"
         scale="3 3 3"
+        position="0 0 -4"
         look-at="[gps-camera]"
         gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
         animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
-        animation-mixer
       ></a-text>
-      <a-camera gps-camera rotation-reader super-hands animation-mixer></a-camera>
+      <a-camera gps-camera rotation-reader  animation-mixer></a-camera>
 
 <script>
         
