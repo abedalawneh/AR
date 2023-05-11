@@ -43,6 +43,7 @@ use App\Models\objectt;
         look-at="[gps-camera]"
         gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
         animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
+        animation-mixer
       ></a-text>
       <a-camera gps-camera rotation-reader  animation-mixer></a-camera>
 
