@@ -13,19 +13,11 @@ use App\Models\objectt;
 <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/ar.js/2.2.2/aframe-ar.min.js'></script> -->
 <!-- <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script> -->
 <!-- <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script> -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.4.2/aframe.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.4.2/aframe.min.js"></script>
 <script type='text/javascript'src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
-<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/ar.js/2.2.2/aframe-ar.min.js'></script> -->
-<script
-        src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js">
-    </script>
-    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-    <script src='https://raw.githack.com/cmcfadden/AR.js/master/aframe/build/aframe-ar.js'></script>
-    <script>
-        THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
-    </script>
-    
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/ar.js/2.2.2/aframe-ar.min.js'></script>
+
 <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script>
 <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
 <script type="module">
