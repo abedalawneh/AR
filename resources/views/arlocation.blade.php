@@ -11,8 +11,6 @@ use App\Models\objectt;
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>GeoAR.js demo</title>
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <!-- <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script> -->
-    <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script> -->
     <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
     <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v6.0.0/dist/aframe-extras.min.js"></script>
@@ -39,7 +37,6 @@ use App\Models\objectt;
       <a-entity
         gltf-model="{{ asset($name.'/'.$object->object) }}"
         scale="3 3 3"
-        position="0 0 0"
         look-at="[gps-camera]"
         gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
         animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000" super-hands
@@ -48,7 +45,7 @@ use App\Models\objectt;
       >
       <a-text value="{{$object->textobject}}" position="0 -2 0" color="red" transparent="true"></a-text>
         </a-entity>
-      <a-camera gps-camera rotation-reader  animation-mixer></a-camera>
+      <a-camera gps-camera rotation-reader position="0 0 -4" animation-mixer></a-camera>
 
 <script>
         
