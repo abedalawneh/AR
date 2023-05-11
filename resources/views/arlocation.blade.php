@@ -52,6 +52,7 @@ use App\Models\objectt;
 <script>
         
         var gltfModel =  document.querySelector('a-text');
+        console.log('ddd');
 
         var previousPosition = null;
         var currentPosition = null;
