@@ -47,7 +47,7 @@ use App\Models\objectt;
       >
       <a-text value="{{$object->textobject}}" position="0 -2 0" color="red" transparent="true"></a-text>
         </a-entity>
-      <a-camera gps-camera rotation-reader super-hands animation-mixer></a-camera>
+      <a-camera gps-camera rotation-reader  animation-mixer></a-camera>
 
 <script>
         
