@@ -95,6 +95,7 @@
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="./aframe-super-hands-component.js"></script>
   </head>
 
   <body>
@@ -110,7 +111,7 @@
         gps-entity-place="latitude: 32.02589689902887; longitude: 36.0603752128280726;"
         animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
       ></a-text>
-      <a-camera gps-camera rotation-reader></a-camera>
+      <a-camera gps-camera rotation-reader super-hands></a-camera>
     </a-scene>
   </body>
 </html>
