@@ -6,7 +6,7 @@ use App\Models\objectt;
 ?>
 <html>
 
-<head>
+<head?>
 <title>AR.js A-Frame Location-based</title>
 
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.4.2/aframe.min.js"></script>
@@ -16,7 +16,7 @@ use App\Models\objectt;
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.4.2/aframe.min.js"></script>
 <script type='text/javascript'src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
-<!-- <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/ar.js/2.2.2/aframe-ar.min.js'></script> -->
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/ar.js/2.2.2/aframe-ar.min.js'></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script>
@@ -24,7 +24,7 @@ use App\Models\objectt;
 <script type="module">
 import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extras.animation-mixer@6.1.1/+esm'
 </script>
-
+</head>
 <body>
     <?php
         foreach ($userFront1 as $frontuserFor) {
@@ -38,11 +38,6 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
               $name='glbobject';
               
      ?>
-
-
-
-
-
 <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
 
     <a-entity gps-camera position="0 0 -4" rotation-reader>
