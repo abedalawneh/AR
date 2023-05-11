@@ -45,11 +45,11 @@ use App\Models\objectt;
         animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
         animation-mixer
       ></a-text>
-      <a-camera gps-camera rotation-reader  animation-mixer></a-camera>
+      <a-camera gps-camera rotation-reader animation-mixer></a-camera>
 
 <script>
         
-        var gltfModel = document.getElementById('#my-model');
+        var gltfModel = document.getElementById("#my-model");
 
         var previousPosition = null;
         var currentPosition = null;
