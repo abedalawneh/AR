@@ -64,7 +64,7 @@ use App\Models\objectt;
         document.addEventListener('mouseup', onMouseUp, false);
 
         function onTouchStart(event) {
-            console.log('ddd');
+            console.log('dddf');
             previousPosition = {
                 x: event.touches[0].clientX,
                 y: event.touches[0].clientY
@@ -73,7 +73,7 @@ use App\Models\objectt;
         }
 
         function onTouchMove(event) {
-            console.log('ddd1');
+            console.log('dddf');
 
             currentPosition = {
                 x: event.touches[0].clientX,
@@ -84,7 +84,7 @@ use App\Models\objectt;
         }
 
         function onTouchEnd(event) {
-            console.log('ddd1');
+            console.log('dddf');
 
             previousPosition = null;
             currentPosition = null;
