@@ -36,6 +36,7 @@ use App\Models\objectt;
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
     >
       <a-text
+        id="my-model"
         gltf-model="{{ asset($name.'/'.$object->object) }}"
         value="{{$object->textobject}}"
         scale="3 3 3"
@@ -48,7 +49,7 @@ use App\Models\objectt;
 
 <script>
         
-        var gltfModel = document.querySelector('a-entity');
+        var gltfModel = document.querySelector('#my-model');
 
         var previousPosition = null;
         var currentPosition = null;
@@ -138,7 +139,7 @@ use App\Models\objectt;
             }
         }
 
-                </>
+                </script>
 
     </a-scene>
 
