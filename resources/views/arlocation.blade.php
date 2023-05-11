@@ -40,7 +40,7 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
       <a-text
       gltf-model="{{ asset($name.'/'.$object->object) }}"
       value="{{$object->textobject}}"
-      scale="5 5 5"
+      scale="3 3 3"
         look-at="[gps-camera]"
         gps-entity-place="latitude:{{ $location->latitude }}; longitude: {{ $location->longitude }};"
         animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"
@@ -56,7 +56,7 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
         // if (animation =='Poth') {
 
         // Get a reference to the GLTF model entity
-        var gltfModel = document.querySelector('a-entity');
+        var gltfModel = document.querySelector('a-text');
 
         // Define variables to store the previous and current touch or mouse positions
         var previousPosition = null;
