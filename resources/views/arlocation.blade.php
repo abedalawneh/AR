@@ -40,10 +40,9 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
       <a-text
       gltf-model="{{ asset($name.'/'.$object->object) }}"
       value="{{$object->textobject}}"
-      scale="0.5 0.5 0.5"
+      scale="5 5 5"
         look-at="[gps-camera]"
         gps-entity-place="latitude:{{ $location->latitude }}; longitude: {{ $location->longitude }};"
-        position="0 0 -4"
         animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"
          super-hands
          animation-mixer
