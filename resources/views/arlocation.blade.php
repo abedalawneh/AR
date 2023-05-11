@@ -37,13 +37,13 @@ use App\Models\objectt;
     >
       <a-entity
         gltf-model="{{ asset($name.'/'.$object->object) }}"
-        scale="3 3 3"
+        scale="1 1 1"
         position="0 0 -4"
         look-at="[gps-camera]"
         gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
-        animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000"
+        animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000" super-hands
         animation-mixer
-        super-hands
+        geometry="primitive: sphere; radius: 1000"
       >
       <a-text value="{{$object->textobject}}" position="0 -5 0" color="red" transparent="true"></a-text>
         </a-entity>
