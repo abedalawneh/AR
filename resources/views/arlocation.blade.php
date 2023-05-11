@@ -15,8 +15,8 @@ use App\Models\objectt;
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v6.0.0/dist/aframe-extras.min.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/super-hands/dist/super-hands.min.js"></script> -->
-
     <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
+
 
 </head>
 <body>
@@ -65,6 +65,7 @@ use App\Models\objectt;
         document.addEventListener('mouseup', onMouseUp, false);
 
         function onTouchStart(event) {
+            console.log('ddd');
             previousPosition = {
                 x: event.touches[0].clientX,
                 y: event.touches[0].clientY
