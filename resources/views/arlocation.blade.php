@@ -35,7 +35,7 @@ use App\Models\objectt;
       vr-mode-ui="enabled: false"
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
     >
-      <a-text
+      <a-entity
         gltf-model="{{ asset($name.'/'.$object->object) }}"
         value="{{$object->textobject}}"
         scale="3 3 3"
@@ -44,12 +44,12 @@ use App\Models\objectt;
         gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
         animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000"
         animation-mixer
-      ></a-text>
+      ></a-entity>
       <a-camera gps-camera rotation-reader super-hands animation-mixer></a-camera>
 
 <script>
         
-        var gltfModel =  document.querySelector('a-text');
+        var gltfModel =  document.querySelector('a-entity');
         console.log('ddd');
 
         var previousPosition = null;
