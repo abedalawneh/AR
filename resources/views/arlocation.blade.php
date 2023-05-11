@@ -10,13 +10,14 @@ use App\Models\objectt;
 <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>GeoAR.js demo</title>
-    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.4.2/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script> -->
     <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
-    <script src="https://mixar.io/sdk/mixar-sdk.min.js"></script>
-
+    <script type="module">
+    import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extras.animation-mixer@6.1.1/+esm'
+    </script>
 
    
 </head>
@@ -37,9 +38,9 @@ use App\Models\objectt;
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
     >
       <a-entity  position="0 0 -4" scale="2 2 2" geometry="primitive: sphere; radius: 1000"
-        animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"  super-hands
+        animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000" animation-mixer super-hands
         gltf-model="{{ asset($name.'/'.$object->object) }}" look-at="[gps-camera]"
-         gps-entity-place="latitude:{{ $location->latitude }}; longitude: {{ $location->longitude }};" animation-mixer>    
+         gps-entity-place="latitude:{{ $location->latitude }}; longitude: {{ $location->longitude }};">    
         <a-text value="test" position="0 1 0" color="red" transparent="true"></a-text>
     </a-entity>
       <a-camera gps-camera rotation-reader> </a-camera>
