@@ -19,7 +19,8 @@ use App\Models\objectt;
     import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extras.animation-mixer@6.1.1/+esm'
     </script>
 
-   
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
 </head>
 <body>
     <?php
@@ -137,7 +138,7 @@ use App\Models\objectt;
             }
         }
 
-                </script>
+                </>
 
     </a-scene>
 
