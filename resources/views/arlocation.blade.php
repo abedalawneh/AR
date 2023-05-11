@@ -40,13 +40,14 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
       <a-entity id="center-object" position="0 0 -4" scale="2 2 2" geometry="primitive: sphere; radius: 1000"
         animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000" animation-mixer super-hands
         gltf-model="{{ asset($name.'/'.$object->object) }}"
-         gps-entity-place="latitude:{{ $location->latitude }}; longitude: {{ $location->longitude }};">            <a-text value="test" position="0 1 0" color="red" transparent="true"></a-text>
+         gps-entity-place="latitude:{{ $location->latitude }}; longitude: {{ $location->longitude }};">    
+        <a-text value="test" position="0 1 0" color="red" transparent="true"></a-text>
     </a-entity>
       <a-camera gps-camera rotation-reader> </a-camera>
 
     <script>
         
-        var gltfModel = document.querySelector('a-text');
+        var gltfModel = document.querySelector('a-entity');
 
         var previousPosition = null;
         var currentPosition = null;
