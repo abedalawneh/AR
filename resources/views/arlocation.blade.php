@@ -49,7 +49,7 @@ use App\Models\objectt;
 
 <script>
         
-        var gltfModel = document.querySelector('#my-model');
+        var gltfModel = document.getElementById('#my-model');
 
         var previousPosition = null;
         var currentPosition = null;
