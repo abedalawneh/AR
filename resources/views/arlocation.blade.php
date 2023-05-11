@@ -11,7 +11,6 @@ use App\Models\objectt;
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>GeoAR.js demo</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.4.2/aframe.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/ar.js@2.2.0"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script>
@@ -38,21 +37,22 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
       vr-mode-ui="enabled: false"
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
     >
-      <a-text
+      <a-entity
       gltf-model="{{ asset($name.'/'.$object->object) }}"
       value="{{$object->textobject}}"
       scale="3 3 3"
         look-at="[gps-camera]"
         gps-entity-place="latitude:{{ $location->latitude }}; longitude: {{ $location->longitude }};"
         animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"
+         super-hands
          animation-mixer
         geometry="primitive: sphere; radius: 1000" 
-      ></a-text>
+      ></a-entity>
       <a-camera gps-camera rotation-reader> </a-camera>
 
     <script>
         
-        var gltfModel = document.querySelector('a-text');
+        var gltfModel = document.querySelector('a-entity');
 
         var previousPosition = null;
         var currentPosition = null;
