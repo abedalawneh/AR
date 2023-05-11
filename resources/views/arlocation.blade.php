@@ -44,26 +44,19 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
         look-at="[gps-camera]"
         gps-entity-place="latitude:{{ $location->latitude }}; longitude: {{ $location->longitude }};"
         animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"
-         super-hands
          animation-mixer
         geometry="primitive: sphere; radius: 1000" 
       ></a-text>
       <a-camera gps-camera rotation-reader> </a-camera>
 
     <script>
-        // var animation='{{$object->animation}}';
-        // console.log(animation);
-        // if (animation =='Poth') {
-
-        // Get a reference to the GLTF model entity
+        
         var gltfModel = document.querySelector('a-text');
 
-        // Define variables to store the previous and current touch or mouse positions
         var previousPosition = null;
         var currentPosition = null;
         var animationEnabled = true;
 
-        // Add touch and mouse event listeners to the scene
         document.addEventListener('touchstart', onTouchStart, false);
         document.addEventListener('touchmove', onTouchMove, false);
         document.addEventListener('touchend', onTouchEnd, false);
@@ -71,7 +64,6 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
         document.addEventListener('mousemove', onMouseMove, false);
         document.addEventListener('mouseup', onMouseUp, false);
 
-        // Touch event handlers
         function onTouchStart(event) {
             previousPosition = {
                 x: event.touches[0].clientX,
@@ -149,86 +141,10 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
             }
         }
 
-        // elseif(animation=="Animationrotate"){
-
-        //  // Get a reference to the GLTF model entity
-        // var gltfModel = document.querySelector('a-entity');
-
-        // // Add the animation__rotate animation to the model
-        // gltfModel.setAttribute('animation__rotate', 'property', 'rotation');
-        // gltfModel.setAttribute('animation__rotate', 'dur', '10000');
-        // gltfModel.setAttribute('animation__rotate', 'from', '0 0 0');
-        // gltfModel.setAttribute('animation__rotate', 'to', '0 360 0');
-        // gltfModel.setAttribute('animation__rotate', 'easing', 'linear');
-        // gltfModel.setAttribute('animation__rotate', 'loop', 'true');
-
-        // }
-        // elseif(animation=="ONTouch"){
-        //  // Get a reference to the GLTF model entity
-        //  var gltfModel = document.querySelector('a-entity');
-
-        // // Define variables to store the previous and current touch or mouse positions
-        // var previousPosition = null;
-        // var currentPosition = null;
-
-        // // Add touch and mouse event listeners to the scene
-        // document.addEventListener('touchstart', onTouchStart, false);
-        // document.addEventListener('touchmove', onTouchMove, false);
-        // document.addEventListener('touchend', onTouchEnd, false);
-        // document.addEventListener('mousedown', onMouseDown, false);
-        // document.addEventListener('mousemove', onMouseMove, false);
-        // document.addEventListener('mouseup', onMouseUp, false);
-
-        // // Touch event handlers
-        // function onTouchStart(event) {
-        //   previousPosition = { x: event.touches[0].clientX, y: event.touches[0].clientY };
-        // }
-
-        // function onTouchMove(event) {
-        //   currentPosition = { x: event.touches[0].clientX, y: event.touches[0].clientY };
-        //   updateRotation();
-        //   previousPosition = currentPosition;
-        // }
-
-        // function onTouchEnd(event) {
-        //   previousPosition = null;
-        //   currentPosition = null;
-        // }
-
-        // // Mouse event handlers
-        // function onMouseDown(event) {
-        //   previousPosition = { x: event.clientX, y: event.clientY };
-        // }
-
-        // function onMouseMove(event) {
-        //   if (previousPosition) {
-        //     currentPosition = { x: event.clientX, y: event.clientY };
-        //     updateRotation();
-        //     previousPosition = currentPosition;
-        //   }
-        // }
-
-        // function onMouseUp(event) {
-        //   previousPosition = null;
-        //   currentPosition = null;
-        // }
-
-        // // Function to update the rotation of the model based on touch or mouse input
-        // function updateRotation() {
-        //   if (previousPosition && currentPosition) {
-        //     var deltaX = currentPosition.x - previousPosition.x;
-        //     var deltaY = currentPosition.y - previousPosition.y;
-        //     gltfModel.object3D.rotation.y -= deltaX * 0.01; // Adjust the rotation speed here
-        //     gltfModel.object3D.rotation.x -= deltaY * 0.01; // Adjust the rotation speed here
-        //     gltfModel.object3D.rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, gltfModel.object3D.rotation.x)); // Clamp the rotation around the X axis to avoid flipping the model
-        //   }
-        // }
-        // }
-        </script>
+                </script>
 
     </a-scene>
 
-<!-- <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script> -->
 
 
     <?php }
