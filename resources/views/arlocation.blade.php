@@ -15,9 +15,21 @@ use App\Models\objectt;
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script> -->
     <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
-    <script type="module">
-    import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extras.animation-mixer@6.1.1/+esm'
-    </script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+<script>
+  function pause() {
+    document.querySelector("a-entity").setAttribute('animation-mixer', {
+      timeScale: 0
+    });
+  }
+
+  function play() {
+    document.querySelector("a-entity").setAttribute('animation-mixer', {
+      timeScale: 1
+    });
+  }
+</script>
 
    
 </head>
