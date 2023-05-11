@@ -10,7 +10,7 @@ use App\Models\objectt;
 <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>GeoAR.js demo</title>
-    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.4.2/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script>
@@ -43,6 +43,7 @@ import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extr
       scale="0.5 0.5 0.5"
         look-at="[gps-camera]"
         gps-entity-place="latitude:{{ $location->latitude }}; longitude: {{ $location->longitude }};"
+        position="0 0 -4"
         animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"
          super-hands
          animation-mixer
