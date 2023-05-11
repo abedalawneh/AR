@@ -15,9 +15,8 @@ use App\Models\objectt;
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script> -->
     <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
-    <script type="module">
-    import aframeExtrasAnimationMixer from 'https://cdn.jsdelivr.net/npm/aframe-extras.animation-mixer@6.1.1/+esm'
-    </script>
+    <script src="https://mixar.io/sdk/mixar-sdk.min.js"></script>
+
 
    
 </head>
@@ -38,9 +37,9 @@ use App\Models\objectt;
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
     >
       <a-entity  position="0 0 -4" scale="2 2 2" geometry="primitive: sphere; radius: 1000"
-        animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000" animation-mixer super-hands
+        animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 20000"  super-hands
         gltf-model="{{ asset($name.'/'.$object->object) }}" look-at="[gps-camera]"
-         gps-entity-place="latitude:{{ $location->latitude }}; longitude: {{ $location->longitude }};">    
+         gps-entity-place="latitude:{{ $location->latitude }}; longitude: {{ $location->longitude }};" animation-mixer>    
         <a-text value="test" position="0 1 0" color="red" transparent="true"></a-text>
     </a-entity>
       <a-camera gps-camera rotation-reader> </a-camera>
