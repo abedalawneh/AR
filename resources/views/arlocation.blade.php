@@ -36,7 +36,7 @@ use App\Models\objectt;
     >
       <a-entity
         gltf-model="{{ asset($name.'/'.$object->object) }}"
-        scale="3 3 3"
+        scale="1 1 1"
         look-at="[gps-camera]"
         gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
         animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000" super-hands
