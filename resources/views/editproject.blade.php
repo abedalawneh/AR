@@ -91,7 +91,7 @@ use App\Models\objectt;
                   </div>
                   </div>
                     <img src="../images/inputname.svg" alt="">
-                    <p class="profiletext m-2">My profile</p>
+                    <p class="profiletext m-2">{{ Auth::user()->name }}</p>
                   </div>
                   <div id="formprofile">
                   <div class="  d-flex  justify-content-center" >
