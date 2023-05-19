@@ -91,7 +91,7 @@ use App\Models\objectt;
                   </div>
                   </div>
                     <img src="../images/inputname.svg" alt="">
-                    <p class="profiletext m-2">{{ Auth::user()->name }}</p>
+                    <p class="profiletext m-2">My profile</p>
                   </div>
                   <div id="formprofile">
                   <div class="  d-flex  justify-content-center" >
@@ -101,7 +101,7 @@ use App\Models\objectt;
                               <label for="name" class="labelcolor p-2 ">{{ __('Full name') }}</label>
 
                               <!-- <div class="col-md-6"> -->
-                                  <input id="name" type="text"placeholder="User Name" class="imagename form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                  <input id="name" type="text"placeholder="{{ Auth::user()->name }}" class="imagename form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                   
                                   @error('name')
                                       <span class="invalid-feedback" role="alert">
