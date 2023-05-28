@@ -44,12 +44,12 @@ use App\Models\objectt;
         animation-mixer
         geometry="primitive: sphere; radius: 1000"
         visible="true"
-        scale="{{$object->scale}} {{$object->scale}} {{$object->scale}}"
-      >
-      <a-text value="{{$object->textobject}}" position="0 -1 0" color="red" transparent="true"></a-text>
-        </a-entity>
-      <a-camera gps-camera rotation-reader position="0 0 -4" animation-mixer></a-camera>
-
+        >
+        <a-text value="{{$object->textobject}}" position="0 -1 0" color="red" transparent="true"></a-text>
+    </a-entity>
+    <a-camera gps-camera rotation-reader position="0 0 -4" animation-mixer></a-camera>
+    
+    <!-- scale="{{$object->scale}} {{$object->scale}} {{$object->scale}}" -->
 
       <script>
 //   var myEntity = document.getElementById('myEntity');
@@ -79,6 +79,21 @@ use App\Models\objectt;
 //     boundingBox.getSize(size);
 //     return size;
 //   }
+var myEntity = document.getElementById('myEntity');
+
+function updateObjectScale() {
+  var windowWidth = window.innerWidth;
+  var windowHeight = window.innerHeight;
+
+  var aspectRatio = windowWidth / windowHeight;
+  var scaleMultiplier = aspectRatio < 1 ? 1 / aspectRatio : aspectRatio;
+
+  myEntity.setAttribute('scale', scaleMultiplier + ' ' + scaleMultiplier + ' ' + scaleMultiplier);
+}
+
+// Call the updateObjectScale function on page load and whenever the window is resized
+window.addEventListener('load', updateObjectScale);
+window.addEventListener('resize', updateObjectScale);
 </script>
 
 
