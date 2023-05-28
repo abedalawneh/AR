@@ -44,14 +44,14 @@ use App\Models\objectt;
         animation-mixer
         geometry="primitive: sphere; radius: 1000"
         visible="true"
-        scale="{{$object->scale}}"
+        scale="{{$object->scale}} {{$object->scale}} {{$object->scale}}"
       >
       <a-text value="{{$object->textobject}}" position="0 -1 0" color="red" transparent="true"></a-text>
         </a-entity>
       <a-camera gps-camera rotation-reader position="0 0 -4" animation-mixer></a-camera>
 
 
-      <!-- <script>
+      <script>
   var myEntity = document.getElementById('myEntity');
 
   // Load the GLB model
@@ -61,16 +61,16 @@ use App\Models\objectt;
     
     var newScale = objectSize.x / 10; // Example calculation, adjust as needed
     console.log('ttttt'+newScale);
-    if (newScale >1) {
-        newScale=10;
-        myEntity.setAttribute('position', 0 + ' ' + 0 + ' ' + -90);
-    }
-    else if (newScale < 1) {
-        newScale=10;
-    }
-    console.log('ttttt'+newScale);
-    // Update the scale attribute of the entity element
-    myEntity.setAttribute('scale', newScale + ' ' + newScale + ' ' + newScale);
+    // if (newScale >1) {
+    //     newScale=10;
+    //     myEntity.setAttribute('position', 0 + ' ' + 0 + ' ' + -90);
+    // }
+    // else if (newScale < 1) {
+    //     newScale=10;
+    // }
+    // console.log('ttttt'+newScale);
+    // // Update the scale attribute of the entity element
+    // myEntity.setAttribute('scale', newScale + ' ' + newScale + ' ' + newScale);
   });
 
   function getObjectSize(glbModel) {
@@ -79,7 +79,7 @@ use App\Models\objectt;
     boundingBox.getSize(size);
     return size;
   }
-</script> -->
+</script>
 
 
 <script>
