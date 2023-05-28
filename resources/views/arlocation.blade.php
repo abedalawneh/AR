@@ -44,7 +44,7 @@ use App\Models\objectt;
         animation-mixer
         geometry="primitive: sphere; radius: 1000"
       >
-      <a-text value="{{$object->textobject}}" position="0 -2 0" color="red" transparent="true"></a-text>
+      <a-text value="{{$object->textobject}}" position="0 -1 0" color="red" transparent="true"></a-text>
         </a-entity>
       <a-camera gps-camera rotation-reader position="0 0 -4" animation-mixer></a-camera>
 
