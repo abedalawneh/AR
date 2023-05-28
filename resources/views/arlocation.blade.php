@@ -52,15 +52,15 @@ use App\Models\objectt;
 
 
       <script>
-  var myEntity = document.getElementById('myEntity');
+//   var myEntity = document.getElementById('myEntity');
 
-  // Load the GLB model
-  var loader = new THREE.GLTFLoader();
-  loader.load('{{ asset($name.'/'.$object->object) }}', function(glb) {
-    var objectSize = getObjectSize(glb.scene);
+//   // Load the GLB model
+//   var loader = new THREE.GLTFLoader();
+//   loader.load('{{ asset($name.'/'.$object->object) }}', function(glb) {
+//     var objectSize = getObjectSize(glb.scene);
     
-    var newScale = objectSize.x / 10; // Example calculation, adjust as needed
-    console.log('ttttt'+newScale);
+//     var newScale = objectSize.x / 10; // Example calculation, adjust as needed
+//     console.log('ttttt'+newScale);
     // if (newScale >1) {
     //     newScale=10;
     //     myEntity.setAttribute('position', 0 + ' ' + 0 + ' ' + -90);
@@ -71,14 +71,14 @@ use App\Models\objectt;
     // console.log('ttttt'+newScale);
     // // Update the scale attribute of the entity element
     // myEntity.setAttribute('scale', newScale + ' ' + newScale + ' ' + newScale);
-  });
+//   });
 
-  function getObjectSize(glbModel) {
-    var boundingBox = new THREE.Box3().setFromObject(glbModel);
-    var size = new THREE.Vector3();
-    boundingBox.getSize(size);
-    return size;
-  }
+//   function getObjectSize(glbModel) {
+//     var boundingBox = new THREE.Box3().setFromObject(glbModel);
+//     var size = new THREE.Vector3();
+//     boundingBox.getSize(size);
+//     return size;
+//   }
 </script>
 
 
