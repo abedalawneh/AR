@@ -43,6 +43,7 @@ use App\Models\objectt;
         animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 10000" super-hands
         animation-mixer
         geometry="primitive: sphere; radius: 1000"
+        visible="true"
       >
       <a-text value="{{$object->textobject}}" position="0 -1 0" color="red" transparent="true"></a-text>
         </a-entity>
