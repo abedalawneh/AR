@@ -86,7 +86,7 @@ function updateObjectScale() {
   var windowHeight = window.innerHeight;
 
   var aspectRatio = windowWidth / windowHeight;
-  var scaleMultiplier = aspectRatio < 1 ? 1 / aspectRatio : aspectRatio;
+  var scaleMultiplier = aspectRatio < 5 ? 5 / aspectRatio : aspectRatio;
 
   myEntity.setAttribute('scale', scaleMultiplier + ' ' + scaleMultiplier + ' ' + scaleMultiplier);
 }
