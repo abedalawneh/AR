@@ -35,6 +35,7 @@ use App\Models\objectt;
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
     >
       <a-entity
+        id="myEntity"
         gltf-model="{{ asset($name.'/'.$object->object) }}"
         scale="1 1 1"
         look-at="[gps-camera]"
@@ -48,6 +49,38 @@ use App\Models\objectt;
       <a-text value="{{$object->textobject}}" position="0 -1 0" color="red" transparent="true"></a-text>
         </a-entity>
       <a-camera gps-camera rotation-reader position="0 0 -4" animation-mixer></a-camera>
+
+
+      <script>
+  var myEntity = document.getElementById('myEntity');
+
+  // Load the GLB model
+  var loader = new THREE.GLTFLoader();
+  loader.load('{{ asset($name.'/'.$object->object) }}', function(glb) {
+    var objectSize = getObjectSize(glb.scene);
+    
+    var newScale = objectSize.x / 10; // Example calculation, adjust as needed
+    console.log('ttttt'+newScale);
+    if (newScale > 0.5) {
+        newScale=0.5;
+        myEntity.setAttribute('position', 0 + ' ' + 0 + ' ' + -90);
+    }
+    else if (newScale < 0.5) {
+        newScale=0.5;
+    }
+    console.log('ttttt'+newScale);
+    // Update the scale attribute of the entity element
+    myEntity.setAttribute('scale', newScale + ' ' + newScale + ' ' + newScale);
+  });
+
+  function getObjectSize(glbModel) {
+    var boundingBox = new THREE.Box3().setFromObject(glbModel);
+    var size = new THREE.Vector3();
+    boundingBox.getSize(size);
+    return size;
+  }
+</script>
+
 
 <script>
         
