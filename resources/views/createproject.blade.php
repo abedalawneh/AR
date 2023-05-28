@@ -271,7 +271,21 @@
 
                                 </div>
                                 
-                                <p class="radiotitle "><span class="spantitle">4</span> Your text</p>
+                                <p class="radiotitle "><span class="spantitle">4</span> scale</p>
+                            <div class=" form-group mb-3 m-3">
+
+                           
+                                <input id="Projectname" type="text"placeholder="scale to object"  class="imageproject form-control" name="scale" value="{{ old('scale') }}"   >
+                                
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                 
+                            </div>
+
+                                <p class="radiotitle "><span class="spantitle">5</span> Your text</p>
                             <div class=" form-group mb-3 m-3">
 
                            
@@ -285,7 +299,7 @@
                  
                             </div>
 
-                                <p class="radiotitle"><span class="spantitle"> 5 </span>How you like your object ?</p>
+                                <p class="radiotitle"><span class="spantitle"> 6 </span>How you like your object ?</p>
                                 <div class="form-check form-check-inline m-4">
                                     <input class="form-check-input" type="radio" name="objectanimation" id="inlineRadio1" value="Animationrotate">
                                     <label class="form-check-label" for="inlineRadio1">Animation Rotate</label>

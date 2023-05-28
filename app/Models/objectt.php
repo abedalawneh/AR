@@ -10,5 +10,5 @@ class objectt extends Model
  
     use HasFactory;
     protected $table = 'objects';
-    protected $fillable = ["object","user_id","event_id","project_id","animation","textobject","created_at","updated_at"];
+    protected $fillable = ["object","user_id","event_id","project_id","animation","scale","textobject","created_at","updated_at"];
 }

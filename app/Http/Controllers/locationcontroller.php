@@ -65,6 +65,7 @@ class locationcontroller extends Controller
                     $object->user_id =$request->userid;
                     $object->animation =$request->objectanimation;
                     $object->textobject =$request->textobject;
+                    $object->scale =$request->scale;
                     $object->project_id =$project->id;
                     $object->save();
 
@@ -136,6 +137,7 @@ class locationcontroller extends Controller
             $editobject->object = $file->getClientOriginalName();
             $editobject->animation =$request->objectanimation;
             $editobject->textobject =$request->textobject;
+            $editobject->scale =$request->scale;
             $editobject->save();
                     $destinationPath = public_path("glbobject");
                     $filename = $file->getClientOriginalName();
