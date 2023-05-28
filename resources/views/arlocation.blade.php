@@ -67,7 +67,7 @@ use App\Models\objectt;
     else if (newScale < 0.5) {
         newScale=0.7;
     }
-    console.log('ttttt'+newScale);
+    console.log('tttttnew'+newScale);
     Update the scale attribute of the entity element
     myEntity.setAttribute('scale', newScale + ' ' + newScale + ' ' + newScale);
   });
