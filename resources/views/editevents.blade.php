@@ -95,7 +95,7 @@ use App\Models\location;
                   <div class="  d-flex  justify-content-center" >
                     <form method="POST" > 
                       @csrf
-                          <div class="row mb-3">
+                          <div class="row mb-3"> 
                               <label for="name" class="labelcolor p-2 ">{{ __('Full name') }}</label>
 
                               <!-- <div class="col-md-6"> -->
