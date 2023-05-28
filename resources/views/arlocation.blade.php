@@ -50,7 +50,7 @@ use App\Models\objectt;
       <a-camera gps-camera rotation-reader position="0 0 -4" animation-mixer></a-camera>
 
 
-      <!-- <script>
+      <script>
   var myEntity = document.getElementById('myEntity');
 
   // Load the GLB model
@@ -60,16 +60,16 @@ use App\Models\objectt;
     
     var newScale = objectSize.x / 10; // Example calculation, adjust as needed
     console.log('ttttt'+newScale);
-    if (newScale > 0.5) {
-        newScale=0.5;
-        myEntity.setAttribute('position', 0 + ' ' + 0 + ' ' + -90);
-    }
-    else if (newScale < 0.5) {
-        newScale=0.5;
-    }
-    console.log('ttttt'+newScale);
+    // if (newScale > 0.5) {
+    //     newScale=0.5;
+    //     myEntity.setAttribute('position', 0 + ' ' + 0 + ' ' + -90);
+    // }
+    // else if (newScale < 0.5) {
+    //     newScale=0.5;
+    // }
+    // console.log('ttttt'+newScale);
     // Update the scale attribute of the entity element
-    myEntity.setAttribute('scale', newScale + ' ' + newScale + ' ' + newScale);
+    // myEntity.setAttribute('scale', newScale + ' ' + newScale + ' ' + newScale);
   });
 
   function getObjectSize(glbModel) {
@@ -78,7 +78,7 @@ use App\Models\objectt;
     boundingBox.getSize(size);
     return size;
   }
-</script> -->
+</script>
 
 
 <script>
