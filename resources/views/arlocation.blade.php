@@ -37,7 +37,6 @@ use App\Models\objectt;
       <a-entity
         id="myEntity"
         gltf-model="{{ asset($name.'/'.$object->object) }}"
-        scale="1 1 1"
         look-at="[gps-camera]"
         position="0 0 -1"
         gps-entity-place="latitude: {{ $location->latitude }}; longitude: {{ $location->longitude }};"
@@ -51,7 +50,7 @@ use App\Models\objectt;
       <a-camera gps-camera rotation-reader position="0 0 -4" animation-mixer></a-camera>
 
 
-      <script>
+      <!-- <script>
   var myEntity = document.getElementById('myEntity');
 
   // Load the GLB model
@@ -79,13 +78,13 @@ use App\Models\objectt;
     boundingBox.getSize(size);
     return size;
   }
-</script>
+</script> -->
 
 
 <script>
         
         var gltfModel =  document.querySelector('a-entity');
-        console.log('ddd');
+        // console.log('ddd');
 
         var previousPosition = null;
         var currentPosition = null;
@@ -99,7 +98,7 @@ use App\Models\objectt;
         document.addEventListener('mouseup', onMouseUp, false);
 
         function onTouchStart(event) {
-            console.log('dddf');
+            // console.log('dddf');
             previousPosition = {
                 x: event.touches[0].clientX,
                 y: event.touches[0].clientY
@@ -108,7 +107,7 @@ use App\Models\objectt;
         }
 
         function onTouchMove(event) {
-            console.log('dddf');
+            // console.log('dddf');
 
             currentPosition = {
                 x: event.touches[0].clientX,
@@ -119,7 +118,7 @@ use App\Models\objectt;
         }
 
         function onTouchEnd(event) {
-            console.log('dddf');
+            // console.log('dddf');
 
             previousPosition = null;
             currentPosition = null;
@@ -128,7 +127,7 @@ use App\Models\objectt;
 
         // Mouse event handlers
         function onMouseDown(event) {
-            console.log('ddd1');
+            // console.log('ddd1');
 
             previousPosition = {
                 x: event.clientX,
@@ -138,7 +137,7 @@ use App\Models\objectt;
         }
 
         function onMouseMove(event) {
-            console.log('ddd2');
+            // console.log('ddd2');
 
             if (previousPosition) {
                 currentPosition = {
@@ -151,7 +150,7 @@ use App\Models\objectt;
         }
 
         function onMouseUp(event) {
-            console.log('ddd3');
+            // console.log('ddd3');
 
             previousPosition = null;
             currentPosition = null;
