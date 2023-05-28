@@ -35,7 +35,6 @@ use App\Models\objectt;
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
     >
       <a-entity
-        id="myEntity"
         gltf-model="{{ asset($name.'/'.$object->object) }}"
         look-at="[gps-camera]"
         position="0 0 -1"
@@ -51,7 +50,7 @@ use App\Models\objectt;
 
 
       <script>
-  var myEntity = document.getElementById('myEntity');
+  var myEntity = document.querySelector('a-entity');
 
   // Load the GLB model
   var loader = new THREE.GLTFLoader();
@@ -61,11 +60,11 @@ use App\Models\objectt;
     var newScale = objectSize.x / 10; // Example calculation, adjust as needed
     console.log('ttttt'+newScale);
     if (newScale > 0.5) {
-        newScale=0.7;
+        newScale=0.5;
         myEntity.setAttribute('position', 0 + ' ' + 0 + ' ' + -90);
     }
     else if (newScale < 0.5) {
-        newScale=0.7;
+        newScale=0.5;
     }
     console.log('tttttnew'+newScale);
     Update the scale attribute of the entity element
